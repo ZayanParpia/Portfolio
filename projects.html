@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Projects - Zayan Parpia</title>
+    <meta name="description" content="Cybersecurity and Cloud Projects by Zayan Parpia.">
+    <meta name="keywords" content="cloud security, cybersecurity, projects, aws, backup system">
+    <meta name="author" content="Zayan Parpia">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Specific styles for the projects page */
+        .project-category {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .category-title {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-accent);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: var(--spacing-sm);
+            display: inline-block;
+        }
+
+        .detailed-project {
+            grid-column: 1 / -1;
+            /* Take full width */
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        @media (min-width: 900px) {
+            .detailed-project {
+                flex-direction: row;
+                align-items: start;
+            }
+
+            .detailed-project .project-visuals {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .detailed-project .project-image {
+                width: 100%;
+                /* Full width of container */
+                height: auto;
+                max-height: 600px;
+                object-fit: contain;
+                border-radius: var(--radius-md);
+                /* Smooth rectangle */
+                /* Removed border and box-shadow as requested */
+            }
+
+            .main-image {
+                width: 100%;
+                border-radius: var(--radius-md);
+            }
+
+            .image-gallery {
+                display: flex;
+                gap: var(--spacing-sm);
+                margin-top: var(--spacing-sm);
+            }
+
+            .gallery-img {
+                width: 33%;
+                border-radius: var(--radius-sm);
+                aspect-ratio: 16/9;
+                object-fit: cover;
+                cursor: pointer;
+                opacity: 0.8;
+                transition: opacity 0.3s;
+            }
+
+            .gallery-img:hover {
+                opacity: 1;
+            }
+
+            .detailed-project .project-info {
+                width: 50%;
+            }
+        }
+
+        .project-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-gray);
+            margin-top: -0.5rem;
+            margin-bottom: var(--spacing-sm);
+            font-style: italic;
+        }
+
+        .btn-read-more {
+            background: transparent;
+            color: var(--color-secondary);
+            /* Blue */
+            border: 2px solid var(--color-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+            margin-top: var(--spacing-sm);
+        }
+
+        .btn-read-more:hover {
+            background: var(--color-secondary);
+            color: white;
+            box-shadow: 0 0 15px var(--color-secondary);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: var(--spacing-sm);
+        }
+
+        .feature-item {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background: var(--glass-bg);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--glass-border);
+        }
+
+        .feature-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            color: var(--color-accent);
+            margin-top: 4px;
+        }
+
+        .feature-content h4 {
+            margin-bottom: 0.25rem;
+            color: var(--color-text-light);
+        }
+
+        .feature-content p {
+            font-size: var(--font-size-sm);
+            margin-bottom: 0.5rem;
+        }
+
+        .proof-code {
+            font-family: monospace;
+            font-size: 0.8em;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: var(--color-secondary);
+            display: block;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Portfolio</a>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HEADER ===== -->
+    <section class="section" style="padding-top: 120px; padding-bottom: 40px;">
+        <div class="container">
+            <h1 class="section-title fade-in">My Projects</h1>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS LIST ===== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+
+            <!-- CLOUD PROJECTS -->
+            <div class="project-category fade-in">
+                <h2 class="category-title">Cloud Projects</h2>
+                <div class="projects-grid">
+
+                    <!-- AUTOMATIC BACKUP SYSTEM -->
+                    <div class="project-card detailed-project">
+                        <div class="project-visuals">
+                            <img src="AWS-BACKUP/Diagram.png" alt="Automatic Backup System Diagram" class="main-image">
+                            <div class="image-gallery">
+                                <img src="AWS-BACKUP/Diagram.png" alt="Gallery 1" class="gallery-img">
+                                <img src="AWS-BACKUP/Diagram.png" alt="Gallery 2" class="gallery-img">
+                                <img src="AWS-BACKUP/Diagram.png" alt="Gallery 3" class="gallery-img">
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Automatic Backup System</h3>
+                            <p class="project-date">December 26, 2025</p>
+                            <div class="project-tags">
+                                <span class="tag">AWS S3</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">AWS KMS</span>
+                                <span class="tag">AWS SNS</span>
+                                <span class="tag">IAM</span>
+                            </div>
+                            <p>A robust, secure, and cost-effective automated backup solution leveraging AWS services.
+                            </p>
+
+                            <button class="btn-read-more" onclick="toggleDetails(this)">Read More</button>
+
+                            <div class="project-details" style="display: none; margin-top: var(--spacing-sm);">
+                                <p style="margin-bottom: var(--spacing-sm);">
+                                    This project demonstrates the use of AWS services to create a secure and
+                                    cost-effective backup system. In this project,
+                                    I used AWS S3 to store backups, AWS KMS for encryption, AWS SNS for email
+                                    notifications, and IAM for least-privilege access controls.
+                                    Every Friday at 10:00 Pm EST, the system will automatically backup all files in the
+                                    specified directory(s) to an encrypted S3 bucket.
+                                    All the files are put into a Deep Glacier storage class for cost optimization.
+                                    To prevent the same files from being backed up multiple times, the script checks a
+                                    list
+                                    of hashes for each file and compares them to the hashes of the files in the S3
+                                    bucket.
+                                    If a file's hash matches a file in the S3 bucket, the script will skip it, backing
+                                    up only files that are new
+                                    or have been modified since the last backup. This saves time and storage space.
+                                    When the backup is complete, the script will send an email notification to the
+                                    specified email address using
+                                    AWS SNS service. The Email contains the folders that were backed up, the time of the
+                                    backup, and the size of the backup and other relevant information.
+
+                                </p>
+                            </div>
+
+                            <div class="project-script"
+                                style="margin-top: var(--spacing-md); background: #1e1e1e; padding: var(--spacing-sm); border-radius: var(--radius-sm); border: 1px solid var(--glass-border);">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                                        alt="Python" style="width: 24px; height: 24px;">
+                                    <h4 style="color: #fff; margin: 0; font-family: 'Inter', sans-serif;">
+                                        Python Script</h4>
+                                </div>
+                                <pre
+                                    style="max-height: 400px; overflow-y: auto; color: #d4d4d4; font-family: monospace; font-size: 0.85em; tab-size: 4; white-space: pre-wrap; word-break: break-all;"><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;
+backups3_scheduled_mode_masked.py
+- Same backup logic as original but with data-masking for PII before any output, logs, or manifest that may be uploaded to a portfolio.
+- Sensitive configuration is read from environment variables (no hard-coded ARNs, bucket names, or absolute user paths).
+- When writing user-facing output (logs, manifests, SNS body), values are masked.
+
+USAGE: set S3_BUCKET, KMS_KEY_ARN, SNS_TOPIC_ARN, and SOURCE_DRIVES_JSON in the environment before running.
+If not set, placeholders are used and the script will run in dry-run safely.
+&quot;&quot;&quot;
+
+import os
+import json
+import hashlib
+import argparse
+import boto3
+import time
+import sys
+import signal
+import re
+from datetime import datetime, timezone
+
+# -----------------------------
+# Helpers for masking
+# -----------------------------
+
+def mask_partial(val, keep_start=3, keep_end=4):
+    if not val:
+        return &quot;&lt;REDACTED&gt;&quot;
+    if len(val) &lt;= keep_start + keep_end:
+        return &quot;*&quot; * len(val)
+    return val[:keep_start] + &quot;...&quot; + val[-keep_end:]
+
+
+def mask_arn(arn):
+    if not arn or not isinstance(arn, str):
+        return &quot;&lt;REDACTED_ARN&gt;&quot;
+    parts = arn.split(&quot;:&quot;)
+    if len(parts) &lt; 6:
+        return mask_partial(arn)
+    service = parts[2]
+    resource = parts[5] if len(parts) &gt; 5 else parts[-1]
+    return f&quot;arn:aws:{service}:&lt;REDACTED_REGION&gt;:&lt;REDACTED_ACCOUNT&gt;:{mask_partial(resource)}&quot;
+
+
+def mask_bucket(bucket):
+    if not bucket:
+        return &quot;&lt;REDACTED_BUCKET&gt;&quot;
+    return mask_partial(bucket, keep_start=2, keep_end=2)
+
+
+def mask_s3_key(key):
+    # show the prefix but redact the filename
+    if not key:
+        return &quot;&lt;REDACTED_S3_KEY&gt;&quot;
+    parts = key.split(&quot;/&quot;)
+    if len(parts) &lt;= 2:
+        return &quot;.../&quot; + mask_partial(parts[-1])
+    return &quot;/&quot;.join(parts[:-1]) + &quot;/&quot; + mask_partial(parts[-1])
+
+
+def mask_path_for_output(path):
+    if not path:
+        return &quot;&lt;REDACTED_PATH&gt;&quot;
+    try:
+        p = os.path.normpath(path)
+        # redact user home
+        home = os.path.normcase(os.path.expanduser(&quot;~&quot;))
+        pnorm = os.path.normcase(p)
+        if home and pnorm.startswith(home):
+            rel = p[len(home):].lstrip(os.sep)
+            return os.path.join(&quot;&lt;REDACTED_HOME&gt;&quot;, mask_partial(rel.replace(os.sep, &quot;/&quot;), 0, 10))
+        # redact usernames in Windows style e.g. C:\Users\username\
+        m = re.search(r&quot;(C:|D:|E:|F:)?\\Users\\([^\\/]+)(.*)&quot;, p, re.IGNORECASE)
+        if m:
+            drive = m.group(1) or &quot;&quot;
+            rest = m.group(3) or &quot;&quot;
+            return f&quot;{drive}\\Users\\&lt;REDACTED_USER&gt;\\{mask_partial(rest.replace('\\\\','/'), 0, 10)}&quot;
+        # default: show only last path components
+        parts = p.split(os.sep)
+        if len(parts) &lt;= 3:
+            return mask_partial(p)
+        return os.sep.join(parts[:2]) + os.sep + &quot;...&quot; + os.sep + mask_partial(parts[-1])
+    except Exception:
+        return &quot;&lt;REDACTED_PATH&gt;&quot;
+
+
+# -----------------------------
+# Configuration (from env; masked in outputs)
+# -----------------------------
+S3_BUCKET = os.environ.get(&quot;S3_BUCKET&quot;) or &quot;&lt;REDACTED_BUCKET&gt;&quot;
+KMS_KEY_ARN = os.environ.get(&quot;KMS_KEY_ARN&quot;) or &quot;&lt;REDACTED_KMS_ARN&gt;&quot;
+SNS_TOPIC_ARN = os.environ.get(&quot;SNS_TOPIC_ARN&quot;) or None
+AWS_REGION = os.environ.get(&quot;AWS_REGION&quot;, &quot;us-east-1&quot;)
+
+# SOURCE_DRIVES_JSON example: '{&quot;C:\\\\&quot;: &quot;MAIN&quot;, &quot;E:\\\\&quot;: &quot;Black Hard Drive&quot;}'
+SOURCE_DRIVES = {}
+try:
+    sdj = os.environ.get(&quot;SOURCE_DRIVES_JSON&quot;)
+    if sdj:
+        SOURCE_DRIVES = json.loads(sdj)
+except Exception:
+    SOURCE_DRIVES = {}
+
+# fallbacks (non-sensitive placeholders) — kept minimal to avoid exposing user filesystem
+if not SOURCE_DRIVES:
+    SOURCE_DRIVES = {
+        &quot;C:\\&quot;: &quot;MAIN&quot;
+    }
+
+# Local state files
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+HASH_DB_FILE = os.path.join(BASE_DIR, &quot;backup_hashes.json&quot;)
+LOG_FILE = os.path.join(BASE_DIR, &quot;backup_log.txt&quot;)
+
+# AWS clients (created with region; credentials come from environment/profile/role)
+s3 = boto3.client(&quot;s3&quot;, region_name=AWS_REGION)
+sns = boto3.client(&quot;sns&quot;, region_name=AWS_REGION)
+
+CHUNK_SIZE = 64 * 1024  # 64KB
+PRICE_PER_GB_DEEP_ARCHIVE = 0.00099  # USD per GB-month
+PREWARN_SECONDS = 5 * 60
+_interrupted = False
+
+
+# -----------------------------
+# Logging helper that masks sensitive fragments automatically
+# -----------------------------
+
+def safe_log(msg):
+    # mask common configurable sensitive values before printing
+    try:
+        masked = msg.replace(S3_BUCKET, mask_bucket(S3_BUCKET) if S3_BUCKET else &quot;&lt;REDACTED_BUCKET&gt;&quot;)
+        masked = masked.replace(KMS_KEY_ARN, mask_arn(KMS_KEY_ARN) if KMS_KEY_ARN else &quot;&lt;REDACTED_KMS_ARN&gt;&quot;)
+        masked = masked.replace(SNS_TOPIC_ARN or &quot;&quot;, &quot;&lt;REDACTED_SNS&gt;&quot;)
+    except Exception:
+        masked = msg
+    ts = datetime.now(timezone.utc).astimezone().isoformat()
+    line = f&quot;{ts} {masked}&quot;
+    print(line)
+    try:
+        with open(LOG_FILE, &quot;a&quot;, encoding=&quot;utf-8&quot;) as fh:
+            fh.write(line + &quot;\n&quot;)
+    except Exception:
+        pass
+
+
+# -----------------------------
+# Minimal helpers (hashing, size)
+# -----------------------------
+
+def compute_sha256(path):
+    h = hashlib.sha256()
+    with open(path, &quot;rb&quot;) as f:
+        for chunk in iter(lambda: f.read(CHUNK_SIZE), b&quot;&quot;):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def load_hash_db():
+    if os.path.exists(HASH_DB_FILE):
+        try:
+            with open(HASH_DB_FILE, &quot;r&quot;, encoding=&quot;utf-8&quot;) as fh:
+                return json.load(fh)
+        except Exception:
+            return {}
+    return {}
+
+
+def save_hash_db_atomic(db):
+    tmp = HASH_DB_FILE + &quot;.tmp&quot;
+    with open(tmp, &quot;w&quot;, encoding=&quot;utf-8&quot;) as fh:
+        json.dump(db, fh, indent=2)
+    os.replace(tmp, HASH_DB_FILE)
+
+
+def human_readable_size(bytes_count):
+    for unit in [&quot;B&quot;, &quot;KB&quot;, &quot;MB&quot;, &quot;GB&quot;, &quot;TB&quot;]:
+        if bytes_count &lt; 1024 or unit == &quot;TB&quot;:
+            return f&quot;{bytes_count:.2f} {unit}&quot;
+        bytes_count /= 1024.0
+    return f&quot;{bytes_count:.2f} TB&quot;
+
+
+# -----------------------------
+# Path helpers (keeps original behavior but avoids exposing raw paths in output)
+# -----------------------------
+
+def path_is_excluded(full_path, exclude_parts):
+    p = os.path.normcase(os.path.abspath(full_path))
+    for part in exclude_parts:
+        if part.lower() in p.lower():
+            return True
+    return False
+
+
+def build_allowed_paths_for_source(source_root, allowed_folder_names, explicit_paths):
+    allowed = []
+    for p in explicit_paths:
+        try:
+            if os.path.normcase(os.path.abspath(p)).startswith(os.path.normcase(source_root)):
+                allowed.append(os.path.abspath(p))
+        except Exception:
+            pass
+
+    users_path = os.path.join(source_root, &quot;Users&quot;)
+    if os.path.exists(users_path):
+        try:
+            for username in os.listdir(users_path):
+                user_base = os.path.join(users_path, username)
+                for name in allowed_folder_names:
+                    candidate = os.path.join(user_base, name)
+                    if os.path.exists(candidate):
+                        allowed.append(candidate)
+        except Exception:
+            pass
+
+    for name in allowed_folder_names:
+        candidate = os.path.join(source_root, name)
+        if os.path.exists(candidate):
+            allowed.append(candidate)
+
+    normalized = []
+    for p in allowed:
+        try:
+            normalized.append(os.path.normpath(os.path.abspath(p)))
+        except Exception:
+            pass
+    return sorted(set(normalized))
+
+
+# -----------------------------
+# Signals
+# -----------------------------
+
+def _signal_handler(signum, frame):
+    global _interrupted
+    _interrupted = True
+    safe_log(f&quot;Received signal {signum}; marking interrupted.&quot;)
+
+
+signal.signal(signal.SIGINT, _signal_handler)
+try:
+    signal.signal(signal.SIGTERM, _signal_handler)
+except Exception:
+    pass
+
+
+# -----------------------------
+# Backup logic (keeps most behaviour, but uses masking in all outputs)
+# -----------------------------
+ALLOWED_FOLDER_NAMES = [&quot;Pictures&quot;, &quot;Videos&quot;, &quot;Desktop&quot;, &quot;Downloads&quot;]
+EXPLICIT_ABSOLUTE_PATHS = []  # encourage supplying via SOURCE_DRIVES_JSON rather than hard-coding
+EXCLUDE_PATH_PARTS = [
+    r&quot;\\Windows&quot;,
+    r&quot;\\Program Files&quot;,
+    r&quot;\\Program Files (x86)&quot;,
+    r&quot;\\System Volume Information&quot;,
+    r&quot;\\$Recycle.Bin&quot;,
+    r&quot;\\hiberfil.sys&quot;,
+    r&quot;\\pagefile.sys&quot;,
+    r&quot;\\SwapFile.sys&quot;,
+    r&quot;\\Recovery&quot;,
+    r&quot;\\PerfLogs&quot;
+]
+
+
+def gather_candidate_files():
+    candidates = []
+    drive_present = {}
+    for source, drive_name in SOURCE_DRIVES.items():
+        present = os.path.exists(source)
+        drive_present[drive_name] = present
+        if not present:
+            safe_log(f&quot;Drive root missing for pre-scan: {mask_path_for_output(source)}&quot;)
+            continue
+
+        allowed_roots = build_allowed_paths_for_source(source, ALLOWED_FOLDER_NAMES, EXPLICIT_ABSOLUTE_PATHS)
+        if not allowed_roots:
+            safe_log(f&quot;No allowed roots found under {mask_path_for_output(source)}&quot;)
+            continue
+
+        for root_allowed in allowed_roots:
+            for root, dirs, files in os.walk(root_allowed):
+                dirs[:] = [d for d in dirs if not path_is_excluded(os.path.join(root, d), EXCLUDE_PATH_PARTS)]
+                for fname in files:
+                    file_path = os.path.join(root, fname)
+                    if path_is_excluded(file_path, EXCLUDE_PATH_PARTS):
+                        continue
+                    candidates.append((os.path.normcase(os.path.abspath(file_path)), drive_name))
+    return candidates, drive_present
+
+
+def backup_run(dry_run=False):
+    start_time = time.time()
+    start_dt_utc = datetime.utcnow().replace(tzinfo=timezone.utc).isoformat()
+
+    persisted_hashes = load_hash_db()
+    updated_hashes = dict(persisted_hashes)
+
+    uploaded_keys = []
+    duplicate_skips = []
+    errors = []
+    run_manifest = {
+        &quot;run_start_utc&quot;: start_dt_utc,
+        &quot;dry_run&quot;: bool(dry_run),
+        &quot;uploaded&quot;: [],
+        &quot;skipped_duplicates&quot;: [],
+        &quot;errors&quot;: [],
+        &quot;estimates&quot;: {},
+    }
+
+    safe_log(&quot;Starting pre-scan for estimation...&quot;)
+    candidates, drive_present = gather_candidate_files()
+    candidates = list(dict.fromkeys(candidates))
+    total_files = len(candidates)
+    total_bytes = 0
+    drive_totals = {v: 0 for v in SOURCE_DRIVES.values()}
+    drive_uploaded = {v: 0 for v in SOURCE_DRIVES.values()}
+
+    for path, dn in candidates:
+        drive_totals.setdefault(dn, 0)
+        drive_totals[dn] += 1
+        try:
+            total_bytes += os.path.getsize(path)
+        except Exception:
+            pass
+
+    run_manifest[&quot;estimates&quot;][&quot;total_files&quot;] = total_files
+    run_manifest[&quot;estimates&quot;][&quot;total_bytes&quot;] = total_bytes
+    safe_log(f&quot;Pre-scan: {total_files} files, {human_readable_size(total_bytes)} total across drives&quot;)
+
+    content_hash_to_s3key = {}
+    processed_files = 0
+    processed_bytes = 0
+    seen_paths = set()
+
+    for idx, (abs_path, drive_name) in enumerate(candidates, start=1):
+        if _interrupted:
+            safe_log(&quot;Interrupted flag set; stopping processing loop.&quot;)
+            break
+
+        if abs_path in seen_paths:
+            continue
+        seen_paths.add(abs_path)
+        processed_files += 1
+        try:
+            file_size = os.path.getsize(abs_path)
+        except Exception:
+            file_size = 0
+
+        matched_source = None
+        for src in SOURCE_DRIVES.keys():
+            try:
+                if os.path.normcase(os.path.abspath(abs_path)).startswith(os.path.normcase(os.path.abspath(src))):
+                    matched_source = src
+                    break
+            except Exception:
+                pass
+        if matched_source:
+            try:
+                relpath = os.path.relpath(abs_path, matched_source)
+            except Exception:
+                relpath = os.path.basename(abs_path)
+        else:
+            relpath = os.path.basename(abs_path)
+
+        today_prefix = datetime.utcnow().strftime(&quot;%Y/%m/%d&quot;)
+        s3_key = f&quot;{today_prefix}/{drive_name}/{relpath}&quot;.replace(&quot;\\&quot;, &quot;/&quot;)
+
+        try:
+            file_hash = compute_sha256(abs_path)
+        except Exception as e:
+            safe_log(f&quot;ERROR hashing {mask_path_for_output(abs_path)}: {str(e)}&quot;)
+            errors.append({&quot;path&quot;: mask_path_for_output(abs_path), &quot;error&quot;: str(e)})
+            run_manifest[&quot;errors&quot;].append({&quot;path&quot;: mask_path_for_output(abs_path), &quot;error&quot;: str(e)})
+            continue
+
+        if file_hash in content_hash_to_s3key:
+            existing_key = content_hash_to_s3key[file_hash]
+            safe_log(f&quot;Duplicate content (this run), skipping upload: {mask_path_for_output(abs_path)} -&gt; matches {mask_s3_key(existing_key)}&quot;)
+            duplicate_skips.append((mask_path_for_output(abs_path), mask_s3_key(existing_key)))
+            run_manifest[&quot;skipped_duplicates&quot;].append({&quot;path&quot;: mask_path_for_output(abs_path), &quot;existing_s3_key&quot;: mask_s3_key(existing_key)})
+            updated_hashes[abs_path] = file_hash
+            continue
+
+        if persisted_hashes.get(abs_path) == file_hash:
+            safe_log(f&quot;Unchanged, skipping upload: {mask_path_for_output(abs_path)}&quot;)
+            run_manifest.setdefault(&quot;unchanged&quot;, []).append(mask_path_for_output(abs_path))
+            continue
+
+        if dry_run:
+            safe_log(f&quot;(dry) Would upload: {mask_path_for_output(abs_path)} -&gt; s3://{mask_bucket(S3_BUCKET)}/{mask_s3_key(s3_key)} (DEEP_ARCHIVE)&quot;)
+            run_manifest[&quot;uploaded&quot;].append({
+                &quot;path&quot;: mask_path_for_output(abs_path),
+                &quot;s3_key&quot;: mask_s3_key(s3_key),
+                &quot;size_bytes&quot;: file_size,
+                &quot;hash&quot;: file_hash,
+                &quot;action&quot;: &quot;dry_upload&quot;
+            })
+            content_hash_to_s3key[file_hash] = s3_key
+            uploaded_keys.append(s3_key)
+            updated_hashes[abs_path] = file_hash
+            drive_uploaded.setdefault(drive_name, 0)
+            drive_uploaded[drive_name] += 1
+        else:
+            try:
+                s3.upload_file(
+                    Filename=abs_path,
+                    Bucket=S3_BUCKET,
+                    Key=s3_key,
+                    ExtraArgs={
+                        &quot;ServerSideEncryption&quot;: &quot;aws:kms&quot;,
+                        &quot;SSEKMSKeyId&quot;: KMS_KEY_ARN,
+                        &quot;StorageClass&quot;: &quot;DEEP_ARCHIVE&quot;
+                    }
+                )
+                safe_log(f&quot;Uploaded: {mask_path_for_output(abs_path)} -&gt; s3://{mask_bucket(S3_BUCKET)}/{mask_s3_key(s3_key)} (DEEP_ARCHIVE)&quot;)
+                uploaded_keys.append(s3_key)
+                content_hash_to_s3key[file_hash] = s3_key
+                run_manifest[&quot;uploaded&quot;].append({
+                    &quot;path&quot;: mask_path_for_output(abs_path),
+                    &quot;s3_key&quot;: mask_s3_key(s3_key),
+                    &quot;size_bytes&quot;: file_size,
+                    &quot;hash&quot;: file_hash,
+                    &quot;action&quot;: &quot;uploaded&quot;
+                })
+                updated_hashes[abs_path] = file_hash
+                drive_uploaded.setdefault(drive_name, 0)
+                drive_uploaded[drive_name] += 1
+            except Exception as e:
+                safe_log(f&quot;Failed upload {mask_path_for_output(abs_path)} -&gt; {mask_s3_key(s3_key)}: {str(e)}&quot;)
+                errors.append({&quot;path&quot;: mask_path_for_output(abs_path), &quot;error&quot;: str(e)})
+                run_manifest[&quot;errors&quot;].append({&quot;path&quot;: mask_path_for_output(abs_path), &quot;error&quot;: str(e)})
+
+        processed_bytes += file_size
+
+        elapsed = time.time() - start_time
+        files_done = processed_files
+        if files_done &gt; 0:
+            est_total = (elapsed / files_done) * total_files if total_files else elapsed
+            est_remaining = max(0.0, est_total - elapsed)
+            safe_log(f&quot;Progress: {files_done}/{total_files} files. Elapsed {elapsed:.1f}s. Est remaining {est_remaining:.1f}s.&quot;)
+            run_manifest.setdefault(&quot;progress_samples&quot;, []).append({
+                &quot;time&quot;: datetime.utcnow().replace(tzinfo=timezone.utc).isoformat(),
+                &quot;processed_files&quot;: files_done,
+                &quot;elapsed_seconds&quot;: elapsed,
+                &quot;estimated_total_seconds&quot;: est_total,
+                &quot;estimated_remaining_seconds&quot;: est_remaining
+            })
+
+    # finish
+    end_time = time.time()
+    duration = end_time - start_time
+
+    run_manifest[&quot;run_end_utc&quot;] = datetime.utcnow().replace(tzinfo=timezone.utc).isoformat()
+    run_manifest[&quot;duration_seconds&quot;] = duration
+    run_manifest[&quot;files_uploaded_count&quot;] = len(uploaded_keys)
+    run_manifest[&quot;files_processed_count&quot;] = processed_files
+    run_manifest[&quot;bytes_processed&quot;] = processed_bytes
+    run_manifest[&quot;interrupted&quot;] = bool(_interrupted)
+
+    # Always attempt to save updated hash DB (even if interrupted)
+    if not dry_run:
+        try:
+            save_hash_db_atomic(updated_hashes)
+            safe_log(&quot;Saved updated hash DB (atomic).&quot;)
+        except Exception as e:
+            safe_log(f&quot;Failed saving hash DB: {str(e)}&quot;)
+            run_manifest[&quot;errors&quot;].append({&quot;save_hash_db&quot;: str(e)})
+
+    # compute bucket size for cost estimate (best-effort)
+    readable_size = &quot;unknown&quot;
+    estimated_cost = 0.0
+    if not dry_run:
+        try:
+            total_bytes_bucket = 0
+            paginator = s3.get_paginator(&quot;list_objects_v2&quot;)
+            for page in paginator.paginate(Bucket=S3_BUCKET):
+                for obj in page.get(&quot;Contents&quot;, []):
+                    total_bytes_bucket += obj.get(&quot;Size&quot;, 0)
+            readable_size = human_readable_size(total_bytes_bucket)
+            total_gb = total_bytes_bucket / (1024 ** 3)
+            estimated_cost = total_gb * PRICE_PER_GB_DEEP_ARCHIVE
+            safe_log(f&quot;Bucket '{mask_bucket(S3_BUCKET)}' size: {readable_size} ({total_gb:.3f} GB)&quot;)
+        except Exception as e:
+            safe_log(f&quot;Could not compute bucket size: {str(e)}&quot;)
+
+    # prepare drive status summary for reporting
+    drive_report_lines = []
+    for src, drive_name in SOURCE_DRIVES.items():
+        present = os.path.exists(src)
+        if not present:
+            drive_report_lines.append(f&quot;{drive_name}: Offline&quot;)
+            continue
+        total = drive_totals.get(drive_name, 0)
+        uploaded = drive_uploaded.get(drive_name, 0)
+        pct = (uploaded / total * 100.0) if total else (100.0 if uploaded else 0.0)
+        drive_report_lines.append(f&quot;{drive_name}: Online (Backed up {pct:.1f}%)&quot;)
+
+    report = {
+        &quot;uploaded_keys&quot;: [mask_s3_key(k) for k in uploaded_keys],
+        &quot;duplicate_skips&quot;: duplicate_skips,
+        &quot;errors&quot;: run_manifest.get(&quot;errors&quot;, []),
+        &quot;manifest_file&quot;: None,
+        &quot;duration_seconds&quot;: duration,
+        &quot;estimated_monthly_cost_usd&quot;: estimated_cost,
+        &quot;bucket_size_readable&quot;: readable_size,
+        &quot;interrupted&quot;: bool(_interrupted),
+        &quot;files_processed&quot;: processed_files,
+        &quot;files_uploaded&quot;: len(uploaded_keys),
+        &quot;drive_report_lines&quot;: drive_report_lines
+    }
+
+    safe_log(f&quot;Backup run complete. Uploaded: {len(uploaded_keys)} files. Interrupted: {report['interrupted']}. Duration: {duration:.1f}s&quot;)
+
+    return report, run_manifest
+
+
+# -----------------------------
+# Main (masking outputs & use env-config)
+# -----------------------------
+
+def format_local_time_for_email(dt_utc=None):
+    from zoneinfo import ZoneInfo
+    try:
+        TORONTO_TZ = ZoneInfo(&quot;America/Toronto&quot;)
+    except Exception:
+        TORONTO_TZ = None
+    if dt_utc is None:
+        dt = datetime.now(tz=TORONTO_TZ) if TORONTO_TZ else datetime.now()
+    else:
+        dt = dt_utc.astimezone(TORONTO_TZ) if TORONTO_TZ else dt_utc
+    tzlabel = dt.strftime(&quot;%Z&quot;) if dt.strftime(&quot;%Z&quot;) else &quot;EST&quot;
+    return dt.strftime(&quot;%Y-%m-%d %H:%M&quot;) + f&quot; {tzlabel}&quot;
+
+
+if __name__ == &quot;__main__&quot;:
+    parser = argparse.ArgumentParser(description=&quot;Backup changed files to S3 (YYYY/MM/DD/&lt;DRIVE_NAME&gt;/) - outputs masked for portfolio&quot;)
+    parser.add_argument(&quot;--dry-run&quot;, action=&quot;store_true&quot;, help=&quot;Perform a dry run (no uploads).&quot;)
+    parser.add_argument(&quot;--skip-prewarn&quot;, action=&quot;store_true&quot;, help=&quot;Skip the 5-minute pre-warning and start immediately.&quot;)
+    args = parser.parse_args()
+
+    if not args.skip_prewarn:
+        safe_log(&quot;Pre-warn: backup will start in 5 minutes (skipped showing exact drive/bucket info in logs)&quot;)
+        try:
+            for _ in range(PREWARN_SECONDS):
+                if _interrupted:
+                    break
+                time.sleep(1)
+        except KeyboardInterrupt:
+            _interrupted = True
+            safe_log(&quot;Interrupted during pre-warn sleep.&quot;)
+    else:
+        safe_log(&quot;Skipping pre-warn; starting immediately.&quot;)
+
+    try:
+        if args.dry_run:
+            safe_log(&quot;Starting DRY-RUN backup now (no uploads).&quot;)
+            report, run_manifest = backup_run(dry_run=True)
+        else:
+            safe_log(&quot;Starting REAL backup now (uploads will occur).&quot;)
+            report, run_manifest = backup_run(dry_run=False)
+    except Exception as e:
+        safe_log(f&quot;Unhandled exception during backup: {str(e)}&quot;)
+        report = {
+            &quot;uploaded_keys&quot;: [],
+            &quot;duplicate_skips&quot;: [],
+            &quot;errors&quot;: [{&quot;fatal&quot;: str(e)}],
+            &quot;manifest_file&quot;: None,
+            &quot;duration_seconds&quot;: 0.0,
+            &quot;estimated_monthly_cost_usd&quot;: 0.0,
+            &quot;bucket_size_readable&quot;: &quot;unknown&quot;,
+            &quot;interrupted&quot;: True,
+            &quot;files_processed&quot;: 0,
+            &quot;files_uploaded&quot;: 0,
+            &quot;drive_report_lines&quot;: [f&quot;{v}: Offline&quot; if not os.path.exists(k) else f&quot;{v}: Online (Backed up 0%)&quot; for k, v in SOURCE_DRIVES.items()]
+        }
+        run_manifest = {&quot;errors&quot;: [str(e)]}
+
+    # Compose masked subject/body
+    status = &quot;Completed&quot;
+    if report.get(&quot;errors&quot;):
+        status = &quot;Failed&quot;
+    if report.get(&quot;interrupted&quot;):
+        status = &quot;Interrupted&quot; if status != &quot;Failed&quot; else &quot;Failed (Interrupted)&quot;
+
+    subj_time = format_local_time_for_email(datetime.utcnow().replace(tzinfo=timezone.utc))
+    subject = f&quot;Backup {status} — {subj_time}&quot;
+
+    lines = []
+    lines.append(f&quot;Backup {status} — finished at {subj_time}&quot;)
+    lines.append(&quot;&quot;)
+    lines.append(&quot;Drive status:&quot;)
+    for line in report.get(&quot;drive_report_lines&quot;, []):
+        lines.append(f&quot; - {line}&quot;)
+    lines.append(&quot;&quot;)
+    lines.append(f&quot;Files processed: {report.get('files_processed', 0)}&quot;)
+    lines.append(f&quot;Files uploaded this run: {report.get('files_uploaded', 0)}&quot;)
+    lines.append(&quot;&quot;)
+    lines.append(f&quot;Bucket total storage (estimate): {report.get('bucket_size_readable', 'unknown')}&quot;)
+    lines.append(f&quot;Estimated monthly storage cost (Deep Archive): ${report.get('estimated_monthly_cost_usd', 0.0):.2f}&quot;)
+    lines.append(f&quot;Backup duration: {report.get('duration_seconds', 0.0):.2f} seconds&quot;)
+    lines.append(&quot;&quot;)
+    if report.get(&quot;errors&quot;):
+        lines.append(&quot;Errors / Notes:&quot;)
+        for e in report.get(&quot;errors&quot;, []):
+            if isinstance(e, dict):
+                lines.append(f&quot; - {json.dumps(e)}&quot;)
+            else:
+                lines.append(f&quot; - {str(e)}&quot;)
+        lines.append(&quot;&quot;)
+    lines.append(f&quot;Manifest file: {mask_partial('backup_manifest_masked.json')}&quot;)
+    lines.append(&quot;&quot;)
+    lines.append(&quot;Notes:&quot;)
+    lines.append(&quot; - Outputs mask bucket names, ARNs, and full local paths for privacy.&quot;)
+    lines.append(&quot; - Retrieval from DEEP_ARCHIVE typically takes 12–48 hours.&quot;)
+
+    body = &quot;\n&quot;.join(lines)
+
+    # Publish SNS (masked content only)
+    if SNS_TOPIC_ARN:
+        try:
+            sns.publish(TopicArn=SNS_TOPIC_ARN, Message=body, Subject=subject)
+            safe_log(&quot;SNS notification sent (final masked report).&quot;)
+        except Exception as e:
+            safe_log(f&quot;SNS publish failed: {str(e)}&quot;)
+    else:
+        safe_log(&quot;SNS_TOPIC_ARN not set; skipping SNS publish.&quot;)
+
+    # write a masked manifest for portfolio or review (never contain raw absolute paths / ARNs)
+    try:
+        masked_manifest_fn = os.path.join(BASE_DIR, f&quot;backup_manifest_masked_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}.json&quot;)
+        with open(masked_manifest_fn, &quot;w&quot;, encoding=&quot;utf-8&quot;) as mf:
+            json.dump({
+                &quot;run&quot;: run_manifest,
+                &quot;report&quot;: report,
+                &quot;config_masks&quot;: {
+                    &quot;s3_bucket&quot;: mask_bucket(S3_BUCKET),
+                    &quot;kms&quot;: mask_arn(KMS_KEY_ARN),
+                    &quot;sns&quot;: &quot;&lt;REDACTED_SNS&gt;&quot;
+                }
+            }, mf, indent=2)
+        safe_log(f&quot;Wrote masked run manifest: {mask_path_for_output(masked_manifest_fn)}&quot;)
+    except Exception as e:
+        safe_log(f&quot;Failed to write masked manifest file: {str(e)}&quot;)
+
+    safe_log(&quot;Script exiting. (Outputs have been masked for privacy.)&quot;)
+    # exit code: 0 if completed without interruption and no errors; 2 otherwise
+    if report.get(&quot;interrupted&quot;) or report.get(&quot;errors&quot;):
+        sys.exit(2)
+    sys.exit(0)
+</code></pre>
+                            </div>
+
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h4>Drive Monitoring & Notification (SNS)</h4>
+                                        <p>Alerts sent 5 minutes before backup to ensure drives are connected.</p>
+                                        <span class="proof-code">Proof: aws sns list-subscriptions-by-topic
+                                            ...</span>
+                                    </div>
+                                </li>
+
+                                <li class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="16 3 21 3 21 8"></polyline>
+                                            <line x1="4" y1="20" x2="21" y2="3"></line>
+                                            <polyline points="21 16 21 21 16 21"></polyline>
+                                            <line x1="15" y1="15" x2="21" y2="21"></line>
+                                            <line x1="4" y1="4" x2="9" y2="9"></line>
+                                        </svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h4>Change Detection (Hashing)</h4>
+                                        <p>Scans and hashes files to upload only changed content, saving bandwidth
+                                            and
+                                            storage.</p>
+                                    </div>
+                                </li>
+
+                                <li class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                        </svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h4>Storage & Versioning (S3)</h4>
+                                        <p>Organized snapshots by date/drive. Retention of previous versions.</p>
+                                        <span class="proof-code">Proof: aws s3api get-bucket-versioning ...</span>
+                                    </div>
+                                </li>
+
+                                <li class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="M12 6v6l4 2"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h4>Cost Optimization (Deep Glacier)</h4>
+                                        <p>Lifecycle rules transition older snapshots to Deep Glacier.</p>
+                                        <span class="proof-code">Proof: aws s3api get-bucket-lifecycle-configuration
+                                            ...</span>
+                                    </div>
+                                </li>
+
+                                <li class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h4>Security (AWS KMS)</h4>
+                                        <p>Encryption at rest using customer-managed keys.</p>
+                                        <span class="proof-code">Proof: aws s3api head-object ...
+                                            ServerSideEncryption="aws:kms"</span>
+                                    </div>
+                                </li>
+
+                                <li class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="9" cy="7" r="4"></circle>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h4>Access Control (IAM)</h4>
+                                        <p>Least-privilege IAM roles for upload, encryption, and notifications.</p>
+                                        <span class="proof-code">Proof: aws sts get-caller-identity ...</span>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- LABS -->
+            <div class="project-category fade-in">
+                <h2 class="category-title">Labs</h2>
+                <div class="projects-grid">
+                    <!-- Placeholder Lab Project -->
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h3>Home Lab Setup</h3>
+                            <p>Virtualization environment for testing security tools.</p>
+                            <div class="project-tags"><span class="tag">VirtualBox</span><span class="tag">Linux</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CYBERSEC PROJECTS -->
+            <div class="project-category fade-in">
+                <h2 class="category-title">Cybersec Projects</h2>
+                <div class="projects-grid">
+                    <!-- Placeholder Content -->
+                    <p style="color:var(--color-text-gray);">More projects coming soon...</p>
+                </div>
+            </div>
+
+            <!-- CLOUD SECURITY PROJECTS -->
+            <div class="project-category fade-in">
+                <h2 class="category-title">Cloud security projects</h2>
+                <div class="projects-grid">
+                    <!-- Placeholder Content -->
+                    <p style="color:var(--color-text-gray);">More projects coming soon...</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Zayan Parpia. Crafted with passion and code.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        function toggleDetails(btn) {
+            const details = btn.nextElementSibling;
+            if (details.style.display === "none") {
+                details.style.display = "block";
+                btn.textContent = "Read Less";
+            } else {
+                details.style.display = "none";
+                btn.textContent = "Read More";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
