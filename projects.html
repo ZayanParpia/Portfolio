@@ -186,7 +186,6 @@
             <!-- Navigation Links -->
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="index.html#about" class="nav-link">About</a></li>
                 <li><a href="projects.html" class="nav-link active">Projects</a></li>
                 <li><a href="index.html#skills" class="nav-link">Skills</a></li>
             </ul>
@@ -212,19 +211,40 @@
                     <!-- AUTOMATIC BACKUP SYSTEM -->
                     <div class="project-card detailed-project">
                         <div class="project-visuals">
-                            <img src="AWS-BACKUP/Diagram.png" alt="Automatic Backup System Diagram" class="main-image"
-                                id="mainProjectImage">
-                            <div class="image-gallery">
-                                <img src="AWS-BACKUP/Diagram.png" alt="Diagram" class="gallery-img"
-                                    onclick="updateMainImage(this.src)">
-                                <img src="AWS-BACKUP/Screenshots/IAM.png" alt="IAM Policy" class="gallery-img"
-                                    onclick="updateMainImage(this.src)">
-                                <img src="AWS-BACKUP/Screenshots/KMS.png" alt="KMS Encryption" class="gallery-img"
-                                    onclick="updateMainImage(this.src)">
-                                <img src="AWS-BACKUP/Screenshots/S3.png" alt="S3 Bucket" class="gallery-img"
-                                    onclick="updateMainImage(this.src)">
-                                <img src="AWS-BACKUP/Screenshots/NoPublic.png" alt="Public Access Block"
-                                    class="gallery-img" onclick="updateMainImage(this.src)">
+                            <img src="AWS-BACKUP/Diagram.png" alt="Automatic Backup System Diagram" class="main-image">
+
+                            <!-- Vertical Screenshot List -->
+                            <div class="screenshot-list">
+                                <div class="screenshot-item">
+                                    <div class="screenshot-meta">
+                                        <h4>IAM</h4>
+                                        <p>This Screenshot Shows the IAM role for the Backup System called Backup</p>
+                                    </div>
+                                    <img src="AWS-BACKUP/Screenshots/IAM.png" alt="IAM Policy" class="screenshot-img">
+                                </div>
+                                <div class="screenshot-item">
+                                    <div class="screenshot-meta">
+                                        <h4>KMS</h4>
+                                        <p>This Screenshot Shows the KMS key being created for the S3 Bucket</p>
+                                    </div>
+                                    <img src="AWS-BACKUP/Screenshots/KMS.png" alt="KMS Encryption"
+                                        class="screenshot-img">
+                                </div>
+                                <div class="screenshot-item">
+                                    <div class="screenshot-meta">
+                                        <h4>No Public S3</h4>
+                                        <p>This Screenshot Shows that the S3 Bucket is set to private.</p>
+                                    </div>
+                                    <img src="AWS-BACKUP/Screenshots/No Public S3.png" alt="Public Access Block"
+                                        class="screenshot-img">
+                                </div>
+                                <div class="screenshot-item">
+                                    <div class="screenshot-meta">
+                                        <h4>S3</h4>
+                                        <p>This Screenshot Shows the S3 Bucket that the files was backed up to</p>
+                                    </div>
+                                    <img src="AWS-BACKUP/Screenshots/S3.png" alt="S3 Bucket" class="screenshot-img">
+                                </div>
                             </div>
                         </div>
                         <div class="project-info">
@@ -853,7 +873,7 @@ if __name__ == &quot;__main__&quot;:
         report = {
             &quot;uploaded_keys&quot;: [],
             &quot;duplicate_skips&quot;: [],
-            &quot;errors&quot;: [{&quot;fatal&quot;: str(e)}],
+            &quot;errors&quot;: [{&quot;fatal&quot; : str(e)}],
             &quot;manifest_file&quot;: None,
             &quot;duration_seconds&quot;: 0.0,
             &quot;estimated_monthly_cost_usd&quot;: 0.0,
@@ -934,240 +954,262 @@ if __name__ == &quot;__main__&quot;:
 
     safe_log(&quot;Script exiting. (Outputs have been masked for privacy.)&quot;)
     # exit code: 0 if completed without interruption and no errors; 2 otherwise
-    if report.get(&quot;interrupted&quot;) or report.get(&quot;errors&quot;):
+    if report.get("interrupted") or report.get("errors"):
         sys.exit(2)
     sys.exit(0)
 </code></pre>
-                            </div>
+                                <div class="project-details" style="display: none; margin-top: var(--spacing-sm);">
+                                    <p style="margin-bottom: var(--spacing-sm);">
+                                        This project demonstrates the use of AWS services to create a secure and
+                                        cost-effective backup system. In this project,
+                                        I used AWS S3 to store backups, AWS KMS for encryption, AWS SNS for email
+                                        notifications, and IAM for least-privilege access controls.
+                                        Every Friday at 10:00 Pm EST, the system will automatically backup all files in
+                                        the
+                                        specified directory(s) to an encrypted S3 bucket.
+                                        All the files are put into a Deep Glacier storage class for cost optimization.
+                                        To prevent the same files from being backed up multiple times, the script checks
+                                        a
+                                        list of hashes for each file and compares them to the hashes of the files in the
+                                        S3
+                                        bucket.
+                                        If a file's hash matches a file in the S3 bucket, the script will skip it,
+                                        backing
+                                        up only files that are new
+                                        or have been modified since the last backup. This saves time and storage space.
+                                        When the backup is complete, the script will send an email notification to the
+                                        specified email address using
+                                        AWS SNS service. The Email contains the folders that were backed up, the time of
+                                        the
+                                        backup, and the size of the backup and other relevant information.
+                                    </p>
+                                </div>
 
-                            <div class="artifact-section">
-                                <h4 style="margin-bottom: var(--spacing-sm);">Project Documentation</h4>
-                                <div class="artifact-grid">
-                                    <div class="artifact-box">
-                                        <h4>Logs</h4>
-                                        <div class="artifact-content">2025-12-14
-                                            2025-12-17
-                                            2025-12-22
-                                            2025-12-26
-                                            2025-12-27
-                                            2026-12-28</div>
+                                <div class="doc-container">
+                                    <button class="doc-toggle-btn" onclick="toggleDocumentation()">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            style="width:20px; height:20px; transition: transform 0.3s;"
+                                            id="doc-chevron">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                        View Project Documentation
+                                    </button>
+                                    <div class="doc-content-wrapper" id="doc-content">
+                                        <div class="artifact-grid">
+                                            <div class="artifact-box">
+                                                <h4>Logs</h4>
+                                                <div class="artifact-content">2025-12-14
+                                                    2025-12-17
+                                                    2025-12-22
+                                                    2025-12-26
+                                                    2025-12-27
+                                                    2026-12-28</div>
+                                            </div>
+                                            <div class="artifact-box">
+                                                <h4>Progress</h4>
+                                                <div class="artifact-content">2025-12-14
+                                                    NEXT STEPS
+                                                    - Make keep snapshots of data
+                                                    - Email storage usage and cost
+                                                    - Prove encryption
+                                                    - Auto backup
+
+                                                    2025-12-17
+                                                    OUTLINE
+                                                    - Multiple drives (Backup E:, Local Disk F:)
+                                                    - Notification 15m before backup
+                                                    - Folder structure in S3 (MAIN, Black, White)
+                                                    - Email duration report
+                                                    - Weekly Friday backup
+
+                                                    2025-12-22
+                                                    - Make Diagram
+
+                                                    2025-12-26
+                                                    - Notify 5m before
+                                                    - Estimated time
+                                                    - Email at interruption
+                                                    - Hash check (duplicate skip)
+                                                    - Screenshots and Logs
+                                                    - Description update
+
+                                                    2025-12-28
+                                                    - Portal Upload
+                                                    - Github/LinkedIn upload</div>
+                                            </div>
+                                            <div class="artifact-box">
+                                                <h4>Prompt</h4>
+                                                <div class="artifact-content">You are a Senior Cloud Security Engineer
+                                                    mentoring students on AWS projects. Your expertise is in secure
+                                                    cloud storage, automation, and cost-efficient design. You work with
+                                                    S3 (buckets, versioning, lifecycle policies, Deep Glacier), IAM
+                                                    (least-privilege users/roles, policies), Python scripting
+                                                    (automation, hashing, logging), KMS (server-side encryption), and
+                                                    SNS (notifications and email alerts). Your task is to take this
+                                                    project outline and produce step-by-step, very clear, specific
+                                                    instructions to implement it securely, efficiently, and correctly in
+                                                    AWS.</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="artifact-box">
-                                        <h4>Progress</h4>
-                                        <div class="artifact-content">2025-12-14
-                                            NEXT STEPS
-                                            Make it keep snapshots of data every file if its been changed.
-                                            Make email say how much storage you have used in the S3 and estimated cost.
-                                            Prove its encrypted.
-                                            Make it auto backup.
 
-                                            2025-12-17
-                                            OUTLINE
-                                            I have multiple hard drives that have different names.
-                                            One is Backup(E:), Another is Local Disk(F:)
-                                            They are not plugged in at all times, can i make it so that 15 minutes
-                                            before its about to backup it sends a notification on my computer.
-                                            In the S3 bucket for each backup can you make it so that, it creates a
-                                            folder for each one (MAIN, White Hard Drive, Black Hard Drive).
-                                            Also in the email say how long it took as well.
-                                            Every Friday At Night let it backup all my files.
+                                    <ul class="feature-list" style="margin-top: var(--spacing-md);">
+                                        <li class="feature-item">
+                                            <div class="feature-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="feature-content">
+                                                <h4>Drive Monitoring & Notification (SNS)</h4>
+                                                <p>Alerts sent 5 minutes before backup to ensure drives are connected.
+                                                </p>
+                                            </div>
+                                        </li>
 
-                                            2025-12-22
-                                            Make Diagram.
+                                        <li class="feature-item">
+                                            <div class="feature-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="16 3 21 3 21 8"></polyline>
+                                                    <line x1="4" y1="20" x2="21" y2="3"></line>
+                                                    <polyline points="21 16 21 21 16 21"></polyline>
+                                                    <line x1="15" y1="15" x2="21" y2="21"></line>
+                                                    <line x1="4" y1="4" x2="9" y2="9"></line>
+                                                </svg>
+                                            </div>
+                                            <div class="feature-content">
+                                                <h4>Change Detection (Hashing)</h4>
+                                                <p>Scans and hashes files to upload only changed content, saving
+                                                    bandwidth
+                                                    and storage.</p>
+                                            </div>
+                                        </li>
 
-                                            2025-12-26
-                                            SCRIPTING
-                                            Make it notify you in 5 minutes backup will take place.
-                                            Says estimated time.
-                                            Emails at interruption.
-                                            Make it check the hash and if it says its there DO NOT backup.
-                                            Upload to portfolio.
-                                            Write what needs to be uploaded.
-                                            Make black hard drive folder black and make white hard drive white on image.
-                                            Edit 15 min 5 minutes on image.
-                                            Put progress and logs and what you learned and upload script file without
-                                            data.
-                                            Screenshots of project.
-                                            Change Description.
+                                        <li class="feature-item">
+                                            <div class="feature-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                </svg>
+                                            </div>
+                                            <div class="feature-content">
+                                                <h4>Storage & Versioning (S3)</h4>
+                                                <p>Organized snapshots by date/drive. Retention of previous versions.
+                                                </p>
+                                            </div>
+                                        </li>
 
-                                            2025-12-28
-                                            Upload to portfolio.
-                                            Progress. Logs. Screenshots. Script.
-                                            Upload to GitHub and linkedin.</div>
-                                    </div>
-                                    <div class="artifact-box">
-                                        <h4>Prompt</h4>
-                                        <div class="artifact-content">You are a Senior Cloud Security Engineer mentoring
-                                            students on AWS projects. Your expertise is in secure cloud storage,
-                                            automation, and cost-efficient design. You work with:
-                                            - S3 (buckets, versioning, lifecycle policies, Deep Glacier)
-                                            - IAM (least-privilege users/roles, policies)
-                                            - Python scripting (automation, hashing, logging)
-                                            - KMS (server-side encryption)
-                                            - SNS (notifications and email alerts)
+                                        <li class="feature-item">
+                                            <div class="feature-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <path d="M12 6v6l4 2"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="feature-content">
+                                                <h4>Cost Optimization (Deep Glacier)</h4>
+                                                <p>Lifecycle rules transition older snapshots to Deep Glacier.</p>
+                                            </div>
+                                        </li>
 
-                                            Your task is to take this project outline and produce step-by-step, very
-                                            clear, specific instructions to implement it securely, efficiently, and
-                                            correctly in AWS...</div>
+                                        <li class="feature-item">
+                                            <div class="feature-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="feature-content">
+                                                <h4>Security (AWS KMS)</h4>
+                                                <p>Encryption at rest using customer-managed keys.</p>
+                                            </div>
+                                        </li>
+
+                                        <li class="feature-item">
+                                            <div class="feature-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                                    <circle cx="9" cy="7" r="4"></circle>
+                                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="feature-content">
+                                                <h4>Access Control (IAM)</h4>
+                                                <p>Least-privilege IAM roles for upload, encryption, and notifications.
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <div class="security-practices">
+                                        <button class="doc-toggle-btn" onclick="toggleSecurityPractices()"
+                                            style="border-color: var(--color-accent); color: var(--color-accent);">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                style="width:20px; height:20px; transition: transform 0.3s;"
+                                                id="sec-chevron">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                            Security Practices
+                                        </button>
+                                        <div class="sec-content-wrapper" id="sec-content">
+                                            <p style="margin-top: var(--spacing-sm);">Detailed security implementation
+                                                details will be uploaded soon. This section will cover KMS key policies,
+                                                IAM roles, and VPC configuration (if applicable).</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <ul class="feature-list" style="margin-top: var(--spacing-md);">
-                                <li class="feature-item">
-                                    <div class="feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <h4>Drive Monitoring & Notification (SNS)</h4>
-                                        <p>Alerts sent 5 minutes before backup to ensure drives are connected.</p>
-                                        <span class="proof-code">Proof: aws sns list-subscriptions-by-topic
-                                            ...</span>
-                                    </div>
-                                </li>
+                        </div>
+                    </div>
 
-                                <li class="feature-item">
-                                    <div class="feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="16 3 21 3 21 8"></polyline>
-                                            <line x1="4" y1="20" x2="21" y2="3"></line>
-                                            <polyline points="21 16 21 21 16 21"></polyline>
-                                            <line x1="15" y1="15" x2="21" y2="21"></line>
-                                            <line x1="4" y1="4" x2="9" y2="9"></line>
-                                        </svg>
+                    <!-- LABS -->
+                    <div class="project-category fade-in">
+                        <h2 class="category-title">Labs</h2>
+                        <div class="projects-grid">
+                            <!-- Placeholder Lab Project -->
+                            <div class="project-card">
+                                <div class="project-info">
+                                    <h3>Home Lab Setup</h3>
+                                    <p>Virtualization environment for testing security tools.</p>
+                                    <div class="project-tags"><span class="tag">VirtualBox</span><span
+                                            class="tag">Linux</span>
                                     </div>
-                                    <div class="feature-content">
-                                        <h4>Change Detection (Hashing)</h4>
-                                        <p>Scans and hashes files to upload only changed content, saving bandwidth
-                                            and
-                                            storage.</p>
-                                    </div>
-                                </li>
-
-                                <li class="feature-item">
-                                    <div class="feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                            <polyline points="7 10 12 15 17 10"></polyline>
-                                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                                        </svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <h4>Storage & Versioning (S3)</h4>
-                                        <p>Organized snapshots by date/drive. Retention of previous versions.</p>
-                                        <span class="proof-code">Proof: aws s3api get-bucket-versioning ...</span>
-                                    </div>
-                                </li>
-
-                                <li class="feature-item">
-                                    <div class="feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <path d="M12 6v6l4 2"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <h4>Cost Optimization (Deep Glacier)</h4>
-                                        <p>Lifecycle rules transition older snapshots to Deep Glacier.</p>
-                                        <span class="proof-code">Proof: aws s3api get-bucket-lifecycle-configuration
-                                            ...</span>
-                                    </div>
-                                </li>
-
-                                <li class="feature-item">
-                                    <div class="feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <h4>Security (AWS KMS)</h4>
-                                        <p>Encryption at rest using customer-managed keys.</p>
-                                        <span class="proof-code">Proof: aws s3api head-object ...
-                                            ServerSideEncryption="aws:kms"</span>
-                                    </div>
-                                </li>
-
-                                <li class="feature-item">
-                                    <div class="feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                            <circle cx="9" cy="7" r="4"></circle>
-                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <h4>Access Control (IAM)</h4>
-                                        <p>Least-privilege IAM roles for upload, encryption, and notifications.</p>
-                                        <span class="proof-code">Proof: aws sts get-caller-identity ...</span>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <div class="security-practices">
-                                <h3>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                    </svg>
-                                    Security Practices
-                                </h3>
-                                <p style="margin-top: var(--spacing-sm);">Detailed security implementation details will
-                                    be uploaded soon. This section will cover KMS key policies, IAM roles, and VPC
-                                    configuration (if applicable).</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                </div>
-            </div>
-
-            <!-- LABS -->
-            <div class="project-category fade-in">
-                <h2 class="category-title">Labs</h2>
-                <div class="projects-grid">
-                    <!-- Placeholder Lab Project -->
-                    <div class="project-card">
-                        <div class="project-info">
-                            <h3>Home Lab Setup</h3>
-                            <p>Virtualization environment for testing security tools.</p>
-                            <div class="project-tags"><span class="tag">VirtualBox</span><span class="tag">Linux</span>
-                            </div>
+                    <!-- CYBERSEC PROJECTS -->
+                    <div class="project-category fade-in">
+                        <h2 class="category-title">Cybersec Projects</h2>
+                        <div class="projects-grid">
+                            <!-- Placeholder Content -->
+                            <p style="color:var(--color-text-gray);">More projects coming soon...</p>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- CYBERSEC PROJECTS -->
-            <div class="project-category fade-in">
-                <h2 class="category-title">Cybersec Projects</h2>
-                <div class="projects-grid">
-                    <!-- Placeholder Content -->
-                    <p style="color:var(--color-text-gray);">More projects coming soon...</p>
-                </div>
-            </div>
+                    <!-- CLOUD SECURITY PROJECTS -->
+                    <div class="project-category fade-in">
+                        <h2 class="category-title">Cloud security projects</h2>
+                        <div class="projects-grid">
+                            <!-- Placeholder Content -->
+                            <p style="color:var(--color-text-gray);">More projects coming soon...</p>
+                        </div>
+                    </div>
 
-            <!-- CLOUD SECURITY PROJECTS -->
-            <div class="project-category fade-in">
-                <h2 class="category-title">Cloud security projects</h2>
-                <div class="projects-grid">
-                    <!-- Placeholder Content -->
-                    <p style="color:var(--color-text-gray);">More projects coming soon...</p>
                 </div>
-            </div>
-
-        </div>
     </section>
 
     <!-- ===== FOOTER ===== -->

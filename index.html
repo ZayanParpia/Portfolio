@@ -43,221 +43,136 @@
       <!-- Navigation Links -->
       <ul class="nav-links" id="nav-links">
         <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="projects.html" class="nav-link">Projects</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- ===== HERO SECTION ===== -->
+  <!-- ===== HERO SECTION (Combined with About) ===== -->
   <section class="hero section" id="home">
-    <div class="hero-content">
-      <h1>Hi, I'm <span class="gradient-text">Zayan Parpia</span></h1>
-      <p class="subtitle" id="typewriter"></p>
-      <div class="cta-buttons">
-        <a href="projects.html" class="btn btn-primary">View My Work</a>
+    <div class="container hero-container">
+      <div class="hero-image fade-in">
+        <img src="pfp.jpg" alt="Zayan Parpia Profile Photo" class="round-pfp">
+      </div>
+      <div class="hero-text-content">
+        <h1 class="fade-in" id="typewriter"></h1>
+        <p class="subtitle fade-in">Cloud Security Student | Cybersecurity Enthusiast</p>
+        <p class="hero-description fade-in">
+          Hi, I'm Zayan! I am a student currently studying Cybersecurity. I work on projects and study for
+          Certifications, I am currently studying to get my CompTIA Sec+ certification.
+        </p>
+        <div class="cta-buttons fade-in" style="justify-content: flex-start;">
+          <a href="projects.html" class="btn btn-primary">View My Work</a>
+        </div>
       </div>
     </div>
     <div class="scroll-indicator"></div>
   </section>
 
-  <!-- ===== ABOUT SECTION ===== -->
-  <section class="about section" id="about">
+  <!-- ===== CERTIFICATIONS SECTION ===== -->
+  <section class="certs section" id="certs">
     <div class="container">
-      <h2 class="section-title fade-in">About Me</h2>
-      <div class="about-content fade-in">
-        <div class="about-image">
-          <img src="https://via.placeholder.com/400x500/1a1a2e/00d9ff?text=Your+Photo" alt="Profile Photo">
+      <h2 class="section-title fade-in">Certifications & Learning</h2>
+      <div class="certs-grid fade-in">
+        <!-- CompTIA Security+ -->
+        <div class="cert-card glass">
+          <div class="cert-img-box">
+            <img src="icons/comptiasec+.png" alt="CompTIA Security+" class="cert-card-img">
+          </div>
+          <div class="cert-info">
+            <h3>CompTIA Security+</h3>
+            <p class="cert-status">In Progress</p>
+            <p>Mastering core security roles, threat management, and incident response.</p>
+          </div>
         </div>
-        <div class="about-text">
-          <h3>Cloud Security Student</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-          </p>
-          <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
+
+        <!-- AWS -->
+        <div class="cert-card glass">
+          <div class="cert-img-box">
+            <img src="icons/aws.png" alt="AWS" class="cert-card-img">
+          </div>
+          <div class="cert-info">
+            <h3>Learning AWS</h3>
+            <p class="cert-status">Focus</p>
+            <p>Cloud architecture, S3, IAM, and secure service implementation.</p>
+          </div>
+        </div>
+
+        <!-- Linux -->
+        <div class="cert-card glass">
+          <div class="cert-img-box">
+            <img src="icons/Linux.png" alt="Linux" class="cert-card-img">
+          </div>
+          <div class="cert-info">
+            <h3>Learning Linux</h3>
+            <p class="cert-status">Focus</p>
+            <p>System administration, command-line mastery, and server security.</p>
+          </div>
+        </div>
+
+        <!-- Python -->
+        <div class="cert-card glass">
+          <div class="cert-img-box">
+            <img src="icons/Python.png" alt="Python" class="cert-card-img">
+          </div>
+          <div class="cert-info">
+            <h3>Learning Python</h3>
+            <p class="cert-status">Focus</p>
+            <p>Building automation tools, security scripts, and mastering Python Sockets Module right now.</p>
+          </div>
+        </div>
+
+        <!-- AI -->
+        <div class="cert-card glass">
+          <div class="cert-img-box">
+            <img src="icons/AI.png" alt="AI" class="cert-card-img">
+          </div>
+          <div class="cert-info">
+            <h3>Learning AI</h3>
+            <p class="cert-status">Exploring</p>
+            <p>Cybersecurity applications of AI, threat detection models, and learning how to build applications and
+              scripts with AI.</p>
+          </div>
+        </div>
+
+        <!-- Network Tools -->
+        <div class="cert-card glass">
+          <div class="cert-img-box">
+            <img src="icons/Wireshark.png" alt="Network Tools" class="cert-card-img">
+            <img src="icons/Nmap.png" alt="Nmap" class="cert-card-img-small">
+          </div>
+          <div class="cert-info">
+            <h3>Learning Network Tools</h3>
+            <p class="cert-status">Exploring</p>
+            <p>Traffic analysis with Wireshark and network security scanning with Nmap.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-
-
   <!-- ===== SKILLS SECTION ===== -->
   <section class="skills section" id="skills">
     <div class="container">
       <h2 class="section-title fade-in">Skills & Expertise</h2>
-      <div class="skills-grid fade-in">
-
-        <!-- Cybersecurity Skills -->
-        <div class="skill-category">
-          <h3>🔒 Cybersecurity</h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Network Security</span>
-              <span class="skill-percent">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="85"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Penetration Testing</span>
-              <span class="skill-percent">75%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="75"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Vulnerability Assessment</span>
-              <span class="skill-percent">80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="80"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Security Analysis</span>
-              <span class="skill-percent">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="85"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cloud Security Skills -->
-        <div class="skill-category">
-          <h3>☁️ Cloud Security</h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>AWS Security</span>
-              <span class="skill-percent">80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="80"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Azure Security</span>
-              <span class="skill-percent">75%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="75"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>IAM & Access Control</span>
-              <span class="skill-percent">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="85"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Cloud Compliance</span>
-              <span class="skill-percent">70%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="70"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- AI/ML Security Skills -->
-        <div class="skill-category">
-          <h3>🤖 AI/ML Security</h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Machine Learning Basics</span>
-              <span class="skill-percent">75%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="75"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>AI Threat Detection</span>
-              <span class="skill-percent">70%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="70"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Data Privacy & Ethics</span>
-              <span class="skill-percent">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="85"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Anomaly Detection</span>
-              <span class="skill-percent">75%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="75"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tools & Frameworks -->
-        <div class="skill-category">
-          <h3>🛠️ Tools & Frameworks</h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Python (Security Scripts)</span>
-              <span class="skill-percent">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="85"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Linux & Command Line</span>
-              <span class="skill-percent">80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="80"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Wireshark & Network Tools</span>
-              <span class="skill-percent">75%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="75"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Git & Version Control</span>
-              <span class="skill-percent">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" data-progress="90"></div>
-            </div>
-          </div>
-        </div>
-
+      <div class="skills-grid-new fade-in">
+        <div class="skill-tag">Great Leadership</div>
+        <div class="skill-tag">Amazing Resilience</div>
+        <div class="skill-tag">Time Management</div>
+        <div class="skill-tag">Innovative</div>
+        <div class="skill-tag">Understanding</div>
+        <div class="skill-tag">Initiative</div>
+        <div class="skill-tag">Problem Solving</div>
+        <div class="skill-tag">Adaptable</div>
+        <div class="skill-tag">Learn Fast</div>
+        <div class="skill-tag">Great Communication Skills</div>
+        <div class="skill-tag">Great with Computers</div>
+        <div class="skill-tag">Great with Hands on Projects</div>
       </div>
     </div>
+  </section>
+  </div>
   </section>
 
 

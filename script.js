@@ -16,7 +16,7 @@ const contactForm = document.getElementById('contact-form');
 const skillItems = document.querySelectorAll('.skill-item');
 
 // ===== TYPEWRITER EFFECT =====
-const typewriterText = "Cloud Security Student | Cybersecurity Enthusiast";
+const typewriterText = "Hi, I'm Zayan Parpia";
 let charIndex = 0;
 
 function typeWriter() {
@@ -328,19 +328,9 @@ window.addEventListener('scroll', debouncedScrollHandler);
 // ===== CONSOLE MESSAGE =====
 console.log('%c👋 Welcome to my Portfolio! ', 'color: #00d9ff; font-size: 20px; font-weight: bold;');
 console.log('%cInterested in the code? Check out the source or reach out!', 'color: #888; font-size: 14px;');
-// ===== UTILITY FUNCTIONS FOR NEW FEATURES =====
-function updateMainImage(src) {
-  const mainImg = document.getElementById('mainProjectImage');
-  if (mainImg) {
-    mainImg.src = src;
-    // Add a quick fade-in effect
-    mainImg.style.opacity = '0';
-    setTimeout(() => {
-      mainImg.style.opacity = '1';
-    }, 50);
-  }
-}
 
+
+// ===== UTILITY FUNCTIONS FOR NEW FEATURES =====
 function copyCode() {
   const codeBlock = document.querySelector('.project-script code');
   if (codeBlock) {
@@ -356,5 +346,33 @@ function copyCode() {
         copyBtn.style.background = '';
       }, 2000);
     });
+  }
+}
+
+function toggleDocumentation() {
+  const content = document.getElementById('doc-content');
+  const chevron = document.getElementById('doc-chevron');
+  if (content && chevron) {
+    if (content.classList.contains('expanded')) {
+      content.classList.remove('expanded');
+      chevron.style.transform = 'rotate(0deg)';
+    } else {
+      content.classList.add('expanded');
+      chevron.style.transform = 'rotate(180deg)';
+    }
+  }
+}
+
+function toggleSecurityPractices() {
+  const content = document.getElementById('sec-content');
+  const chevron = document.getElementById('sec-chevron');
+  if (content && chevron) {
+    if (content.classList.contains('expanded')) {
+      content.classList.remove('expanded');
+      chevron.style.transform = 'rotate(0deg)';
+    } else {
+      content.classList.add('expanded');
+      chevron.style.transform = 'rotate(180deg)';
+    }
   }
 }
