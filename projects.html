@@ -212,11 +212,19 @@
                     <!-- AUTOMATIC BACKUP SYSTEM -->
                     <div class="project-card detailed-project">
                         <div class="project-visuals">
-                            <img src="AWS-BACKUP/Diagram.png" alt="Automatic Backup System Diagram" class="main-image">
+                            <img src="AWS-BACKUP/Diagram.png" alt="Automatic Backup System Diagram" class="main-image"
+                                id="mainProjectImage">
                             <div class="image-gallery">
-                                <img src="AWS-BACKUP/Diagram.png" alt="Gallery 1" class="gallery-img">
-                                <img src="AWS-BACKUP/Diagram.png" alt="Gallery 2" class="gallery-img">
-                                <img src="AWS-BACKUP/Diagram.png" alt="Gallery 3" class="gallery-img">
+                                <img src="AWS-BACKUP/Diagram.png" alt="Diagram" class="gallery-img"
+                                    onclick="updateMainImage(this.src)">
+                                <img src="AWS-BACKUP/Screenshots/IAM.png" alt="IAM Policy" class="gallery-img"
+                                    onclick="updateMainImage(this.src)">
+                                <img src="AWS-BACKUP/Screenshots/KMS.png" alt="KMS Encryption" class="gallery-img"
+                                    onclick="updateMainImage(this.src)">
+                                <img src="AWS-BACKUP/Screenshots/S3.png" alt="S3 Bucket" class="gallery-img"
+                                    onclick="updateMainImage(this.src)">
+                                <img src="AWS-BACKUP/Screenshots/NoPublic.png" alt="Public Access Block"
+                                    class="gallery-img" onclick="updateMainImage(this.src)">
                             </div>
                         </div>
                         <div class="project-info">
@@ -260,11 +268,21 @@
 
                             <div class="project-script"
                                 style="margin-top: var(--spacing-md); background: #1e1e1e; padding: var(--spacing-sm); border-radius: var(--radius-sm); border: 1px solid var(--glass-border);">
-                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-                                        alt="Python" style="width: 24px; height: 24px;">
-                                    <h4 style="color: #fff; margin: 0; font-family: 'Inter', sans-serif;">
-                                        Python Script</h4>
+                                <div class="project-header-actions">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                                            alt="Python" style="width: 24px; height: 24px;">
+                                        <h4 style="color: #fff; margin: 0; font-family: 'Inter', sans-serif;">
+                                            Python Script</h4>
+                                    </div>
+                                    <button class="copy-btn" onclick="copyCode()">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                        Copy Code
+                                    </button>
                                 </div>
                                 <pre
                                     style="max-height: 400px; overflow-y: auto; color: #d4d4d4; font-family: monospace; font-size: 0.85em; tab-size: 4; white-space: pre-wrap; word-break: break-all;"><code class="language-python">#!/usr/bin/env python3
@@ -922,7 +940,80 @@ if __name__ == &quot;__main__&quot;:
 </code></pre>
                             </div>
 
-                            <ul class="feature-list">
+                            <div class="artifact-section">
+                                <h4 style="margin-bottom: var(--spacing-sm);">Project Documentation</h4>
+                                <div class="artifact-grid">
+                                    <div class="artifact-box">
+                                        <h4>Logs</h4>
+                                        <div class="artifact-content">2025-12-14
+                                            2025-12-17
+                                            2025-12-22
+                                            2025-12-26
+                                            2025-12-27
+                                            2026-12-28</div>
+                                    </div>
+                                    <div class="artifact-box">
+                                        <h4>Progress</h4>
+                                        <div class="artifact-content">2025-12-14
+                                            NEXT STEPS
+                                            Make it keep snapshots of data every file if its been changed.
+                                            Make email say how much storage you have used in the S3 and estimated cost.
+                                            Prove its encrypted.
+                                            Make it auto backup.
+
+                                            2025-12-17
+                                            OUTLINE
+                                            I have multiple hard drives that have different names.
+                                            One is Backup(E:), Another is Local Disk(F:)
+                                            They are not plugged in at all times, can i make it so that 15 minutes
+                                            before its about to backup it sends a notification on my computer.
+                                            In the S3 bucket for each backup can you make it so that, it creates a
+                                            folder for each one (MAIN, White Hard Drive, Black Hard Drive).
+                                            Also in the email say how long it took as well.
+                                            Every Friday At Night let it backup all my files.
+
+                                            2025-12-22
+                                            Make Diagram.
+
+                                            2025-12-26
+                                            SCRIPTING
+                                            Make it notify you in 5 minutes backup will take place.
+                                            Says estimated time.
+                                            Emails at interruption.
+                                            Make it check the hash and if it says its there DO NOT backup.
+                                            Upload to portfolio.
+                                            Write what needs to be uploaded.
+                                            Make black hard drive folder black and make white hard drive white on image.
+                                            Edit 15 min 5 minutes on image.
+                                            Put progress and logs and what you learned and upload script file without
+                                            data.
+                                            Screenshots of project.
+                                            Change Description.
+
+                                            2025-12-28
+                                            Upload to portfolio.
+                                            Progress. Logs. Screenshots. Script.
+                                            Upload to GitHub and linkedin.</div>
+                                    </div>
+                                    <div class="artifact-box">
+                                        <h4>Prompt</h4>
+                                        <div class="artifact-content">You are a Senior Cloud Security Engineer mentoring
+                                            students on AWS projects. Your expertise is in secure cloud storage,
+                                            automation, and cost-efficient design. You work with:
+                                            - S3 (buckets, versioning, lifecycle policies, Deep Glacier)
+                                            - IAM (least-privilege users/roles, policies)
+                                            - Python scripting (automation, hashing, logging)
+                                            - KMS (server-side encryption)
+                                            - SNS (notifications and email alerts)
+
+                                            Your task is to take this project outline and produce step-by-step, very
+                                            clear, specific instructions to implement it securely, efficiently, and
+                                            correctly in AWS...</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="feature-list" style="margin-top: var(--spacing-md);">
                                 <li class="feature-item">
                                     <div class="feature-icon">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1022,8 +1113,20 @@ if __name__ == &quot;__main__&quot;:
                                         <span class="proof-code">Proof: aws sts get-caller-identity ...</span>
                                     </div>
                                 </li>
-
                             </ul>
+
+                            <div class="security-practices">
+                                <h3>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                    Security Practices
+                                </h3>
+                                <p style="margin-top: var(--spacing-sm);">Detailed security implementation details will
+                                    be uploaded soon. This section will cover KMS key policies, IAM roles, and VPC
+                                    configuration (if applicable).</p>
+                            </div>
                         </div>
                     </div>
 

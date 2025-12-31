@@ -1,0 +1,82 @@
+2025-12-14
+NEXT STEPS
+
+Make it keep snapshots of data every file if its been changed ✅
+
+Make email say how much storage you have used in the S3 and estimated cost ✅
+
+Prove its encrypted  ✅
+
+Make it auto backup ✅ 
+
+
+2025-12-17
+OUTLINE
+I have mutliple hard drives that have differnt names
+
+one is Backup(E:)
+Another is
+Local Disk(F:)
+
+they are not plugged in at all times, can i make it so that 15 minutes before its about to backup it sends a notificaiton on my computer saying backup in 15 minutes, you should plug in your hard drives. 
+
+In the S3 bucket for each backup can you make it so that, it creates a folder for each one for example
+
+For the main computer it should say MAIN
+for the F: it should say White Hard Drive
+for the E: it should say Black Hard Drive
+
+and it should have all the folders and files there 
+
+Also in the email say how long it took aswell
+
+Every Friday At Night let it backup all my files
+
+
+2025-12-22
+Make Diagram ✅ 
+
+2025-12-26
+SCRIPTING
+
+Make it notify you in 5 minutes backup will take place ✅
+
+Says estimated time ✅
+
+Emails at interruption ✅
+ 
+-Make it check the hash and if it says its there DO NOT backup ✅
+
+Upload to portfolio ✅
+
+-Write what needs to be uploaded ✅
+
+-make black hard drive folder black and make white hard drive white on image  ✅
+
+-Edit 15 min 5 minutes on image. ✅
+
+-put progress and logs and what you learned and upload script file without data ✅
+
+-Screenshots of project ✅
+
+-Change Description ✅ 
+
+
+2025-12-28
+Upload to portfolio ✅ 
+
+Progress✅ 
+
+Logs✅ 
+
+Screenshots✅ 
+
+Script✅ 
+
+
+Upload to GitHub and linkedin✅ 
+
+
+ 
+
+

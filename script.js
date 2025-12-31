@@ -328,3 +328,33 @@ window.addEventListener('scroll', debouncedScrollHandler);
 // ===== CONSOLE MESSAGE =====
 console.log('%c👋 Welcome to my Portfolio! ', 'color: #00d9ff; font-size: 20px; font-weight: bold;');
 console.log('%cInterested in the code? Check out the source or reach out!', 'color: #888; font-size: 14px;');
+// ===== UTILITY FUNCTIONS FOR NEW FEATURES =====
+function updateMainImage(src) {
+  const mainImg = document.getElementById('mainProjectImage');
+  if (mainImg) {
+    mainImg.src = src;
+    // Add a quick fade-in effect
+    mainImg.style.opacity = '0';
+    setTimeout(() => {
+      mainImg.style.opacity = '1';
+    }, 50);
+  }
+}
+
+function copyCode() {
+  const codeBlock = document.querySelector('.project-script code');
+  if (codeBlock) {
+    const text = codeBlock.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const copyBtn = document.querySelector('.copy-btn');
+      const originalText = copyBtn.innerHTML;
+      copyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+      copyBtn.style.background = 'var(--color-accent)';
+
+      setTimeout(() => {
+        copyBtn.innerHTML = originalText;
+        copyBtn.style.background = '';
+      }, 2000);
+    });
+  }
+}

@@ -817,4 +817,104 @@ a:hover {
   .hero .subtitle {
     font-size: var(--font-size-sm);
   }
+}.  
+ 
+/* ===== PROJECT ENHANCEMENTS ===== */
+.project-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.copy-btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text-light);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.copy-btn:hover {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 10px var(--color-secondary);
+}
+
+.copy-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.artifact-section {
+  margin-top: var(--spacing-md);
+}
+
+.artifact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.artifact-box {
+  background: #1e1e1e;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm);
+}
+
+.artifact-box h4 {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 4px;
+}
+
+.artifact-content {
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #d4d4d4;
+  white-space: pre-wrap;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary) transparent;
+}
+
+.artifact-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.artifact-content::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 3px;
+}
+
+.security-practices {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--glass-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.security-practices h3 {
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.security-practices h3 svg {
+  width: 24px;
+  height: 24px;
 }

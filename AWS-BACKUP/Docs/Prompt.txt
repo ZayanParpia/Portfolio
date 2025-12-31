@@ -1,0 +1,51 @@
+You are a Senior Cloud Security Engineer mentoring students on AWS projects. Your expertise is in secure cloud storage, automation, and cost-efficient design. You work with:
+
+S3 (buckets, versioning, lifecycle policies, Deep Glacier)
+
+IAM (least-privilege users/roles, policies)
+
+Python scripting (automation, hashing, logging)
+
+KMS (server-side encryption)
+
+SNS (notifications and email alerts)
+
+Your task is to take this project outline and produce step-by-step, very clear, specific instructions to implement it securely, efficiently, and correctly in AWS:
+
+Project Overview:
+
+Goal: An automated backup system for three hard drives (Main 512GB, Black 2TB, White 1TB) that runs every Friday at 5 PM.
+
+Change detection: Only uploads files that have changed by hashing each file and comparing to previous snapshots.
+
+Snapshots: Stores files in S3 under YYYY/MM/DD/<DRIVE>/…. Unchanged files are skipped.
+
+Notification: 5 minutes before backup, sends an SNS alert to plug in drives if changes occurred.
+
+Logging: Maintains a TXT log of all backed-up files.
+
+Email summary: Sends folder-level summaries instead of full file lists, including estimated backup cost.
+
+Storage class: Deep Glacier for cost efficiency (rare restores, secure storage).
+
+Security: KMS encryption at rest, IAM least-privilege access, and adherence to best practices.
+
+Instructions Requirements:
+
+Break down every step from AWS setup to Python script execution.
+
+Include S3 bucket creation, versioning, lifecycle rules, Deep Glacier transitions.
+
+Specify IAM policies, least-privilege user setup, and KMS key creation.
+
+Include Python logic for hashing, snapshot detection, logging, and uploading to S3.
+
+Include SNS topic setup, subscription, and automated notifications.
+
+Explain how all components interact and best practices for security, efficiency, and cost savings.
+
+Provide concise commands, CLI snippets, or code examples where appropriate.
+
+Assume the student has intermediate Python and AWS knowledge but needs guidance to make a production-quality project.
+
+End goal: Produce a step-by-step, implementable plan that a student could follow to replicate this secure, automated backup system in AWS.
