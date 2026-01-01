@@ -211,7 +211,13 @@
                     <!-- AUTOMATIC BACKUP SYSTEM -->
                     <div class="project-card detailed-project">
                         <div class="project-visuals">
-                            <img src="AWS-BACKUP/Diagram.png" alt="Automatic Backup System Diagram" class="main-image">
+                            <div class="screenshot-item">
+                                <div class="screenshot-meta">
+                                    <h4>Diagram</h4>
+                                </div>
+                                <img src="AWS-BACKUP/Diagram.png" alt="Automatic Backup System Diagram"
+                                    class="main-image zoom-img">
+                            </div>
 
                             <!-- Vertical Screenshot List -->
                             <div class="screenshot-list">
@@ -220,7 +226,8 @@
                                         <h4>IAM</h4>
                                         <p>This Screenshot Shows the IAM role for the Backup System called Backup</p>
                                     </div>
-                                    <img src="AWS-BACKUP/Screenshots/IAM.png" alt="IAM Policy" class="screenshot-img">
+                                    <img src="AWS-BACKUP/Screenshots/IAM.png" alt="IAM Policy"
+                                        class="screenshot-img zoom-img">
                                 </div>
                                 <div class="screenshot-item">
                                     <div class="screenshot-meta">
@@ -228,7 +235,7 @@
                                         <p>This Screenshot Shows the KMS key being created for the S3 Bucket</p>
                                     </div>
                                     <img src="AWS-BACKUP/Screenshots/KMS.png" alt="KMS Encryption"
-                                        class="screenshot-img">
+                                        class="screenshot-img zoom-img">
                                 </div>
                                 <div class="screenshot-item">
                                     <div class="screenshot-meta">
@@ -236,14 +243,23 @@
                                         <p>This Screenshot Shows that the S3 Bucket is set to private.</p>
                                     </div>
                                     <img src="AWS-BACKUP/Screenshots/No Public S3.png" alt="Public Access Block"
-                                        class="screenshot-img">
+                                        class="screenshot-img zoom-img">
                                 </div>
                                 <div class="screenshot-item">
                                     <div class="screenshot-meta">
                                         <h4>S3</h4>
                                         <p>This Screenshot Shows the S3 Bucket that the files was backed up to</p>
                                     </div>
-                                    <img src="AWS-BACKUP/Screenshots/S3.png" alt="S3 Bucket" class="screenshot-img">
+                                    <img src="AWS-BACKUP/Screenshots/S3.png" alt="S3 Bucket"
+                                        class="screenshot-img zoom-img">
+                                </div>
+                                <div class="screenshot-item">
+                                    <div class="screenshot-meta">
+                                        <h4>Email</h4>
+                                        <p>This Screenshot shows the Email that is sent when the backup is done</p>
+                                    </div>
+                                    <img src="AWS-BACKUP/Screenshots/Email.png" alt="Email Notification"
+                                        class="screenshot-img zoom-img">
                                 </div>
                             </div>
                         </div>
@@ -986,7 +1002,7 @@ if __name__ == &quot;__main__&quot;:
                                 </div>
 
                                 <div class="doc-container">
-                                    <button class="doc-toggle-btn" onclick="toggleDocumentation()">
+                                    <button class="doc-toggle-btn btn-secondary" onclick="toggleDocumentation()">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
                                             style="width:20px; height:20px; transition: transform 0.3s;"
@@ -1152,8 +1168,7 @@ if __name__ == &quot;__main__&quot;:
                                     </ul>
 
                                     <div class="security-practices">
-                                        <button class="doc-toggle-btn" onclick="toggleSecurityPractices()"
-                                            style="border-color: var(--color-accent); color: var(--color-accent);">
+                                        <button class="doc-toggle-btn btn-accent" onclick="toggleSecurityPractices()">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round"
                                                 style="width:20px; height:20px; transition: transform 0.3s;"
@@ -1166,6 +1181,38 @@ if __name__ == &quot;__main__&quot;:
                                             <p style="margin-top: var(--spacing-sm);">Detailed security implementation
                                                 details will be uploaded soon. This section will cover KMS key policies,
                                                 IAM roles, and VPC configuration (if applicable).</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="what-i-learned">
+                                        <button class="doc-toggle-btn btn-secondary" onclick="toggleWhatILearned()">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                style="width:20px; height:20px; transition: transform 0.3s;"
+                                                id="learn-chevron">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                            What I Learned
+                                        </button>
+                                        <div class="learn-content-wrapper" id="learn-content">
+                                            <div style="margin-top: var(--spacing-sm);">
+                                                <p>Through this project, I gained practical experience in several key
+                                                    areas of cloud security and automation:</p>
+                                                <ul
+                                                    style="list-style: disc; margin-left: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+                                                    <li><strong>Identity & Access Management:</strong> Implementing
+                                                        least-privilege policies for S3 and KMS.</li>
+                                                    <li><strong>Cloud Automation:</strong> Using Python and Boto3 to
+                                                        programmatically interact with AWS services.</li>
+                                                    <li><strong>Encryption at Rest:</strong> Managing customer-managed
+                                                        keys in KMS to protect sensitive backups.</li>
+                                                    <li><strong>Cost Optimization:</strong> Leveraging S3 Storage
+                                                        Classes (Deep Archive) for efficient long-term storage.</li>
+                                                    <li><strong>System Design:</strong> Planning a resilient backup
+                                                        architecture with automated error reporting and verification.
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1221,6 +1268,13 @@ if __name__ == &quot;__main__&quot;:
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- ===== FULLSCREEN IMAGE MODAL ===== -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img class="modal-content" id="fullImage">
+        <div id="caption" class="modal-caption"></div>
+    </div>
 
     <!-- JavaScript -->
     <script src="script.js"></script>

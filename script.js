@@ -14,13 +14,14 @@ const projectFilters = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 const contactForm = document.getElementById('contact-form');
 const skillItems = document.querySelectorAll('.skill-item');
+const hero = document.querySelector('.hero');
 
 // ===== TYPEWRITER EFFECT =====
 const typewriterText = "Hi, I'm Zayan Parpia";
 let charIndex = 0;
 
 function typeWriter() {
-  if (charIndex < typewriterText.length) {
+  if (typewriterElement && charIndex < typewriterText.length) {
     typewriterElement.textContent += typewriterText.charAt(charIndex);
     charIndex++;
     setTimeout(typeWriter, 100);
@@ -185,69 +186,71 @@ projectFilters.forEach(filter => {
 });
 
 // ===== CONTACT FORM VALIDATION =====
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  // Get form fields
-  const nameInput = document.getElementById('name');
-  const emailInput = document.getElementById('email');
-  const subjectInput = document.getElementById('subject');
-  const messageInput = document.getElementById('message');
+    // Get form fields
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
 
-  // Validation flags
-  let isValid = true;
+    // Validation flags
+    let isValid = true;
 
-  // Validate name
-  if (nameInput.value.trim() === '') {
-    showError(nameInput);
-    isValid = false;
-  } else {
-    removeError(nameInput);
-  }
+    // Validate name
+    if (nameInput.value.trim() === '') {
+      showError(nameInput);
+      isValid = false;
+    } else {
+      removeError(nameInput);
+    }
 
-  // Validate email
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(emailInput.value.trim())) {
-    showError(emailInput);
-    isValid = false;
-  } else {
-    removeError(emailInput);
-  }
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value.trim())) {
+      showError(emailInput);
+      isValid = false;
+    } else {
+      removeError(emailInput);
+    }
 
-  // Validate subject
-  if (subjectInput.value.trim() === '') {
-    showError(subjectInput);
-    isValid = false;
-  } else {
-    removeError(subjectInput);
-  }
+    // Validate subject
+    if (subjectInput.value.trim() === '') {
+      showError(subjectInput);
+      isValid = false;
+    } else {
+      removeError(subjectInput);
+    }
 
-  // Validate message
-  if (messageInput.value.trim() === '') {
-    showError(messageInput);
-    isValid = false;
-  } else {
-    removeError(messageInput);
-  }
+    // Validate message
+    if (messageInput.value.trim() === '') {
+      showError(messageInput);
+      isValid = false;
+    } else {
+      removeError(messageInput);
+    }
 
-  // If form is valid, show success message
-  if (isValid) {
-    // Show success feedback
-    const submitBtn = contactForm.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = '✓ Message Sent!';
-    submitBtn.style.background = 'linear-gradient(135deg, #00d9ff, #00ff88)';
+    // If form is valid, show success message
+    if (isValid) {
+      // Show success feedback
+      const submitBtn = contactForm.querySelector('.submit-btn');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = '✓ Message Sent!';
+      submitBtn.style.background = 'linear-gradient(135deg, #00d9ff, #00ff88)';
 
-    // Reset form
-    contactForm.reset();
+      // Reset form
+      contactForm.reset();
 
-    // Reset button after 3 seconds
-    setTimeout(() => {
-      submitBtn.textContent = originalText;
-      submitBtn.style.background = '';
-    }, 3000);
-  }
-});
+      // Reset button after 3 seconds
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.background = '';
+      }, 3000);
+    }
+  });
+}
 
 // Helper function to show error
 function showError(input) {
@@ -296,8 +299,6 @@ window.addEventListener('load', () => {
 });
 
 // ===== PARALLAX EFFECT FOR HERO SECTION (Optional Enhancement) =====
-const hero = document.querySelector('.hero');
-
 window.addEventListener('scroll', () => {
   const scrolled = window.pageYOffset;
   if (hero && scrolled < window.innerHeight) {
@@ -375,4 +376,71 @@ function toggleSecurityPractices() {
       chevron.style.transform = 'rotate(180deg)';
     }
   }
+}
+
+function toggleWhatILearned() {
+  const content = document.getElementById('learn-content');
+  const chevron = document.getElementById('learn-chevron');
+  if (content && chevron) {
+    if (content.classList.contains('expanded')) {
+      content.classList.remove('expanded');
+      chevron.style.transform = 'rotate(0deg)';
+    } else {
+      content.classList.add('expanded');
+      chevron.style.transform = 'rotate(180deg)';
+    }
+  }
+}
+
+// ===== FULLSCREEN IMAGE MODAL LOGIC =====
+function initImageModal() {
+  console.log('Initializing Image Modal...');
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('fullImage');
+  const captionText = document.getElementById('caption');
+  const closeBtn = document.getElementById('closeModal');
+  const zoomableImages = document.querySelectorAll('.zoom-img');
+
+  console.log('Found zoomable images:', zoomableImages.length);
+
+  if (modal && modalImg && closeBtn) {
+    // Open modal on image click
+    zoomableImages.forEach(img => {
+      img.addEventListener('click', function () {
+        modal.classList.add('active');
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Close modal on X click
+    closeBtn.onclick = function () {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    };
+
+    // Close modal on background click (BUT NOT the image itself)
+    modal.onclick = function (e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    };
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  }
+}
+
+// Initialize on DOMContentLoaded and also immediately if already loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initImageModal);
+} else {
+  initImageModal();
 }
