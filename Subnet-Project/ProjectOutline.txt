@@ -1,0 +1,59 @@
+Cloud VM Subnetting Playground — Project Description
+
+Project goal
+Build a small, realistic AWS network to learn how subnets, routing, ARP, security groups, and flow logs work, while practicing cloud security fundamentals.
+
+What I built (short)
+Two Ubuntu EC2 instances running in the same VPC and the same subnet, configured Security Groups, observed ARP and routing behavior, tested connectivity using ping and traceroute, and sent VPC Flow Logs to CloudWatch encrypted with a KMS key.
+
+Environment & tools
+
+AWS: VPC, single Subnet, EC2 (Ubuntu), Network Interfaces (ENIs), Elastic IPs
+
+CloudWatch Logs (Flow Logs) + KMS for encryption
+
+Linux commands: ip a, ip route, ip neigh, ping, traceroute, tcpdump
+
+SSH / SCP from laptop for access and file transfer
+
+Key steps completed
+
+Designed one VPC with a single subnet in the 172.31.0.0/20 range
+
+Launched two Ubuntu EC2 instances in the same subnet and verified private IPs
+
+Configured Security Groups to allow SSH and ICMP only from trusted sources
+
+Assigned Elastic IPs for public SSH access only when needed
+
+Tested connectivity: ping, traceroute, and verified ARP entries appear after traffic
+
+Created a CloudWatch Log Group and enabled VPC Flow Logs for the subnet
+
+Created a KMS key with a secure key policy; configured Flow Logs to use the KMS key for encryption at rest
+
+Verified logs in CloudWatch and filtered for ICMP traffic to observe ping records
+
+Security controls implemented
+
+Least-privilege Security Group rules (SSH restricted to my IP, ICMP limited)
+
+Subnet design with controlled public access via Elastic IPs
+
+VPC Flow Logs enabled for visibility and monitoring
+
+KMS encryption for CloudWatch logs; IAM role allowed CloudWatch to write logs
+
+Checked NACLs and confirmed local routing inside the VPC
+
+What I learned / outcomes
+
+How private IPs work in AWS (live in the subnet) and public IPs are NATed for internet access
+
+How ARP and routing behave inside a single subnet
+
+How Security Groups and Flow Logs interact: SGs control traffic, Flow Logs capture accept/reject events
+
+How to secure logs with KMS and verify them in CloudWatch
+
+Practical troubleshooting steps for SSH, ENIs, Elastic IPs, and Flow Logs

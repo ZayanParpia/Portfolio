@@ -350,9 +350,23 @@ function copyCode() {
   }
 }
 
-function toggleDocumentation() {
-  const content = document.getElementById('doc-content');
-  const chevron = document.getElementById('doc-chevron');
+function toggleProject(btn) {
+  const card = btn.closest('.project-card');
+  const chevron = btn.querySelector('.collapse-chevron');
+  if (card) {
+    card.classList.toggle('collapsed');
+    if (chevron) {
+      const isCollapsed = card.classList.contains('collapsed');
+      chevron.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+      btn.title = isCollapsed ? 'Expand Project' : 'Collapse Project';
+    }
+  }
+}
+
+function toggleDocumentation(btn) {
+  const card = btn.closest('.project-card');
+  const content = card.querySelector('.doc-content-wrapper');
+  const chevron = btn.querySelector('.chevron');
   if (content && chevron) {
     if (content.classList.contains('expanded')) {
       content.classList.remove('expanded');
@@ -364,9 +378,10 @@ function toggleDocumentation() {
   }
 }
 
-function toggleSecurityPractices() {
-  const content = document.getElementById('sec-content');
-  const chevron = document.getElementById('sec-chevron');
+function toggleSecurityPractices(btn) {
+  const card = btn.closest('.project-card');
+  const content = card.querySelector('.sec-content-wrapper');
+  const chevron = btn.querySelector('.chevron');
   if (content && chevron) {
     if (content.classList.contains('expanded')) {
       content.classList.remove('expanded');
@@ -378,9 +393,10 @@ function toggleSecurityPractices() {
   }
 }
 
-function toggleWhatILearned() {
-  const content = document.getElementById('learn-content');
-  const chevron = document.getElementById('learn-chevron');
+function toggleWhatILearned(btn) {
+  const card = btn.closest('.project-card');
+  const content = card.querySelector('.learn-content-wrapper');
+  const chevron = btn.querySelector('.chevron');
   if (content && chevron) {
     if (content.classList.contains('expanded')) {
       content.classList.remove('expanded');
