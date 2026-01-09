@@ -273,8 +273,8 @@
                                         This project was a deep dive into AWS networking fundamentals. I built a custom
                                         VPC from scratch, creating a realistic environment to understand how traffic
                                         flows between public and private subnets.
-                                        I launched two Ubuntu EC2 instances in separate subnets and configured their
-                                        Security Groups to allow specific traffic, verifying connectivity through ping
+                                        I launched two Ubuntu EC2 instances in the same subnet and configured their
+                                        Security Groups to allow specific traffic from eachother only, verifying connectivity through ping
                                         and traceroute commands.
                                         A key component was security and monitoring: I enabled VPC Flow Logs to capture
                                         traffic data, storing these logs in CloudWatch encrypted with a custom KMS key.
