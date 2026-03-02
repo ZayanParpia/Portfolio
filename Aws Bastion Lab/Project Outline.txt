@@ -1,0 +1,7 @@
+AWS-Native Virtual Home Cybersecurity Lab
+
+Project Description (First-Person)
+
+For this project, I will build a fully AWS-native, cloud-hosted virtual home lab to simulate real-world cybersecurity scenarios. I will design a VPC with public and private subnets, deploy EC2 instances as attacker and target machines, and configure Security Groups and NACLs to control traffic. I will enable VPC Flow Logs, CloudTrail, and CloudWatch to monitor activity, and use GuardDuty and Inspector to detect suspicious behavior and vulnerabilities.
+
+This lab will allow me to safely practice attacks on vulnerable targets, test firewall rules and routing, and respond to simulated incidents. By the end, I will have a hands-on understanding of cloud network security, monitoring, and incident response—all using AWS-native tools. 

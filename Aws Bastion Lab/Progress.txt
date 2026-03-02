@@ -1,0 +1,23 @@
+2026-01-25
+- I made the VPC security groups and subnet 
+- I made the Kali Linux Virtual Machine
+- I made the GITHUB repo for it
+
+2026-01-27
+I got the Kali Linux EC2 instance running properly after having some connectivity issues. 
+- I allowed internet outbound traffic to download tools
+- I allowed inbound traffic to allow ssh 
+- I changed private subnet to public so I can access it from my computer
+
+2026-02-05
+-Uploaded project to GitHub
+-Edited Diagram to correct project outline 
+-Created Elastic IP address for bastion host
+-Created private subnet for the private servers
+
+2026-02-19
+-This project took almost a month to get to this point. I watched one video on how Bastion hosts really work on AWS and I decided to dismantle my entire project and restart from scratch. Within 20 minutes I was able to get everything back where I was, with a stronger understanding as well as me being able to SSH into the private server through the Bastion host. And the only steps I have now are to enforce the IM and SSM sign-in only and attach it to the monitoring systems. I learned so much as to how Bastion hosts really work within that one video. And now I can do something like this within 20 minutes, which I'm really proud of. 
+
+2026-02-21
+-Today I enforced IM and SSM login through my computer and I'm really proud of myself because this was the most complicated part but when I finished it I realized how easy it was.
+My next steps: I want to make sure that everything works properly. I want to polish up a few of my documentations, including the progress.txt and GitHub uploads and whatnot and especially the diagram. And then I'm going to upload it to my portfolio and GitHub. 

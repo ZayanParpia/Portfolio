@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Application Load Balancer - Zayan Parpia</title>
+    <meta name="description"
+        content="A high-availability setup using an AWS Application Load Balancer (ALB) to distribute traffic across multiple EC2 instances.">
+    <meta name="author" content="Zayan Parpia">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HEADER ===== -->
+    <section class="section" style="padding-top: 120px; padding-bottom: 40px;">
+        <div class="container">
+            <div class="project-detail-header">
+                <h1 class="section-title">Application Load Balancer</h1>
+                <a href="projects.html" class="back-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 20px; height: 20px;">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back to Projects
+                </a>
+                <div class="project-meta-top">
+                    <p class="project-date" style="margin:0; font-style: italic; color: var(--color-text-gray);">
+                        March 1, 2026</p>
+                    <div class="project-tags">
+                        <span class="tag">AWS ALB</span>
+                        <span class="tag">Auto Scaling</span>
+                        <span class="tag">High Availability</span>
+                        <span class="tag">Health Checks</span>
+                        <span class="tag">Target Groups</span>
+                        <span class="tag">CloudWatch</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECT CONTENT ===== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="project-content-wrapper fade-in">
+                <!-- Visuals Column -->
+                <div class="project-visuals">
+                    <div class="screenshot-item">
+                        <div class="screenshot-meta">
+                            <h4>ALB Architecture</h4>
+                            <p>High-availability design featuring an Application Load Balancer distributing traffic
+                                across EC2 instances in multiple AZs.</p>
+                        </div>
+                        <img src="Load Balancer/diagram.png" alt="Application Load Balancer Diagram"
+                            class="main-image zoom-img">
+                    </div>
+                </div>
+
+                <!-- Info Column -->
+                <div class="project-info">
+                    <h3>Project Overview</h3>
+                    <p style="margin-bottom: var(--spacing-sm);">
+                        The Application Load Balancer (ALB) project demonstrates a highly available and scalable web
+                        architecture on AWS. The primary goal was to ensure that a web application remains accessible
+                        even if individual server instances fail or experience high traffic.
+                    </p>
+                    <p style="margin-bottom: var(--spacing-sm);">
+                        By leveraging an <strong>Application Load Balancer</strong>, traffic is intelligently
+                        distributed across a fleet of EC2 instances. Combined with <strong>Auto Scaling</strong>, the
+                        system can automatically add or remove capacity based on real-time demand, optimizing both
+                        performance and cost.
+                    </p>
+
+                    <!-- Feature List -->
+                    <ul class="feature-list" style="margin-top: var(--spacing-md);">
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"></path>
+                                    <path d="M12 6V12L16 14"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>High Availability</h4>
+                                <p>Multi-AZ deployment ensuring service continuity during infrastructure failures.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item"
+                            style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                            <div class="feature-icon" style="color: var(--color-accent);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
+                                    <path d="M17 6h6v6"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Scaling Dynamics</h4>
+                                <p>Auto Scaling groups reacting to CPU/Traffic metrics to maintain application
+                                    responsiveness.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item"
+                            style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                            <div class="feature-icon" style="color: var(--color-accent);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Health Monitoring</h4>
+                                <p>Configured ALB health checks to automatically route traffic away from unhealthy
+                                    instances.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item"
+                            style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                            <div class="feature-icon" style="color: var(--color-accent);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Security Integration</h4>
+                                <p>Integrated with Security Groups and SSL/TLS termination at the load balancer level.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- Project Sections -->
+                    <div style="margin-top: var(--spacing-lg);">
+                        <!-- Project Outline -->
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
+                            <h4
+                                style="margin-bottom: 1rem; color: var(--color-accent); font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                                Project Outline
+                            </h4>
+                            <p style="color: var(--color-text-gray); font-style: italic; line-height: 1.6;">
+                                "In this project, I set up a robust Application Load Balancer to manage incoming web
+                                traffic. I created Target Groups, configured Health Checks, and deployed EC2 instances
+                                across different subnets. I also implemented an Auto Scaling group to handle variable
+                                loads automatically..."
+                            </p>
+                        </div>
+
+                        <!-- Lab Logs / Progress -->
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
+                            <h4
+                                style="margin-bottom: 1rem; color: var(--color-text-light); font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                </svg>
+                                Project Milestones & Logs
+                            </h4>
+                            <div class="log-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div class="log-entry">
+                                    <span
+                                        style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-28</span>
+                                    <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                        Defined target groups and launched base EC2 instances. Configured simple
+                                        security group rules for ports 80/443.</p>
+                                </div>
+                                <div class="log-entry">
+                                    <span
+                                        style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-01</span>
+                                    <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                        Deployed the Application Load Balancer. Verified traffic routing and health
+                                        check performance.</p>
+                                </div>
+                                <div class="log-entry">
+                                    <span
+                                        style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-01</span>
+                                    <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                        Implementation of Auto Scaling group and final testing under simulated load.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--glass-border);">
+                            <h5 style="margin-bottom: 0.5rem; color: var(--color-text-light); font-size: 1.1rem;">Key
+                                Learnings</h5>
+                            <ul
+                                style="list-style: disc; margin-left: 1.5rem; color: var(--color-text-gray); font-size: 0.95rem; line-height: 1.6;">
+                                <li><strong>Traffic Distribution:</strong> Understanding how ALB works at the
+                                    application layer (Layer 7) to provide flexible routing.</li>
+                                <li><strong>Resilience Patterns:</strong> Mastering health checks and how they automate
+                                    the removal of unstable nodes.</li>
+                                <li><strong>Dynamic Scaling:</strong> Configuration of scaling policies that save costs
+                                    during idle periods and maintain uptime during spikes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Zayan Parpia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".fade-in");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("visible");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+
+        // Zoom functionality for images
+        document.querySelectorAll('.zoom-img').forEach(img => {
+            img.addEventListener('click', function () {
+                this.classList.toggle('zoomed');
+                if (this.classList.contains('zoomed')) {
+                    const overlay = document.createElement('div');
+                    overlay.style.position = 'fixed';
+                    overlay.style.top = 0;
+                    overlay.style.left = 0;
+                    overlay.style.width = '100vw';
+                    overlay.style.height = '100vh';
+                    overlay.style.background = 'rgba(0,0,0,0.9)';
+                    overlay.style.zIndex = '9999';
+                    overlay.style.display = 'flex';
+                    overlay.style.alignItems = 'center';
+                    overlay.style.justifyContent = 'center';
+                    overlay.onclick = () => document.body.removeChild(overlay);
+
+                    const imgClone = document.createElement('img');
+                    imgClone.src = this.src;
+                    imgClone.style.maxWidth = '90%';
+                    imgClone.style.maxHeight = '90%';
+                    imgClone.style.borderRadius = 'var(--radius-md)';
+
+                    overlay.appendChild(imgClone);
+                    document.body.appendChild(overlay);
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

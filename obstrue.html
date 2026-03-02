@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Obstrue - Master Your Focus</title>
+    <meta name="description"
+        content="A personalized productivity app designed to master your focus by blocking distracting apps with custom, targeted pop-ups.">
+    <meta name="author" content="Zayan Parpia">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HEADER ===== -->
+    <section class="section" style="padding-top: 120px; padding-bottom: 40px;">
+        <div class="container">
+            <div class="project-detail-header">
+                <h1 class="section-title">Obstrue</h1>
+                <a href="projects.html" class="back-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 20px; height: 20px;">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back to Projects
+                </a>
+                <div class="project-meta-top">
+                    <p class="project-date" style="margin:0; font-style: italic; color: var(--color-text-gray);">
+                        December 8, 2025</p>
+                    <div class="project-tags">
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">Android</span>
+                        <span class="tag">Productivity</span>
+                        <span class="tag">UI/UX Design</span>
+                        <span class="tag">Screen Time Tracking</span>
+                        <span class="tag">Ad Integration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECT CONTENT ===== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="project-content-wrapper fade-in">
+                <!-- Visuals Column -->
+                <div class="project-visuals">
+                    <div class="screenshot-grid"
+                        style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                        <div class="screenshot-item">
+                            <img src="Obstrue/Screenshots/Main.png" alt="Obstrue Home Screen"
+                                class="main-image zoom-img">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="Obstrue/Screenshots/PopUp.png" alt="Obstrue Custom Pop-up"
+                                class="main-image zoom-img">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="Obstrue/Screenshots/Statistics.png" alt="Obstrue Statistics View"
+                                class="main-image zoom-img">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="Obstrue/Screenshots/Productivity.png" alt="Obstrue Productivity Tools"
+                                class="main-image zoom-img">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Column -->
+                <div class="project-info">
+                    <h3>The Story of Obstrue</h3>
+                    <div
+                        style="margin-bottom: var(--spacing-md); line-height: 1.8; color: var(--color-text-gray); font-size: 1.05rem;">
+                        <p>
+                            I'm all in for productivity and using your time wisely. Anytime I got an app blocker I
+                            always noticed that I was never able to customize what pops up when I go over my app limit.
+                            Now this seems like a minor thing but to me it's a pretty big thing because when the pop-ups
+                            are personalized. They are targeted towards the specific user, in this case me.
+                        </p>
+                        <p>
+                            I got the idea of making an app that pops up a custom pop-up that you customize when you go
+                            over your app limit when I created a printed sheet of paper that had personalized things,
+                            such as my goals and what I could be doing with my time instead. I taped it to my table and
+                            id look at my it when I do things like play games or go on social media apps and I would
+                            usually stop wasting time and go back to working on my goals.
+                        </p>
+                        <p>
+                            After a while I decided to put it on my computer directly so I made a mini Python script
+                            that pops up the same custom message that was on my printed paper about what I could be
+                            doing instead and had it pop up when I would waste time on something such as a game or a
+                            social media app. This was pretty effective for me until I realized that I also spend a lot
+                            of time on social media and waste time on my phone. That's when I decided to make an app for
+                            my phone because if it worked on my computer surely it would work on my phone.
+                        </p>
+                        <p>
+                            I started building an app to do just that. I came up with the name "Obstrue" Because it
+                            means to block or lock in Latin, which I thought was pretty cool. My app so far works
+                            incredibly well for me because it's very simple, it's free, and it's very versatile with the
+                            way you can customize what pops up. I've utilize my time so well because of my app and
+                            hopefully when I start advertising even more, lots of people can feel the same way.
+                        </p>
+                    </div>
+
+                    <!-- Feature List -->
+                    <ul class="feature-list" style="margin-top: var(--spacing-md);">
+                        <li class="feature-item">
+                            <div class="feature-icon" style="color: var(--color-accent);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Personalized Pop-ups</h4>
+                                <p>Custom text, images, and audio triggers to disrupt mindless app usage effectively.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon" style="color: var(--color-accent);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Deep Statistics</h4>
+                                <p>Comprehensive tracking of screen time wasted per day/week/month with insightful data
+                                    visualization.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon" style="color: var(--color-accent);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Productivity Suite</h4>
+                                <p>Built-in to-do lists, daily goals, and lessons learned tracker to keep you on path.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- AI Guidance Section -->
+                    <div style="margin-top: var(--spacing-lg);">
+                        <div class="artifact-box"
+                            style="background: rgba(162, 89, 255, 0.05); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid rgba(162, 89, 255, 0.2);">
+                            <h4
+                                style="margin-bottom: 1rem; color: #a259ff; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                    <path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                    </path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                                Kotlin Expert AI Guidance
+                            </h4>
+                            <div
+                                style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 0.25rem; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #d0d0d0; border-left: 3px solid #a259ff; line-height: 1.5;">
+                                "You are now an expert Kotlin developer... Your job is to guide me through it
+                                step-by-step. Make it simple and easy to understand... explain why you make each step...
+                                you follow official Kotlin style guidelines, emphasize immutability, structured
+                                concurrency with coroutines and Flow..."
+                            </div>
+                            <p
+                                style="font-size: 0.8rem; color: var(--color-text-gray); margin-top: 0.5rem; font-style: italic;">
+                                Prompt utilized for architectural decisions and code optimization.
+                            </p>
+                        </div>
+
+                        <!-- Project Progress / Logs (Collapsible) -->
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
+                            <h4
+                                style="margin-bottom: 1rem; color: var(--color-text-light); font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                </svg>
+                                Project Milestones & Detailed Logs
+                            </h4>
+
+                            <details style="cursor: pointer; color: var(--color-text-gray);">
+                                <summary
+                                    style="padding: 0.5rem 0; font-weight: 600; color: var(--color-accent); list-style: none; display: flex; align-items: center; gap: 0.5rem;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                    View Full Development Logs
+                                </summary>
+                                <div
+                                    style="margin-top: 1rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 0.25rem; max-height: 400px; overflow-y: auto; font-family: 'Inter', sans-serif; font-size: 0.9rem; line-height: 1.6;">
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/12/10</span>
+                                        <p>Restated Obstrue description and four main screens (home, popup, statistics,
+                                            productivity); prepared to give testers links.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/12/09</span>
+                                        <p>Fixed “how can I do better tomorrow” behavior.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/12/08</span>
+                                        <p><strong>KHALAS! (milestone)</strong>; started making videos; ensured proper
+                                            ads present.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/12/07</span>
+                                        <p>Double-checked statistics accuracy and mapping from app time to screen time;
+                                            enlarged goals icon; planned targeted banner ads per section; extracted
+                                            test-ad build and prepared real ad integration.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/12/06</span>
+                                        <p>Added a “how can I do better tomorrow” section to the productivity tab; fixed
+                                            bug where app time was not being tracked correctly.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/12/05</span>
+                                        <p>Added a “lessons learned” section to the productivity tab; fixed bug where
+                                            app time was not being tracked correctly.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/12/04</span>
+                                        <p>Added a “daily goals” section to the productivity tab; fixed bug where app
+                                            time was not being tracked correctly.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/12/03</span>
+                                        <p>Added a “to-do list” section to the productivity tab; fixed bug where app
+                                            time was not being tracked correctly.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/12/02</span>
+                                        <p>Added a “productivity” tab to the bottom navigation bar; fixed bug where app
+                                            time was not being tracked correctly.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/12/01</span>
+                                        <p>Added a “statistics” tab to the bottom navigation bar; fixed bug where app
+                                            time was not being tracked correctly.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/11/30</span>
+                                        <p>Added a “home” tab to the bottom navigation bar; fixed bug where app time was
+                                            not being tracked correctly.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/11/29</span>
+                                        <p>Added a bottom navigation bar; fixed bug where app time was not being tracked
+                                            correctly.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/11/28</span>
+                                        <p>Added a custom pop-up feature; fixed bug where app time was not being tracked
+                                            correctly.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/11/27</span>
+                                        <p>Added app tracking feature; fixed bug where app time was not being tracked
+                                            correctly.</p>
+                                    </div>
+                                    <div class="log-entry" style="margin-bottom: 1.5rem;">
+                                        <span style="color: var(--color-accent); font-weight: bold;">2025/11/26</span>
+                                        <p>Initial commit; set up basic Android project with Kotlin.</p>
+                                    </div>
+                                    <p style="font-style: italic; opacity: 0.8;">Full history migration complete.
+                                        Reviewing October - December milestones.</p>
+                                </div>
+                            </details>
+                        </div>
+
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; border: 1px solid var(--glass-border);">
+                            <h5 style="margin-bottom: 0.5rem; color: var(--color-text-light); font-size: 1.1rem;">Key
+                                Takeaways</h5>
+                            <ul
+                                style="list-style: disc; margin-left: 1.5rem; color: var(--color-text-gray); font-size: 0.95rem; line-height: 1.6;">
+                                <li><strong>Kotlin Mastery:</strong> Deep dive into Kotlin idioms, Coroutines for
+                                    background tracking, and Room for local statistics.</li>
+                                <li><strong>User-Centric Security:</strong> Balancing strict app blocking with a
+                                    customizable user experience that doesn't feel like a chore.</li>
+                                <li><strong>Productivity Design:</strong> Learning how personalized reinforcement (your
+                                    own goals) is more effective than standard blocking tools.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Zayan Parpia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".fade-in");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("visible");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // Zoom functionality for images
+        document.querySelectorAll('.zoom-img').forEach(img => {
+            img.addEventListener('click', function () {
+                this.classList.toggle('zoomed');
+                if (this.classList.contains('zoomed')) {
+                    const overlay = document.createElement('div');
+                    overlay.style.position = 'fixed';
+                    overlay.style.top = 0; overlay.style.left = 0;
+                    overlay.style.width = '100vw'; overlay.style.height = '100vh';
+                    overlay.style.background = 'rgba(0,0,0,0.9)'; overlay.style.zIndex = '9999';
+                    overlay.style.display = 'flex'; overlay.style.alignItems = 'center'; overlay.style.justifyContent = 'center';
+                    overlay.onclick = () => document.body.removeChild(overlay);
+
+                    const imgClone = document.createElement('img');
+                    imgClone.src = this.src;
+                    imgClone.style.maxWidth = '90%'; imgClone.style.maxHeight = '90%';
+                    imgClone.style.borderRadius = 'var(--radius-md)';
+
+                    overlay.appendChild(imgClone);
+                    document.body.appendChild(overlay);
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

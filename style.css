@@ -118,7 +118,7 @@ a:hover {
 
 /* ===== UTILITY CLASSES ===== */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
 }
@@ -457,7 +457,7 @@ a:hover {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--spacing-md);
 }
 
@@ -498,8 +498,8 @@ a:hover {
 
 .card-image-wrapper {
   width: 100%;
-  height: 220px;
-  /* Fixed height for image area */
+  height: 280px;
+  /* Increased height for a more square appearance */
   overflow: hidden;
   border-bottom: 1px solid var(--glass-border);
   position: relative;
@@ -510,10 +510,12 @@ a:hover {
 .card-image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  /* Stretch to fill the entire area */
   object-position: center;
   transition: transform 0.5s ease;
-  padding: 10px;
+  padding: 0;
+  /* Remove padding to ensure it reaches edges */
 }
 
 .project-card:hover .card-image-wrapper img {
@@ -544,7 +546,7 @@ a:hover {
 
 .card-description {
   font-size: var(--font-size-sm);
-  color: var(--color-text-gray);
+  color: white;
   margin-bottom: var(--spacing-md);
   flex-grow: 1;
   display: -webkit-box;
@@ -1294,18 +1296,38 @@ pre {
 /* Certifications Styling */
 .certs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  /* Force 3 columns */
   gap: var(--spacing-md);
   margin-top: var(--spacing-md);
 }
 
 .cert-card {
   display: flex;
+  flex-direction: row;
+  /* Default horizontal layout */
   gap: var(--spacing-md);
   padding: var(--spacing-md);
   border-radius: var(--radius-lg);
   transition: transform var(--transition-normal);
   border: 1px solid var(--glass-border);
+}
+
+/* New Square Card variant */
+.cert-card.square-card {
+  flex-direction: column !important;
+  /* Force vertical layout - override base */
+  align-items: flex-start;
+  /* Left align content */
+  justify-content: flex-start;
+  /* Top aligned */
+  aspect-ratio: 1 / 1;
+  /* True square shape like reference */
+  height: auto;
+  padding: 1.5rem;
+  /* More compact padding */
+  gap: 0.5rem;
+  /* Tighter spacing */
 }
 
 .cert-card:hover {
@@ -1315,8 +1337,9 @@ pre {
 }
 
 .cert-img-box {
-  width: 80px;
-  height: 80px;
+  width: 65px;
+  /* Balanced size - visible but compact */
+  height: 65px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -1324,12 +1347,23 @@ pre {
   border-radius: var(--radius-sm);
   padding: 5px;
   overflow: hidden;
+  margin-bottom: 0.75rem;
+  /* Less space between icon and text */
 }
 
+/* Larger icon variant */
+.cert-img-box.icon-large {
+  width: 85px;
+  /* Larger for CompTIA/Linux */
+  height: 85px;
+}
+
+/* Ensure images fit */
 .cert-card-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  /* Ensure full icon is visible */
 }
 
 .cert-card-img-small {
@@ -1344,9 +1378,20 @@ pre {
 }
 
 .cert-info h3 {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   color: var(--color-text-light);
+  font-size: 2.4rem;
+  /* Bigger title */
 }
+
+.cert-info p {
+  font-size: 1.3rem;
+  /* Bigger description */
+  line-height: 1.5;
+  color: var(--color-text-gray);
+}
+
+
 
 .cert-status {
   display: inline-block;
@@ -1519,6 +1564,7 @@ pre {
   /* Pure White as requested */
   background: none;
   -webkit-background-clip: unset;
+  background-clip: unset;
   -webkit-text-fill-color: initial;
 }
 
