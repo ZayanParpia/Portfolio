@@ -57,15 +57,17 @@
                     Back to Projects
                 </a>
                 <div class="project-meta-top">
-                    <p class="project-date" style="margin:0; font-style: italic; color: var(--color-text-gray);">
-                        March 1, 2026</p>
-                    <div class="project-tags">
-                        <span class="tag">AWS ALB</span>
-                        <span class="tag">Auto Scaling</span>
-                        <span class="tag">High Availability</span>
-                        <span class="tag">Health Checks</span>
-                        <span class="tag">Target Groups</span>
-                        <span class="tag">CloudWatch</span>
+                    <div style="display: flex; align-items: center; gap: 1.5rem;">
+                        <p class="project-date" style="margin:0; font-style: italic; color: var(--color-text-gray);">
+                            March 1, 2026</p>
+                        <a href="https://github.com/ZayanParpia/Load-Balancer-/tree/main" target="_blank"
+                            class="github-link" title="View on GitHub"
+                            style="color: var(--color-text-light); transition: all 0.3s ease; display: flex; align-items: center;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -87,79 +89,182 @@
                         <img src="Load Balancer/diagram.png" alt="Application Load Balancer Diagram"
                             class="main-image zoom-img">
                     </div>
+
+                    <!-- Video Demonstration -->
+                    <div class="artifact-box"
+                        style="background: var(--color-bg-card); padding: var(--spacing-sm); border-radius: var(--radius-md); border: 1px solid var(--glass-border); margin-bottom: var(--spacing-md);">
+                        <h4
+                            style="color: var(--color-accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                            </svg>
+                            Video Demonstration
+                        </h4>
+                        <video controls
+                            style="width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--glass-border);">
+                            <source src="Load Balancer/DEMO.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <!-- Screenshot Gallery -->
+                    <div class="screenshot-gallery"
+                        style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>VPC Configuration</h4>
+                                <p>Shows VPC configurations for project.</p>
+                            </div>
+                            <img src="Load Balancer/Screenshots/VPC.png" alt="VPC Configuration"
+                                class="main-image zoom-img">
+                        </div>
+
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Subnets</h4>
+                                <p>This screenshot shows the configured subnets across multiple availability zones.</p>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <img src="Load Balancer/Screenshots/Subnet A.png" alt="Subnet A"
+                                    class="main-image zoom-img">
+                                <img src="Load Balancer/Screenshots/Subnet B.png" alt="Subnet B"
+                                    class="main-image zoom-img">
+                            </div>
+                        </div>
+
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Route Table</h4>
+                                <p>Route table shows how to access the internet via the Internet Gateway.</p>
+                            </div>
+                            <img src="Load Balancer/Screenshots/Route Table .png" alt="Route Table"
+                                class="main-image zoom-img">
+                        </div>
+
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Availability Zones</h4>
+                                <p>Shows that the infrastructure is available in two regions/zones for high
+                                    availability.</p>
+                            </div>
+                            <img src="Load Balancer/Screenshots/AZ.png" alt="Availability Zones"
+                                class="main-image zoom-img">
+                        </div>
+
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>EC2 Server Configuration</h4>
+                                <p>This screenshot shows the configuration for the EC2 instances acting as web servers.
+                                </p>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <img src="Load Balancer/Screenshots/Server A.png" alt="Server A"
+                                    class="main-image zoom-img">
+                                <img src="Load Balancer/Screenshots/Server B.png" alt="Server B"
+                                    class="main-image zoom-img">
+                            </div>
+                        </div>
+
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Inbound Rules (Security Groups)</h4>
+                                <p>HTTP traffic is allowed from anywhere (0.0.0.0/0) and SSH is restricted to a specific
+                                    IP for security.</p>
+                            </div>
+                            <img src="Load Balancer/Screenshots/Inbound Rules .png" alt="Inbound Rules"
+                                class="main-image zoom-img">
+                        </div>
+
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Target Group</h4>
+                                <p>Target group shows which EC2 instances to use and specifies the port to listen for
+                                    (Port 80).</p>
+                            </div>
+                            <img src="Load Balancer/Screenshots/Target Group.png" alt="Target Group"
+                                class="main-image zoom-img">
+                        </div>
+
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Application Load Balancer (ALB)</h4>
+                                <p>The screenshot shows the active ALB with its two availability zones, distributing
+                                    incoming traffic.</p>
+                            </div>
+                            <img src="Load Balancer/Screenshots/ALB.png" alt="Application Load Balancer"
+                                class="main-image zoom-img">
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Info Column -->
                 <div class="project-info">
                     <h3>Project Overview</h3>
                     <p style="margin-bottom: var(--spacing-sm);">
-                        The Application Load Balancer (ALB) project demonstrates a highly available and scalable web
-                        architecture on AWS. The primary goal was to ensure that a web application remains accessible
-                        even if individual server instances fail or experience high traffic.
+                        This project demonstrates the implementation of a highly available <strong>Application Load
+                            Balancer (ALB)</strong> on AWS. It showcases how load balancing effectively distributes
+                        traffic across multiple EC2 instances to ensure application scalability and resilience.
                     </p>
                     <p style="margin-bottom: var(--spacing-sm);">
-                        By leveraging an <strong>Application Load Balancer</strong>, traffic is intelligently
-                        distributed across a fleet of EC2 instances. Combined with <strong>Auto Scaling</strong>, the
-                        system can automatically add or remove capacity based on real-time demand, optimizing both
-                        performance and cost.
+                        The architecture utilizes a dedicated <strong>VPC</strong>, multiple <strong>Availability
+                            Zones</strong>, and public <strong>Subnets</strong>. Networking is managed through custom
+                        <strong>Route Tables</strong> and <strong>Network Access Control Lists (NACLs)</strong>, while
+                        traffic is directed to specific <strong>Target Groups</strong> of EC2 instances based on health
+                        and availability.
                     </p>
 
-                    <!-- Feature List -->
-                    <ul class="feature-list" style="margin-top: var(--spacing-md);">
-                        <li class="feature-item">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-                                    <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"></path>
-                                    <path d="M12 6V12L16 14"></path>
-                                </svg>
-                            </div>
+                    <!-- AWS Resources List -->
+                    <h4 style="margin-top: var(--spacing-md); color: var(--color-accent);">AWS Resources Used</h4>
+                    <ul class="feature-list"
+                        style="margin-top: var(--spacing-sm); display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-sm);">
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
                             <div class="feature-content">
-                                <h4>High Availability</h4>
-                                <p>Multi-AZ deployment ensuring service continuity during infrastructure failures.</p>
+                                <p style="margin: 0; color: var(--color-text-light);">VPC</p>
                             </div>
                         </li>
-                        <li class="feature-item"
-                            style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
-                            <div class="feature-icon" style="color: var(--color-accent);">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-                                    <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
-                                    <path d="M17 6h6v6"></path>
-                                </svg>
-                            </div>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
                             <div class="feature-content">
-                                <h4>Scaling Dynamics</h4>
-                                <p>Auto Scaling groups reacting to CPU/Traffic metrics to maintain application
-                                    responsiveness.</p>
+                                <p style="margin: 0; color: var(--color-text-light);">Availability Zones</p>
                             </div>
                         </li>
-                        <li class="feature-item"
-                            style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
-                            <div class="feature-icon" style="color: var(--color-accent);">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                                </svg>
-                            </div>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
                             <div class="feature-content">
-                                <h4>Health Monitoring</h4>
-                                <p>Configured ALB health checks to automatically route traffic away from unhealthy
-                                    instances.</p>
+                                <p style="margin: 0; color: var(--color-text-light);">Subnets</p>
                             </div>
                         </li>
-                        <li class="feature-item"
-                            style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
-                            <div class="feature-icon" style="color: var(--color-accent);">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                </svg>
-                            </div>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
                             <div class="feature-content">
-                                <h4>Security Integration</h4>
-                                <p>Integrated with Security Groups and SSL/TLS termination at the load balancer level.
-                                </p>
+                                <p style="margin: 0; color: var(--color-text-light);">Routing Table</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">EC2 Instances</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">Application Load Balancer</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">Target Groups</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">Network Control Lists (NACLs)</p>
                             </div>
                         </li>
                     </ul>
@@ -202,23 +307,74 @@
                                     <span
                                         style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-28</span>
                                     <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
-                                        Defined target groups and launched base EC2 instances. Configured simple
-                                        security group rules for ports 80/443.</p>
+                                        Initial setup: Created VPC architecture and infrastructure diagrams.</p>
                                 </div>
                                 <div class="log-entry">
                                     <span
                                         style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-01</span>
                                     <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
-                                        Deployed the Application Load Balancer. Verified traffic routing and health
-                                        check performance.</p>
+                                        Infrastructure deployment: Configured Load Balancer, Gateway, and Subnets.</p>
                                 </div>
                                 <div class="log-entry">
                                     <span
-                                        style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-01</span>
+                                        style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-02</span>
                                     <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
-                                        Implementation of Auto Scaling group and final testing under simulated load.</p>
+                                        Configuration & Testing: Finalized security groups and verified
+                                        high-availability routing.</p>
+                                </div>
+                                <div class="log-entry">
+                                    <span
+                                        style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-03</span>
+                                    <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                        Documentation: Captured project screenshots and recorded video demonstration.
+                                    </p>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Next Steps Accordion -->
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
+                            <details style="cursor: pointer;">
+                                <summary
+                                    style="list-style: none; display: flex; align-items: center; gap: 0.5rem; color: var(--color-accent); font-weight: 600; font-size: 1.1rem;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                    Technical Roadmap & Completed Tasks
+                                </summary>
+                                <div
+                                    style="margin-top: 1rem; padding-left: 1.5rem; border-left: 2px solid var(--color-accent);">
+                                    <ul
+                                        style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--color-text-gray); font-size: 0.95rem;">
+                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <span style="color: var(--color-accent);">✓</span> Architecture Diagram
+                                            Design
+                                        </li>
+                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <span style="color: var(--color-accent);">✓</span> VPC & Subnet
+                                            Implementation
+                                        </li>
+                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <span style="color: var(--color-accent);">✓</span> Application Load Balancer
+                                            Setup
+                                        </li>
+                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <span style="color: var(--color-accent);">✓</span> Target Groups & Health
+                                            Checks
+                                        </li>
+                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <span style="color: var(--color-accent);">✓</span> Security Group
+                                            Orchestration
+                                        </li>
+                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <span style="color: var(--color-accent);">✓</span> GitHub Repository
+                                            Publication
+                                        </li>
+                                    </ul>
+                                </div>
+                            </details>
                         </div>
 
                         <div class="artifact-box"
