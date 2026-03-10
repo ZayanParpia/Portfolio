@@ -1,0 +1,51 @@
+Bastion EC2
+This screenshot shows the creation of the Ubuntu bastion host
+
+
+
+Bastion Flow Log
+This screenshot shows the creation of the bastion flow logs
+
+
+Bastion IAM User
+This screenshot shows the IAM user role for the SSM Bastian Access has access to SSM and a special role for SSM Bastion Access
+
+
+Bastion SSM Policy
+This screenshot shows the policy for SSM Bastion access that is attached to the Bastian IM user
+
+
+Bastion VPC
+This screenshot shows the creation of the Bastion Lab VPC for this project
+
+
+CloudWatch
+This screenshot shows the creation of the CloudWatch configurations. It is attached to the Flow logs
+
+
+IG
+This screenshot shows the creation of the internet gateway for the Bastion host
+
+Logs
+This screenshot shows the log events for the VPC Flow Log.
+
+
+Private EC2
+This screenshot shows the configuration and creation of the private server.
+
+
+Private Subnet
+This screenshot shows the creation and configuration of the private subnet that the private EC2 instance is running on.
+
+
+Public Routing Table
+This screenshot shows the public routing table for the Bastion host to access the internet.
+
+
+Public Subnet
+This screenshot shows the creation and configuration of the public subnet for the Bastion host.
+
+
+
+EC2SSMROLE
+This screenshot shows the policies EC2 SSM role creation. 

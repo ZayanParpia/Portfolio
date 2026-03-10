@@ -30,15 +30,28 @@ _________________________
 NEXT STEPS FOR 2026-02-22
 _________________________
 
--Test to make sure IAM and SSM are properly working 
--Attach the Monitoring Systems
--Polish Documentation 
--Edit Diagram To Make some Polishes 
--Upload Logs to portfolio 
--Polish Outline 
--Polish Prompt
--Fill in README.md
--Upload to GITHUB
+-Test to make sure IAM and SSM are properly working ✅ 
+-Attach the Monitoring Systems ✅
+VPC flow logs ✅
+CloudWatch ✅
+CloudTrail ✅
+Cloud Guard  ✅
+-Edit Diagram To Make some Polishes ✅
+-Collect Screenshots ✅
+
+NEXT STEPS FOR 2026-03-07
+_________________________
+
+-Blur Important Information on Screenshots ✅
+-Explain Screenshots ✅
+-Create video of demonstration ✅
+-Polish Documentation ✅
+-Upload to portfolio  ✅
+-Polish Outline ✅
+-Polish Prompt ✅
+-Fill in README.md ✅
+-Upload to GITHUB ✅
+
 
 
 

@@ -1495,6 +1495,9 @@ pre {
 .zoom-img {
   cursor: pointer;
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .zoom-img:hover {

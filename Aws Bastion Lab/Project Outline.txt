@@ -1,7 +1,107 @@
-AWS-Native Virtual Home Cybersecurity Lab
+This Project Demonstrates a secure VPC-based network design on Amazon Web Services
 
-Project Description (First-Person)
 
-For this project, I will build a fully AWS-native, cloud-hosted virtual home lab to simulate real-world cybersecurity scenarios. I will design a VPC with public and private subnets, deploy EC2 instances as attacker and target machines, and configure Security Groups and NACLs to control traffic. I will enable VPC Flow Logs, CloudTrail, and CloudWatch to monitor activity, and use GuardDuty and Inspector to detect suspicious behavior and vulnerabilities.
+Table of contents
 
-This lab will allow me to safely practice attacks on vulnerable targets, test firewall rules and routing, and respond to simulated incidents. By the end, I will have a hands-on understanding of cloud network security, monitoring, and incident response—all using AWS-native tools. 
+Project overview
+
+What each component does (simple explanations)
+
+Logging & monitoring — what they do and why they matter
+
+Files in this repo (including where the diagram and screenshots live)
+
+Notes, assumptions, and next steps
+
+License
+
+1. Project overview
+
+This project demonstrates a secure AWS network using a single VPC with public and private subnets. A bastion host in the public subnet provides a controlled administrative entry point. Private servers and databases stay inside private subnets so they are not directly reachable from the internet. Access is handled with IAM + AWS Systems Manager (SSM) and activity is monitored using VPC Flow Logs, CloudTrail, CloudWatch, and GuardDuty.
+
+Goal: reduce attack surface while keeping administration and monitoring practical.
+
+2. What each component does
+
+Below are the architecture parts and a short, plain-English description of what each part does, and what it prevents or enables.
+
+VPC (Virtual Private Cloud)
+What it does: creates an isolated virtual network for all project resources.
+Prevents/Enables: prevents resources from being on the public internet by default; enables controlled internal networking and addressing.
+
+Public subnet(s)
+What it does: holds resources that must be reachable from the internet (for example, the bastion).
+Prevents/Enables: enables limited public access for specific hosts; prevents accidental public exposure of everything else by isolating only the required resources.
+
+Private subnet(s)
+What it does: contains internal-only servers and databases with no direct inbound internet route.
+Prevents/Enables: prevents direct external access to sensitive systems; enables secure backend communication between services.
+
+Internet Gateway (IGW)
+What it does: provides the VPC with a path to the public internet for resources in public subnets.
+Prevents/Enables: enables inbound/outbound internet traffic for public resources; prevents private subnet instances from receiving direct inbound internet connections when not routed to the IGW.
+
+Bastion host (Ubuntu)
+What it does: acts as a single, hardened jump server in the public subnet that admins use to reach internal systems.
+Prevents/Enables: prevents having many public-facing management endpoints; enables controlled, auditable administrative access to internal resources.
+
+NAT Gateway (optional)
+What it does: gives private instances a safe way to initiate outbound internet traffic (for updates, patches) without being publicly reachable.
+Prevents/Enables: prevents direct inbound connections to private instances while enabling outbound-only access to the internet.
+
+Security Groups (instance-level firewalls)
+What they do: define which traffic is allowed to reach each instance (by port, protocol, and source).
+Prevents/Enables: prevents unwanted network access to instances; enables least-privilege networking rules (only open required ports).
+
+Network ACLs (subnet-level controls)
+What they do: provide an extra layer of allow/deny rules at the subnet level.
+Prevents/Enables: prevents broad classes of traffic from entering or leaving subnets; enables an additional safety boundary beyond security groups.
+
+IAM Roles & Policies
+What they do: attach permissions to users and instances so actions are controlled by identity, not by shared keys.
+Prevents/Enables: prevents uncontrolled or orphaned credentials; enables fine-grained access control and easier auditing.
+
+AWS Systems Manager (SSM / Session Manager)
+What it does: provides identity-based interactive access to instances without needing SSH keys.
+Prevents/Enables: prevents widespread SSH key sprawl and reduces risk from leaked keys; enables centralized, auditable access with IAM.
+
+VPC Flow Logs
+What they do: capture and store information about the IP traffic going to and from network interfaces in the VPC.
+Prevents/Enables: prevents blind spots in network visibility; enables forensic analysis and troubleshooting of network traffic.
+
+AWS CloudTrail
+What it does: records API calls and management events across the AWS account.
+Prevents/Enables: prevents invisible changes to infrastructure; enables tracking of who did what and when.
+
+Amazon CloudWatch
+What it does: collects metrics, logs, and lets you create alarms (CPU, failed login counts, custom metrics).
+Prevents/Enables: prevents missing operational issues; enables alerts and automated responses to unusual behavior.
+
+AWS GuardDuty
+What it does: analyzes AWS logs and network data to detect threats and suspicious activity.
+Prevents/Enables: prevents slow detection of compromise; enables near-real-time threat detection and prioritized findings.
+
+3. Logging & monitoring — what they do and why they matter
+
+Why logging matters: Logs and metrics give you a history of activity. They let you detect attacks, prove what happened during an incident, and meet auditing requirements.
+
+What to collect: VPC Flow Logs for network visibility, CloudTrail for API activity, CloudWatch for operational metrics and alarms, and GuardDuty for threat detection.
+
+How that helps: Together these services give layered visibility — network flows, control-plane actions, instance metrics, and threat signals — so you can spot suspicious behavior faster.
+
+4. Files in this repo
+
+README.md                <- (this file)
+infrastructure/
+  ├─ Diagram.png         <- architecture diagram for the project (see this file for visual layout)
+  └─ (optional IaC templates)
+screenshots/             <- screenshots of console pages and demo sessions
+  ├─ vpc-setup.png
+  ├─ bastion-ssm-session.png
+  └─ cloudtrail-log-view.png
+Explanation.txt          <- line-by-line explanations for each screenshot in /screenshots
+playbook.md              <- optional runbook for common admin tasks
+LICENSE                  <- license for the repo (add one if publishing)
+
+
+Note: The architecture diagram file is located at infrastructure/Diagram.png. Screenshots live in screenshots/ and each screenshot is explained in Explanation.txt.
