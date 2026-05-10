@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS Auto Scaling Group - Zayan Parpia</title>
+  <meta name="description"
+    content="A production-ready AWS Auto Scaling Group architecture with ALB, CloudWatch, IAM least-privilege, and SSM Session Manager.">
+  <meta name="author" content="Zayan Parpia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="experience.html" class="nav-link">Experience</a></li>
+        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section" style="padding-top:120px;padding-bottom:40px;">
+    <div class="container">
+      <div class="project-detail-header">
+        <h1 class="section-title">AWS Auto Scaling Group</h1>
+        <a href="projects.html" class="back-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width:20px;height:20px;">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Back to Projects
+        </a>
+        <div class="project-meta-top">
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <p class="project-date" style="margin:0;font-style:italic;color:var(--color-text-gray);">May 6, 2026</p>
+            <a href="https://github.com/ZayanParpia/Auto-Scaling-Project" target="_blank" class="github-link"
+              title="View on GitHub"
+              style="color:var(--color-text-light);transition:all 0.3s ease;display:flex;align-items:center;">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="project-content-wrapper fade-in">
+
+        <!-- VISUALS COLUMN -->
+        <div class="project-visuals">
+
+          <!-- Architecture Diagram -->
+          <div class="screenshot-item">
+            <div class="screenshot-meta">
+              <h4>Architecture Overview</h4>
+              <p>End-to-end AWS architecture showing Route 53, ACM, ALB, Auto Scaling Group, private subnets across two
+                AZs, CloudWatch, IAM, SSM, S3, and CloudFront.</p>
+            </div>
+            <img src="AWS Autoscaling Project/Infastructure/AutoScaling Diagram.png"
+              alt="AWS Auto Scaling Architecture Diagram" class="main-image zoom-img">
+          </div>
+
+          <!-- Video Demo 1 -->
+          <div class="artifact-box"
+            style="background:var(--color-bg-card);padding:var(--spacing-sm);border-radius:var(--radius-md);border:1px solid var(--glass-border);margin-bottom:var(--spacing-md);">
+            <h4 style="color:var(--color-accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" width="20" height="20">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+              Video Demo 1 — Auto Scaling in Action
+            </h4>
+            <p style="color:var(--color-text-gray);font-size:0.9rem;margin-bottom:0.75rem;">A full walkthrough of the
+              Auto Scaling Group triggering scale-out and scale-in events based on CPU load. Shows the stress test,
+              CloudWatch alarms firing, and new instances being launched automatically.</p>
+            <video controls style="width:100%;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+              <source src="AWS Autoscaling Project/Video Demo/Auto-Scaling.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Video Demo 2 -->
+          <div class="artifact-box"
+            style="background:var(--color-bg-card);padding:var(--spacing-sm);border-radius:var(--radius-md);border:1px solid var(--glass-border);margin-bottom:var(--spacing-md);">
+            <h4 style="color:var(--color-accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" width="20" height="20">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+              Video Demo 2 — Load Balancer Traffic Distribution
+            </h4>
+            <p style="color:var(--color-text-gray);font-size:0.9rem;margin-bottom:0.75rem;">Demonstrates the Application
+              Load Balancer distributing HTTP requests across multiple EC2 instances in different Availability Zones,
+              confirming high availability and even traffic spread.</p>
+            <video controls style="width:100%;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+              <source src="AWS Autoscaling Project/Video Demo/Load_Balancer.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Screenshot Gallery -->
+          <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>VPC Configuration</h4>
+                <p>Custom VPC created for the project, isolating all resources within a private network boundary.</p>
+              </div>
+              <img src="AWS Autoscaling Project/Screenshots/VPC.png" alt="VPC Configuration"
+                class="main-image zoom-img">
+            </div>
+
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Internet Gateway</h4>
+                <p>Internet Gateway attached to the VPC, enabling the ALB in public subnets to receive inbound traffic
+                  from the internet.</p>
+              </div>
+              <img src="AWS Autoscaling Project/Screenshots/IGW.png" alt="Internet Gateway" class="main-image zoom-img">
+            </div>
+
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Routing Table</h4>
+                <p>Route table configured to direct internet-bound traffic through the Internet Gateway while keeping
+                  EC2 instances isolated in private subnets.</p>
+              </div>
+              <img src="AWS Autoscaling Project/Screenshots/Routing Table.png" alt="Routing Table"
+                class="main-image zoom-img">
+            </div>
+
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Subnets — AZ1 &amp; AZ2</h4>
+                <p>Two public subnets in separate Availability Zones host the ALB for high availability. EC2 instances
+                  are deployed into private subnets to reduce exposure.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <img src="AWS Autoscaling Project/Screenshots/Subnet AZ 1.png" alt="Subnet AZ 1"
+                  class="main-image zoom-img">
+                <img src="AWS Autoscaling Project/Screenshots/Subnet AZ 2.png" alt="Subnet AZ 2"
+                  class="main-image zoom-img">
+              </div>
+            </div>
+
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Application Load Balancer (ALB)</h4>
+                <p>Active ALB spanning both Availability Zones, performing health checks and distributing traffic only
+                  to healthy EC2 targets registered in the Target Group.</p>
+              </div>
+              <img src="AWS Autoscaling Project/Screenshots/ALB.png" alt="Application Load Balancer"
+                class="main-image zoom-img">
+            </div>
+
+          </div>
+        </div>
+
+        <!-- INFO COLUMN -->
+        <div class="project-info">
+          <h3>Project Overview</h3>
+          <p style="margin-bottom:var(--spacing-sm);">This project demonstrates a <strong>production-ready AWS
+              architecture</strong> built around an EC2 Auto Scaling Group (ASG). The goal was to handle changing
+            traffic automatically, maintain high availability across multiple Availability Zones, and apply real-world
+            cloud security best practices at every layer.</p>
+          <p style="margin-bottom:var(--spacing-sm);">Users connect via <strong>Route 53</strong> DNS and <strong>HTTPS
+              (ACM)</strong>, traffic is distributed by an <strong>Application Load Balancer</strong>, and EC2 instances
+            run inside <strong>private subnets</strong>. Access is managed through <strong>IAM least-privilege
+              roles</strong> and <strong>SSM Session Manager</strong> — no SSH ports exposed. The ASG was configured
+            with a <strong>minimum of 1</strong> and a <strong>maximum of 2 EC2 instances</strong>, ensuring the app
+            stays online at all times while capping costs during scaling events.</p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">AWS Resources Used</h4>
+          <ul class="feature-list"
+            style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">VPC &amp; Private Subnets</p>
+              </div>
+            </li>
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">Internet Gateway</p>
+              </div>
+            </li>
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">Application Load Balancer</p>
+              </div>
+            </li>
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">Auto Scaling Group + EC2</p>
+              </div>
+            </li>
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">CloudWatch &amp; Alarms</p>
+              </div>
+            </li>
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">IAM (Least Privilege)</p>
+              </div>
+            </li>
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">SSM Session Manager</p>
+              </div>
+            </li>
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">Route 53 + ACM + S3</p>
+              </div>
+            </li>
+          </ul>
+
+          <!-- ASG Config Callout -->
+          <div
+            style="display:flex;gap:1rem;margin-top:var(--spacing-md);padding:1rem 1.25rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-sm);">
+            <div style="text-align:center;flex:1;border-right:1px solid var(--glass-border);padding-right:1rem;">
+              <p
+                style="font-size:0.75rem;color:var(--color-text-gray);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem;">
+                Min Instances</p>
+              <p style="font-size:1.8rem;font-weight:700;color:var(--color-accent);margin:0;">1</p>
+            </div>
+            <div style="text-align:center;flex:1;border-right:1px solid var(--glass-border);padding:0 1rem;">
+              <p
+                style="font-size:0.75rem;color:var(--color-text-gray);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem;">
+                Max Instances</p>
+              <p style="font-size:1.8rem;font-weight:700;color:var(--color-accent);margin:0;">2</p>
+            </div>
+            <div style="text-align:center;flex:1;padding-left:1rem;">
+              <p
+                style="font-size:0.75rem;color:var(--color-text-gray);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem;">
+                Trigger</p>
+              <p style="font-size:1rem;font-weight:600;color:var(--color-text-light);margin:0;">CPU Alarm</p>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--spacing-lg);">
+
+            <!-- Project Outline -->
+            <div class="artifact-box"
+              style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4
+                style="margin-bottom:1rem;color:var(--color-accent);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Project Outline
+              </h4>
+              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;">"In this project, I built a
+                secure and scalable AWS web architecture centered around an EC2 Auto Scaling Group. My objective was to
+                handle changing traffic automatically, maintain high availability, and apply real-world cloud security
+                best practices. The ALB distributes incoming requests across EC2 instances in private subnets,
+                CloudWatch monitors CPU metrics and triggers alarms to scale, and all access is controlled via custom
+                IAM roles with strict least privilege. SSM Session Manager eliminates the need for open SSH ports
+                entirely."</p>
+            </div>
+
+            <!-- Logs -->
+            <div class="artifact-box"
+              style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4
+                style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+                Project Milestones &amp; Logs
+              </h4>
+              <div class="log-container" style="display:flex;flex-direction:column;gap:1rem;">
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-04-27</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Created custom IAM role
+                    with least-privilege permissions for EC2, Auto Scaling, VPC, ALB, and IAM PassRole. Initialized
+                    GitHub repository.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-04-28</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Created VPC, Security
+                    Groups, Internet Gateway, Application Load Balancer, and Target Group. Refined IAM policy.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-04-29</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Created Launch Template,
+                    configured working ALB, and deployed the Auto Scaling Group.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-04-30</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">✅ Tested Auto Scaling —
+                    verified scale-out and scale-in. ✅ Configured SSM Session Manager for secure instance access. Added
+                    CloudWatch alarms.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-01 —
+                    2026-05-04</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Architecture review,
+                    diagram updates, and infrastructure refinement sessions.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-05</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">✅ Collected all
+                    screenshots and videos. ✅ Edited video demos and created script for walkthrough.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-06</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">✅ Edited screenshots
+                    (blurred private info). ✅ Wrote screenshot explanations. Finalized project documentation.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Progress & Next Steps -->
+            <div class="artifact-box"
+              style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <details style="cursor:pointer;">
+                <summary
+                  style="list-style:none;display:flex;align-items:center;gap:0.5rem;color:var(--color-accent);font-weight:600;font-size:1.1rem;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" width="20" height="20">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                  Progress &amp; Completed Tasks
+                </summary>
+                <div style="margin-top:1rem;padding-left:1.5rem;border-left:2px solid var(--color-accent);">
+                  <ul
+                    style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;color:var(--color-text-gray);font-size:0.95rem;">
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> Custom IAM Role with Least Privilege</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> VPC, Subnets, IGW &amp; Route Tables</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> Application Load Balancer &amp; Target Group</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> Launch Template &amp; Auto Scaling Group</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> Auto Scaling Test (Scale-Out &amp; Scale-In)</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> SSM Session Manager (No SSH)</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> CloudWatch Monitoring &amp; Alarms</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> Architecture Diagram Updated</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> Screenshots &amp; Video Demos Collected</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> Portfolio Page Published</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                        style="color:var(--color-accent);">✓</span> GitHub Repository Published</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <!-- Key Learnings -->
+            <div class="artifact-box"
+              style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid var(--glass-border);">
+              <h5 style="margin-bottom:0.5rem;color:var(--color-text-light);font-size:1.1rem;">Key Learnings</h5>
+              <ul
+                style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;">
+                <li><strong>Scalability &amp; Resilience:</strong> Auto Scaling is not just about performance — it is a
+                  resilience mechanism that keeps services alive during failures.</li>
+                <li><strong>Defense-in-Depth:</strong> Security must be designed at every layer: HTTPS enforcement,
+                  private subnets, security groups, IAM, and no exposed SSH ports.</li>
+                <li><strong>Least Privilege IAM:</strong> Writing a scoped IAM policy from scratch reinforced why broad
+                  permissions are dangerous in production environments.</li>
+                <li><strong>CLI Automation:</strong> Using the AWS CLI for setup made the workflow faster, consistent,
+                  and reproducible — closer to how cloud engineers work professionally.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Zayan Parpia. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function reveal() { var r = document.querySelectorAll(".fade-in"); for (var i = 0; i < r.length; i++) { var wh = window.innerHeight, et = r[i].getBoundingClientRect().top; if (et < wh - 150) r[i].classList.add("visible"); } }
+    window.addEventListener("scroll", reveal); reveal();
+    const nb = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { nb.classList.toggle('scrolled', window.scrollY > 50); });
+    document.querySelectorAll('.zoom-img').forEach(img => { img.addEventListener('click', function () { this.classList.toggle('zoomed'); if (this.classList.contains('zoomed')) { const ov = document.createElement('div'); ov.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.9);z-index:9999;display:flex;align-items:center;justify-content:center;'; ov.onclick = () => document.body.removeChild(ov); const ic = document.createElement('img'); ic.src = this.src; ic.style.cssText = 'max-width:90%;max-height:90%;border-radius:var(--radius-md);'; ov.appendChild(ic); document.body.appendChild(ov); } }); });
+    const mt = document.getElementById('menu-toggle'), nl = document.getElementById('nav-links');
+    mt.addEventListener('click', () => { nl.classList.toggle('active'); mt.classList.toggle('active'); });
+  </script>
+</body>
+
+</html>
