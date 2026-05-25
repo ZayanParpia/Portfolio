@@ -19,7 +19,105 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Stylesheet Custom Sidebar Overrides -->
+    <style>
+        /* ===== CLICK FLASH ANIMATION ===== */
+        @keyframes flash-teal {
+            0%   { color: var(--color-text-gray); background: transparent; }
+            20%  { color: #fff; background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.25); box-shadow: 0 0 12px rgba(var(--color-accent-rgb, 0, 210, 190), 0.4); }
+            60%  { color: var(--color-accent); background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.12); }
+            100% { color: var(--color-accent); background: rgba(255,255,255,0.03); }
+        }
+        .sidebar-item-flash {
+            animation: flash-teal 0.6s ease forwards;
+        }
 
+        /* ===== PROJECT CARD HIGHLIGHT ===== */
+        @keyframes highlight-card {
+            0%   { box-shadow: 0 0 0 0 transparent; border-color: rgba(var(--color-accent-rgb, 0, 210, 190), 0.2); }
+            10%  { box-shadow: 0 0 0 4px var(--color-accent); border-color: var(--color-accent); }
+            90%  { box-shadow: 0 0 0 4px var(--color-accent); border-color: var(--color-accent); }
+            100% { box-shadow: 0 0 0 0 transparent; border-color: var(--glass-border); }
+        }
+        .project-card-highlight {
+            animation: highlight-card 1.7s ease forwards !important;
+        }
+
+        /* ===== SIDEBAR ITEMS ===== */
+        .sidebar-item {
+            padding: 0.55rem 1.2rem;
+            color: var(--color-text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            border-left: 3px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
+            font-size: 0.95rem;
+            border-radius: 0 6px 6px 0;
+        }
+        .sidebar-category {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 0.6rem;
+        }
+        .sidebar-project {
+            font-weight: 500;
+            font-size: 0.88rem;
+            padding-left: 2rem !important;
+            opacity: 0.8;
+        }
+        .sidebar-item:hover {
+            color: var(--color-text-light);
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .sidebar-item.active {
+            color: var(--color-accent) !important;
+            border-left-color: var(--color-accent) !important;
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 600 !important;
+            opacity: 1 !important;
+        }
+        .sidebar-category.active {
+            font-weight: 700 !important;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 990px) {
+            .project-layout-wrapper {
+                flex-direction: column;
+            }
+            .project-sidebar {
+                width: 100% !important;
+                position: relative !important;
+                top: 0 !important;
+                margin-left: 0 !important;
+                margin-bottom: 2rem;
+                padding: 1.25rem !important;
+            }
+            .sidebar-nav {
+                flex-direction: row !important;
+                flex-wrap: wrap;
+                gap: 0.5rem !important;
+            }
+            .sidebar-item {
+                border-left: none !important;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.05) !important;
+                padding: 0.5rem 1rem !important;
+                font-size: 0.9rem !important;
+            }
+            .sidebar-project {
+                display: none !important;
+            }
+            .sidebar-slider-indicator {
+                display: none !important;
+            }
+            .sidebar-item.active {
+                border-bottom-color: var(--color-accent) !important;
+                border-left-color: transparent !important;
+                background: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -47,34 +145,121 @@
     </nav>
 
     <!-- ===== HEADER ===== -->
-    <section class="section" style="padding-top: 120px; padding-bottom: 40px;">
+    <section class="section" style="padding-top: 120px; padding-bottom: 20px; text-align: center;">
         <div class="container">
-            <h1 class="section-title fade-in">My Projects</h1>
+            <h1 class="section-title fade-in" style="margin-bottom: 1rem;">My Projects</h1>
+            <!-- Scroll Indicator Arrow -->
+            <div class="fade-in" style="display: inline-block; cursor: pointer; animation: bounce-down 2s infinite; margin-top: 1rem;" onclick="window.scrollBy({top: 500, behavior: 'smooth'})">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </div>
         </div>
     </section>
 
     <!-- ===== PROJECTS LIST ===== -->
     <section class="section" style="padding-top: 0;">
-        <div class="container">
+        <div class="container project-layout-wrapper" style="display: flex; gap: var(--spacing-lg); align-items: flex-start; max-width: 1400px; margin: 0 auto; padding: 0 var(--spacing-md);">
+            
+            <!-- LEFT SIDEBAR / SECTION SLIDER -->
+            <aside class="project-sidebar" style="width: 320px; position: sticky; top: 120px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; z-index: 10; margin-bottom: 2rem; margin-left: -60px; max-height: calc(100vh - 140px); overflow-y: auto;">
+                <h3 style="font-size: 1.15rem; color: var(--color-accent); font-weight: 700; margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.06em; text-align: left;">Outline</h3>
+                <nav class="sidebar-nav" style="display: flex; flex-direction: column; gap: 0.3rem; position: relative;">
+                    <!-- Sliding active indicator line on the left -->
+                    <div class="sidebar-slider-indicator" style="position: absolute; left: 0; width: 3px; height: 38px; background: var(--color-accent); border-radius: 4px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: translateY(0);"></div>
+                    
+                    <!-- Home Lab Category -->
+                    <a href="#home-lab" class="sidebar-item sidebar-category active" onclick="scrollToCategory(event, 'home-lab', this)">Home Lab Projects</a>
+                    <a href="#card-siem" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-siem', this)">Home SIEM Lab</a>
+                    
+                    <!-- Cloud Projects Category -->
+                    <a href="#cloud-projects" class="sidebar-item sidebar-category" onclick="scrollToCategory(event, 'cloud-projects', this)">Cloud Projects</a>
+                    <a href="#card-autoscaling" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-autoscaling', this)">AWS Auto Scaling Group</a>
+                    <a href="#card-loadbalancer" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-loadbalancer', this)">Application Load Balancer</a>
+                    <a href="#card-bastion" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-bastion', this)">AWS Bastion Lab</a>
+                    <a href="#card-subnetting" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-subnetting', this)">Subnetting Playground</a>
+                    <a href="#card-backup" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-backup', this)">Automatic Backup System</a>
+                    
+                    <!-- App Dev Category -->
+                    <a href="#app-dev" class="sidebar-item sidebar-category" onclick="scrollToCategory(event, 'app-dev', this)">App Development</a>
+                    <a href="#card-obstrue" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-obstrue', this)">Obstrue</a>
+                </nav>
+            </aside>
+            
+            <!-- RIGHT CONTENT AREA -->
+            <div class="project-content-main" style="flex: 1; display: flex; flex-direction: column; gap: var(--spacing-xl); width: 100%;">
+
+            <!-- HOME LAB PROJECTS -->
+            <div class="project-category fade-in" id="home-lab">
+                <h2 class="category-title">Home Lab Projects</h2>
+                <div class="projects-grid">
+
+                    <!-- HOME SIEM LAB CARD -->
+                    <a href="siem-project.html" class="project-card" id="card-siem">
+                        <div class="card-image-wrapper">
+                            <img src="SIEM Project V1/Infrastructure/Diagrams/DIAGRAM v1.png" alt="Home SIEM Lab Diagram">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title" style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+                                Home SIEM Lab
+                                <span onclick="event.preventDefault(); event.stopPropagation(); window.open('https://github.com/ZayanParpia/Home-Lab-SIEM-Project', '_blank');" class="card-github-link" title="View on GitHub" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-light)'" style="color: var(--color-text-light); transition: color 0.3s ease; display: inline-flex; align-items: center; cursor: pointer;">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                </span>
+                            </h3>
+                            <p class="card-date">May 18, 2026</p>
+                            <div>
+                                <p class="card-description" id="siem-desc" style="margin-bottom: 0.5rem;">
+                                    A hands-on cybersecurity home lab focused on Security Information and Event Management (SIEM), endpoint monitoring, log analysis, and SOC workflows. This lab also features active simulation of attacks, configuration of Sysmon & Auditd telemetry, and comprehensive threat hunting strategies.
+                                </p>
+                                <span onclick="event.preventDefault(); document.getElementById('siem-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('siem-desc').classList.contains('expanded') ? '▲ Less' : '▼ More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                                    ▼ More
+                                </span>
+                            </div>
+                            <div class="card-tags">
+                                <span class="tiny-tag">SIEM</span>
+                                <span class="tiny-tag">Wazuh</span>
+                                <span class="tiny-tag">Sysmon</span>
+                                <span class="tiny-tag">SOC</span>
+                                <span class="tiny-tag">Linux</span>
+                            </div>
+                            <div class="card-action">
+                                View Project
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
 
             <!-- CLOUD PROJECTS -->
-            <div class="project-category fade-in">
+            <div class="project-category fade-in" id="cloud-projects">
                 <h2 class="category-title">Cloud Projects</h2>
                 <div class="projects-grid">
 
                     <!-- AWS AUTO SCALING GROUP CARD -->
-                    <a href="aws-autoscaling.html" class="project-card">
+                    <a href="aws-autoscaling.html" class="project-card" id="card-autoscaling">
                         <div class="card-image-wrapper">
                             <img src="AWS Autoscaling Project/Infastructure/AutoScaling Diagram.png" alt="AWS Auto Scaling Architecture Diagram">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">AWS Auto Scaling Group</h3>
                             <p class="card-date">May 6, 2026</p>
-                            <p class="card-description">
-                                A production-ready AWS architecture featuring an EC2 Auto Scaling Group behind an
-                                Application Load Balancer. Implements defense-in-depth security with private subnets,
-                                IAM least-privilege, SSM Session Manager, and CloudWatch monitoring.
-                            </p>
+                            <div>
+                                <p class="card-description" id="autoscaling-desc" style="margin-bottom: 0.5rem;">
+                                    A production-ready AWS architecture featuring an EC2 Auto Scaling Group behind an
+                                    Application Load Balancer. Implements defense-in-depth security with private subnets,
+                                    IAM least-privilege, SSM Session Manager, and CloudWatch monitoring.
+                                </p>
+                                <span onclick="event.preventDefault(); document.getElementById('autoscaling-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('autoscaling-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
+                            </div>
                             <div class="card-tags">
                                 <span class="tiny-tag">Auto Scaling</span>
                                 <span class="tiny-tag">AWS ALB</span>
@@ -95,18 +280,21 @@
                     </a>
 
                     <!-- APPLICATION LOAD BALANCER CARD -->
-                    <a href="load-balancer.html" class="project-card">
+                    <a href="load-balancer.html" class="project-card" id="card-loadbalancer">
                         <div class="card-image-wrapper">
                             <img src="Load Balancer/diagram.png" alt="Application Load Balancer Diagram">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">Application Load Balancer</h3>
                             <p class="card-date">March 1, 2026</p>
-                            <p class="card-description">
-                                A high-availability setup using an AWS Application Load Balancer (ALB) to distribute
-                                traffic across multiple EC2 instances in different Availability Zones.
-                                Features Auto Scaling and comprehensive health monitoring.
-                            </p>
+                            <div>
+                                <p class="card-description" id="alb-desc" style="margin-bottom: 0.5rem;">
+                                    A high-availability setup using an AWS Application Load Balancer (ALB) to distribute
+                                    traffic across multiple EC2 instances in different Availability Zones.
+                                    Features Auto Scaling and comprehensive health monitoring.
+                                </p>
+                                <span onclick="event.preventDefault(); document.getElementById('alb-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('alb-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
+                            </div>
                             <div class="card-tags">
                                 <span class="tiny-tag">AWS ALB</span>
                                 <span class="tiny-tag">Auto Scaling</span>
@@ -125,19 +313,22 @@
                     </a>
 
                     <!-- AWS BASTION LAB CARD -->
-                    <a href="aws-bastion-lab.html" class="project-card">
+                    <a href="aws-bastion-lab.html" class="project-card" id="card-bastion">
                         <div class="card-image-wrapper">
                             <img src="AWS-BASTION-LAB/Diagram.png" alt="AWS Bastion Lab Diagram">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">AWS Bastion Lab</h3>
                             <p class="card-date">February 21, 2026</p>
-                            <p class="card-description">
-                                A secure AWS-native lab featuring a Bastion host (Jump Box) for accessing private
-                                subnets.
-                                Enforces IAM and SSM-only logins for servers, creating a robust zero-trust access model
-                                for cloud infrastructure.
-                            </p>
+                            <div>
+                                <p class="card-description" id="bastion-desc" style="margin-bottom: 0.5rem;">
+                                    A secure AWS-native lab featuring a Bastion host (Jump Box) for accessing private
+                                    subnets.
+                                    Enforces IAM and SSM-only logins for servers, creating a robust zero-trust access model
+                                    for cloud infrastructure.
+                                </p>
+                                <span onclick="event.preventDefault(); document.getElementById('bastion-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('bastion-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
+                            </div>
                             <div class="card-tags">
                                 <span class="tiny-tag">AWS VPC</span>
                                 <span class="tiny-tag">Bastion Host</span>
@@ -161,18 +352,21 @@
 
 
                     <!-- CLOUD VM SUBNETTING PLAYGROUND CARD -->
-                    <a href="cloud-vm-subnetting.html" class="project-card">
+                    <a href="cloud-vm-subnetting.html" class="project-card" id="card-subnetting">
                         <div class="card-image-wrapper">
                             <img src="Subnet-Project/Subnet Diagram.png" alt="Cloud VM Subnetting Diagram">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">Cloud VM Subnetting Playground</h3>
                             <p class="card-date">January 6, 2026</p>
-                            <p class="card-description">
-                                A hands-on environment building a secure AWS network infrastructure to master subnets,
-                                routing, and access controls.
-                                Features custom VPC design, secure EC2 deployment, and encrypted traffic monitoring.
-                            </p>
+                            <div>
+                                <p class="card-description" id="subnetting-desc" style="margin-bottom: 0.5rem;">
+                                    A hands-on environment building a secure AWS network infrastructure to master subnets,
+                                    routing, and access controls.
+                                    Features custom VPC design, secure EC2 deployment, and encrypted traffic monitoring.
+                                </p>
+                                <span onclick="event.preventDefault(); document.getElementById('subnetting-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('subnetting-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
+                            </div>
                             <div class="card-tags">
                                 <span class="tiny-tag">AWS VPC</span>
                                 <span class="tiny-tag">Subnets</span>
@@ -190,18 +384,21 @@
                     </a>
 
                     <!-- AUTOMATIC BACKUP SYSTEM CARD -->
-                    <a href="automatic-backup-system.html" class="project-card">
+                    <a href="automatic-backup-system.html" class="project-card" id="card-backup">
                         <div class="card-image-wrapper">
                             <img src="AWS-BACKUP/Diagram.png" alt="Automatic Backup System Diagram">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">Automatic Backup System</h3>
                             <p class="card-date">December 26, 2025</p>
-                            <p class="card-description">
-                                A robust, secure, and cost-effective automated backup solution leveraging AWS services
-                                like S3, KMS, and SNS.
-                                Automatically backs up drives, encrypts data, and sends status reports.
-                            </p>
+                            <div>
+                                <p class="card-description" id="backup-desc" style="margin-bottom: 0.5rem;">
+                                    A robust, secure, and cost-effective automated backup solution leveraging AWS services
+                                    like S3, KMS, and SNS.
+                                    Automatically backs up drives, encrypts data, and sends status reports.
+                                </p>
+                                <span onclick="event.preventDefault(); document.getElementById('backup-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('backup-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
+                            </div>
                             <div class="card-tags">
                                 <span class="tiny-tag">Python</span>
                                 <span class="tiny-tag">AWS S3</span>
@@ -222,23 +419,25 @@
             </div>
 
             <!-- APP DEVELOPMENT -->
-            <div class="project-category fade-in">
+            <div class="project-category fade-in" id="app-dev">
                 <h2 class="category-title">App Development</h2>
                 <div class="projects-grid">
 
                     <!-- OBSTRUE CARD -->
-                    <a href="obstrue.html" class="project-card">
+                    <a href="obstrue.html" class="project-card" id="card-obstrue">
                         <div class="card-image-wrapper">
                             <img src="Obstrue/Logo.png" alt="Obstrue App Logo">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">Obstrue</h3>
                             <p class="card-date">December 8, 2025</p>
-                            <p class="card-description">
-                                A personalized productivity app designed to master your focus by blocking distracting
-                                apps
-                                with custom, targeted pop-ups.
-                            </p>
+                            <div>
+                                <p class="card-description" id="obstrue-desc" style="margin-bottom: 0.5rem;">
+                                    A personalized productivity app designed to master your focus by blocking distracting
+                                    apps with custom, targeted pop-ups.
+                                </p>
+                                <span onclick="event.preventDefault(); document.getElementById('obstrue-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('obstrue-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
+                            </div>
                             <div class="card-tags">
                                 <span class="tiny-tag">Kotlin</span>
                                 <span class="tiny-tag">Android</span>
@@ -258,8 +457,8 @@
 
                 </div>
             </div>
-
-        </div>
+            </div> <!-- End of .project-content-main -->
+        </div> <!-- End of .container -->
     </section>
 
     <!-- ===== FOOTER ===== -->
@@ -321,6 +520,95 @@
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
+            });
+        });
+
+        // Category Sidebar Navigation and Scrolling
+        function scrollToCategory(event, id, el) {
+            event.preventDefault();
+
+            // Flash animation: remove then re-add to restart
+            if (el) {
+                el.classList.remove('sidebar-item-flash');
+                // Force reflow to restart animation
+                void el.offsetWidth;
+                el.classList.add('sidebar-item-flash');
+                // Remove flash class after animation completes
+                setTimeout(() => el.classList.remove('sidebar-item-flash'), 650);
+            }
+
+            const target = document.getElementById(id);
+            if (target) {
+                // Flash the target project card
+                target.classList.remove('project-card-highlight');
+                void target.offsetWidth; // trigger reflow
+                target.classList.add('project-card-highlight');
+                setTimeout(() => {
+                    target.classList.remove('project-card-highlight');
+                }, 1700);
+
+                const offset = 120;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = target.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.project-category');
+            const navItems = document.querySelectorAll('.sidebar-item');
+            const indicator = document.querySelector('.sidebar-slider-indicator');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-15% 0px -75% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        if (!id) return;
+
+                        navItems.forEach((item) => {
+                            const href = item.getAttribute('href');
+                            if (href === '#' + id) {
+                                item.classList.add('active');
+
+                                // Slide the indicator on desktop
+                                if (window.innerWidth > 990 && indicator) {
+                                    const itemHeight = item.offsetHeight;
+                                    const itemTop = item.offsetTop;
+                                    indicator.style.transform = `translateY(${itemTop}px)`;
+                                    indicator.style.height = `${itemHeight}px`;
+                                }
+                            } else {
+                                item.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Adjust indicator on window resize
+            window.addEventListener('resize', () => {
+                const activeItem = document.querySelector('.sidebar-item.active');
+                if (activeItem && window.innerWidth > 990 && indicator) {
+                    const itemHeight = activeItem.offsetHeight;
+                    const itemTop = activeItem.offsetTop;
+                    indicator.style.transform = `translateY(${itemTop}px)`;
+                    indicator.style.height = `${itemHeight}px`;
+                }
             });
         });
     </script>

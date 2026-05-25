@@ -62,7 +62,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -70,7 +70,7 @@ body {
   background-color: var(--color-bg-dark);
   color: var(--color-text-light);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -380,6 +380,24 @@ a:hover {
   }
 }
 
+@keyframes bounce-down {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -555,6 +573,11 @@ a:hover {
   /* Standard property */
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.card-description.expanded {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
 }
 
 /* Code Block Styling */

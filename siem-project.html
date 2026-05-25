@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home SIEM Lab - Zayan Parpia</title>
+  <meta name="description"
+    content="A hands-on cybersecurity home lab focused on Security Information and Event Management (SIEM), endpoint monitoring, log analysis, and SOC analyst workflows.">
+  <meta name="author" content="Zayan Parpia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ===== NAVIGATION BAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="experience.html" class="nav-link">Experience</a></li>
+        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HEADER ===== -->
+  <section class="section" style="padding-top:120px;padding-bottom:40px;">
+    <div class="container">
+      <div class="project-detail-header">
+        <h1 class="section-title">Home SIEM Lab</h1>
+        <a href="projects.html" class="back-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width:20px;height:20px;">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Back to Projects
+        </a>
+        <div class="project-meta-top">
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <p class="project-date" style="margin:0;font-style:italic;color:var(--color-text-gray);">May 18, 2026</p>
+            <a href="https://github.com/ZayanParpia/Home-Lab-SIEM-Project" target="_blank" class="github-link"
+              title="View on GitHub"
+              onmouseover="this.style.color='var(--color-accent)'"
+              onmouseout="this.style.color='var(--color-text-light)'"
+              style="color:var(--color-text-light);transition:all 0.3s ease;display:flex;align-items:center;">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="project-content-wrapper fade-in">
+
+        <!-- VISUALS COLUMN -->
+        <div class="project-visuals">
+
+          <!-- Architecture Diagram -->
+          <div class="screenshot-item">
+            <div class="screenshot-meta">
+              <h4>Infrastructure Overview</h4>
+              <p>Centralized network map and log pipeline layout of the Home SIEM environment, showcasing Wazuh manager architecture and endpoint forwarding.</p>
+            </div>
+            <img src="SIEM Project V1/Infrastructure/Diagrams/DIAGRAM v1.png"
+              alt="Home SIEM Architecture Diagram" class="main-image zoom-img">
+          </div>
+
+          <!-- Screenshot Gallery -->
+          <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+
+            <!-- Wazuh Dashboard & Endpoint Status -->
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Wazuh Registered Endpoint Inventory</h4>
+                <p>Real-time Wazuh dashboard overview showing the registered and active Ubuntu laptop agent, actively ingesting telemetry.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <img src="SIEM Project V1/screenshots/Ubuntu_Laptop_Overview.png" alt="Wazuh Endpoint Connected"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/Ubuntu_Laptop_Overview_2.png" alt="Wazuh Endpoint Connected Detail"
+                  class="main-image zoom-img">
+              </div>
+            </div>
+
+            <!-- Endpoint Telemetry Agents -->
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Endpoint Auditing & Telemetry Services</h4>
+                <p>Confirms that both <code>auditd</code> (host auditing) and <code>Sysmon for Linux</code> (System Monitor) are running and active on the Ubuntu endpoint, collecting detailed process and system logs.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <img src="SIEM Project V1/screenshots/auditd active on endpoint.png" alt="Auditd Active"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/Sysmon Running on endpoint.png" alt="Sysmon Active"
+                  class="main-image zoom-img">
+              </div>
+            </div>
+
+            <!-- Wazuh Agent Running and Ingested Logs -->
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Wazuh Agent & Endpoint Log Ingestion</h4>
+                <p>Confirms the Wazuh agent is active and running on the target endpoint, sending rich system logs back to the Wazuh SIEM manager dashboard.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <img src="SIEM Project V1/screenshots/Wazuh Agnet Running on Endpoint.png" alt="Wazuh Agent Service Status"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/Ubuntu Agent Logs.png" alt="Ingested Ubuntu Agent Logs"
+                  class="main-image zoom-img">
+              </div>
+            </div>
+
+            <!-- Wazuh SIEM Stack Core Services Status -->
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Wazuh Backend Services Integrity</h4>
+                <p>Systemctl validation showing all three core layers of the Wazuh SIEM stack (Manager, Indexer, and Dashboard) are running properly on the server.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:10px;">
+                <img src="SIEM Project V1/screenshots/Wazuh Manager Active.png" alt="Wazuh Manager Active"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/Wazuh Indexer Active.jpg" alt="Wazuh Indexer Active"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/Wazuh Dashboard Active.jpg" alt="Wazuh Dashboard Active"
+                  class="main-image zoom-img">
+              </div>
+            </div>
+
+            <!-- Wazuh Platform Status Details -->
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Wazuh Dashboard Interfaces</h4>
+                <p>Wazuh SIEM portal view: the secure login gate, standard dashboard explorer, and enrolled agents list.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:10px;">
+                <img src="SIEM Project V1/screenshots/Wazuh Login Page.png" alt="Wazuh Login"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/Wazuh Dashboard.png" alt="Wazuh Home"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/Wazuh Agents Section.png" alt="Wazuh Enrolled Agents"
+                  class="main-image zoom-img">
+              </div>
+            </div>
+
+            <!-- Server Hardware Specs -->
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Server Resources & Host Information</h4>
+                <p>Monitoring the hardware allocations (RAM, disk space, hostname settings) of the Wazuh server host to guarantee reliable operation.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:10px;">
+                <img src="SIEM Project V1/screenshots/Ram on Server.jpg" alt="RAM allocation"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/Available Storage on Server.jpg" alt="Disk space allocation"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/Server Host Information.png" alt="Host Information"
+                  class="main-image zoom-img">
+              </div>
+            </div>
+
+            <!-- Connectivity and Host Settings -->
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Network Routing & Connectivity Tests</h4>
+                <p>Validating host detail telemetry, target IP address allocations, and verification of network routing and ICMP ping tests between endpoint and SIEM server.</p>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:10px;">
+                <img src="SIEM Project V1/screenshots/Endpoint Information.png" alt="Endpoint System Info"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/IP of Wazuh Server.png" alt="Server IP Address"
+                  class="main-image zoom-img">
+                <img src="SIEM Project V1/screenshots/Ping Ubuntu Wazuh Server.png" alt="Ping Test Success"
+                  class="main-image zoom-img">
+              </div>
+            </div>
+
+            <!-- Video Demo -->
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Project Video Demo</h4>
+                <p>A comprehensive walkthrough demonstrating the SIEM environment, real-time log ingestion, and Wazuh dashboard capabilities.</p>
+              </div>
+              <video controls style="width: 100%; border-radius: 0.5rem; border: 1px solid var(--glass-border); display: block; background: #000;">
+                <source src="SIEM Project V1/videos/DEMO1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- INFO COLUMN -->
+        <div class="project-info">
+          <h3>Project Overview</h3>
+          <p style="margin-bottom:var(--spacing-sm);">This project is a hands-on cybersecurity home lab focused on Security Information and Event Management (SIEM), endpoint monitoring, log analysis, attack simulations, and SOC analyst workflows.</p>
+          <p style="margin-bottom:var(--spacing-sm);">It is designed to simulate real-world SOC operations while building practical blue team experience. The core of this environment involves setting up <strong>Wazuh SIEM</strong> and deploying agents to collect extensive endpoint telemetry using tools like <strong>Sysmon</strong> and <strong>Auditd</strong>.</p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Technologies & Tools</h4>
+          <ul class="feature-list"
+            style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">Linux (Ubuntu)</p>
+              </div>
+            </li>
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">Wazuh SIEM</p>
+              </div>
+            </li>
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">Sysmon for Linux</p>
+              </div>
+            </li>
+            <li class="feature-item" style="margin-bottom:0;">
+              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
+              <div class="feature-content">
+                <p style="margin:0;color:var(--color-text-light);">Auditd</p>
+              </div>
+            </li>
+          </ul>
+
+          <div style="margin-top:var(--spacing-lg);">
+
+            <!-- Project Outline -->
+            <div class="artifact-box"
+              style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4
+                style="margin-bottom:1rem;color:var(--color-accent);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Project Outline
+              </h4>
+              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;">"In this project, I built a hands-on cybersecurity home lab focused on Security Information and Event Management (SIEM), endpoint telemetry, and SOC security workflows. The core of this environment involves setting up Wazuh SIEM as our centralized manager and deploying agents to collect host logs. By installing Sysmon for Linux and auditd on an Ubuntu endpoint, I configured detailed telemetry to capture process creations, system changes, and file activity, ensuring extensive visibility for security monitoring and threat hunting."</p>
+            </div>
+
+            <!-- Logs -->
+            <div class="artifact-box"
+              style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4
+                style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+                Project Milestones &amp; Logs
+              </h4>
+              <div class="log-container" style="display:flex;flex-direction:column;gap:1rem;">
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-06</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Created the GitHub repository structure for the Home SIEM Lab project. Organized initial project directories to establish a clean and scalable foundation.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-10</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Verified system services and confirmed Wazuh components were installed and running. Identified that the current Wazuh version (4.7.5) is outdated and requires an upgrade to a supported version (4.14+).</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-11</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Troubleshot Wazuh upgrade issues for several hours. Followed the official Wazuh installation documentation to resolve upgrade-related dependency and package errors.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-12</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Downloaded and installed the Wazuh all-in-one SIEM stack (v4.14). Configured Ubuntu laptop endpoint and registered it. Successfully connected the Ubuntu laptop endpoint to the Wazuh SIEM server and verified active log forwarding and monitoring.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-14</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Installed Sysmon for Linux for enhanced endpoint telemetry collection. Created a custom Sysmon configuration file to enable core telemetry visibility (process creation, network connections, file creation).</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-15</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Installed Linux Audit Logging by deploying auditd audispd-plugins on the target machine. Edited and finalized the SIEM architecture network diagram.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-17</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Refined project documentation, including README.md and OUTLINE.md, preparing host environments for security simulation workloads.</p>
+                </div>
+                <div class="log-entry">
+                  <span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-05-22</span>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Collected all host, platform, and server screenshots. Established a clean .gitignore file to ignore raw capture assets for local version control safety.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Progress & Next Steps -->
+            <div class="artifact-box"
+              style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <details style="cursor:pointer;" open>
+                <summary
+                  style="list-style:none;display:flex;align-items:center;gap:0.5rem;color:var(--color-accent);font-weight:600;font-size:1.1rem;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" width="20" height="20">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                  Progress &amp; Completed Tasks
+                </summary>
+                <div style="margin-top:1rem;padding-left:1.5rem;border-left:2px solid var(--color-accent);">
+                  <ul
+                    style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;color:var(--color-text-gray);font-size:0.95rem;">
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">✓</span> Create initial project outline and lab planning</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">✓</span> Install and configure Wazuh SIEM Server</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">✓</span> Upgrade WAZUH manager version to V4.14+</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">✓</span> Connect Ubuntu laptop agent via agent-auth</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">✓</span> Install Sysmon on Ubuntu Laptop</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">✓</span> Configure SwiftOnSecurity Sysmon rules config</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">✓</span> Enable Linux audit logging (auditd)</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">✓</span> Run test commands and search logs in Wazuh</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">✓</span> Design high-fidelity SIEM architecture diagram</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">✓</span> Perform screenshot sweeps and blur PII info</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <!-- Key Learnings -->
+            <div class="artifact-box"
+              style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                What I Learned
+              </h4>
+              <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;">This project helped me develop practical knowledge across system administration, security monitoring, and SIEM architecture. Below is a summary of key skills and concepts I gained:</p>
+
+              <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                
+                <!-- Technical Skills -->
+                <div>
+                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Technical Skills</h5>
+                  <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                    <li><strong>Linux Dependencies:</strong> Managed required packages and libraries, resolving dependency conflicts.</li>
+                    <li><strong>Wazuh SIEM Platform:</strong> Deployed and configured Wazuh to collect, process, and visualize security events.</li>
+                    <li><strong>Linux Systemd & systemctl:</strong> Managed and troubleshot core services, checking status and logs.</li>
+                    <li><strong>Wazuh Agents:</strong> Installed agents on endpoints and connected them to the manager for centralized telemetry collection.</li>
+                    <li><strong>SIEM Pipeline:</strong> Mapped data flows from endpoint to manager, indexer, and dashboard, analyzing log ingestion and alerts.</li>
+                    <li><strong>Networking with nmcli:</strong> Configured and troubleshot network interfaces via command line.</li>
+                    <li><strong>Local Web Hosting:</strong> Hosted a local web server to access the Wazuh dashboard.</li>
+                  </ul>
+                </div>
+
+                <!-- Security Concepts -->
+                <div>
+                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Security Concepts</h5>
+                  <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;">
+                    <li><strong>Personally Identifiable Information (PII):</strong> Recognized the importance of identifying and protecting sensitive personal data within logs and SIEM environments.</li>
+                  </ul>
+                </div>
+
+                <!-- Professional Development -->
+                <div>
+                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Professional Development</h5>
+                  <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                    <li><strong>System Compatibility Awareness:</strong> Ensured software version compatibility prior to deployment to avoid integration issues.</li>
+                    <li><strong>Clear Technical Communication:</strong> Improved clarity when describing system architectures and troubleshooting scenarios, including precise prompting with AI tools.</li>
+                  </ul>
+                </div>
+
+                <!-- Soft Skills -->
+                <div>
+                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Soft Skills</h5>
+                  <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;">
+                    <li><strong>Patience and Persistence:</strong> Developed methodical step-by-step troubleshooting techniques instead of rushing configurations in complex security environments.</li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Zayan Parpia. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function reveal() { var r = document.querySelectorAll(".fade-in"); for (var i = 0; i < r.length; i++) { var wh = window.innerHeight, et = r[i].getBoundingClientRect().top; if (et < wh - 150) r[i].classList.add("visible"); } }
+    window.addEventListener("scroll", reveal); reveal();
+    const nb = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { nb.classList.toggle('scrolled', window.scrollY > 50); });
+    document.querySelectorAll('.zoom-img').forEach(img => { img.addEventListener('click', function () { this.classList.toggle('zoomed'); if (this.classList.contains('zoomed')) { const ov = document.createElement('div'); ov.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.9);z-index:9999;display:flex;align-items:center;justify-content:center;'; ov.onclick = () => document.body.removeChild(ov); const ic = document.createElement('img'); ic.src = this.src; ic.style.cssText = 'max-width:90%;max-height:90%;border-radius:var(--radius-md);'; ov.appendChild(ic); document.body.appendChild(ov); } }); });
+    const mt = document.getElementById('menu-toggle'), nl = document.getElementById('nav-links');
+    mt.addEventListener('click', () => { nl.classList.toggle('active'); mt.classList.toggle('active'); });
+  </script>
+</body>
+
+</html>
