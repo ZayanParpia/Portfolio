@@ -75,4 +75,14 @@
 ### 2026-05-22
 ## Actions
 - Toady I collected the screenshots for the project
--Create .gitignore file to ignore screenshots for now
+- Created .gitignore file to ignore screenshots for now
+
+# 2026-05-23
+## Actions 
+- Today I finished renaming the screenshots
+- Edited Screenshots to remove PII
+
+
+# 2026-05-23
+## Actions 
+- Today I had some trouble with logging commands on my endpoint like ls, whoami, etc. So I spent two hours troubleshooting until I properly set up archives on the wazuh server and now it logs commands like whoami on the wazuh dashboard.

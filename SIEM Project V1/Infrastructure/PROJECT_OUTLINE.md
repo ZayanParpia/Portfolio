@@ -450,7 +450,7 @@ Document every major step using:
 
 \- Make the project portfolio-ready
 
-\- Demonstrate understanding of SIEM deployment workflows and Attack Methods 
+\- Demonstrate understanding of SIEM deployment workflows and Attack Methods
 
 
 

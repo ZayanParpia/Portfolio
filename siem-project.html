@@ -12,6 +12,296 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== PHASE SELECTOR ===== */
+    .phase-selector-container {
+      margin-bottom: var(--spacing-lg);
+      width: 100%;
+    }
+    .phase-selector-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .phase-selector-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+    .phase-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: left;
+    }
+    .phase-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+      opacity: 0;
+      transition: opacity var(--transition-normal);
+    }
+    .phase-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-accent);
+      box-shadow: 0 10px 25px rgba(0, 210, 190, 0.15);
+    }
+    .phase-card.active {
+      border-color: var(--color-accent);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 10px 25px rgba(0, 210, 190, 0.2);
+    }
+    .phase-card.active::before {
+      opacity: 1;
+    }
+    .phase-card h3 {
+      margin: 0;
+      color: var(--color-text-light);
+      font-size: 1.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .phase-card.active h3 {
+      color: var(--color-accent);
+    }
+    .phase-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--color-text-gray);
+      line-height: 1.5;
+    }
+    .phase-card .badge {
+      align-self: flex-start;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.75rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      color: var(--color-text-gray);
+    }
+    .phase-card.active .badge {
+      background: rgba(0, 210, 190, 0.1);
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    /* ===== PHASE SECTIONS ===== */
+    .phase-section {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .phase-section.hidden {
+      display: none !important;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .timeline-item {
+      position: relative;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: calc(-2rem - 6px);
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      border: 2px solid var(--color-bg-dark);
+      box-shadow: 0 0 8px var(--color-accent);
+    }
+    .timeline-date {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      margin-bottom: 0.25rem;
+    }
+    .timeline-content {
+      font-size: 0.92rem;
+      color: var(--color-text-gray);
+      line-height: 1.4;
+    }
+
+    /* ===== WAZUH ACTIVE AGENTS BANNER ===== */
+    .agent-banner {
+      background: linear-gradient(135deg, rgba(26, 29, 36, 0.8), rgba(15, 18, 23, 0.9));
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .agent-banner-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .agent-banner-title {
+      font-size: 1.15rem;
+      color: var(--color-accent);
+      font-weight: 700;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .agent-count-badge {
+      background: rgba(0, 210, 190, 0.1);
+      color: var(--color-accent);
+      border: 1px solid rgba(0, 210, 190, 0.3);
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .agent-list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1rem;
+    }
+    .agent-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all var(--transition-fast);
+    }
+    .agent-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--color-accent);
+    }
+    .agent-status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #00d2be;
+      box-shadow: 0 0 8px #00d2be;
+    }
+    .agent-info-box h5 {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
+    .agent-info-box p {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--color-text-gray);
+    }
+
+    /* ===== ENDPOINT TABBED SWITCHER ===== */
+    .endpoint-switcher {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .endpoint-tab-btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--color-text-gray);
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all var(--transition-fast);
+    }
+    .endpoint-tab-btn:hover {
+      color: var(--color-text-light);
+      border-color: rgba(0, 210, 190, 0.5);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .endpoint-tab-btn.active {
+      background: var(--color-accent);
+      color: var(--color-bg-dark);
+      border-color: var(--color-accent);
+      box-shadow: 0 0 12px var(--glow-accent);
+    }
+    .endpoint-tab-content {
+      display: none;
+      animation: fadeInTab 0.4s ease forwards;
+    }
+    .endpoint-tab-content.active {
+      display: block;
+    }
+    @keyframes fadeInTab {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== ATTACK SIMULATIONS GRID ===== */
+    .simulations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .simulation-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      height: 100%;
+    }
+    .simulation-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-accent);
+      box-shadow: 0 4px 15px rgba(0, 210, 190, 0.1);
+    }
+    .simulation-card h5 {
+      color: var(--color-accent);
+      font-size: 1.05rem;
+      margin: 0;
+      font-weight: 700;
+    }
+    .simulation-card p {
+      font-size: 0.88rem;
+      color: var(--color-text-gray);
+      margin: 0;
+      line-height: 1.4;
+    }
+    .simulation-meta {
+      font-size: 0.75rem;
+      color: var(--color-secondary);
+      font-weight: 600;
+      margin-top: auto;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+  </style>
 </head>
 
 <body>
@@ -62,7 +352,44 @@
   <!-- ===== MAIN CONTENT ===== -->
   <section class="section" style="padding-top:0;">
     <div class="container">
-      <div class="project-content-wrapper fade-in">
+
+      <!-- ===== PHASE SELECTOR CARDS ===== -->
+      <div class="phase-selector-container fade-in">
+        <div class="phase-selector-grid">
+          <!-- Card 1: Core Setup -->
+          <div class="phase-card active" id="phase-1-card" onclick="switchPhase(1)">
+            <span class="badge">Phase 1</span>
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+              </svg>
+              Core Lab Setup
+            </h3>
+            <p>The original single-endpoint Ubuntu environment with Wazuh manager, auditd, and Sysmon log collections.</p>
+          </div>
+          
+          <!-- Card 2: Upgrades -->
+          <div class="phase-card" id="phase-2-card" onclick="switchPhase(2)">
+            <span class="badge">Phase 2</span>
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+              Multi-Endpoint Expansion
+            </h3>
+            <p>Upgraded lab with 5 active endpoints (including VMware VMs, gaming laptop, Windows endpoint, and Kali Linux simulations).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PHASE 1: CORE CONTENT ===== -->
+      <div id="phase-1-section" class="phase-section">
+        <div class="project-content-wrapper fade-in">
 
         <!-- VISUALS COLUMN -->
         <div class="project-visuals">
@@ -389,8 +716,381 @@
 
           </div>
         </div>
+      </div> <!-- Closes .project-content-wrapper -->
+      </div> <!-- Closes #phase-1-section -->
 
-      </div>
+      <!-- ===== PHASE 2: UPGRADES CONTENT ===== -->
+      <div id="phase-2-section" class="phase-section hidden">
+        <div class="project-content-wrapper">
+          
+          <!-- VISUALS / UPGRADES COLUMN -->
+          <div class="project-visuals">
+            
+            <!-- Upgraded Architecture Diagram -->
+            <div class="screenshot-item">
+              <div class="screenshot-meta">
+                <h4>Infrastructure Overview</h4>
+                <p>Centralized network map and log pipeline layout of the upgraded multi-endpoint Home SIEM environment, showcasing VM architecture and log collection paths.</p>
+              </div>
+              <img src="SIEM Project V1/Infrastructure/Diagrams/DIAGRAM v2.png"
+                alt="Upgraded SIEM Lab Architecture Diagram" class="main-image zoom-img">
+            </div>
+
+            <!-- All Agents Active Banner -->
+            <div class="screenshot-item" style="margin-top: 1.5rem;">
+              <div class="screenshot-meta">
+                <h4>Centralized Active Logging Dashboard</h4>
+                <p>Wazuh Manager Console validating 5 active, online endpoints simultaneously forwarding telemetry to the SIEM stack.</p>
+              </div>
+              <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/All Agents Active.png"
+                alt="All Agents Active Wazuh Console" class="main-image zoom-img">
+            </div>
+
+            <!-- INTERACTIVE ENDPOINT SHOWCASE -->
+            <div style="margin-top: 2rem;">
+              <h4 style="color: var(--color-accent); margin-bottom: 1rem;">Endpoint Telemetry Verification</h4>
+              <p style="margin-bottom: 1.5rem;">Explore status checks, host audits, and telemetry service states for the newly added virtualized endpoints in the lab network.</p>
+              
+              <!-- Tab Controls -->
+              <div class="endpoint-switcher">
+                <button class="endpoint-tab-btn active" onclick="switchEndpoint('ep2', this)">Endpoint II (Ubuntu VM)</button>
+                <button class="endpoint-tab-btn" onclick="switchEndpoint('ep3', this)">Endpoint III (Ubuntu VM)</button>
+                <button class="endpoint-tab-btn" onclick="switchEndpoint('ep4', this)">Endpoint IV (Ubuntu VM)</button>
+                <button class="endpoint-tab-btn" onclick="switchEndpoint('win', this)">Windows Endpoint (Windows VM)</button>
+              </div>
+
+              <!-- Endpoint 2 Tab Content -->
+              <div id="tab-ep2" class="endpoint-tab-content active">
+                <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+                  
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 2: Host Identity Verification</h4>
+                      <p>Running <code>hostnamectl</code> on Endpoint II to verify system information, kernel release, and its local deployment context.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint2/hostnamectl.png" alt="Endpoint 2 Hostnamectl" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 2: Network IP Allocation</h4>
+                      <p>Validating network configuration (<code>ip a</code>) to verify IP address placement within the internal lab subnet.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint2/ip_conf.png" alt="Endpoint 2 IP Address" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 2: Wazuh Security Agent Daemon</h4>
+                      <p>Status confirmation via <code>systemctl status wazuh-agent</code> showing the telemetry transport daemon active, running, and sending logs to the SIEM manager.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint2/wazuh-agent-status.png" alt="Endpoint 2 Wazuh Agent Status" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 2: Linux Host Audit Logging (auditd)</h4>
+                      <p>Service verification for <code>auditd</code>, collecting kernel level event audit trails for security monitoring.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint2/auditd_status.png" alt="Endpoint 2 Auditd Status" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 2: Sysmon for Linux Service</h4>
+                      <p>Confirming that <code>sysmon</code> is running as a systemd service, collecting process creations and network logs based on rules.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint2/sysmon_status.png" alt="Endpoint 2 Sysmon Status" class="main-image zoom-img">
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Endpoint 3 Tab Content -->
+              <div id="tab-ep3" class="endpoint-tab-content">
+                <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+                  
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 3: Host Identity Verification</h4>
+                      <p>Running <code>hostnamectl</code> on Endpoint III to display OS configuration and kernel version details.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint3/hostnamectl.png" alt="Endpoint 3 Hostnamectl" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 3: Network IP Allocation</h4>
+                      <p>Verifying local IP address binding in the lab virtual network mapping.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint3/ip_conf.png" alt="Endpoint 3 IP Address" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 3: Wazuh Security Agent Daemon</h4>
+                      <p>Verifying that the Wazuh agent transport service is active and communicating with the SIEM manager.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint3/wazuh_agent_status.png" alt="Endpoint 3 Wazuh Agent Status" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 3: Linux Host Audit Logging (auditd)</h4>
+                      <p>Validating that <code>auditd</code> is active, monitoring user logins and critical system file edits.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint3/auditd_status.png" alt="Endpoint 3 Auditd Status" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 3: Sysmon for Linux Service</h4>
+                      <p>Verifying the active execution of Sysmon for Linux, mapping process executions to MITRE ATT&CK techniques.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint3/sysmon_status.png" alt="Endpoint 3 Sysmon Status" class="main-image zoom-img">
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Endpoint 4 Tab Content -->
+              <div id="tab-ep4" class="endpoint-tab-content">
+                <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+                  
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 4: Gaming Laptop VM Host Identity</h4>
+                      <p>Running <code>hostnamectl</code> on Endpoint IV (hosted on Gaming Laptop VM) to verify identity, machine ID, and architecture.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint4/hostnamectl.png" alt="Endpoint 4 Hostnamectl" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 4: Network IP Allocation</h4>
+                      <p>Validating network binding (<code>ip a</code>) for Endpoint IV, mapping connectivity within the secondary host subnet.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint4/ip_conf.png" alt="Endpoint 4 IP Address" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 4: Wazuh Security Agent Daemon</h4>
+                      <p>Checking the Wazuh Agent service status to confirm logs are actively shipped to the SIEM manager.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint4/wazuh_agent_status.png" alt="Endpoint 4 Wazuh Agent Status" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 4: Linux Host Audit Logging (auditd)</h4>
+                      <p>Confirming <code>auditd</code> is active on the gaming laptop virtual machine, auditing endpoint execution logs.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint4/auditd_status.png" alt="Endpoint 4 Auditd Status" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Endpoint 4: Sysmon for Linux Service</h4>
+                      <p>Checking service telemetry for Sysmon for Linux on Endpoint IV to guarantee process creation logs are collected.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/endpoint4/sysmon_status.png" alt="Endpoint 4 Sysmon Status" class="main-image zoom-img">
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Windows Endpoint Tab Content -->
+              <div id="tab-win" class="endpoint-tab-content">
+                <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+                  
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Windows Endpoint: Network IP Allocation</h4>
+                      <p>Running <code>ipconfig</code> on the Windows guest VM to confirm its IPv4 address allocation in the target virtualized network range.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/windows_endpoint/ipconfig.png" alt="Windows Endpoint IPConfig" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Windows Endpoint: Wazuh Security Service</h4>
+                      <p>Checking PowerShell service query status for the Windows Wazuh Agent service (<code>WazuhSvc</code>) verifying that the agent is running and shipping event logs.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/windows_endpoint/WazuhSvc Status.png" alt="Windows Endpoint Wazuh Service Status" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta">
+                      <h4>Windows Endpoint: Microsoft Sysmon Service</h4>
+                      <p>Verifying that the Windows System Monitor (<code>Sysmon</code>) driver service is active, collecting process creations (Event ID 1) and network activity (Event ID 3) logs.</p>
+                    </div>
+                    <img src="SIEM Project V1/project-upgrades/Upgrade Screenshots/windows_endpoint/Sysmon_Status.png" alt="Windows Endpoint Sysmon Service Status" class="main-image zoom-img">
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- INFO / UPGRADE DETAILS COLUMN -->
+          <div class="project-info">
+            <h3>Infrastructure Upgrades</h3>
+            <p style="margin-bottom:var(--spacing-sm);">The lab environment was scaled from a single monitored endpoint to an enterprise-grade multi-endpoint logging network. This upgrade enables cross-platform threat hunting, multi-agent log correlation, and lateral movement simulations.</p>
+            <p style="margin-bottom:var(--spacing-sm);">We introduced <strong>3 virtualized Linux endpoints</strong> and <strong>1 Windows endpoint</strong> in a segmented VMware host virtual network, connected to a centralized <strong>Wazuh SIEM</strong> stack, with <strong>Kali Linux</strong> added to perform attack simulations.</p>
+
+
+
+            <!-- Milestones Timeline -->
+            <div class="artifact-box" style="margin-bottom: 2rem;">
+              <h4 style="margin-bottom:1.25rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Upgrades Progress Timeline
+              </h4>
+              <div class="timeline">
+                
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">May 31, 2026</div>
+                  <div class="timeline-content">
+                    Installed 2 Ubuntu Virtual Machine instances via VMware on local host laptop. Expanded total active lab endpoint count to 3 endpoints.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">June 5, 2026</div>
+                  <div class="timeline-content">
+                    Connected both new Ubuntu VMs to Wazuh SIEM Server. Configured auditd logging rules and deployed Sysmon for Linux on both endpoints, verifying active log streams on the manager dashboard.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">June 9 - 11, 2026</div>
+                  <div class="timeline-content">
+                    Provisioned and deployed Ubuntu Endpoint IV VM on secondary gaming laptop host. Configured Auditd and Sysmon services on Endpoint IV, and enrolled it with the Wazuh SIEM Server.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">June 12 - 14, 2026</div>
+                  <div class="timeline-content">
+                    Deployed Windows VM Client Endpoint. Installed Microsoft Windows Sysmon and Wazuh Windows Agent service, confirming Windows system event log forwarding.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">June 15 - 19, 2026</div>
+                  <div class="timeline-content">
+                    Verified multi-agent load stability with 5 active endpoints. Deployed Kali Linux VM on VMware for attack simulations. Finalized visual telemetry audits and created upgraded lab architecture diagram.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Attack Simulations Preview -->
+            <div class="artifact-box" style="margin-bottom: 1rem;">
+              <h4 style="margin-bottom:0.75rem;color:var(--color-accent);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                  <polygon points="12 2 2 22 22 22"></polygon>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                Planned Attack Simulation Pipelines (More Coming Soon)
+              </h4>
+              <p style="color:var(--color-text-gray);font-size:0.9rem;margin-bottom:1rem;">The expanded infrastructure enables simulated testing and detection engineering across 12 high-impact attack vectors, with more custom threat scenarios and detection playbooks being added soon:</p>
+              
+              <div class="simulations-grid">
+                
+                <div class="simulation-card">
+                  <h5>1. Linux Privilege Escalation</h5>
+                  <p>Detect SUID abuse, failed sudo spikes, modifications to /etc/sudoers, and suspicious chmod activity.</p>
+                  <div class="simulation-meta">Tactic: Priv. Escalation</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>2. SSH Attack Pipeline</h5>
+                  <p>Detect brute-force spikes, anomalies in login hours, and ssh authorized_keys modifications.</p>
+                  <div class="simulation-meta">Tactic: Credential Access</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>3. File Integrity (FIM)</h5>
+                  <p>Monitor critical directories (/etc/passwd, shadow, configs) for unauthorized modifications.</p>
+                  <div class="simulation-meta">Tactic: Integrity Check</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>4. Web Server Attacks</h5>
+                  <p>Detect web SQLi indicators, directory traversals, and anomalous user-agents on NGINX/Apache hosts.</p>
+                  <div class="simulation-meta">Tactic: Initial Access</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>5. Persistence Detections</h5>
+                  <p>Monitor cron job modifications, systemd service setups, and shell profile edits for backdoors.</p>
+                  <div class="simulation-meta">Tactic: Persistence</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>6. Lateral Movement</h5>
+                  <p>Correlate SSH movement, SCP copies, and remote command executions across segmented VMs.</p>
+                  <div class="simulation-meta">Tactic: Lateral Movement</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>7. MITRE Linux Dashboard</h5>
+                  <p>Build dashboard reporting rules to map wazuh alert events to MITRE ATT&CK techniques.</p>
+                  <div class="simulation-meta">Tactic: Security Analytics</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>8. Active Incident Response</h5>
+                  <p>Automate blocking rules to isolate hosts or temporarily drop SSH connections upon alert triggering.</p>
+                  <div class="simulation-meta">Tactic: SOAR Response</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>9. Threat Hunting Queries</h5>
+                  <p>Establish hunting queries for parent-child anomalies (e.g. shells spawned from web servers).</p>
+                  <div class="simulation-meta">Tactic: Threat Hunting</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>10. Container Security</h5>
+                  <p>Deploy Falco and Wazuh monitoring for container breakouts or privileged namespace misuse.</p>
+                  <div class="simulation-meta">Tactic: Container Defense</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>11. Centralized Asset Audit</h5>
+                  <p>Collect running services, open listener ports, and system package patches in Wazuh Syscollector.</p>
+                  <div class="simulation-meta">Tactic: Hardening & Auditing</div>
+                </div>
+
+                <div class="simulation-card">
+                  <h5>12. Insider Threat Detections</h5>
+                  <p>Flag bulk file read events, security log wiping commands, or off-hours privileged logins.</p>
+                  <div class="simulation-meta">Tactic: Insider Threat</div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div> <!-- Closes #phase-2-section -->
+
     </div>
   </section>
 
@@ -402,13 +1102,114 @@
   </footer>
 
   <script>
-    function reveal() { var r = document.querySelectorAll(".fade-in"); for (var i = 0; i < r.length; i++) { var wh = window.innerHeight, et = r[i].getBoundingClientRect().top; if (et < wh - 150) r[i].classList.add("visible"); } }
-    window.addEventListener("scroll", reveal); reveal();
+    function reveal() { 
+      var r = document.querySelectorAll(".fade-in"); 
+      for (var i = 0; i < r.length; i++) { 
+        var wh = window.innerHeight, et = r[i].getBoundingClientRect().top; 
+        if (et < wh - 150) r[i].classList.add("visible"); 
+      } 
+    }
+    window.addEventListener("scroll", reveal); 
+    reveal();
+
     const nb = document.getElementById('navbar');
     window.addEventListener('scroll', () => { nb.classList.toggle('scrolled', window.scrollY > 50); });
-    document.querySelectorAll('.zoom-img').forEach(img => { img.addEventListener('click', function () { this.classList.toggle('zoomed'); if (this.classList.contains('zoomed')) { const ov = document.createElement('div'); ov.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.9);z-index:9999;display:flex;align-items:center;justify-content:center;'; ov.onclick = () => document.body.removeChild(ov); const ic = document.createElement('img'); ic.src = this.src; ic.style.cssText = 'max-width:90%;max-height:90%;border-radius:var(--radius-md);'; ov.appendChild(ic); document.body.appendChild(ov); } }); });
+
+    // Improved Zoom Image Overlay with correct class resetting
+    document.querySelectorAll('.zoom-img').forEach(img => { 
+      img.addEventListener('click', function () { 
+        this.classList.add('zoomed'); 
+        
+        const ov = document.createElement('div'); 
+        ov.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(10,12,16,0.92);backdrop-filter:blur(10px);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:zoom-out;opacity:0;transition:opacity 0.25s ease;'; 
+        
+        const ic = document.createElement('img'); 
+        ic.src = this.src; 
+        ic.style.cssText = 'max-width:92%;max-height:92%;border-radius:var(--radius-md);box-shadow:0 10px 40px rgba(0,0,0,0.6);border:1px solid var(--glass-border);transform:scale(0.95);transition:transform 0.25s ease;'; 
+        
+        ov.appendChild(ic); 
+        document.body.appendChild(ov); 
+        
+        // Trigger smooth transition
+        setTimeout(() => {
+          ov.style.opacity = '1';
+          ic.style.transform = 'scale(1)';
+        }, 10);
+        
+        ov.onclick = () => { 
+          ov.style.opacity = '0';
+          ic.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            if (document.body.contains(ov)) {
+              document.body.removeChild(ov); 
+            }
+            img.classList.remove('zoomed'); 
+          }, 250);
+        }; 
+      }); 
+    });
+
     const mt = document.getElementById('menu-toggle'), nl = document.getElementById('nav-links');
     mt.addEventListener('click', () => { nl.classList.toggle('active'); mt.classList.toggle('active'); });
+
+    // Phase Switching Logic
+    function switchPhase(phaseNum) {
+      const p1Section = document.getElementById('phase-1-section');
+      const p2Section = document.getElementById('phase-2-section');
+      const p1Card = document.getElementById('phase-1-card');
+      const p2Card = document.getElementById('phase-2-card');
+
+      if (phaseNum === 1) {
+        p1Section.classList.remove('hidden');
+        p2Section.classList.add('hidden');
+        p1Card.classList.add('active');
+        p2Card.classList.remove('active');
+      } else {
+        p1Section.classList.add('hidden');
+        p2Section.classList.remove('hidden');
+        p1Card.classList.remove('active');
+        p2Card.classList.add('active');
+      }
+      
+      // Scroll to selector block
+      const selector = document.querySelector('.phase-selector-container');
+      if (selector) {
+        const offset = 100;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = selector.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: 'smooth'
+        });
+      }
+      
+      // Trigger scroll reveal for items in the newly revealed section
+      setTimeout(reveal, 100);
+    }
+
+    // Endpoint Swapping Logic
+    function switchEndpoint(epId, btn) {
+      // Deactivate all tab buttons
+      const buttons = document.querySelectorAll('.endpoint-tab-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+
+      // Activate clicked button
+      btn.classList.add('active');
+
+      // Hide all endpoint contents
+      const contents = document.querySelectorAll('.endpoint-tab-content');
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Show selected content
+      const targetContent = document.getElementById('tab-' + epId);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+      
+      // Trigger scroll reveal for tab content items
+      setTimeout(reveal, 100);
+    }
   </script>
 </body>
 
