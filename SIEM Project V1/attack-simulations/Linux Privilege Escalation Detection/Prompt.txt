@@ -1,0 +1,314 @@
+You are a SOC analyst that understands a lot about SIEM systems and home labs and does pen testing on SIEM labs.
+
+Your job is to take this outline of the project ive made
+
+Keep in mind I am a student learning how to set up SIEM systems for a portfolio project.
+
+Be simple and concise and pull relevant information from the internet when needed.
+
+After each meaningful step to commit to GitHub say to commit it.
+
+Based on this attack simulation
+
+\# Attack Simulation: Linux Privilege Escalation Detection
+
+
+
+\## Overview
+
+
+
+This attack simulation validates Wazuh's ability to detect Linux privilege escalation activity, persistence mechanisms, and suspicious administrative behavior on a monitored Ubuntu endpoint.
+
+
+
+The objective is to generate realistic security events and verify that Wazuh successfully captures, logs, and alerts on those activities.
+
+
+
+\---
+
+
+
+\# Lab Scope
+
+
+
+\## Active Systems
+
+
+
+\### Wazuh Infrastructure
+
+
+
+\* Wazuh Manager
+
+\* Sysmon For Linux
+
+\* Auditd
+
+\* Wazuh Dashboard
+
+
+
+\### Target Endpoint
+
+
+
+\* Ubuntu CLI Endpoint (Endpoint II)
+
+
+
+
+
+\# Detection Objectives
+
+
+
+The following security events will be generated and monitored:
+
+
+
+\* Repeated failed sudo attempts
+
+\* Successful sudo privilege escalation
+
+\* Modification of `/etc/sudoers`
+
+\* User addition to the sudo group
+
+\* SUID binary creation
+
+\* Suspicious chmod activity
+
+\* Suspicious chown activity
+
+
+
+\---
+
+
+
+\# MITRE ATT\&CK Mapping
+
+
+
+| Activity                 | Tactic                             |
+
+| ------------------------ | ---------------------------------- |
+
+| Failed sudo attempts     | Privilege Escalation               |
+
+| Successful sudo usage    | Privilege Escalation               |
+
+| Sudoers modification     | Privilege Escalation / Persistence |
+
+| User added to sudo group | Persistence                        |
+
+| SUID binary creation     | Privilege Escalation / Persistence |
+
+| chmod abuse              | Defense Evasion                    |
+
+| chown abuse              | Defense Evasion                    |
+
+
+
+\---
+
+
+
+\# Attack Simulation Procedure
+
+
+
+\## Phase 1: Failed Sudo Attempts
+
+
+
+\### Objective
+
+
+
+Simulate an attacker attempting privilege escalation without valid credentials.
+
+
+
+\### Actions Performed
+
+
+
+\* Execute sudo commands
+
+\* Enter invalid passwords multiple times
+
+
+
+\### Expected Detection
+
+
+
+\* Authentication failures
+
+\* Failed sudo attempts
+
+\* Security alerts within Wazuh
+
+
+
+\---
+
+
+
+\## Phase 2: Successful Privilege Escalation
+
+
+
+\### Objective
+
+
+
+Demonstrate successful elevation to root privileges.
+
+
+
+\### Actions Performed
+
+
+
+\* Execute sudo command with valid credentials
+
+\* Confirm root access
+
+
+
+\### Expected Detection
+
+
+
+\* Successful sudo session
+
+\* Elevated privilege activity
+
+
+
+
+
+\---
+
+
+
+\## Phase 3: Sudoers File Modification
+
+
+
+\### Objective
+
+
+
+Simulate privilege abuse through modification of sudo configuration.
+
+
+
+\### Actions Performed
+
+
+
+\* Edit `/etc/sudoers`
+
+\* Add elevated permissions for a user
+
+
+
+\### Expected Detection
+
+
+
+\* File integrity monitoring alert
+
+\* Configuration modification alert
+
+
+
+\---
+
+
+
+\## Phase 4: Add User to Sudo Group
+
+
+
+\### Objective
+
+
+
+Simulate persistence through privileged group membership.
+
+
+
+\### Actions Performed
+
+
+
+\* Create a new user account
+
+\* Add account to sudo group
+
+
+
+\### Expected Detection
+
+
+
+\* User account creation
+
+\* Group membership modification
+
+
+
+\---
+
+
+
+\## Phase 5: SUID Binary Creation
+
+
+
+\### Objective
+
+
+
+Simulate a common Linux privilege escalation technique.
+
+
+
+\### Actions Performed
+
+
+
+\* Create a copy of a privileged executable
+
+\* Apply the SUID permission bit
+
+
+
+\### Expected Detection
+
+
+
+\* Permission modification
+
+\* File integrity monitoring alert
+
+
+
+\### Rules Written to alert in the future 
+
+
+
+
+
+Step by step what do I do to simulate this.
+
+I have an ubuntu cli endpoint running on the Wazuh SIEM. 
+Write down what I should document in the SIEM, it is collecting from Wazuh Agent, Sysmon and Auditd

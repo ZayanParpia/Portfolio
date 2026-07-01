@@ -20,7 +20,7 @@
     }
     .phase-selector-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
     @media (max-width: 768px) {
@@ -383,6 +383,20 @@
               Multi-Endpoint Expansion
             </h3>
             <p>Upgraded lab with 5 active endpoints (including VMware VMs, gaming laptop, Windows endpoint, and Kali Linux simulations).</p>
+          </div>
+          
+          <!-- Card 3: Attack Simulations -->
+          <div class="phase-card" id="phase-3-card" onclick="switchPhase(3)">
+            <span class="badge">Phase 3</span>
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <polygon points="12 2 2 22 22 22"></polygon>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              Attack Simulations
+            </h3>
+            <p>Active security validations testing detection logic for Linux privilege escalation, FIM edits, and persistence.</p>
           </div>
         </div>
       </div>
@@ -1091,6 +1105,294 @@
         </div>
       </div> <!-- Closes #phase-2-section -->
 
+      <!-- ===== PHASE 3: ATTACK SIMULATIONS CONTENT ===== -->
+
+      <!-- ====== FULLSCREEN DUAL-VIDEO OVERLAY ====== -->
+      <div id="video-demo-overlay" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#060810;z-index:99999;flex-direction:column;align-items:stretch;">
+
+        <!-- Top bar: title + close -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:44px;flex-shrink:0;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;color:rgba(255,255,255,0.55);text-transform:uppercase;">⬛ Dual-Stream Demo — Linux Privilege Escalation Detection</span>
+          <button onclick="closeVideoDemo()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:1.1rem;font-weight:700;width:34px;height:34px;border-radius:50%;cursor:pointer;line-height:1;transition:background 0.2s;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,60,60,0.6)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">✕</button>
+        </div>
+
+        <!-- Video Stack (fills remaining space above control bar) -->
+        <div style="display:flex;flex-direction:column;flex:1;min-height:0;">
+
+          <!-- Top pane: Attacker Console -->
+          <div style="flex:1;min-height:0;position:relative;">
+            <div style="position:absolute;top:0;left:0;right:0;height:22px;background:rgba(220,53,69,0.75);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#fff;text-transform:uppercase;z-index:2;">🔴&nbsp; Attacker Console</div>
+            <video id="video-attacker" muted style="width:100%;height:100%;object-fit:contain;background:#000;display:block;padding-top:22px;box-sizing:border-box;">
+              <source src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Video Demo/Linux Password guessing.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <!-- Divider -->
+          <div style="height:3px;background:linear-gradient(90deg,rgba(220,53,69,0.6),rgba(0,112,243,0.6));flex-shrink:0;"></div>
+
+          <!-- Bottom pane: Wazuh SIEM -->
+          <div style="flex:1;min-height:0;position:relative;">
+            <div style="position:absolute;top:0;left:0;right:0;height:22px;background:rgba(0,112,243,0.75);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#fff;text-transform:uppercase;z-index:2;">🔵&nbsp; Wazuh SIEM Dashboard</div>
+            <video id="video-wazuh" muted style="width:100%;height:100%;object-fit:contain;background:#060a14;display:block;padding-top:22px;box-sizing:border-box;">
+              <source src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Video Demo/Wazuh Dashboard Password Guessing.mp4" type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+
+        <!-- Shared Control Bar -->
+        <div id="video-ctrl-bar" style="flex-shrink:0;background:rgba(10,12,20,0.97);border-top:1px solid rgba(255,255,255,0.1);padding:10px 18px;display:flex;flex-direction:column;gap:8px;">
+          <!-- Seek row -->
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span id="vd-current" style="font-size:0.72rem;color:rgba(255,255,255,0.5);min-width:38px;font-variant-numeric:tabular-nums;">0:00</span>
+            <input id="vd-seek" type="range" min="0" max="100" value="0" step="0.1"
+              style="flex:1;accent-color:var(--color-accent);height:4px;cursor:pointer;"
+              oninput="videoDemoSeek(this.value)"
+            >
+            <span id="vd-duration" style="font-size:0.72rem;color:rgba(255,255,255,0.5);min-width:38px;text-align:right;font-variant-numeric:tabular-nums;">0:00</span>
+          </div>
+          <!-- Buttons row -->
+          <div style="display:flex;align-items:center;gap:14px;">
+            <button id="vd-playpause" onclick="videoDemoTogglePlay()" style="background:var(--color-accent);border:none;color:#000;font-size:0.8rem;font-weight:800;padding:6px 18px;border-radius:20px;cursor:pointer;letter-spacing:0.05em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">▶ PLAY</button>
+            <button onclick="videoDemoRestart()" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:0.75rem;padding:5px 14px;border-radius:20px;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">↺ Restart</button>
+            <!-- Speed -->
+            <select id="vd-speed" onchange="videoDemoSpeed(this.value)" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:0.75rem;padding:4px 8px;border-radius:20px;cursor:pointer;">
+              <option value="0.5">0.5×</option>
+              <option value="1" selected>1×</option>
+              <option value="1.5">1.5×</option>
+              <option value="2">2×</option>
+            </select>
+            <span style="margin-left:auto;font-size:0.68rem;color:rgba(255,255,255,0.3);">Both streams play in sync &nbsp;·&nbsp; Press <kbd style="background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px;">ESC</kbd> to close</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="phase-3-section" class="phase-section hidden">
+
+        <!-- ===== ATTACK SIMULATIONS HEADER ===== -->
+        <div class="fade-in" style="margin-bottom: 2rem;">
+          <h3 style="font-size:1.6rem;color:var(--color-text-light);margin-bottom:0.5rem;">Attack Simulations</h3>
+          <p style="color:var(--color-text-gray);max-width:700px;line-height:1.7;">Real-world adversarial scenarios simulated against the SIEM infrastructure to validate detection rules, alert pipelines, and audit telemetry. Click any card to explore the full simulation report.</p>
+        </div>
+
+        <!-- ===== SIMULATION CARDS GRID ===== -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-bottom:2.5rem;" class="fade-in">
+
+          <!-- CARD 1: Linux Privilege Escalation Detection -->
+          <div id="sim-card-1" onclick="toggleSimDetail('sim-detail-1','sim-card-1')" style="cursor:pointer;position:relative;overflow:hidden;border:1px solid var(--glass-border);border-radius:var(--radius-sm);background:var(--color-bg-card);transition:all 0.3s ease;padding:0;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,210,190,0.12)'" onmouseout="this.style.borderColor='var(--glass-border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+            <div style="width:100%;height:160px;overflow:hidden;background:#0a0c10;">
+              <img src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Attack Simulation 1.png" alt="Linux Privilege Escalation Diagram" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+            </div>
+            <div style="padding:1.25rem;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
+                <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:10px;">Simulation #1</span>
+                <span style="font-size:0.78rem;color:var(--color-text-gray);">June 29, 2026</span>
+              </div>
+              <h4 style="color:var(--color-text-light);font-size:1.1rem;font-weight:700;margin:0.4rem 0 0.5rem;">Linux Privilege Escalation Detection</h4>
+              <p style="color:var(--color-text-gray);font-size:0.88rem;line-height:1.5;margin-bottom:0.9rem;">Validates Wazuh detection against failed sudo brute-forcing, sudoers file modification (FIM), and user group escalation via Auditd.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.9rem;">
+                <span style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-gray);font-size:0.72rem;padding:2px 8px;border-radius:10px;font-weight:600;">Wazuh SIEM</span>
+                <span style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-gray);font-size:0.72rem;padding:2px 8px;border-radius:10px;font-weight:600;">Privilege Escalation</span>
+                <span style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-gray);font-size:0.72rem;padding:2px 8px;border-radius:10px;font-weight:600;">Auditd</span>
+                <span style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-gray);font-size:0.72rem;padding:2px 8px;border-radius:10px;font-weight:600;">Sysmon</span>
+                <span style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--color-text-gray);font-size:0.72rem;padding:2px 8px;border-radius:10px;font-weight:600;">FIM</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.4rem;color:var(--color-accent);font-size:0.85rem;font-weight:600;">
+                <span>View Details</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER: More simulations coming soon -->
+          <div style="border:1px dashed rgba(255,255,255,0.1);border-radius:var(--radius-sm);background:rgba(255,255,255,0.01);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem;padding:2rem;min-height:280px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" width="36" height="36"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+            <p style="color:rgba(255,255,255,0.2);font-size:0.88rem;text-align:center;font-style:italic;margin:0;">More simulations<br>coming soon</p>
+          </div>
+
+        </div>
+
+        <!-- ===== EXPANDABLE DETAIL PANEL: Linux Privilege Escalation ===== -->
+        <div id="sim-detail-1" style="display:none;" class="fade-in">
+
+          <!-- Detail Header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <div>
+              <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.35rem;">
+                <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:10px;">Simulation #1</span>
+                <span style="font-size:0.8rem;color:var(--color-text-gray);">June 29, 2026 &nbsp;&bull;&nbsp; Status: <strong style="color:var(--color-accent);">Completed</strong></span>
+              </div>
+              <h3 style="font-size:1.45rem;color:var(--color-text-light);margin:0;">Linux Privilege Escalation Detection</h3>
+            </div>
+            <!-- VIDEO DEMO Button -->
+            <button onclick="openVideoDemo()" id="video-demo-btn" style="display:flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,rgba(220,53,69,0.85),rgba(0,112,243,0.85));border:none;color:#fff;font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.7rem 1.4rem;border-radius:var(--radius-sm);cursor:pointer;transition:all 0.25s ease;box-shadow:0 4px 18px rgba(0,0,0,0.4);" onmouseover="this.style.opacity='0.85';this.style.transform='scale(1.03)'" onmouseout="this.style.opacity='1';this.style.transform='scale(1)'">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Video Demo
+            </button>
+          </div>
+
+          <!-- Two-column layout -->
+          <div class="project-content-wrapper">
+
+            <!-- LEFT: Visuals -->
+            <div class="project-visuals">
+
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>Simulation Architecture &amp; Attack Flow</h4>
+                  <p>Network topology showing the Ubuntu target endpoint (Endpoint II) monitored by Wazuh Manager, Sysmon, and Auditd with escalation paths simulated directly on the host.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Attack Simulation 1.png" alt="Linux Privilege Escalation Simulation Diagram" class="main-image zoom-img">
+              </div>
+
+              <div style="margin-top:2rem;">
+                <h4 style="color:var(--color-accent);margin-bottom:1rem;">Telemetry &amp; Alert Evidence</h4>
+                <p style="margin-bottom:1.5rem;font-size:0.95rem;color:var(--color-text-gray);">Visual evidence of each attack phase — endpoint status, terminal execution, and corresponding Wazuh rule triggers.</p>
+                <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta"><h4>Endpoint II Active in Wazuh</h4><p>Confirms the Ubuntu CLI target is online, registered, and forwarding telemetry to the SIEM manager prior to simulation.</p></div>
+                    <img src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Screenshots/Endpoint II active.png" alt="Endpoint II Active" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta"><h4>Failed Sudo Password Guessing (Phase 1)</h4><p>Terminal session showing repeated failed <code>sudo</code> authentication attempts, triggering the brute-force correlation rule.</p></div>
+                    <img src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Screenshots/Privilege Escalation Attempts.png" alt="Failed Sudo Attempts" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta"><h4>Wazuh Rule 5557 — Failed Authentication Alert</h4><p>Wazuh parses the auth log and fires rule 5557 (Level 5) per failed <code>sudo</code>. Custom rule 100002 aggregates 3 failures within 5 minutes into a high-severity brute-force alert.</p></div>
+                    <img src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Screenshots/Rule 5557.png" alt="Wazuh Rule 5557" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta"><h4>Wazuh Rule 5403 — Successful Sudo Session (Phase 2)</h4><p>Alert triggered when valid credentials are used for elevation. Wazuh logs the session, command, and user context.</p></div>
+                    <img src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Screenshots/Rule 5403.png" alt="Wazuh Rule 5403" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta"><h4>Wazuh FIM Alert — Sudoers File Modified (Phase 3)</h4><p>FIM detects an edit to <code>/etc/sudoers</code>, generating an immediate alert with file hash and modification timestamp.</p></div>
+                    <img src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Screenshots/sudoers file edit.png" alt="Sudoers FIM Alert" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta"><h4>Wazuh Alert — User Added to Sudo Group (Phase 4)</h4><p>Auditd syscall log captures the <code>usermod</code> call adding a test account to the <code>sudo</code> group, confirming persistent privileged access.</p></div>
+                    <img src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Screenshots/User Group MOD.png" alt="User Group MOD Alert" class="main-image zoom-img">
+                  </div>
+
+                  <div class="screenshot-item">
+                    <div class="screenshot-meta"><h4>Wazuh Rule 510 — Host Security Assessment</h4><p>System integrity audit alert summarising host-level configuration checks during the simulation window.</p></div>
+                    <img src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Screenshots/Wazuh 510 Triggerd.png" alt="Wazuh Rule 510" class="main-image zoom-img">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: Info -->
+            <div class="project-info">
+              <h3>Simulation Report</h3>
+              <p style="margin-bottom:var(--spacing-sm);">This simulation validates Wazuh's ability to detect Linux privilege escalation, persistence mechanisms, and suspicious administrative behaviour. It bridges theoretical monitoring with proven, evidence-based detection.</p>
+              <p style="margin-bottom:var(--spacing-sm);">Attacks run directly on the Ubuntu CLI endpoint (Endpoint II), with telemetry flowing through Auditd and Sysmon back to the Wazuh manager for alert correlation.</p>
+
+              <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Infrastructure Scope</h4>
+              <ul class="feature-list" style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
+                <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Endpoint II (Ubuntu CLI)</p></div></li>
+                <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Wazuh SIEM Manager</p></div></li>
+                <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Custom Rule 100002</p></div></li>
+                <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">File Integrity Monitoring</p></div></li>
+              </ul>
+
+              <div style="margin-top:var(--spacing-lg);">
+
+                <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+                  <h4 style="margin-bottom:1rem;color:var(--color-accent);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    Simulation Outline
+                  </h4>
+                  <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"This simulation validates Wazuh's capability to detect Linux privilege escalation, persistence mechanisms, and suspicious administrative behaviour. Sudo credentials are brute-forced to generate failed log spikes, successful sudo elevations are audited, critical configuration files (<code>/etc/sudoers</code>) are modified to test FIM alerts, and user group escalations are monitored via Auditd syscall tracking. All activities are mapped to MITRE ATT&amp;CK tactics."</p>
+                </div>
+
+                <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+                  <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    Simulation Milestones &amp; Logs
+                  </h4>
+                  <div class="log-container" style="display:flex;flex-direction:column;gap:1rem;">
+                    <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-06-22</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Mapped attack scenarios to MITRE ATT&amp;CK matrix. Created the simulation architecture diagram.</p></div>
+                    <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-06-23</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Executed Phases 1 &amp; 2. Generated failed <code>sudo</code> attempts confirming rule 5557 triggers. Verified rule 5403 on successful escalation.</p></div>
+                    <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-06-24</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Executed Phase 3. Edited <code>/etc/sudoers</code> and confirmed Wazuh FIM alert fired with file hash and timestamp.</p></div>
+                    <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-06-26</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Deployed custom rule 100002: correlates 3 failed <code>sudo</code> attempts within 5 minutes into a single high-severity alert.</p></div>
+                    <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-06-27</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Executed Phase 4. Added test account to <code>sudo</code> group and confirmed Auditd captured the membership change in Wazuh.</p></div>
+                    <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-06-29</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Finalised documentation and recorded dual-stream video demonstrations of the attack console and Wazuh dashboard.</p></div>
+                  </div>
+                </div>
+
+                <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+                  <details style="cursor:pointer;" open>
+                    <summary style="list-style:none;display:flex;align-items:center;gap:0.5rem;color:var(--color-accent);font-weight:600;font-size:1.1rem;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      Progress &amp; Completed Tasks
+                    </summary>
+                    <div style="margin-top:1rem;padding-left:1.5rem;border-left:2px solid var(--color-accent);">
+                      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;color:var(--color-text-gray);font-size:0.95rem;">
+                        <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Define attack scope and map to MITRE ATT&amp;CK</li>
+                        <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Verify Endpoint II is online and monitored in Wazuh</li>
+                        <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Phase 1: Simulate failed sudo brute-force</li>
+                        <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Phase 1: Deploy custom correlation rule 100002</li>
+                        <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Phase 2: Simulate successful sudo escalation to root</li>
+                        <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Phase 3: Modify /etc/sudoers and capture FIM alert</li>
+                        <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Phase 4: Add user to sudo group, track via Auditd</li>
+                        <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Generate simulation topology architecture diagram</li>
+                        <li style="display:flex;align-items:center;gap:0.85rem;"><span style="color:var(--color-secondary);font-weight:bold;">&#8594;</span> Phase 5: SUID binary detection (In Progress)</li>
+                        <li style="display:flex;align-items:center;gap:0.85rem;"><span style="color:var(--color-secondary);font-weight:bold;">&#8594;</span> Phase 6: chmod/chown abuse detection (In Progress)</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+
+                <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid var(--glass-border);">
+                  <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                    What I Learned
+                  </h4>
+                  <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;">This simulation bridged blue-team monitoring with active adversarial testing. Key skills developed:</p>
+                  <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                    <div>
+                      <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Technical Skills</h5>
+                      <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                        <li><strong>Custom Wazuh Rules:</strong> Used <code>frequency</code>, <code>timeframe</code>, and parent SID matching to build a brute-force correlation rule.</li>
+                        <li><strong>Auditd Syscall Tracking:</strong> Configured watch rules for group membership changes and mapped them back to SIEM decoders.</li>
+                        <li><strong>File Integrity Monitoring:</strong> Configured <code>ossec.conf</code> to scan <code>/etc/sudoers</code> for unauthorised changes.</li>
+                        <li><strong>Linux OS Internals:</strong> Deepened understanding of SUID bits, group management, and sudo credential pathways.</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Security Concepts</h5>
+                      <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                        <li><strong>MITRE ATT&amp;CK Mapping:</strong> Aligned each phase to Privilege Escalation, Persistence, and Defense Evasion tactics.</li>
+                        <li><strong>Alert Tuning:</strong> Discovered how legitimate sudo group additions can generate false positives requiring careful baseline configuration.</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Professional Takeaways</h5>
+                      <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                        <li><strong>SIEM Documentation:</strong> Learned to navigate Wazuh's XML rule schema to configure detection criteria.</li>
+                        <li><strong>Methodical Troubleshooting:</strong> Documented problems and solutions at each step as a reusable engineering reference.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div> <!-- Closes #phase-3-section -->
+
     </div>
   </section>
 
@@ -1156,19 +1458,27 @@
     function switchPhase(phaseNum) {
       const p1Section = document.getElementById('phase-1-section');
       const p2Section = document.getElementById('phase-2-section');
+      const p3Section = document.getElementById('phase-3-section');
       const p1Card = document.getElementById('phase-1-card');
       const p2Card = document.getElementById('phase-2-card');
+      const p3Card = document.getElementById('phase-3-card');
+
+      p1Section.classList.add('hidden');
+      p2Section.classList.add('hidden');
+      p3Section.classList.add('hidden');
+      p1Card.classList.remove('active');
+      p2Card.classList.remove('active');
+      p3Card.classList.remove('active');
 
       if (phaseNum === 1) {
         p1Section.classList.remove('hidden');
-        p2Section.classList.add('hidden');
         p1Card.classList.add('active');
-        p2Card.classList.remove('active');
-      } else {
-        p1Section.classList.add('hidden');
+      } else if (phaseNum === 2) {
         p2Section.classList.remove('hidden');
-        p1Card.classList.remove('active');
         p2Card.classList.add('active');
+      } else if (phaseNum === 3) {
+        p3Section.classList.remove('hidden');
+        p3Card.classList.add('active');
       }
       
       // Scroll to selector block
@@ -1210,6 +1520,150 @@
       // Trigger scroll reveal for tab content items
       setTimeout(reveal, 100);
     }
+
+    // ===== VIDEO DEMO OVERLAY CONTROLS =====
+    function openVideoDemo() {
+      const overlay = document.getElementById('video-demo-overlay');
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      vA.currentTime = 0;
+      vW.currentTime = 0;
+      vA.play().catch(() => {});
+      vW.play().catch(() => {});
+      updatePlayPauseBtn();
+      // set duration once metadata loaded
+      vA.addEventListener('loadedmetadata', updateDuration, { once: true });
+      if (vA.readyState >= 1) updateDuration();
+    }
+
+    function closeVideoDemo() {
+      const overlay = document.getElementById('video-demo-overlay');
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      vA.pause();
+      vW.pause();
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function videoDemoTogglePlay() {
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      if (vA.paused) {
+        vA.play().catch(() => {});
+        vW.play().catch(() => {});
+      } else {
+        vA.pause();
+        vW.pause();
+      }
+      updatePlayPauseBtn();
+    }
+
+    function videoDemoRestart() {
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      vA.currentTime = 0;
+      vW.currentTime = 0;
+      vA.play().catch(() => {});
+      vW.play().catch(() => {});
+      updatePlayPauseBtn();
+    }
+
+    function videoDemoSeek(val) {
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      const t = (val / 100) * vA.duration;
+      if (!isNaN(t)) { vA.currentTime = t; vW.currentTime = t; }
+    }
+
+    function videoDemoSpeed(val) {
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      vA.playbackRate = parseFloat(val);
+      vW.playbackRate = parseFloat(val);
+    }
+
+    function updatePlayPauseBtn() {
+      const vA = document.getElementById('video-attacker');
+      const btn = document.getElementById('vd-playpause');
+      if (!btn) return;
+      btn.textContent = vA.paused ? '▶ PLAY' : '⏸ PAUSE';
+    }
+
+    function updateDuration() {
+      const vA = document.getElementById('video-attacker');
+      const durEl = document.getElementById('vd-duration');
+      if (durEl && !isNaN(vA.duration)) durEl.textContent = fmtTime(vA.duration);
+    }
+
+    function fmtTime(s) {
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60).toString().padStart(2, '0');
+      return m + ':' + sec;
+    }
+
+    // ESC key closes overlay
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeVideoDemo();
+    });
+
+    // ===== SIMULATION DETAIL PANEL TOGGLE =====
+    function toggleSimDetail(detailId, cardId) {
+      const detail = document.getElementById(detailId);
+      if (!detail) return;
+      const isVisible = detail.style.display === 'block';
+      detail.style.display = isVisible ? 'none' : 'block';
+      if (!isVisible) {
+        setTimeout(() => {
+          detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+      }
+    }
+
+    // ===== SYNCHRONIZED VIDEO CONTROLS & PHASE LOAD =====
+    document.addEventListener('DOMContentLoaded', () => {
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+
+      if (vA && vW) {
+        let isSyncing = false;
+
+        // Update seek bar and timer during playback
+        vA.addEventListener('timeupdate', () => {
+          const seekEl = document.getElementById('vd-seek');
+          const curEl  = document.getElementById('vd-current');
+          if (seekEl && !isNaN(vA.duration)) seekEl.value = (vA.currentTime / vA.duration) * 100;
+          if (curEl) curEl.textContent = fmtTime(vA.currentTime);
+
+          // Drift correction
+          if (isSyncing) return;
+          if (Math.abs(vA.currentTime - vW.currentTime) > 0.2) {
+            isSyncing = true;
+            vW.currentTime = vA.currentTime;
+            isSyncing = false;
+          }
+        });
+
+        // Update play/pause button on external state changes
+        ['play','pause'].forEach(ev => {
+          vA.addEventListener(ev, updatePlayPauseBtn);
+        });
+      }
+
+      // Load specific phase from URL query param or hash
+      const urlParams = new URLSearchParams(window.location.search);
+      const phaseParam = urlParams.get('phase');
+      const hash = window.location.hash;
+      if (phaseParam === '3' || hash === '#attack-simulations' || hash === '#phase-3') {
+        switchPhase(3);
+      } else if (phaseParam === '2' || hash === '#phase-2') {
+        switchPhase(2);
+      } else {
+        switchPhase(1);
+      }
+    });
   </script>
 </body>
 
