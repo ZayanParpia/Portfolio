@@ -1,0 +1,50 @@
+# Security Simulation Report: SSH Attack Detection Pipeline
+
+**Date:** July 2, 2026
+**Target:** Ubuntu CLI Endpoint (Endpoint II)
+**Status:** In Progress (Phases 1–4 Outlined for Validation)
+
+## 1. Overview
+
+This simulation validates SIEM/Wazuh capability to detect SSH-based brute-force attacks, anomalous authentication patterns, and unauthorized persistence mechanisms.
+
+## 2. Infrastructure & Scope
+
+- **SIEM Infrastructure:** Wazuh Manager & Dashboard, Sysmon for Linux, Auditd, journald
+- **Target:** Ubuntu CLI Endpoint (Endpoint II)
+- **Attacker Node:** Kali Linux VM acting as internal adversary **
+- **Log Sources:** `/var/log/auth.log` (or journald), `/var/log/audit/audit.log`
+
+## 3. Simulation Execution & Results (Planned Outline)
+
+| Phase | Activity | Target Log Source | Detection / Rule Logic Blueprint |
+|---|---|---|---|
+| **1: Brute-Force** | SSH password guessing against Endpoint II | `/var/log/auth.log`, journald | Level 10 alert on multiple failed logins from one IP in a tight window |
+| **2: Triage** | Successful login immediately after Phase 1 failures | `/var/log/auth.log`, journald | Composite/stateful rule matching success to the IP that triggered Phase 1 |
+| **3: Persistence** | Attacker key added to `~/.ssh/authorized_keys` | Wazuh FIM, Auditd | Level 7+ alert on write events inside `.ssh` directories |
+| **4: Anomaly** | Off-hours login or login from a new internal host | `/var/log/auth.log` | Time-window or "if_matched_group" rule flagging off-hour/unmapped access |
+
+## 4. Step-by-Step Lab Execution Guide — Tools by Phase
+
+### Phase 1: Brute-Force Login Attempts
+- **Tool category:** An SSH-protocol credential-testing / password-spraying tool commonly bundled with **Kali Linux** (or installable on Ubuntu via standard package manager)
+- **Verify:** Rapid `Failed password` entries appear in `/var/log/auth.log`
+
+### Phase 2: Successful Login After Failures
+- **Tool category:** Native OS SSH client
+- **Verify:** An `Accepted password`/`Accepted publickey` entry immediately follows the failure burst, same source IP
+
+### Phase 3: Suspicious Key Addition (Persistence)
+- **Tool category:** Standard Linux shell/file utilities
+- **Verify:** Wazuh FIM watching `/home/*/.ssh/authorized_keys` and `/root/.ssh/authorized_keys` fires a modification alert
+
+### Phase 4: Unusual SSH Behavior (New Host / Anomalous Time)
+- **Tool category:** System clock/time-configuration utility; a second, previously unused internal host (e.g. your Windows 11 machine or a third Ubuntu endpoint)
+- **Verify:** SIEM distinguishes routine administrative IPs from unmapped ones
+
+## 5. SIEM Rules Development Plan
+
+- **Phase 1:** Reference standard Wazuh SSH rule IDs (e.g. failed-auth rule); build a `frequency`/`timeframe` composite rule
+- **Phase 2:** Use `if_matched_sid` to chain a success-login rule to the Phase 1 trigger within a defined window
+- **Phase 3:** Use Wazuh syscheck (FIM) or Auditd syscall monitoring (`sys_write`, `openat` write flags) targeting `authorized_keys`
+- **Phase 4:** Time-window constraint or geo/host-allowlist logic in `local_rules.xml`

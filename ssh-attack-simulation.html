@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSH Attack Pipeline Simulation - Zayan Parpia</title>
+  <meta name="description"
+    content="A security simulation validating Wazuh SIEM detection capabilities against SSH brute-force attacks and key injection.">
+  <meta name="author" content="Zayan Parpia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="experience.html" class="nav-link">Experience</a></li>
+        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section" style="padding-top:120px;padding-bottom:40px;">
+    <div class="container">
+      <div class="project-detail-header">
+        <h1 class="section-title">SSH Attack Pipeline Simulation</h1>
+        <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+          <a href="siem-project.html#phase-3-section" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" style="width:20px;height:20px;">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to SIEM Project
+          </a>
+          <a href="https://github.com/ZayanParpia/Home-Lab-SIEM-Project" target="_blank" class="back-btn" style="border-color:var(--color-accent);color:var(--color-accent);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            GitHub Repository
+          </a>
+        </div>
+        <div class="project-meta-top">
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <p class="project-date" style="margin:0;font-style:italic;color:var(--color-text-gray);">July 27, 2026</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="project-content-wrapper fade-in">
+        
+        <!-- VISUALS COLUMN -->
+        <div class="project-visuals">
+          <div class="screenshot-item">
+            <div class="screenshot-meta">
+              <h4>Simulation Architecture &amp; Attack Flow</h4>
+              <p>Network topology showing the Kali Linux attacker VM launching SSH brute-force attacks against Ubuntu Endpoint II, monitored by Wazuh Manager, Sysmon, and Auditd with FIM watching SSH configuration files.</p>
+            </div>
+            <img src="SIEM Project V1/attack-simulations/SSH Attack/SOAR RESPONSE DIAGRAM.png" alt="SSH Attack Simulation Diagram" class="main-image zoom-img">
+          </div>
+
+          <div style="margin-top:2rem;">
+            <h4 style="color:var(--color-accent);margin-bottom:1rem;">Video Demonstrations</h4>
+            
+            <div class="artifact-box" style="background:var(--color-bg-card);padding:var(--spacing-sm);border-radius:var(--radius-md);border:1px solid var(--glass-border);margin-bottom:var(--spacing-md);">
+              <h4 style="color:var(--color-accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+                Full Walkthrough Demo
+              </h4>
+              <video controls style="width:100%;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+                <source src="SIEM Project V1/attack-simulations/SSH Attack/Video Demo/Full Walkthrough demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            
+            <div class="artifact-box" style="background:var(--color-bg-card);padding:var(--spacing-sm);border-radius:var(--radius-md);border:1px solid var(--glass-border);margin-bottom:var(--spacing-md);cursor:pointer;transition:transform 0.2s;position:relative;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" onclick="openVideoDemo()">
+              <h4 style="color:var(--color-accent);margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+                <div style="display:flex;align-items:center;gap:0.5rem;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                  </svg>
+                  Dual-Stream: Wazuh Dashboard &amp; Hydra
+                </div>
+                <span style="font-size:0.75rem;background:var(--color-accent);color:#000;padding:4px 10px;border-radius:12px;font-weight:700;letter-spacing:0.05em;box-shadow:0 0 10px rgba(0,210,190,0.4);">CLICK TO PLAY FULLSCREEN</span>
+              </h4>
+              <div style="width:100%;height:180px;background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('SIEM Project V1/attack-simulations/SSH Attack/Screenshots/Rule 100012 Triggerd.png') center/cover;border-radius:var(--radius-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--glass-border);">
+                <svg viewBox="0 0 24 24" fill="var(--color-accent)" width="54" height="54" style="opacity:0.9;margin-bottom:10px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <p style="color:#fff;font-size:0.9rem;font-weight:600;margin:0;">Synchronized Playback</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:2rem;">
+            <h4 style="color:var(--color-accent);margin-bottom:1rem;">Telemetry &amp; Alert Evidence</h4>
+            <p style="margin-bottom:1.5rem;font-size:0.95rem;color:var(--color-text-gray);">Visual evidence of each attack phase — endpoint status, terminal execution, and corresponding Wazuh rule triggers.</p>
+            <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+
+              <div class="screenshot-item">
+                <div class="screenshot-meta"><h4>Kali Linux Attacker Setup</h4><p>Preparing the attacker machine to execute the SSH brute force.</p></div>
+                <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/Kali Linux.png" alt="Kali Linux" class="main-image zoom-img">
+              </div>
+              
+              <div class="screenshot-item">
+                <div class="screenshot-meta"><h4>Nmap Scan</h4><p>Scanning the target endpoint to verify SSH port 22 is open and accessible.</p></div>
+                <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/Nmap Scan port 22 Running on EndpointIV.png" alt="Nmap Scan" class="main-image zoom-img">
+              </div>
+
+              <div class="screenshot-item">
+                <div class="screenshot-meta"><h4>Hydra Configuration</h4><p>Setting up Hydra on Kali Linux with target user and password lists.</p></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/Hydra Intalled on Kali Linux.png" alt="Hydra Installed" class="main-image zoom-img">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/Hydra Username List.png" alt="Hydra Username List" class="main-image zoom-img">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/Hydra Password List.png" alt="Hydra Password List" class="main-image zoom-img" style="grid-column: 1 / -1;">
+                </div>
+              </div>
+
+              <div class="screenshot-item">
+                <div class="screenshot-meta"><h4>Target Account Creation</h4><p>Creating the vulnerable SSH account on the target endpoint for the simulation.</p></div>
+                <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/SSHATTACK User Created.png" alt="User Creation" class="main-image zoom-img">
+              </div>
+
+              <div class="screenshot-item">
+                <div class="screenshot-meta"><h4>Wazuh Custom Rule Triggered</h4><p>Wazuh successfully detects the brute force attempts and fires the custom correlation rule.</p></div>
+                <div style="display:grid;grid-template-columns:1fr;gap:10px;">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/Rule 100012 Triggerd.png" alt="Rule 100012 Triggered" class="main-image zoom-img">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/Final part of custom rule triggering.png" alt="Final part of custom rule triggering" class="main-image zoom-img">
+                </div>
+              </div>
+
+              <div class="screenshot-item">
+                <div class="screenshot-meta"><h4>SSH Key Persistence Setup</h4><p>Generating and copying an SSH key from the attacker to the target for persistent access.</p></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/kali linux ssh key gen.png" alt="Key Generation" class="main-image zoom-img">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/SSH key on Kali Linux.png" alt="SSH Key on Kali" class="main-image zoom-img">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/key copy on target.png" alt="Key Copy" class="main-image zoom-img" style="grid-column: 1 / -1;">
+                </div>
+              </div>
+              
+              <div class="screenshot-item">
+                <div class="screenshot-meta"><h4>FIM Tracking Authorized Keys</h4><p>Configuring Wazuh File Integrity Monitoring to track changes to the authorized_keys file and alert on modifications.</p></div>
+                <div style="display:grid;grid-template-columns:1fr;gap:10px;">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/Edited Ossec.conf so it tracks for new ssh keys.png" alt="Edited Ossec.conf" class="main-image zoom-img">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/ssh authorized key file being changed.png" alt="Authorized Key Changed" class="main-image zoom-img">
+                  <img src="SIEM Project V1/attack-simulations/SSH Attack/Screenshots/ssh authorized key file being changed detail.png" alt="Authorized Key Changed Detail" class="main-image zoom-img">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- INFO COLUMN -->
+        <div class="project-info">
+          <h3>Simulation Report</h3>
+          <p style="margin-bottom:var(--spacing-sm);">This simulation validates Wazuh's ability to detect SSH-based credential attacks end-to-end — from brute-force password spraying to key injection persistence. It bridges theoretical SSH monitoring with evidence-based, validated detection engineering.</p>
+          <p style="margin-bottom:var(--spacing-sm);">Attacks are launched from a Kali Linux attacker VM using Hydra, targeting an Ubuntu CLI endpoint, with all telemetry flowing through Auditd and Wazuh FIM back to the SIEM manager for alert correlation.</p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Infrastructure Scope</h4>
+          <ul class="feature-list" style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Ubuntu CLI Endpoint</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Kali Linux (Attacker)</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Wazuh SIEM Manager</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Custom Correlation Rules</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">File Integrity Monitoring</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Auditd Syscall Tracking</p></div></li>
+          </ul>
+
+          <div style="margin-top:var(--spacing-lg);">
+
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-accent);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                Simulation Outline
+              </h4>
+              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"This simulation validates Wazuh's capability to detect SSH-based credential attacks, anomalous login behaviour, and unauthorized key injection. Using Hydra from Kali Linux, rapid brute-force attempts are directed at the endpoint to trigger built-in and custom correlation rules. Successful login sessions are logged with full context, and unauthorized <code>authorized_keys</code> modifications are detected through Wazuh FIM. All phases are mapped to MITRE ATT&amp;CK tactics T1110, T1098.004, and T1021.004."</p>
+            </div>
+
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                Simulation Milestones &amp; Logs
+              </h4>
+              <div class="log-container" style="display:flex;flex-direction:column;gap:1rem;">
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-07-20</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Mapped SSH attack scenarios to MITRE ATT&amp;CK matrix (T1110, T1098.004, T1021.004). Created simulation architecture diagram and scope document.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-07-22</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Deployed Hydra on Kali Linux VM. Configured target endpoint and confirmed SSH service is reachable from the attacker machine.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-07-23</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Began Phase 1 execution. Launched brute-force campaign and verified Wazuh rules trigger on individual SSH failures. Started development of custom correlation rule.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-07-25</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Deployed custom rule: correlates failed SSH authentication events within 60 seconds into a single high-severity brute-force alert.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-07-27</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Documented simulation architecture and executed SSH key persistence tests. Verified FIM alerts for authorized_keys modification.</p></div>
+              </div>
+            </div>
+
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <details style="cursor:pointer;" open>
+                <summary style="list-style:none;display:flex;align-items:center;gap:0.5rem;color:var(--color-accent);font-weight:600;font-size:1.1rem;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  Progress &amp; Completed Tasks
+                </summary>
+                <div style="margin-top:1rem;padding-left:1.5rem;border-left:2px solid var(--color-accent);">
+                  <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;color:var(--color-text-gray);font-size:0.95rem;">
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Define attack scope and map to MITRE ATT&amp;CK</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Verify target endpoint is online and monitored in Wazuh</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Deploy Hydra on Kali Linux attacker VM</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Confirm SSH port 22 reachable across network</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Validate built-in Wazuh SSH rules fire on failures</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Deploy custom correlation rule for Brute Force</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Phase 2: Track successful SSH login sessions</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Phase 4: FIM on authorized_keys injection</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                What I Learned
+              </h4>
+              <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;">This simulation is actively building SSH threat detection engineering skills across multiple domains:</p>
+              <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                <div>
+                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Technical Skills</h5>
+                  <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                    <li><strong>Hydra Brute-Force Tooling:</strong> Understanding SSH password attack patterns from an attacker's perspective to build better defensive detection logic.</li>
+                    <li><strong>Custom Wazuh Frequency Rules:</strong> Using <code>frequency</code>, <code>timeframe</code>, and <code>if_matched_sid</code> to build SSH brute-force correlation rules that reduce noise.</li>
+                    <li><strong>FIM for SSH Config Files:</strong> Adding <code>~/.ssh/authorized_keys</code> to the Wazuh FIM watch list via <code>ossec.conf</code>.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Security Concepts</h5>
+                  <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                    <li><strong>MITRE ATT&amp;CK T1110:</strong> Brute Force credential access and tuning alert thresholds to signal vs. noise ratios.</li>
+                    <li><strong>MITRE ATT&amp;CK T1098.004:</strong> SSH authorized key injection as a stealthy persistence mechanism.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Script -->
+  <script>
+    // Handle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Image Zoom functionality
+    const mainImages = document.querySelectorAll('.zoom-img');
+    const modal = document.createElement('div');
+    modal.className = 'img-modal';
+    const modalImg = document.createElement('img');
+    modalImg.className = 'modal-content';
+    const closeBtn = document.createElement('span');
+    closeBtn.className = 'modal-close';
+    closeBtn.innerHTML = '&times;';
+    modal.appendChild(closeBtn);
+    modal.appendChild(modalImg);
+    document.body.appendChild(modal);
+    mainImages.forEach(img => {
+      img.addEventListener('click', function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        setTimeout(() => { modal.classList.add('active'); }, 10);
+      });
+    });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    function closeModal() {
+      modal.classList.remove('active');
+      setTimeout(() => { modal.style.display = "none"; }, 300);
+    }
+
+    // ===== VIDEO DEMO OVERLAY CONTROLS =====
+    function openVideoDemo() {
+      const overlay = document.getElementById('video-demo-overlay');
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      vA.currentTime = 0;
+      vW.currentTime = 0;
+      vA.play().catch(() => {});
+      vW.play().catch(() => {});
+      updatePlayPauseBtn();
+      // set duration once metadata loaded
+      vA.addEventListener('loadedmetadata', updateDuration, { once: true });
+      if (vA.readyState >= 1) updateDuration();
+    }
+
+    function closeVideoDemo() {
+      const overlay = document.getElementById('video-demo-overlay');
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      vA.pause();
+      vW.pause();
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function videoDemoTogglePlay() {
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      if (vA.paused) {
+        vA.play().catch(() => {});
+        vW.play().catch(() => {});
+      } else {
+        vA.pause();
+        vW.pause();
+      }
+      updatePlayPauseBtn();
+    }
+
+    function videoDemoRestart() {
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      vA.currentTime = 0;
+      vW.currentTime = 0;
+      vA.play().catch(() => {});
+      vW.play().catch(() => {});
+      updatePlayPauseBtn();
+    }
+
+    function videoDemoSeek(val) {
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      const t = (val / 100) * vA.duration;
+      if (!isNaN(t)) { vA.currentTime = t; vW.currentTime = t; }
+    }
+
+    function videoDemoSpeed(val) {
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+      vA.playbackRate = parseFloat(val);
+      vW.playbackRate = parseFloat(val);
+    }
+
+    function updatePlayPauseBtn() {
+      const vA = document.getElementById('video-attacker');
+      const btn = document.getElementById('vd-playpause');
+      if (!btn) return;
+      btn.textContent = vA.paused ? '▶ PLAY' : '⏸ PAUSE';
+    }
+
+    function updateDuration() {
+      const vA = document.getElementById('video-attacker');
+      const durEl = document.getElementById('vd-duration');
+      if (durEl && !isNaN(vA.duration)) durEl.textContent = fmtTime(vA.duration);
+    }
+
+    function fmtTime(s) {
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60).toString().padStart(2, '0');
+      return m + ':' + sec;
+    }
+
+    // ESC key closes overlay
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeVideoDemo();
+    });
+
+    // ===== SYNCHRONIZED VIDEO CONTROLS =====
+    document.addEventListener('DOMContentLoaded', () => {
+      const vA = document.getElementById('video-attacker');
+      const vW = document.getElementById('video-wazuh');
+
+      if (vA && vW) {
+        let isSyncing = false;
+
+        // Update seek bar and timer during playback
+        vA.addEventListener('timeupdate', () => {
+          const seekEl = document.getElementById('vd-seek');
+          const curEl  = document.getElementById('vd-current');
+          if (seekEl && !isNaN(vA.duration)) seekEl.value = (vA.currentTime / vA.duration) * 100;
+          if (curEl) curEl.textContent = fmtTime(vA.currentTime);
+
+          // Drift correction
+          if (isSyncing) return;
+          if (Math.abs(vA.currentTime - vW.currentTime) > 0.2) {
+            isSyncing = true;
+            vW.currentTime = vA.currentTime;
+            isSyncing = false;
+          }
+        });
+
+        // Update play/pause button on external state changes
+        ['play','pause'].forEach(ev => {
+          vA.addEventListener(ev, updatePlayPauseBtn);
+        });
+      }
+    });
+  </script>
+
+  <!-- ====== FULLSCREEN DUAL-VIDEO OVERLAY ====== -->
+  <div id="video-demo-overlay" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#060810;z-index:99999;flex-direction:column;align-items:stretch;">
+
+    <!-- Top bar: title + close -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:44px;flex-shrink:0;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.08);">
+      <span style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;color:rgba(255,255,255,0.55);text-transform:uppercase;">⬛ Dual-Stream Demo — SSH Attack Simulation</span>
+      <button onclick="closeVideoDemo()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:1.1rem;font-weight:700;width:34px;height:34px;border-radius:50%;cursor:pointer;line-height:1;transition:background 0.2s;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,60,60,0.6)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">✕</button>
+    </div>
+
+    <!-- Video Stack (fills remaining space above control bar) -->
+    <div style="display:flex;flex-direction:column;flex:1;min-height:0;">
+
+      <!-- Top pane: Wazuh SIEM -->
+      <div style="flex:1;min-height:0;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:22px;background:rgba(0,112,243,0.75);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#fff;text-transform:uppercase;z-index:2;">🔵&nbsp; Wazuh SIEM Dashboard</div>
+        <video id="video-wazuh" muted style="width:100%;height:100%;object-fit:contain;background:#060a14;display:block;padding-top:22px;box-sizing:border-box;">
+          <source src="SIEM Project V1/attack-simulations/SSH Attack/Video Demo/Wazuh Dashboard Brute Force Detection.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Divider -->
+      <div style="height:3px;background:linear-gradient(90deg,rgba(0,112,243,0.6),rgba(220,53,69,0.6));flex-shrink:0;"></div>
+
+      <!-- Bottom pane: Attacker Console -->
+      <div style="flex:1;min-height:0;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:22px;background:rgba(220,53,69,0.75);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#fff;text-transform:uppercase;z-index:2;">🔴&nbsp; Attacker Console</div>
+        <video id="video-attacker" muted style="width:100%;height:100%;object-fit:contain;background:#000;display:block;padding-top:22px;box-sizing:border-box;">
+          <source src="SIEM Project V1/attack-simulations/SSH Attack/Video Demo/Hydra Brute Force .mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+
+    <!-- Shared Control Bar -->
+    <div id="video-ctrl-bar" style="flex-shrink:0;background:rgba(10,12,20,0.97);border-top:1px solid rgba(255,255,255,0.1);padding:10px 18px;display:flex;flex-direction:column;gap:8px;">
+      <!-- Seek row -->
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span id="vd-current" style="font-size:0.72rem;color:rgba(255,255,255,0.5);min-width:38px;font-variant-numeric:tabular-nums;">0:00</span>
+        <input id="vd-seek" type="range" min="0" max="100" value="0" step="0.1"
+          style="flex:1;accent-color:var(--color-accent);height:4px;cursor:pointer;"
+          oninput="videoDemoSeek(this.value)"
+        >
+        <span id="vd-duration" style="font-size:0.72rem;color:rgba(255,255,255,0.5);min-width:38px;text-align:right;font-variant-numeric:tabular-nums;">0:00</span>
+      </div>
+      <!-- Buttons row -->
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button id="vd-playpause" onclick="videoDemoTogglePlay()" style="background:var(--color-accent);border:none;color:#000;font-size:0.8rem;font-weight:800;padding:6px 18px;border-radius:20px;cursor:pointer;letter-spacing:0.05em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">▶ PLAY</button>
+        <button onclick="videoDemoRestart()" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:0.75rem;padding:5px 14px;border-radius:20px;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">↺ Restart</button>
+        <!-- Speed -->
+        <select id="vd-speed" onchange="videoDemoSpeed(this.value)" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:0.75rem;padding:4px 8px;border-radius:20px;cursor:pointer;">
+          <option value="0.5">0.5×</option>
+          <option value="1" selected>1×</option>
+          <option value="1.5">1.5×</option>
+          <option value="2">2×</option>
+        </select>
+        <span style="margin-left:auto;font-size:0.68rem;color:rgba(255,255,255,0.3);">Both streams play in sync &nbsp;·&nbsp; Press <kbd style="background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px;">ESC</kbd> to close</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
