@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Injection PoC Simulation - Zayan Parpia</title>
+  <meta name="description"
+    content="A security simulation validating Wazuh SIEM detection capabilities against SQL Injection attacks targeting OWASP Juice Shop through an Apache reverse proxy.">
+  <meta name="author" content="Zayan Parpia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ===== NAVIGATION BAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="experience.html" class="nav-link">Experience</a></li>
+        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HEADER ===== -->
+  <section class="section" style="padding-top:120px;padding-bottom:40px;">
+    <div class="container">
+      <div class="project-detail-header">
+        <h1 class="section-title">SQL Injection Proof of Concept</h1>
+        <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+          <a href="siem-project.html#phase-3-section" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" style="width:20px;height:20px;">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to SIEM Project
+          </a>
+          <a href="https://github.com/ZayanParpia/Home-Lab-SIEM-Project" target="_blank" class="back-btn" title="GitHub Repository" style="border-color:var(--color-accent);color:var(--color-accent);padding:0;width:38px;height:38px;border-radius:50%;justify-content:center;align-items:center;flex-shrink:0;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="project-meta-top">
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <p class="project-date" style="margin:0;font-style:italic;color:var(--color-text-gray);">July 30, 2026</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTENT ===== -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="project-content-wrapper fade-in">
+        
+        <!-- VISUALS COLUMN -->
+        <div class="project-visuals">
+          <div class="screenshot-item">
+            <div class="screenshot-meta">
+              <h4>Simulation Architecture &amp; Attack Flow</h4>
+              <p>Network topology and attack flow showing the Kali Linux attacker forwarding SQL injection requests to Endpoint IV (Ubuntu Server) running OWASP Juice Shop behind an Apache Reverse Proxy. Telemetry is gathered from Apache access logs by the Wazuh Agent and analyzed by the Wazuh SIEM Manager.</p>
+            </div>
+            <img src="SIEM Project V1/attack-simulations/SQL Injection/Diagram.png" alt="SQL Injection Simulation Diagram" class="main-image zoom-img">
+          </div>
+
+          <div style="margin-top:2rem;">
+            <h4 style="color:var(--color-accent);margin-bottom:1rem;">Telemetry &amp; Alert Evidence</h4>
+            <p style="margin-bottom:1.5rem;font-size:0.95rem;color:var(--color-text-gray);">Visual evidence of the simulation setup, proxy configuration, and target application interface.</p>
+            
+            <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>OWASP Juice Shop Vulnerable Application</h4>
+                  <p>The target application (OWASP Juice Shop) deployed on the endpoint, providing the login forms and search fields used to test and execute SQL injection payloads.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/SQL Injection/Screenshots/Juice-Shop.png" alt="OWASP Juice Shop" class="main-image zoom-img">
+              </div>
+              
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>Apache Web Server Reverse Proxy Setup</h4>
+                  <p>Configuration snippet showing the Apache HTTP Server listening on port 80 and acting as a reverse proxy, forwarding incoming web requests directly to the Juice Shop application running on port 3000.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/SQL%20Injection/Screenshots/Apache%20Listening%20on%20port%2080.png" alt="Apache Listening Configuration" class="main-image zoom-img">
+              </div>
+
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>Apache2 Status &amp; Integration</h4>
+                  <p>Status verification confirming Apache HTTP Server is running. Apache access logs are monitored to capture request payloads containing malicious SQL injection strings.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/SQL Injection/Screenshots/Apache2 Running.png" alt="Apache2 Service Running" class="main-image zoom-img">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- INFO COLUMN -->
+        <div class="project-info">
+          <h3>Proof of Concept Report</h3>
+          <p style="margin-bottom:var(--spacing-sm);">This simulation acts as a Proof of Concept (PoC) for detecting SQL injection (SQLi) attacks inside a home lab. The primary objective is to configure an Apache reverse proxy to channel traffic to a vulnerable web server, consolidate the proxy logs into the Wazuh agent, and build custom rule detection logic that fires alert triggers upon detecting suspicious query patterns.</p>
+          <p style="margin-bottom:var(--spacing-sm);">Attack payloads (such as SQL keywords, UNION SELECT attempts, and boolean logic expressions like <code>OR 1=1</code>) are sent via curl and browser forms, logging the requests in the Apache access logs, which are then analyzed dynamically by Wazuh.</p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Infrastructure Scope</h4>
+          <ul class="feature-list" style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">OWASP Juice Shop</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Apache Reverse Proxy</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Ubuntu Endpoint IV</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Kali Linux (Attacker)</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Wazuh Log Monitoring</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Custom Wazuh XML Rules</p></div></li>
+          </ul>
+
+          <div style="margin-top:var(--spacing-lg);">
+
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-accent);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                Simulation Outline
+              </h4>
+              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"This simulation validates the ability of SIEM/Wazuh to detect SQL injection attempts against a vulnerable web application. The goal is to generate controlled SQL injection activity and determine whether Wazuh can identify suspicious requests and generate appropriate security alerts. Controlled SQL injection payloads are sent through vulnerable application parameters to test input validation, and Apache access logs are linked to Wazuh to trigger custom alerts when requests match SQL injection indicators."</p>
+            </div>
+
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                Simulation Milestones &amp; Logs
+              </h4>
+              <div class="log-container" style="display:flex;flex-direction:column;gap:1rem;">
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-07-30</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Mapped SQL Injection attack scenario to MITRE ATT&amp;CK Matrix (Initial Access - Exploit Public-Facing Application, T1190). Created simulation outline, tech stack list, and architecture diagram.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-08-02</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Installed vulnerable OWASP Juice Shop on Endpoint IV running on port 3000. Configured Apache HTTP Server to act as reverse proxy listening on port 80.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-08-03</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Edited and verified Apache reverse proxy site-configuration file to implement <code>ProxyPass</code> and <code>ProxyPassReverse</code> forwarding directives.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-08-04</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Integrated Apache access log files with the Wazuh agent in <code>ossec.conf</code>. Developed custom Wazuh detection rule 100200 in the XML local rules file to match SQL keywords.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-08-05</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Tested rule triggering by echoing simulation access logs and executing SQL injection curl payloads directly against the Apache server. Confirmed initial rule execution.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-08-12</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Configured Wazuh dashboard event indicators to fire on the SQL injection patterns, confirming security alerts show correct source IP, payload detail, and target URL.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-08-17</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Concluded Proof of Concept. Documented that Wazuh includes pre-existing, default web rule groups for SQLi, providing a valuable validation of built-in vs. custom log analysis.</p></div>
+              </div>
+            </div>
+
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <details style="cursor:pointer;" open>
+                <summary style="list-style:none;display:flex;align-items:center;gap:0.5rem;color:var(--color-accent);font-weight:600;font-size:1.1rem;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" width="20" height="20"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  Progress &amp; Completed Tasks
+                </summary>
+                <div style="margin-top:1rem;padding-left:1.5rem;border-left:2px solid var(--color-accent);">
+                  <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;color:var(--color-text-gray);font-size:0.95rem;">
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Create outline and tech stack documentation</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Install vulnerable OWASP Juice Shop on target endpoint</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Deploy Apache server on target endpoint</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Configure Apache as reverse proxy to Juice Shop application</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Link Apache web access logs to Wazuh agent telemetry stream</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Write custom Wazuh XML rules to flag SQL injection patterns</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Fire SQL injection payloads and confirm Wazuh alerts</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                What I Learned
+              </h4>
+              <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;">Developing this Proof of Concept simulation provided key insights into web application log analysis and security monitoring configurations:</p>
+              <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                <div>
+                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Technical Skills</h5>
+                  <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                    <li><strong>Apache Proxy Configurations:</strong> Implementing reverse proxy parameters in site configurations to route network traffic securely.</li>
+                    <li><strong>Wazuh Agent Log Scopes:</strong> Configuring the local agent's <code>ossec.conf</code> to target specific log files and parse them using predefined log decoders (<code>web-accesslog</code>).</li>
+                    <li><strong>Custom XML Rule Writing:</strong> Utilizing logical tags (<code>&lt;match&gt;</code>, <code>&lt;if_sid&gt;</code>, <code>&lt;decoded_as&gt;</code>) to write correlation logic for detection engineering.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Security Concepts</h5>
+                  <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                    <li><strong>Exploiting Public-Facing Applications (MITRE T1190):</strong> Analyzing request patterns to understand vulnerabilities in input handling of public ports (80/443).</li>
+                    <li><strong>Built-In vs. Custom Threat Rules:</strong> Discovering that enterprise SIEM systems come pre-configured with rulesets, and evaluating the necessity of tuning custom signatures vs using default rules.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript and Image Zoom Modal -->
+  <script>
+    // Handle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Image Zoom functionality
+    const mainImages = document.querySelectorAll('.zoom-img');
+    const modal = document.createElement('div');
+    modal.className = 'img-modal';
+    const modalImg = document.createElement('img');
+    modalImg.className = 'modal-content';
+    const closeBtn = document.createElement('span');
+    closeBtn.className = 'modal-close';
+    closeBtn.innerHTML = '&times;';
+    modal.appendChild(closeBtn);
+    modal.appendChild(modalImg);
+    document.body.appendChild(modal);
+
+    mainImages.forEach(img => {
+      img.addEventListener('click', function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        setTimeout(() => { modal.classList.add('active'); }, 10);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    function closeModal() {
+      modal.classList.remove('active');
+      setTimeout(() => { modal.style.display = "none"; }, 300);
+    }
+  </script>
+
+</body>
+</html>

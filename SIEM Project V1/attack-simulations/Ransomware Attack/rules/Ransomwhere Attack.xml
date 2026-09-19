@@ -1,0 +1,21 @@
+<!-- Ransomwhere Attack -->
+<group name="Ransomwhere Attack">
+
+ <rule id="100234" level="15" frequency="10" timeframe="2">
+    <if_matched_sid>550</if_matched_sid>
+    <same_field>ppid</same_field>
+    <description>Possible Mass Encryption Detected</description>
+    <mitre>
+      <id>T1486</id>
+    </mitre>
+    <group>ransomware,</group>
+  </rule>
+
+ <rule id="100235" level="16" timeframe="5">
+   <if_matched_sid>100234</if_matched_sid>
+   <if_sid>554</if_sid>
+   <field name="file" type="pcre2">(?i)\.(md|txt|html|htm|png|jpg)$</field>
+   <description>Ransomwhere Detected. Run Backup Scripts!...</description>
+ </rule>
+</group>
+

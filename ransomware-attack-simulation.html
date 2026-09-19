@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ransomware Attack Simulation - Zayan Parpia</title>
+  <meta name="description"
+    content="A security simulation validating Wazuh SIEM detection capabilities against ransomware bulk file encryption, multi-stage rule correlation, and automated backup recovery.">
+  <meta name="author" content="Zayan Parpia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ===== NAVIGATION BAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="experience.html" class="nav-link">Experience</a></li>
+        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HEADER ===== -->
+  <section class="section" style="padding-top:120px;padding-bottom:40px;">
+    <div class="container">
+      <div class="project-detail-header">
+        <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+          <h1 class="section-title" style="margin-bottom:0;">Ransomware Attack Simulation</h1>
+          <a href="https://github.com/ZayanParpia/Home-Lab-SIEM-Project/tree/main/attack-simulations/Ransomware%20Attack"
+            target="_blank"
+            title="View on GitHub"
+            style="color:var(--color-text-light);transition:color 0.3s ease;display:inline-flex;align-items:center;line-height:1;"
+            onmouseover="this.style.color='var(--color-accent)'"
+            onmouseout="this.style.color='var(--color-text-light)'">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+        </div>
+        <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+          <a href="siem-project.html#phase-3-section" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" style="width:20px;height:20px;">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to SIEM Project
+          </a>
+          <a href="https://github.com/ZayanParpia/Home-Lab-SIEM-Project/tree/main/attack-simulations/Ransomware%20Attack" target="_blank" class="back-btn" title="GitHub Repository" style="border-color:var(--color-accent);color:var(--color-accent);padding:0;width:38px;height:38px;border-radius:50%;justify-content:center;align-items:center;flex-shrink:0;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="project-meta-top">
+          <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+            <p class="project-date" style="margin:0;font-style:italic;color:var(--color-text-gray);">September 18, 2026 &nbsp;&bull;&nbsp; Platform: <strong style="color:var(--color-text-light);">Wazuh SIEM</strong> &nbsp;&bull;&nbsp; MITRE ATT&amp;CK: <strong style="color:var(--color-accent);">T1486 (Data Encrypted for Impact)</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTENT ===== -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="project-content-wrapper fade-in">
+
+        <!-- VISUALS COLUMN -->
+        <div class="project-visuals">
+
+          <!-- Simulation Architecture & Attack Flow Diagram -->
+          <div class="screenshot-item">
+            <div class="screenshot-meta">
+              <h4>Simulation Architecture &amp; Attack Flow</h4>
+              <p>Ransomware detection and recovery pipeline architecture showing the attack simulation, file changes generated, Wazuh FIM events, Rule 100234 mass changes correlation, ransomware note creation, Rule 100235 detection, and backup recovery workflow.</p>
+            </div>
+            <img src="SIEM Project V1/attack-simulations/Ransomware Attack/Diagram.png" alt="Ransomware Attack Simulation Diagram" class="main-image zoom-img">
+          </div>
+
+          <!-- Video Demonstration -->
+          <div style="margin-top:2rem;">
+            <h4 style="color:var(--color-accent);margin-bottom:1rem;">Video Demonstration</h4>
+            <div class="artifact-box" style="background:var(--color-bg-card);padding:var(--spacing-sm);border-radius:var(--radius-md);border:1px solid var(--glass-border);margin-bottom:var(--spacing-md);">
+              <h4 style="color:var(--color-accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+                Full Walkthrough Demo
+              </h4>
+              <video controls style="width:100%;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+                <source src="SIEM Project V1/attack-simulations/Ransomware Attack/Video/DEMO.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <!-- Telemetry & Alert Evidence (Screenshots in Exact Order) -->
+          <div style="margin-top:2rem;">
+            <h4 style="color:var(--color-accent);margin-bottom:1rem;">Telemetry &amp; Alert Evidence</h4>
+            <p style="margin-bottom:1.5rem;font-size:0.95rem;color:var(--color-text-gray);">Visual evidence of each attack phase — from the initial backup process through file encryption, detection, and recovery.</p>
+
+            <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+
+              <!-- 2. Files Before the Attack -->
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>1. 📁 Files Before the Attack</h4>
+                  <p style="margin:0.25rem 0 0.5rem;"><code style="color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:4px;font-size:0.82rem;font-weight:600;">Files of DIR before.png</code></p>
+                  <p>Shows the contents of the target directory <strong>before</strong> the ransomware simulation begins. The files are still in their original, readable state.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Ransomware Attack/screenshots/Files of DIR before.png" alt="Files Before Attack" class="main-image zoom-img">
+              </div>
+
+              <!-- 3. Plaintext Files Before Ransomware -->
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>2. 📄 Plaintext Files Before Ransomware</h4>
+                  <p style="margin:0.25rem 0 0.5rem;"><code style="color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:4px;font-size:0.82rem;font-weight:600;">Files in DIR in plaintext before Ransomware Script.png</code></p>
+                  <p>Provides a closer view of the target files while they are still stored as normal plaintext files immediately before the ransomware script is executed.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Ransomware Attack/screenshots/Files in DIR in plaintext before Ransomware Script.png" alt="Plaintext Files Before Ransomware" class="main-image zoom-img">
+              </div>
+
+              <!-- 4. Ransomware Simulation Running -->
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>3. 🐍 Ransomware Simulation Running</h4>
+                  <p style="margin:0.25rem 0 0.5rem;"><code style="color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:4px;font-size:0.82rem;font-weight:600;">Running Ransomware Script.png</code></p>
+                  <p style="margin-bottom:0.4rem;">Shows the ransomware simulation script being executed against the test directory.</p>
+                  <p>This represents the <strong>attack simulation phase</strong> of the project.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Ransomware Attack/screenshots/Running Ransomware Script.png" alt="Running Ransomware Script" class="main-image zoom-img">
+              </div>
+
+              <!-- 5. Files Being Encrypted -->
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>4. 🔐 Files Being Encrypted</h4>
+                  <p style="margin:0.25rem 0 0.5rem;"><code style="color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:4px;font-size:0.82rem;font-weight:600;">Ransomware Script Encrypted Contents.png</code></p>
+                  <p style="margin-bottom:0.4rem;">Shows the ransomware simulation processing the files and encrypting their contents.</p>
+                  <p>This demonstrates the simulated impact of the attack on the test data.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Ransomware Attack/screenshots/Ransomware Script Encrypted Contents.png" alt="Ransomware Script Encrypted Contents" class="main-image zoom-img">
+              </div>
+
+              <!-- 6. Directory After Encryption -->
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>5. 🔒 Directory After Encryption</h4>
+                  <p style="margin:0.25rem 0 0.5rem;"><code style="color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:4px;font-size:0.82rem;font-weight:600;">Files in DIR now Encrypted.png</code></p>
+                  <p style="margin-bottom:0.4rem;">Shows the target directory after the ransomware simulation has completed.</p>
+                  <p>The previously readable files are now represented in their encrypted state.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Ransomware Attack/screenshots/Files in DIR now Encrypted.png" alt="Encrypted Files" class="main-image zoom-img">
+              </div>
+
+              <!-- 7. Ransomware Note Created -->
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>6. 📝 Ransomware Note Created</h4>
+                  <p style="margin:0.25rem 0 0.5rem;"><code style="color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:4px;font-size:0.82rem;font-weight:600;">Ransomware Note Made.png</code></p>
+                  <p style="margin-bottom:0.4rem;">Shows the ransom note generated by the simulation after the files have been encrypted.</p>
+                  <p>This represents the notification behavior commonly associated with ransomware and provides an additional detection indicator for the SIEM.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Ransomware Attack/screenshots/Ransomware Note Made.png" alt="Ransomware Note" class="main-image zoom-img">
+              </div>
+
+                            <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>7. 🚨 Bulk File Changes Detected by SIEM</h4>
+                  <p style="margin:0.25rem 0 0.5rem;"><code style="color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:4px;font-size:0.82rem;font-weight:600;">Bulk File Changes Detected by SIEM.png</code></p>
+                  <p style="margin-bottom:0.4rem;">Shows the SIEM detecting the large number of file changes generated by the ransomware simulation.</p>
+                  <p>The rapid modification activity serves as an indicator of potentially malicious behavior.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Ransomware Attack/screenshots/Bulk File Changes Detected by SIEM.png" alt="Bulk File Changes Detected" class="main-image zoom-img">
+              </div>
+
+              <!-- 8. Wazuh Detection Pipeline -->
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>8. 🛡️ Wazuh Detection Pipeline</h4>
+                  <p style="margin:0.25rem 0 0.5rem;"><code style="color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:4px;font-size:0.82rem;font-weight:600;">Pipeline for Rules Working .png</code></p>
+                  <p style="margin-bottom:0.4rem;">Shows the Wazuh detection pipeline processing the simulated ransomware activity.</p>
+                  <p>This demonstrates the custom security rules being triggered and the detection pipeline functioning as designed.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Ransomware Attack/screenshots/Pipeline for Rules Working .png" alt="Wazuh Detection Pipeline" class="main-image zoom-img">
+              </div>
+
+              <!-- 9. Bulk File Changes Detected by SIEM -->
+
+
+                            <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>9. 💾 Backup Script Running</h4>
+                  <p style="margin:0.25rem 0 0.5rem;"><code style="color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:4px;font-size:0.82rem;font-weight:600;">Backup Script Running.png</code></p>
+                  <p>Shows the backup script actively running before the ransomware simulation. The script creates backups of the files that will later be affected by the simulated attack.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Ransomware Attack/screenshots/Backup Script Running.png" alt="Backup Script Running" class="main-image zoom-img">
+              </div>
+
+              <!-- 10. Files Restored -->
+              <div class="screenshot-item">
+                <div class="screenshot-meta">
+                  <h4>10. ♻️ Files Restored</h4>
+                  <p style="margin:0.25rem 0 0.5rem;"><code style="color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:4px;font-size:0.82rem;font-weight:600;">Files back in Plaintext.png</code></p>
+                  <p style="margin-bottom:0.4rem;">Shows the files after the recovery process has restored them to their original readable state.</p>
+                  <p>This demonstrates the <strong>final recovery stage</strong> of the simulation.</p>
+                </div>
+                <img src="SIEM Project V1/attack-simulations/Ransomware Attack/screenshots/Files back in Plaintext.png" alt="Files Restored" class="main-image zoom-img">
+              </div>
+              
+
+            </div>
+          </div>
+        </div>
+
+        <!-- INFO COLUMN -->
+        <div class="project-info">
+          <h3>Simulation Overview</h3>
+          <p style="margin-bottom:var(--spacing-sm);">This project demonstrates a <strong>ransomware attack-vector simulation</strong> inside my Wazuh SIEM lab.</p>
+          <p style="margin-bottom:var(--spacing-sm);">The simulation uses a Python script to perform <strong>bulk file encryption</strong> against a monitored directory. The activity generates a large number of file modifications in a short period of time, followed by the creation of a ransomware-style note such as a <code>.txt</code>, <code>.md</code>, <code>.html</code>, or similar file.</p>
+          <p style="margin-bottom:var(--spacing-sm);">The Wazuh detection pipeline correlates these events to identify behavior consistent with ransomware activity. Once the final detection rule is triggered, a response workflow can be initiated to <strong>restore the affected files from a backup source</strong>.</p>
+          <p style="margin-bottom:var(--spacing-sm);font-size:0.92rem;color:var(--color-accent);background:rgba(0,210,190,0.06);border:1px solid rgba(0,210,190,0.2);padding:0.75rem 1rem;border-radius:var(--radius-sm);">
+            ⚠️ <strong>Lab Simulation:</strong> This project was performed in an isolated home SIEM environment for defensive security testing and detection engineering.
+          </p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Infrastructure Scope</h4>
+          <ul class="feature-list" style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Wazuh (Manager + Agent)</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Ubuntu Server 24.04 LTS</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Kali Linux (Attacker Host)</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">VMware Isolated Network</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Python 3 / AES-GCM</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Wazuh syscheck (FIM) &amp; auditd</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Custom Rules (100234, 100235)</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">RestoreBackup.py Script</p></div></li>
+          </ul>
+
+          <div style="margin-top:var(--spacing-lg);">
+
+            <!-- SIMULATION OUTLINE -->
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-accent);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                Simulation Outline
+              </h4>
+              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"Goal: Simulate a ransomware attack in a controlled lab, detect it in Wazuh via File Integrity Monitoring (FIM) + auditd process tracking, and trigger a SOAR response that kills the offending process, deletes the executable, and restores affected files from a snapshot backup. The simulation uses a Python script to perform bulk file encryption against a monitored directory. The activity generates a large number of file modifications in a short period of time, followed by the creation of a ransomware-style note such as a .txt, .md, .html, or similar file. The Wazuh detection pipeline correlates these events to identify behavior consistent with ransomware activity, mapping directly to MITRE ATT&amp;CK T1486 (Data Encrypted for Impact)."</p>
+            </div>
+
+            <!-- SIMULATION MILESTONES & LOGS -->
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                Simulation Milestones &amp; Logs
+              </h4>
+              <div class="log-container" style="display:flex;flex-direction:column;gap:1rem;">
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-08-25</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Learned how to encrypt and decrypt files in python using the cryptography library. Planned next steps for asymmetric encryption on directories, testing script on vm, and finding trigger for it on SIEM.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-08-28</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Learned how to make the python script to encrypt files in directories. Learned about the cryptography library and the rsa library.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-01</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Made the script using AESGCM for bulk encryption, put the script in /scripts.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-04</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Troubleshot audisp-af_unix socket errors on endpoint and investigated Wazuh who-data monitoring documentation.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-05</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Found out that the whodata fires properly when using the /etc folder; began investigation into directory tracking behavior.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-06</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Figured out why whodata was only working inside /etc folder. Configured ossec.conf to monitor newly created user directories with whodata, verifying file changes track correctly.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-07</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Tested custom rules. Identified that syscheck.audit.process.ppid was blocking rule execution; analyzed syntax error in custom rules.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-08</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Found out that using field ppid was required for the rule to fire. Successfully verified custom rule triggering in Wazuh.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-09</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Designed pipeline workflow: Ransomware is detected -> Ransomware file is deleted -> Script fires that goes to cloud and restores set files with same names and locations based on json file.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-12</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Created the script for the backup and initiated testing with active response on Wazuh.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-14</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Designed Human-in-the-Loop (HITL) step for the SOAR response when restoring files.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-15</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Remade script for no decrypt asking and created video demonstration.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-17</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Collected screenshots, sanitized scripts, disabled API key, edited video, and drafted technical documentation.</p></div>
+                <div class="log-entry"><span style="color:var(--color-accent);font-weight:bold;font-size:0.85rem;">2026-09-18</span><p style="color:var(--color-text-gray);font-size:0.95rem;margin-top:0.25rem;">Created architecture diagram and finalized documentation on portfolio website.</p></div>
+              </div>
+            </div>
+
+            <!-- PROGRESS & STEPS -->
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <details style="cursor:pointer;" open>
+                <summary style="list-style:none;display:flex;align-items:center;gap:0.5rem;color:var(--color-accent);font-weight:600;font-size:1.1rem;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" width="20" height="20"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  Progress &amp; Completed Tasks
+                </summary>
+                <div style="margin-top:1rem;padding-left:1.5rem;border-left:2px solid var(--color-accent);">
+                  <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;color:var(--color-text-gray);font-size:0.95rem;">
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Learn encryption and decryption in Python using cryptography library</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Create Python script using AESGCM for bulk file encryption</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Configure Wazuh ossec.conf for whodata monitoring on target directories</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Create custom Rule 100234 for detecting mass file changes by same PPID</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Create custom Rule 100235 for ransomware note detection and level 16 alert</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Validate multi-stage detection pipeline correlating Rule 550 and Rule 554</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Build RestoreBackup.py recovery script</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Remake script for no decrypt asking</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Create and edit video demo (Demo.mp4)</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Collect screenshots for simulation lifecycle and pipeline verification</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Sanitize scripts and disable API key</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Create README.md, pipeline, and tech stack documentation</li>
+                    <li style="display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--color-accent);">&#10003;</span> Create architecture diagram and format GitHub repo</li>
+                    <li style="display:flex;align-items:center;gap:0.85rem;"><span style="color:var(--color-secondary);font-weight:bold;">&#8594;</span> Integrate SOAR automation with Shuffle or n8n (Next Steps)</li>
+                    <li style="display:flex;align-items:center;gap:0.85rem;"><span style="color:var(--color-secondary);font-weight:bold;">&#8594;</span> Implement snapshot-based recovery (Next Steps)</li>
+                    <li style="display:flex;align-items:center;gap:0.85rem;"><span style="color:var(--color-secondary);font-weight:bold;">&#8594;</span> Investigate persistence detection and removal (Next Steps)</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <!-- WAZUH DETECTION RULES -->
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-accent);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Wazuh Detection Rules
+              </h4>
+              <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1rem;">The detection logic follows a two-stage process to reduce false positives by correlating two different behavioral indicators:</p>
+
+              <p style="color:var(--color-text-light);font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;">Rule 100234 — Possible Mass Encryption</p>
+              <pre style="background:#0a0c10;padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;border:1px solid var(--glass-border);font-size:0.85rem;color:#e6edf3;margin-bottom:1.5rem;"><code>&lt;!-- Ransomwhere Attack --&gt;
+&lt;group name="Ransomwhere Attack"&gt;
+
+  &lt;rule id="100234" level="15" frequency="10" timeframe="2"&gt;
+    &lt;if_matched_sid&gt;550&lt;/if_matched_sid&gt;
+    &lt;same_field&gt;ppid&lt;/same_field&gt;
+
+    &lt;description&gt;Possible Mass Encryption Detected&lt;/description&gt;
+
+    &lt;mitre&gt;
+      &lt;id&gt;T1486&lt;/id&gt;
+    &lt;/mitre&gt;
+
+    &lt;group&gt;ransomware,&lt;/group&gt;
+  &lt;/rule&gt;</code></pre>
+
+              <p style="color:var(--color-text-light);font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;">Rule 100235 — Ransomware Detected</p>
+              <pre style="background:#0a0c10;padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;border:1px solid var(--glass-border);font-size:0.85rem;color:#e6edf3;"><code>  &lt;rule id="100235" level="16" timeframe="5"&gt;
+    &lt;if_matched_sid&gt;100234&lt;/if_matched_sid&gt;
+    &lt;if_sid&gt;554&lt;/if_sid&gt;
+
+    &lt;field name="file" type="pcre2"&gt;
+      (?i)\.(md|txt|html|htm|png|jpg)$
+    &lt;/field&gt;
+
+    &lt;description&gt;
+      Ransomwhere Detected. Run Backup Scripts!...
+    &lt;/description&gt;
+  &lt;/rule&gt;
+
+&lt;/group&gt;</code></pre>
+            </div>
+
+            <!-- WHAT I LEARNED -->
+            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid var(--glass-border);">
+              <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                What I Learned
+              </h4>
+              <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;">Through this simulation, I gained practical experience with:</p>
+              <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                <div>
+                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Technical Skills</h5>
+                  <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                    <li>Designing behavioral SIEM detections</li>
+                    <li>Creating custom Wazuh rules</li>
+                    <li>Correlating multiple security events</li>
+                    <li>Using process information such as PPIDs for detection</li>
+                    <li>Writing Python security automation scripts</li>
+                    <li>Understanding AES-GCM encryption</li>
+                    <li>Building a basic ransomware response workflow</li>
+                    <li>Connecting detection with backup and recovery</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Security Concepts</h5>
+                  <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+                    <li>Mapping detections to MITRE ATT&amp;CK (T1486 — Data Encrypted for Impact)</li>
+                    <li>Understanding the difference between symmetric and asymmetric encryption</li>
+                    <li>Simulating bulk file encryption safely in an isolated lab</li>
+                    <li>Behavioral correlation reducing false positives compared to single file change alerts</li>
+                    <li>Incident response lifecycle: Attack Simulation &rarr; Detection &rarr; Correlation &rarr; Response &rarr; Recovery</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript and Image Zoom Modal -->
+  <script>
+    // Handle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Image Zoom functionality
+    const mainImages = document.querySelectorAll('.zoom-img');
+    const modal = document.createElement('div');
+    modal.className = 'img-modal';
+    const modalImg = document.createElement('img');
+    modalImg.className = 'modal-content';
+    const closeBtn = document.createElement('span');
+    closeBtn.className = 'modal-close';
+    closeBtn.innerHTML = '&times;';
+    modal.appendChild(closeBtn);
+    modal.appendChild(modalImg);
+    document.body.appendChild(modal);
+
+    mainImages.forEach(img => {
+      img.addEventListener('click', function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        setTimeout(() => { modal.classList.add('active'); }, 10);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    function closeModal() {
+      modal.classList.remove('active');
+      setTimeout(() => { modal.style.display = "none"; }, 300);
+    }
+  </script>
+
+</body>
+</html>
