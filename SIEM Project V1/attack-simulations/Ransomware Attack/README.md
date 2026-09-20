@@ -39,8 +39,6 @@ Once the final detection rule is triggered, a response workflow can be initiated
 
 
 
-> ⚠️ \*\*Lab Simulation:\*\* This project was performed in an isolated home SIEM environment for defensive security testing and detection engineering.
-
 
 
 \---

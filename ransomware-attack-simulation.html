@@ -229,9 +229,6 @@
           <p style="margin-bottom:var(--spacing-sm);">This project demonstrates a <strong>ransomware attack-vector simulation</strong> inside my Wazuh SIEM lab.</p>
           <p style="margin-bottom:var(--spacing-sm);">The simulation uses a Python script to perform <strong>bulk file encryption</strong> against a monitored directory. The activity generates a large number of file modifications in a short period of time, followed by the creation of a ransomware-style note such as a <code>.txt</code>, <code>.md</code>, <code>.html</code>, or similar file.</p>
           <p style="margin-bottom:var(--spacing-sm);">The Wazuh detection pipeline correlates these events to identify behavior consistent with ransomware activity. Once the final detection rule is triggered, a response workflow can be initiated to <strong>restore the affected files from a backup source</strong>.</p>
-          <p style="margin-bottom:var(--spacing-sm);font-size:0.92rem;color:var(--color-accent);background:rgba(0,210,190,0.06);border:1px solid rgba(0,210,190,0.2);padding:0.75rem 1rem;border-radius:var(--radius-sm);">
-            ⚠️ <strong>Lab Simulation:</strong> This project was performed in an isolated home SIEM environment for defensive security testing and detection engineering.
-          </p>
 
           <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Infrastructure Scope</h4>
           <ul class="feature-list" style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
@@ -254,7 +251,7 @@
                   stroke-linejoin="round" width="20" height="20"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                 Simulation Outline
               </h4>
-              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"Goal: Simulate a ransomware attack in a controlled lab, detect it in Wazuh via File Integrity Monitoring (FIM) + auditd process tracking, and trigger a SOAR response that kills the offending process, deletes the executable, and restores affected files from a snapshot backup. The simulation uses a Python script to perform bulk file encryption against a monitored directory. The activity generates a large number of file modifications in a short period of time, followed by the creation of a ransomware-style note such as a .txt, .md, .html, or similar file. The Wazuh detection pipeline correlates these events to identify behavior consistent with ransomware activity, mapping directly to MITRE ATT&amp;CK T1486 (Data Encrypted for Impact)."</p>
+              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"Goal: Simulate a ransomware attack in a controlled lab, detect it in Wazuh via File Integrity Monitoring (FIM) + auditd process tracking, and trigger a SOAR response that kills the offending process, deletes the executable, and restores affected files from a backup directory. The simulation uses a Python script to perform bulk file encryption against a monitored directory. The activity generates a large number of file modifications in a short period of time, followed by the creation of a ransomware-style note such as a .txt, .md, .html, or similar file. The Wazuh detection pipeline correlates these events to identify behavior consistent with ransomware activity, mapping directly to MITRE ATT&amp;CK T1486 (Data Encrypted for Impact)."</p>
             </div>
 
             <!-- SIMULATION MILESTONES & LOGS -->

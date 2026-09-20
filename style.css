@@ -624,6 +624,118 @@ pre {
   transform: translateX(4px);
 }
 
+/* ===== SIEM ATTACK VECTOR & ADDON CARD STYLES ===== */
+.project-card-addon {
+  border-color: rgba(var(--color-accent-rgb, 0, 210, 190), 0.28) !important;
+  position: relative;
+}
+.project-card-addon:hover {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 10px 32px rgba(var(--color-accent-rgb, 0, 210, 190), 0.15) !important;
+}
+.project-card-addon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-accent) 0%, rgba(var(--color-accent-rgb, 0, 210, 190), 0.2) 100%);
+  z-index: 2;
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.addon-badge-overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10, 14, 20, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(var(--color-accent-rgb, 0, 210, 190), 0.45);
+  padding: 4px 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.addon-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+  display: inline-block;
+}
+.tiny-tag-addon {
+  background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.1) !important;
+  border-color: rgba(var(--color-accent-rgb, 0, 210, 190), 0.4) !important;
+  color: var(--color-accent) !important;
+  font-weight: 700 !important;
+}
+
+.card-parent-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.08);
+  border: 1px solid rgba(var(--color-accent-rgb, 0, 210, 190), 0.28);
+  color: var(--color-accent);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: fit-content;
+  cursor: pointer;
+}
+.card-parent-link:hover {
+  background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.18);
+  border-color: var(--color-accent);
+  transform: translateX(2px);
+}
+.card-parent-link svg {
+  flex-shrink: 0;
+}
+
+.siem-submodules-container {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.siem-submodule-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 3px 9px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.siem-submodule-chip:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.14);
+  transform: translateY(-1px);
+}
+
 /* ===== PROJECT DETAIL PAGES ===== */
 .project-detail-header {
   margin-bottom: var(--spacing-lg);

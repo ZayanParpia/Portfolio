@@ -154,6 +154,83 @@
             font-weight: 700 !important;
         }
 
+        /* ===== ATTACK VECTOR / ADD-ON CARD HIGHLIGHTS ===== */
+        .project-card-addon {
+            border-color: rgba(var(--color-accent-rgb, 0, 210, 190), 0.28) !important;
+            position: relative;
+        }
+        .project-card-addon:hover {
+            border-color: var(--color-accent) !important;
+            box-shadow: 0 10px 32px rgba(var(--color-accent-rgb, 0, 210, 190), 0.15) !important;
+        }
+        .project-card-addon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--color-accent) 0%, rgba(var(--color-accent-rgb, 0, 210, 190), 0.2) 100%);
+            z-index: 2;
+            border-top-left-radius: var(--radius-md);
+            border-bottom-left-radius: var(--radius-md);
+        }
+
+        /* Linked parent badge banner */
+        .card-parent-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.08);
+            border: 1px solid rgba(var(--color-accent-rgb, 0, 210, 190), 0.28);
+            color: var(--color-accent);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            width: fit-content;
+            cursor: pointer;
+        }
+        .card-parent-link:hover {
+            background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.18);
+            border-color: var(--color-accent);
+            transform: translateX(2px);
+        }
+        .card-parent-link svg {
+            flex-shrink: 0;
+        }
+
+        /* Parent SIEM card sub-modules list */
+        .siem-submodules-container {
+            margin-top: 0.85rem;
+            padding-top: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .siem-submodule-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--color-text-light);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 3px 9px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .siem-submodule-chip:hover {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+            background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.14);
+            transform: translateY(-1px);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 990px) {
             .project-layout-wrapper {
@@ -246,7 +323,22 @@
                     <!-- Home Lab Category -->
                     <a href="#home-lab" class="sidebar-item sidebar-category active" onclick="scrollToCategory(event, 'home-lab', this)">Home Lab Projects</a>
                     <a href="#card-siem" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-siem', this)">Home SIEM Lab</a>
-                    <a href="#card-ransomware" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-ransomware', this)">Ransomware Attack Simulation</a>
+                    <a href="#card-ssh-attack" class="sidebar-item sidebar-addon" onclick="scrollToCategory(event, 'card-ssh-attack', this)">
+                        <span class="sidebar-addon-title">↳ SSH Attack Pipeline</span>
+                        <span class="sidebar-addon-pill">SIEM Vector</span>
+                    </a>
+                    <a href="#card-ransomware" class="sidebar-item sidebar-addon" onclick="scrollToCategory(event, 'card-ransomware', this)">
+                        <span class="sidebar-addon-title">↳ Ransomware Attack</span>
+                        <span class="sidebar-addon-pill">SIEM Vector</span>
+                    </a>
+                    <a href="#card-linux-privesc" class="sidebar-item sidebar-addon" onclick="scrollToCategory(event, 'card-linux-privesc', this)">
+                        <span class="sidebar-addon-title">↳ Linux PrivEsc</span>
+                        <span class="sidebar-addon-pill">SIEM Vector</span>
+                    </a>
+                    <a href="#card-sqli" class="sidebar-item sidebar-addon" onclick="scrollToCategory(event, 'card-sqli', this)">
+                        <span class="sidebar-addon-title">↳ SQL Injection PoC</span>
+                        <span class="sidebar-addon-pill">SIEM Vector</span>
+                    </a>
                     
                     <!-- Cloud Projects Category -->
                     <a href="#cloud-projects" class="sidebar-item sidebar-category" onclick="scrollToCategory(event, 'cloud-projects', this)">Cloud Projects</a>
@@ -270,7 +362,7 @@
                 <h2 class="category-title">Home Lab Projects</h2>
                 <div class="projects-grid">
 
-                    <!-- HOME SIEM LAB CARD -->
+                    <!-- HOME SIEM LAB CARD (PARENT PROJECT) -->
                     <a href="siem-project.html" class="project-card" id="card-siem">
                         <div class="card-image-wrapper">
                             <img src="SIEM Project V1/Infrastructure/Diagrams/DIAGRAM v2.png" alt="Home SIEM Lab Diagram">
@@ -293,7 +385,24 @@
                                     ▼ More
                                 </span>
                             </div>
-                            <div class="card-tags">
+
+                            <!-- Connected Attack Vectors Mini Bar -->
+                            <div class="siem-submodules-container">
+                                <div style="margin-bottom: 0.45rem;">
+                                    <span style="font-size: 0.72rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px;">
+                                        <span class="addon-pulse-dot" style="width: 6px; height: 6px;"></span>
+                                        Linked Attack Vectors (4):
+                                    </span>
+                                </div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+                                    <span class="siem-submodule-chip" onclick="event.preventDefault(); event.stopPropagation(); scrollToCategory(event, 'card-ssh-attack', null);" title="Jump to SSH Attack card">↳ SSH Attack</span>
+                                    <span class="siem-submodule-chip" onclick="event.preventDefault(); event.stopPropagation(); scrollToCategory(event, 'card-ransomware', null);" title="Jump to Ransomware card">↳ Ransomware</span>
+                                    <span class="siem-submodule-chip" onclick="event.preventDefault(); event.stopPropagation(); scrollToCategory(event, 'card-linux-privesc', null);" title="Jump to Linux Privilege Escalation card">↳ Linux PrivEsc</span>
+                                    <span class="siem-submodule-chip" onclick="event.preventDefault(); event.stopPropagation(); scrollToCategory(event, 'card-sqli', null);" title="Jump to SQL Injection card">↳ SQL Injection</span>
+                                </div>
+                            </div>
+
+                            <div class="card-tags" style="margin-top: 0.85rem;">
                                 <span class="tiny-tag">SIEM</span>
                                 <span class="tiny-tag">Wazuh</span>
                                 <span class="tiny-tag">Sysmon</span>
@@ -311,9 +420,69 @@
                         </div>
                     </a>
 
-                    <!-- RANSOMWARE ATTACK SIMULATION CARD -->
-                    <a href="ransomware-attack-simulation.html" class="project-card" id="card-ransomware">
+                    <!-- ATTACK VECTOR 1: SSH ATTACK PIPELINE -->
+                    <a href="ssh-attack-simulation.html" class="project-card project-card-addon" id="card-ssh-attack">
                         <div class="card-image-wrapper">
+                            <div class="addon-badge-overlay">
+                                <span class="addon-pulse-dot"></span>
+                                SIEM Attack Vector
+                            </div>
+                            <img src="SIEM Project V1/attack-simulations/SSH Attack/SOAR RESPONSE DIAGRAM.png" alt="SSH Attack Pipeline Simulation Diagram">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title" style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+                                SSH Attack Pipeline Simulation
+                                <span onclick="event.preventDefault(); event.stopPropagation(); window.open('https://github.com/ZayanParpia/Home-Lab-SIEM-Project', '_blank');" class="card-github-link" title="View on GitHub" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-light)'" style="color: var(--color-text-light); transition: color 0.3s ease; display: inline-flex; align-items: center; cursor: pointer;">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                </span>
+                            </h3>
+                            <div class="card-parent-link" onclick="event.preventDefault(); event.stopPropagation(); scrollToCategory(event, 'card-siem', null);" title="Jump to parent project: Home SIEM Lab">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                                <span>Part of <strong>Home SIEM Lab</strong></span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11" style="opacity: 0.7; margin-left: 2px;">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                            <p class="card-date">July 27, 2026</p>
+                            <div>
+                                <p class="card-description" id="ssh-attack-desc" style="margin-bottom: 0.5rem;">
+                                    Validates Wazuh detection against credential attacks and unauthorized access via SSH. Simulates Kali Linux Hydra brute-force dictionary attacks, monitors anomalous off-hours access patterns, detects unauthorized ~/.ssh/authorized_keys file injections via FIM, and executes automated SOAR active-response IP blocking.
+                                </p>
+                                <span onclick="event.preventDefault(); document.getElementById('ssh-attack-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('ssh-attack-desc').classList.contains('expanded') ? '▲ Less' : '▼ More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                                    ▼ More
+                                </span>
+                            </div>
+                            <div class="card-tags">
+                                <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
+                                <span class="tiny-tag">Wazuh SIEM</span>
+                                <span class="tiny-tag">SSH / Hydra</span>
+                                <span class="tiny-tag">SOAR</span>
+                                <span class="tiny-tag">FIM</span>
+                                <span class="tiny-tag">T1110</span>
+                            </div>
+                            <div class="card-action">
+                                View Simulation
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- ATTACK VECTOR 2: RANSOMWARE ATTACK SIMULATION -->
+                    <a href="ransomware-attack-simulation.html" class="project-card project-card-addon" id="card-ransomware">
+                        <div class="card-image-wrapper">
+                            <div class="addon-badge-overlay">
+                                <span class="addon-pulse-dot"></span>
+                                SIEM Attack Vector
+                            </div>
                             <img src="SIEM Project V1/attack-simulations/Ransomware Attack/Diagram.png" alt="Ransomware Attack Simulation Diagram">
                         </div>
                         <div class="card-content">
@@ -325,16 +494,27 @@
                                     </svg>
                                 </span>
                             </h3>
+                            <div class="card-parent-link" onclick="event.preventDefault(); event.stopPropagation(); scrollToCategory(event, 'card-siem', null);" title="Jump to parent project: Home SIEM Lab">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                                <span>Part of <strong>Home SIEM Lab</strong></span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11" style="opacity: 0.7; margin-left: 2px;">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
                             <p class="card-date">September 18, 2026</p>
                             <div>
                                 <p class="card-description" id="ransomware-desc" style="margin-bottom: 0.5rem;">
-                                    This project demonstrates a ransomware attack-vector simulation inside my Wazuh SIEM lab. The simulation uses a Python script to perform bulk file encryption against a monitored directory. The activity generates a large number of file modifications in a short period of time, followed by the creation of a ransomware-style note. The Wazuh detection pipeline correlates these events to identify behavior consistent with ransomware activity and initiates a recovery workflow to restore the affected files from a backup source.
+                                    This project demonstrates a ransomware attack-vector simulation inside my Wazuh SIEM lab. The simulation uses a Python script to perform bulk file encryption against a monitored directory. The activity generates a large volume of rapid file modifications followed by the creation of a ransomware note. The Wazuh detection pipeline correlates these events to detect the attack in real time and triggers an automated recovery workflow that directly restores the encrypted files from a backup directory, rather than reverting a system snapshot.
                                 </p>
                                 <span onclick="event.preventDefault(); document.getElementById('ransomware-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('ransomware-desc').classList.contains('expanded') ? '▲ Less' : '▼ More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
                                     ▼ More
                                 </span>
                             </div>
                             <div class="card-tags">
+                                <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
                                 <span class="tiny-tag">Wazuh SIEM</span>
                                 <span class="tiny-tag">Ransomware</span>
                                 <span class="tiny-tag">AES-GCM</span>
@@ -342,7 +522,119 @@
                                 <span class="tiny-tag">T1486</span>
                             </div>
                             <div class="card-action">
-                                View Project
+                                View Simulation
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- ATTACK VECTOR 3: LINUX PRIVILEGE ESCALATION -->
+                    <a href="linux-privilege-escalation.html" class="project-card project-card-addon" id="card-linux-privesc">
+                        <div class="card-image-wrapper">
+                            <div class="addon-badge-overlay">
+                                <span class="addon-pulse-dot"></span>
+                                SIEM Attack Vector
+                            </div>
+                            <img src="SIEM Project V1/attack-simulations/Linux Privilege Escalation Detection/Attack Simulation 1.png" alt="Linux Privilege Escalation Simulation Diagram">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title" style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+                                Linux Privilege Escalation Detection
+                                <span onclick="event.preventDefault(); event.stopPropagation(); window.open('https://github.com/ZayanParpia/Home-Lab-SIEM-Project', '_blank');" class="card-github-link" title="View on GitHub" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-light)'" style="color: var(--color-text-light); transition: color 0.3s ease; display: inline-flex; align-items: center; cursor: pointer;">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                </span>
+                            </h3>
+                            <div class="card-parent-link" onclick="event.preventDefault(); event.stopPropagation(); scrollToCategory(event, 'card-siem', null);" title="Jump to parent project: Home SIEM Lab">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                                <span>Part of <strong>Home SIEM Lab</strong></span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11" style="opacity: 0.7; margin-left: 2px;">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                            <p class="card-date">June 29, 2026</p>
+                            <div>
+                                <p class="card-description" id="linux-privesc-desc" style="margin-bottom: 0.5rem;">
+                                    Validates Wazuh SIEM detection against Linux exploitation techniques, simulating failed sudo brute-force attempts, auditing successful sudo elevations, tracking unauthorized /etc/sudoers modifications via File Integrity Monitoring (FIM), and flagging persistent privilege escalation using Auditd syscall monitoring.
+                                </p>
+                                <span onclick="event.preventDefault(); document.getElementById('linux-privesc-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('linux-privesc-desc').classList.contains('expanded') ? '▲ Less' : '▼ More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                                    ▼ More
+                                </span>
+                            </div>
+                            <div class="card-tags">
+                                <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
+                                <span class="tiny-tag">Wazuh SIEM</span>
+                                <span class="tiny-tag">Privilege Escalation</span>
+                                <span class="tiny-tag">Auditd</span>
+                                <span class="tiny-tag">Sysmon</span>
+                                <span class="tiny-tag">FIM</span>
+                            </div>
+                            <div class="card-action">
+                                View Simulation
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- ATTACK VECTOR 4: SQL INJECTION PROOF OF CONCEPT -->
+                    <a href="sql-injection-simulation.html" class="project-card project-card-addon" id="card-sqli">
+                        <div class="card-image-wrapper">
+                            <div class="addon-badge-overlay">
+                                <span class="addon-pulse-dot"></span>
+                                SIEM Attack Vector
+                            </div>
+                            <img src="SIEM Project V1/attack-simulations/SQL Injection/Diagram.png" alt="SQL Injection Proof of Concept Diagram">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title" style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+                                SQL Injection Proof of Concept
+                                <span onclick="event.preventDefault(); event.stopPropagation(); window.open('https://github.com/ZayanParpia/Home-Lab-SIEM-Project', '_blank');" class="card-github-link" title="View on GitHub" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-light)'" style="color: var(--color-text-light); transition: color 0.3s ease; display: inline-flex; align-items: center; cursor: pointer;">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                </span>
+                            </h3>
+                            <div class="card-parent-link" onclick="event.preventDefault(); event.stopPropagation(); scrollToCategory(event, 'card-siem', null);" title="Jump to parent project: Home SIEM Lab">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                                <span>Part of <strong>Home SIEM Lab</strong></span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11" style="opacity: 0.7; margin-left: 2px;">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                            <p class="card-date">July 30, 2026</p>
+                            <div>
+                                <p class="card-description" id="sqli-desc" style="margin-bottom: 0.5rem;">
+                                    A web application security simulation evaluating Wazuh SIEM detection against SQL injection attacks. Deploys OWASP Juice Shop behind an Apache HTTP reverse proxy on Ubuntu Server, ingests proxy web access logs into Wazuh, and validates custom XML detection rules alongside built-in signatures for malicious query patterns.
+                                </p>
+                                <span onclick="event.preventDefault(); document.getElementById('sqli-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('sqli-desc').classList.contains('expanded') ? '▲ Less' : '▼ More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
+                                    ▼ More
+                                </span>
+                            </div>
+                            <div class="card-tags">
+                                <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
+                                <span class="tiny-tag">Wazuh SIEM</span>
+                                <span class="tiny-tag">SQL Injection</span>
+                                <span class="tiny-tag">Juice Shop</span>
+                                <span class="tiny-tag">Apache Proxy</span>
+                                <span class="tiny-tag">T1190</span>
+                            </div>
+                            <div class="card-action">
+                                View Simulation
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -641,7 +933,12 @@
 
         // Category Sidebar Navigation and Scrolling
         function scrollToCategory(event, id, el) {
-            event.preventDefault();
+            if (event) event.preventDefault();
+
+            // If el wasn't passed directly, find corresponding sidebar link
+            if (!el) {
+                el = document.querySelector(`.sidebar-item[href="#${id}"]`);
+            }
 
             // Flash animation: remove then re-add to restart
             if (el) {
@@ -651,6 +948,15 @@
                 el.classList.add('sidebar-item-flash');
                 // Remove flash class after animation completes
                 setTimeout(() => el.classList.remove('sidebar-item-flash'), 650);
+
+                // Sync sidebar active state and indicator
+                document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+                el.classList.add('active');
+                const indicator = document.querySelector('.sidebar-slider-indicator');
+                if (window.innerWidth > 990 && indicator) {
+                    indicator.style.transform = `translateY(${el.offsetTop}px)`;
+                    indicator.style.height = `${el.offsetHeight}px`;
+                }
             }
 
             const target = document.getElementById(id);
