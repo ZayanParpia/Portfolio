@@ -342,6 +342,7 @@
                     
                     <!-- Cloud Projects Category -->
                     <a href="#cloud-projects" class="sidebar-item sidebar-category" onclick="scrollToCategory(event, 'cloud-projects', this)">Cloud Projects</a>
+                    <a href="#card-terraform" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-terraform', this)">Terraform Web Capstone</a>
                     <a href="#card-autoscaling" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-autoscaling', this)">AWS Auto Scaling Group</a>
                     <a href="#card-loadbalancer" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-loadbalancer', this)">Application Load Balancer</a>
                     <a href="#card-bastion" class="sidebar-item sidebar-project" onclick="scrollToCategory(event, 'card-bastion', this)">AWS Bastion Lab</a>
@@ -377,14 +378,9 @@
                                 </span>
                             </h3>
                             <p class="card-date">May 18, 2026</p>
-                            <div>
-                                <p class="card-description" id="siem-desc" style="margin-bottom: 0.5rem;">
-                                    A hands-on cybersecurity home lab focused on Security Information and Event Management (SIEM), endpoint monitoring, log analysis, and SOC workflows. This lab also features active simulation of attacks, configuration of Sysmon & Auditd telemetry, and comprehensive threat hunting strategies.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('siem-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('siem-desc').classList.contains('expanded') ? '▲ Less' : '▼ More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
-                                    ▼ More
-                                </span>
-                            </div>
+                            <p class="card-description">
+                                Engineered a full-scale cybersecurity home lab utilizing Wazuh SIEM to monitor multi-platform Windows and Linux endpoints. Ingested enriched endpoint telemetry using Sysmon, Auditd, and Wazuh agents to analyze security logs and detect threats in real time. Designed automated active-response workflows and SOC alert pipelines across multiple simulated attack scenarios.
+                            </p>
 
                             <!-- Connected Attack Vectors Mini Bar -->
                             <div class="siem-submodules-container">
@@ -449,14 +445,9 @@
                                 </svg>
                             </div>
                             <p class="card-date">July 27, 2026</p>
-                            <div>
-                                <p class="card-description" id="ssh-attack-desc" style="margin-bottom: 0.5rem;">
-                                    Validates Wazuh detection against credential attacks and unauthorized access via SSH. Simulates Kali Linux Hydra brute-force dictionary attacks, monitors anomalous off-hours access patterns, detects unauthorized ~/.ssh/authorized_keys file injections via FIM, and executes automated SOAR active-response IP blocking.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('ssh-attack-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('ssh-attack-desc').classList.contains('expanded') ? '▲ Less' : '▼ More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
-                                    ▼ More
-                                </span>
-                            </div>
+                            <p class="card-description">
+                                This simulation shows a ssh brute force attack where an attacker (Kali Linux vm with hydra) to brute force port 22 on the victim IP (Ubuntu endpoint). Correlates repeated credential failures, successful authentication, and authorized keys modification to trigger automated SOAR session termination, password reset, and key purging with near-instant MTTD.
+                            </p>
                             <div class="card-tags">
                                 <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
                                 <span class="tiny-tag">Wazuh SIEM</span>
@@ -505,14 +496,9 @@
                                 </svg>
                             </div>
                             <p class="card-date">September 18, 2026</p>
-                            <div>
-                                <p class="card-description" id="ransomware-desc" style="margin-bottom: 0.5rem;">
-                                    This project demonstrates a ransomware attack-vector simulation inside my Wazuh SIEM lab. The simulation uses a Python script to perform bulk file encryption against a monitored directory. The activity generates a large volume of rapid file modifications followed by the creation of a ransomware note. The Wazuh detection pipeline correlates these events to detect the attack in real time and triggers an automated recovery workflow that directly restores the encrypted files from a backup directory, rather than reverting a system snapshot.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('ransomware-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('ransomware-desc').classList.contains('expanded') ? '▲ Less' : '▼ More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
-                                    ▼ More
-                                </span>
-                            </div>
+                            <p class="card-description">
+                                This simulation shows a ransomware attack where a ransomware file encrypts all files inside a monitored dir from Wazuh. Correlates mass FIM changes (Rule 500) and ransom note creation by the same PPID within a short timeframe to notify the user and trigger automated backup restoration.
+                            </p>
                             <div class="card-tags">
                                 <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
                                 <span class="tiny-tag">Wazuh SIEM</span>
@@ -561,14 +547,9 @@
                                 </svg>
                             </div>
                             <p class="card-date">June 29, 2026</p>
-                            <div>
-                                <p class="card-description" id="linux-privesc-desc" style="margin-bottom: 0.5rem;">
-                                    Validates Wazuh SIEM detection against Linux exploitation techniques, simulating failed sudo brute-force attempts, auditing successful sudo elevations, tracking unauthorized /etc/sudoers modifications via File Integrity Monitoring (FIM), and flagging persistent privilege escalation using Auditd syscall monitoring.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('linux-privesc-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('linux-privesc-desc').classList.contains('expanded') ? '▲ Less' : '▼ More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
-                                    ▼ More
-                                </span>
-                            </div>
+                            <p class="card-description">
+                                Executed multiple Linux privilege escalation techniques including sudo brute-forcing, unauthorized sudoers tampering, and SUID exploitation. Captured low-level syscall telemetry using Auditd and Sysmon to monitor unauthorized privilege changes and suspicious binaries. Authored custom Wazuh correlation rules and FIM alerts to immediately flag unauthorized root transitions.
+                            </p>
                             <div class="card-tags">
                                 <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
                                 <span class="tiny-tag">Wazuh SIEM</span>
@@ -617,14 +598,9 @@
                                 </svg>
                             </div>
                             <p class="card-date">July 30, 2026</p>
-                            <div>
-                                <p class="card-description" id="sqli-desc" style="margin-bottom: 0.5rem;">
-                                    A web application security simulation evaluating Wazuh SIEM detection against SQL injection attacks. Deploys OWASP Juice Shop behind an Apache HTTP reverse proxy on Ubuntu Server, ingests proxy web access logs into Wazuh, and validates custom XML detection rules alongside built-in signatures for malicious query patterns.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('sqli-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('sqli-desc').classList.contains('expanded') ? '▲ Less' : '▼ More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">
-                                    ▼ More
-                                </span>
-                            </div>
+                            <p class="card-description">
+                                Deployed OWASP Juice Shop behind an Apache reverse proxy on Ubuntu Server to simulate real-world web application vulnerabilities. Ingested HTTP web access and error logs into Wazuh SIEM to detect malicious SQL injection payloads including authentication bypasses and UNION queries. Implemented custom XML decoders and correlation rules to alert SOC analysts to database exploitation attempts in real time.
+                            </p>
                             <div class="card-tags">
                                 <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
                                 <span class="tiny-tag">Wazuh SIEM</span>
@@ -660,14 +636,9 @@
                         <div class="card-content">
                             <h3 class="card-title">AWS Auto Scaling Group</h3>
                             <p class="card-date">May 6, 2026</p>
-                            <div>
-                                <p class="card-description" id="autoscaling-desc" style="margin-bottom: 0.5rem;">
-                                    A production-ready AWS architecture featuring an EC2 Auto Scaling Group behind an
-                                    Application Load Balancer. Implements defense-in-depth security with private subnets,
-                                    IAM least-privilege, SSM Session Manager, and CloudWatch monitoring.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('autoscaling-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('autoscaling-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
-                            </div>
+                            <p class="card-description">
+                                Architected a highly available AWS infrastructure using an EC2 Auto Scaling Group deployed across multiple Availability Zones behind an Application Load Balancer. Configured dynamic scaling policies driven by CloudWatch metric alarms to automatically adapt to fluctuating traffic loads. Enforced defense-in-depth security using private subnets, IAM least-privilege roles, and AWS Systems Manager for secure access.
+                            </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">Auto Scaling</span>
                                 <span class="tiny-tag">AWS ALB</span>
@@ -695,14 +666,11 @@
                         <div class="card-content">
                             <h3 class="card-title">Application Load Balancer</h3>
                             <p class="card-date">March 1, 2026</p>
-                            <div>
-                                <p class="card-description" id="alb-desc" style="margin-bottom: 0.5rem;">
-                                    A high-availability setup using an AWS Application Load Balancer (ALB) to distribute
-                                    traffic across multiple EC2 instances in different Availability Zones.
-                                    Features Auto Scaling and comprehensive health monitoring.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('alb-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('alb-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
-                            </div>
+                            <p class="card-description">
+                                A high-availability setup using an AWS Application Load Balancer (ALB) to distribute
+                                traffic across multiple EC2 instances in different Availability Zones.
+                                Features Auto Scaling and comprehensive health monitoring.
+                            </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">AWS ALB</span>
                                 <span class="tiny-tag">Auto Scaling</span>
@@ -728,15 +696,12 @@
                         <div class="card-content">
                             <h3 class="card-title">AWS Bastion Lab</h3>
                             <p class="card-date">February 21, 2026</p>
-                            <div>
-                                <p class="card-description" id="bastion-desc" style="margin-bottom: 0.5rem;">
-                                    A secure AWS-native lab featuring a Bastion host (Jump Box) for accessing private
-                                    subnets.
-                                    Enforces IAM and SSM-only logins for servers, creating a robust zero-trust access model
-                                    for cloud infrastructure.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('bastion-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('bastion-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
-                            </div>
+                            <p class="card-description">
+                                A secure AWS-native lab featuring a Bastion host (Jump Box) for accessing private
+                                subnets.
+                                Enforces IAM and SSM-only logins for servers, creating a robust zero-trust access model
+                                for cloud infrastructure.
+                            </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">AWS VPC</span>
                                 <span class="tiny-tag">Bastion Host</span>
@@ -767,14 +732,11 @@
                         <div class="card-content">
                             <h3 class="card-title">Cloud VM Subnetting Playground</h3>
                             <p class="card-date">January 6, 2026</p>
-                            <div>
-                                <p class="card-description" id="subnetting-desc" style="margin-bottom: 0.5rem;">
-                                    A hands-on environment building a secure AWS network infrastructure to master subnets,
-                                    routing, and access controls.
-                                    Features custom VPC design, secure EC2 deployment, and encrypted traffic monitoring.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('subnetting-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('subnetting-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
-                            </div>
+                            <p class="card-description">
+                                A hands-on environment building a secure AWS network infrastructure to master subnets,
+                                routing, and access controls.
+                                Features custom VPC design, secure EC2 deployment, and encrypted traffic monitoring.
+                            </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">AWS VPC</span>
                                 <span class="tiny-tag">Subnets</span>
@@ -799,14 +761,11 @@
                         <div class="card-content">
                             <h3 class="card-title">Automatic Backup System</h3>
                             <p class="card-date">December 26, 2025</p>
-                            <div>
-                                <p class="card-description" id="backup-desc" style="margin-bottom: 0.5rem;">
-                                    A robust, secure, and cost-effective automated backup solution leveraging AWS services
-                                    like S3, KMS, and SNS.
-                                    Automatically backs up drives, encrypts data, and sends status reports.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('backup-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('backup-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
-                            </div>
+                            <p class="card-description">
+                                A robust, secure, and cost-effective automated backup solution leveraging AWS services
+                                like S3, KMS, and SNS.
+                                Automatically backs up drives, encrypts data, and sends status reports.
+                            </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">Python</span>
                                 <span class="tiny-tag">AWS S3</span>
@@ -822,6 +781,28 @@
                             </div>
                         </div>
                     </a>
+
+                    <!-- TERRAFORM WEB CAPSTONE CARD -->
+                    <article class="project-card terraform-project-card" id="card-terraform">
+                        <div class="card-image-wrapper">
+                            <img src="Terraform Web Capstone/Diagram.png" alt="Terraform AWS web infrastructure architecture diagram">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Terraform Web Capstone</h3>
+                            <p class="card-description">
+                                Built a production-style AWS web stack with Terraform, routing traffic through AWS WAF and an Application Load Balancer to private EC2 servers across multiple Availability Zones. The design adds Auto Scaling, SSM-only access, least-privilege IAM, KMS encryption, private S3 storage, CloudWatch and VPC Flow Logs, Docker, and CI/CD.
+                            </p>
+                            <div class="card-tags">
+                                <span class="tiny-tag">Terraform</span>
+                                <span class="tiny-tag">AWS WAF</span>
+                                <span class="tiny-tag">Docker</span>
+                                <span class="tiny-tag">PoLP IAM</span>
+                                <span class="tiny-tag">Infrastructure as Code</span>
+                                <span class="tiny-tag">DevSecOps</span>
+                            </div>
+                            <a class="card-action" href="terraform-web-capstone.html">View Project</a>
+                        </div>
+                    </article>
 
                 </div>
             </div>
@@ -839,13 +820,10 @@
                         <div class="card-content">
                             <h3 class="card-title">Obstrue</h3>
                             <p class="card-date">December 8, 2025</p>
-                            <div>
-                                <p class="card-description" id="obstrue-desc" style="margin-bottom: 0.5rem;">
-                                    A personalized productivity app designed to master your focus by blocking distracting
-                                    apps with custom, targeted pop-ups.
-                                </p>
-                                <span onclick="event.preventDefault(); document.getElementById('obstrue-desc').classList.toggle('expanded'); this.innerHTML = document.getElementById('obstrue-desc').classList.contains('expanded') ? '&#9650; Less' : '&#9660; More';" style="color: var(--color-accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; display: inline-block; margin-bottom: 1rem;">&#9660; More</span>
-                            </div>
+                            <p class="card-description">
+                                A personalized productivity app designed to master your focus by blocking distracting
+                                apps with custom, targeted pop-ups.
+                            </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">Kotlin</span>
                                 <span class="tiny-tag">Android</span>

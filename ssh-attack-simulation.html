@@ -27,9 +27,9 @@
     </div>
   </nav>
 
-  <section class="section" style="padding-top:120px;padding-bottom:40px;">
+  <section class="section" style="padding-top:48px;padding-bottom:40px;">
     <div class="container">
-      <div class="project-detail-header">
+      <div class="project-detail-header" style="margin-bottom:1.25rem;">
         <h1 class="section-title">SSH Attack Pipeline Simulation</h1>
         <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
           <a href="siem-project.html#phase-3-section" class="back-btn">
@@ -51,11 +51,25 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section" style="padding-top:0;">
-    <div class="container">
+      <!-- Attack Vector Overview Card: First thing people see upon clicking -->
+      <div class="artifact-box" style="background:linear-gradient(135deg, rgba(0, 210, 190, 0.05), rgba(18, 22, 34, 0.85));border:1px solid rgba(0, 210, 190, 0.3);border-radius:var(--radius-md);padding:1.5rem 1.75rem;margin-bottom:1.75rem;box-shadow:0 8px 30px rgba(0,0,0,0.35);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--color-accent);"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:0.85rem;">
+          <div style="display:flex;align-items:center;gap:0.6rem;">
+            <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-accent);background:rgba(0,210,190,0.1);border:1px solid rgba(0,210,190,0.3);padding:3px 10px;border-radius:12px;">Attack Vector Overview</span>
+            <span style="font-size:0.8rem;color:var(--color-text-gray);font-weight:600;">Port 22 SSH Brute-Force &bull; SOAR Active Response</span>
+          </div>
+        </div>
+        <p style="color:var(--color-text-light);font-size:1.05rem;line-height:1.65;margin-bottom:1.15rem;font-weight:500;">
+          This simulation shows a ssh brute force attack where an attacker (Kali Linux vm with hydra) to brute force port 22 on the victim IP (Ubuntu endpoint).
+        </p>
+        <div style="display:flex;align-items:flex-start;gap:0.5rem;color:var(--color-text-gray);font-size:0.9rem;line-height:1.6;">
+          <span style="color:var(--color-accent);font-weight:700;flex-shrink:0;">What This Taught Me:</span>
+          <span>This attack simulation taught me about MITRE detection frameworks, Kill chains, Detection Engineering, Trial and error, SOAR responses, Detection logic, Hydra, MTTD and FIM</span>
+        </div>
+      </div>
+
       <div class="project-content-wrapper fade-in">
         
         <!-- VISUALS COLUMN -->
@@ -165,8 +179,10 @@
         <!-- INFO COLUMN -->
         <div class="project-info">
           <h3>Simulation Report</h3>
-          <p style="margin-bottom:var(--spacing-sm);">This simulation validates Wazuh's ability to detect SSH-based credential attacks end-to-end — from brute-force password spraying to key injection persistence. It bridges theoretical SSH monitoring with evidence-based, validated detection engineering.</p>
-          <p style="margin-bottom:var(--spacing-sm);">Attacks are launched from a Kali Linux attacker VM using Hydra, targeting an Ubuntu CLI endpoint, with all telemetry flowing through Auditd and Wazuh FIM back to the SIEM manager for alert correlation.</p>
+          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">This simulation shows a ssh brute force attack where an attacker (Kali Linux vm with hydra) to brute force port 22 on the victim IP (Ubuntu endpoint).</p>
+          <h4 style="margin-top:var(--spacing-sm);margin-bottom:0.5rem;color:var(--color-accent);">Detection Rules</h4>
+          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">The same source IP must generate 3 or more failed SSH authentication attempts within 60 seconds, followed by a successful login and a change to the SSH <code>authorized_keys</code> file. This sequence triggers an automated response that terminates the source session, changes the password, and clears the authorized keys file.</p>
+          <p style="margin-bottom:var(--spacing-sm);color:var(--color-accent);font-weight:600;">Mean time to detect (MTTD): a few seconds.</p>
 
           <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Infrastructure Scope</h4>
           <ul class="feature-list" style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
@@ -185,10 +201,10 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                 Simulation Outline
               </h4>
-              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"This simulation validates Wazuh's capability to detect SSH-based credential attacks, anomalous login behaviour, and unauthorized key injection. Using Hydra from Kali Linux, rapid brute-force attempts are directed at the endpoint to trigger built-in and custom correlation rules. Successful login sessions are logged with full context, and unauthorized <code>authorized_keys</code> modifications are detected through Wazuh FIM. All phases are mapped to MITRE ATT&amp;CK tactics T1110, T1098.004, and T1021.004."</p>
+              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"This simulation validates Wazuh detection of SSH brute-force activity, monitoring of <code>authorized_keys</code> changes, and automated incident response in a controlled lab."</p>
             </div>
 
-            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+            <div class="artifact-box" hidden style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
               <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                 Simulation Milestones &amp; Logs
@@ -202,7 +218,7 @@
               </div>
             </div>
 
-            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+            <div class="artifact-box" hidden style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
               <details style="cursor:pointer;" open>
                 <summary style="list-style:none;display:flex;align-items:center;gap:0.5rem;color:var(--color-accent);font-weight:600;font-size:1.1rem;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -228,7 +244,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
                 What I Learned
               </h4>
-              <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;">This simulation is actively building SSH threat detection engineering skills across multiple domains:</p>
+              <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;line-height:1.6;">This attack simulation taught me about <strong>MITRE detection frameworks, Kill chains, Detection Engineering, Trial and error, SOAR responses, Detection logic, Hydra, MTTD and FIM</strong>:</p>
               <div style="display:flex;flex-direction:column;gap:1.5rem;">
                 <div>
                   <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Technical Skills</h5>

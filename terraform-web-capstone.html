@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure AWS Web Infrastructure with Terraform - Zayan Parpia</title>
+  <meta name="description" content="A Terraform-built AWS web environment using AWS WAF, an Application Load Balancer, private multi-AZ EC2, least-privilege IAM, SSM, encryption, monitoring, Docker, and CI/CD.">
+  <meta name="author" content="Zayan Parpia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="experience.html" class="nav-link">Experience</a></li>
+        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section" style="padding-top:120px;padding-bottom:40px;">
+    <div class="container">
+      <div class="project-detail-header">
+        <h1 class="section-title">Secure AWS Web Infrastructure with Terraform</h1>
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <a href="projects.html#card-terraform" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Projects
+          </a>
+          <a href="https://github.com/ZayanParpia/Terraform-Web-Deployment-Infrastructure" target="_blank" rel="noopener noreferrer" class="github-link" title="View Terraform Web Capstone on GitHub" aria-label="View Terraform Web Capstone on GitHub" style="color:var(--color-text-light);display:inline-flex;align-items:center;">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" aria-hidden="true">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+        </div>
+        <div class="project-meta-top" style="margin-top:1rem;">
+          <p class="project-date" style="margin:0;font-style:italic;color:var(--color-text-gray);">Platform: <strong style="color:var(--color-text-light);">AWS</strong> &nbsp;&bull;&nbsp; Infrastructure as Code: <strong style="color:var(--color-accent);">Terraform</strong> &nbsp;&bull;&nbsp; Focus: <strong style="color:var(--color-text-light);">Cloud Security &amp; DevSecOps</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="project-content-wrapper">
+        <div class="project-visuals">
+          <div class="screenshot-item">
+            <div class="screenshot-meta">
+              <h4>Multi-AZ AWS Architecture</h4>
+              <p>Public traffic passes through AWS WAF and an Application Load Balancer before reaching web servers in private EC2 subnets. NAT supports controlled outbound access, while monitoring, encryption, and SSM provide operational and security controls.</p>
+            </div>
+            <button class="terraform-diagram-trigger" id="terraform-diagram-trigger" type="button" aria-label="Open architecture diagram full screen">
+              <img src="Terraform Web Capstone/Diagram.png" alt="AWS architecture: WAF and Application Load Balancer routing to private multi-AZ EC2 instances" class="main-image">
+            </button>
+            <dialog class="terraform-diagram-viewer" id="terraform-diagram-viewer" aria-label="Full-screen AWS architecture diagram">
+              <button class="terraform-diagram-close" id="terraform-diagram-close" type="button" aria-label="Close architecture diagram">&times;</button>
+              <img src="Terraform Web Capstone/Diagram.png" alt="AWS architecture: WAF and Application Load Balancer routing to private multi-AZ EC2 instances">
+            </dialog>
+          </div>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Traffic and Operations Flow</h4>
+            <pre><code>Internet -> AWS WAF -> Application Load Balancer -> Private EC2
+Admin -> SSM Session Manager -> Private EC2
+Private EC2 -> NAT Gateway -> Internet
+AWS Resources -> CloudWatch / VPC Flow Logs -> Private S3</code></pre>
+          </div>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Terraform Workflow</h4>
+            <pre><code>terraform init
+terraform fmt
+terraform validate
+terraform plan
+terraform apply</code></pre>
+            <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">The infrastructure is managed as code for repeatable planning and deployment. Use <code>terraform destroy</code> when the environment should be removed.</p>
+          </div>
+        </div>
+
+        <div class="project-info">
+          <h3>Project Overview</h3>
+          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">This project builds a production-style AWS web application environment with Terraform. Its public entry path is <strong>AWS WAF -&gt; Application Load Balancer -&gt; private EC2 web servers</strong>, deployed across multiple Availability Zones for redundancy.</p>
+          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">The design keeps application instances off the public internet, uses Systems Manager Session Manager instead of SSH for administration, and combines least-privilege IAM, KMS encryption, private S3 storage, CloudWatch, and VPC Flow Logs.</p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Infrastructure Scope</h4>
+          <ul class="feature-list" style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">VPC, public and private subnets</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">AWS WAF and Application Load Balancer</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Private EC2 and Auto Scaling</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">NAT Gateway and multi-AZ networking</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">SSM Session Manager, no SSH ingress</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Least-privilege IAM (PoLP)</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">KMS encryption and private S3</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">CloudWatch and VPC Flow Logs</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">Docker application packaging</p></div></li>
+            <li class="feature-item" style="margin-bottom:0;"><div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">&#9672;</div><div class="feature-content"><p style="margin:0;color:var(--color-text-light);">CI/CD infrastructure workflow</p></div></li>
+          </ul>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Security Design</h4>
+          <ul style="list-style:disc;margin:var(--spacing-sm) 0 0 1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
+            <li><strong>Controlled ingress:</strong> WAF and the ALB are the public entry path; application instances remain in private subnets.</li>
+            <li><strong>Restricted administration:</strong> SSM Session Manager replaces exposed SSH access.</li>
+            <li><strong>Least privilege:</strong> IAM roles and policies follow the Principle of Least Privilege.</li>
+            <li><strong>Protected data:</strong> Private S3 buckets use Block Public Access, with KMS for encryption at rest.</li>
+            <li><strong>Visibility:</strong> CloudWatch and VPC Flow Logs support operational monitoring and network investigation.</li>
+          </ul>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);margin-top:var(--spacing-md);border:1px solid var(--glass-border);">
+            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Planned Security Validation</h4>
+            <p style="margin:0;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;">Controlled WAF testing and supporting evidence are planned as a future validation phase; they are not presented as completed work.</p>
+          </div>
+
+          <div class="card-tags" style="margin-top:var(--spacing-md);">
+            <span class="tiny-tag">Terraform</span>
+            <span class="tiny-tag">AWS WAF</span>
+            <span class="tiny-tag">Docker</span>
+            <span class="tiny-tag">PoLP IAM</span>
+            <span class="tiny-tag">DevSecOps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Zayan Parpia. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const diagramTrigger = document.getElementById('terraform-diagram-trigger');
+    const diagramViewer = document.getElementById('terraform-diagram-viewer');
+    const diagramClose = document.getElementById('terraform-diagram-close');
+
+    diagramTrigger.addEventListener('click', () => diagramViewer.showModal());
+    diagramClose.addEventListener('click', () => diagramViewer.close());
+    diagramViewer.addEventListener('click', event => {
+      if (event.target === diagramViewer) diagramViewer.close();
+    });
+    diagramViewer.addEventListener('cancel', event => {
+      event.preventDefault();
+      diagramViewer.close();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && diagramViewer.open) {
+        event.preventDefault();
+        diagramViewer.close();
+      }
+    }, true);
+  </script>
+</body>
+
+</html>

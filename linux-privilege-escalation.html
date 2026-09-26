@@ -99,11 +99,6 @@
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
             </svg>
           </a>
-          <!-- Video Demo launch button -->
-          <button onclick="openVideoDemo()" style="display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,rgba(220,53,69,0.85),rgba(0,112,243,0.85));border:none;color:#fff;font-weight:700;font-size:0.85rem;letter-spacing:0.05em;text-transform:uppercase;padding:0.6rem 1.2rem;border-radius:var(--radius-sm);cursor:pointer;transition:all 0.25s ease;" onmouseover="this.style.opacity='0.85';this.style.transform='scale(1.03)'" onmouseout="this.style.opacity='1';this.style.transform='scale(1)'">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            Dual-Stream Video Demo
-          </button>
         </div>
         <div class="project-meta-top">
           <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
@@ -222,7 +217,7 @@
               <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"This simulation validates Wazuh's capability to detect Linux privilege escalation, persistence mechanisms, and suspicious administrative behaviour. Sudo credentials are brute-forced to generate failed log spikes, successful sudo elevations are audited, critical configuration files (<code>/etc/sudoers</code>) are modified to test FIM alerts, and user group escalations are monitored via Auditd syscall tracking. All activities are mapped to MITRE ATT&amp;CK tactics."</p>
             </div>
 
-            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+            <div class="artifact-box" hidden style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
               <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                 Simulation Milestones &amp; Logs
@@ -237,7 +232,7 @@
               </div>
             </div>
 
-            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+            <div class="artifact-box" hidden style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
               <details style="cursor:pointer;" open>
                 <summary style="list-style:none;display:flex;align-items:center;gap:0.5rem;color:var(--color-accent);font-weight:600;font-size:1.1rem;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="9 18 15 12 9 6"></polyline></svg>

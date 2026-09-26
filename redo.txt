@@ -1,0 +1,19 @@
+Ssh attack vector 
+
+This simulation shows a ssh brute force attack where an attacker (Kali Linux vm with hydra)  to brute force port 22 on the victim IP (Ubuntu endpoint). 
+
+The detection rules are as follows 
+
+Incorrect credentials 3 or more times within x seconds followed by a successful login by the same IP followed by changes to the ssh authorized keys file within x seconds by the same IP address which triggers a python script that kills that session from that ip, changes the password and clears the authorized keys file.
+
+MTTD is almost instant as soon as changes are made by the same IP that caused the brute force trigger
+
+This attack simulation taught me about MITRE detection frameworks, Kill chains, Detection Engineering, Trial and error, SOAR responses, Detection logic, Hydra, MTTD and FIM 
+
+Ransomware Attack
+
+This simulation shows a simulation of a ransomware attack where a ransomware file runs that encrypts all files inside a monitored dir from the Wazuh.
+
+A rule is present where if one PPID causes alot of FIM rule 500 changes to files within a short timeframe followed by a ransomware note created (The rule catches that based on the extension, the rule looks for most common ransomware note extensions) in the same directory by the same ppid, it then notifies the user to initiate the backup script.
+
+This rule taught me about bulk encryption, python scripting, creating a ransomware malware script, ransomware detection engineering, FIM

@@ -68,9 +68,31 @@
     </div>
   </section>
 
-  <!-- ===== CONTENT ===== -->
   <section class="section" style="padding-top:0;">
     <div class="container">
+
+      <!-- Attack Vector Overview Card: First thing people see upon clicking -->
+      <div class="artifact-box" style="background:linear-gradient(135deg, rgba(0, 210, 190, 0.05), rgba(18, 22, 34, 0.85));border:1px solid rgba(0, 210, 190, 0.3);border-radius:var(--radius-md);padding:1.5rem 1.75rem;margin-bottom:2rem;box-shadow:0 8px 30px rgba(0,0,0,0.35);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:var(--color-accent);"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:0.85rem;">
+          <div style="display:flex;align-items:center;gap:0.6rem;">
+            <span style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-accent);background:rgba(0,210,190,0.1);border:1px solid rgba(0,210,190,0.3);padding:3px 10px;border-radius:12px;">Attack Vector Overview</span>
+            <span style="font-size:0.8rem;color:var(--color-text-gray);font-weight:600;">Bulk File Encryption &bull; FIM Rule 500 &bull; Automated Backup Recovery</span>
+          </div>
+          <span style="font-size:0.78rem;color:var(--color-accent);font-weight:600;display:flex;align-items:center;gap:0.35rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            Automated SOAR Recovery
+          </span>
+        </div>
+        <p style="color:var(--color-text-light);font-size:1.05rem;line-height:1.65;margin-bottom:1.15rem;font-weight:500;">
+          This simulation shows a simulation of a ransomware attack where a ransomware file runs that encrypts all files inside a monitored dir from the Wazuh.
+        </p>
+        <div style="display:flex;align-items:flex-start;gap:0.5rem;color:var(--color-text-gray);font-size:0.9rem;line-height:1.6;">
+          <span style="color:var(--color-accent);font-weight:700;flex-shrink:0;">What This Taught Me:</span>
+          <span>This rule taught me about bulk encryption, python scripting, creating a ransomware malware script, ransomware detection engineering, FIM</span>
+        </div>
+      </div>
+
       <div class="project-content-wrapper fade-in">
 
         <!-- VISUALS COLUMN -->
@@ -226,9 +248,8 @@
         <!-- INFO COLUMN -->
         <div class="project-info">
           <h3>Simulation Overview</h3>
-          <p style="margin-bottom:var(--spacing-sm);">This project demonstrates a <strong>ransomware attack-vector simulation</strong> inside my Wazuh SIEM lab.</p>
-          <p style="margin-bottom:var(--spacing-sm);">The simulation uses a Python script to perform <strong>bulk file encryption</strong> against a monitored directory. The activity generates a large number of file modifications in a short period of time, followed by the creation of a ransomware-style note such as a <code>.txt</code>, <code>.md</code>, <code>.html</code>, or similar file.</p>
-          <p style="margin-bottom:var(--spacing-sm);">The Wazuh detection pipeline correlates these events to identify behavior consistent with ransomware activity. Once the final detection rule is triggered, a response workflow can be initiated to <strong>restore the affected files from a backup source</strong>.</p>
+          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">This simulation shows a simulation of a ransomware attack where a ransomware file runs that encrypts all files inside a monitored dir from the Wazuh.</p>
+          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">When one PPID generates 10 or more FIM Rule 500 file-change events within 2 seconds and then creates a recognized ransomware note in the same directory, the correlated rules trigger and notify the user to initiate the backup script.</p>
 
           <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Infrastructure Scope</h4>
           <ul class="feature-list" style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
@@ -251,11 +272,11 @@
                   stroke-linejoin="round" width="20" height="20"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                 Simulation Outline
               </h4>
-              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"Goal: Simulate a ransomware attack in a controlled lab, detect it in Wazuh via File Integrity Monitoring (FIM) + auditd process tracking, and trigger a SOAR response that kills the offending process, deletes the executable, and restores affected files from a backup directory. The simulation uses a Python script to perform bulk file encryption against a monitored directory. The activity generates a large number of file modifications in a short period of time, followed by the creation of a ransomware-style note such as a .txt, .md, .html, or similar file. The Wazuh detection pipeline correlates these events to identify behavior consistent with ransomware activity, mapping directly to MITRE ATT&amp;CK T1486 (Data Encrypted for Impact)."</p>
+              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;font-size:0.95rem;">"This simulation encrypts files in a monitored directory and correlates 10 or more FIM Rule 500 file changes from the same PPID within 2 seconds with a recognized ransomware note in that directory to trigger backup recovery."</p>
             </div>
 
             <!-- SIMULATION MILESTONES & LOGS -->
-            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+            <div class="artifact-box" hidden style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
               <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
@@ -280,7 +301,7 @@
             </div>
 
             <!-- PROGRESS & STEPS -->
-            <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
+            <div class="artifact-box" hidden style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
               <details style="cursor:pointer;" open>
                 <summary style="list-style:none;display:flex;align-items:center;gap:0.5rem;color:var(--color-accent);font-weight:600;font-size:1.1rem;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -360,7 +381,7 @@
                   stroke-linejoin="round" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
                 What I Learned
               </h4>
-              <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;">Through this simulation, I gained practical experience with:</p>
+              <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;line-height:1.6;">This rule taught me about <strong>bulk encryption, python scripting, creating a ransomware malware script, ransomware detection engineering, FIM</strong>:</p>
               <div style="display:flex;flex-direction:column;gap:1.5rem;">
                 <div>
                   <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Technical Skills</h5>
