@@ -155,27 +155,6 @@
         }
 
         /* ===== ATTACK VECTOR / ADD-ON CARD HIGHLIGHTS ===== */
-        .project-card-addon {
-            border-color: rgba(var(--color-accent-rgb, 0, 210, 190), 0.28) !important;
-            position: relative;
-        }
-        .project-card-addon:hover {
-            border-color: var(--color-accent) !important;
-            box-shadow: 0 10px 32px rgba(var(--color-accent-rgb, 0, 210, 190), 0.15) !important;
-        }
-        .project-card-addon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--color-accent) 0%, rgba(var(--color-accent-rgb, 0, 210, 190), 0.2) 100%);
-            z-index: 2;
-            border-top-left-radius: var(--radius-md);
-            border-bottom-left-radius: var(--radius-md);
-        }
-
         /* Linked parent badge banner */
         .card-parent-link {
             display: inline-flex;
@@ -783,14 +762,15 @@
                     </a>
 
                     <!-- TERRAFORM WEB CAPSTONE CARD -->
-                    <article class="project-card terraform-project-card" id="card-terraform">
+                    <a href="terraform-web-capstone.html" class="project-card" id="card-terraform">
                         <div class="card-image-wrapper">
                             <img src="Terraform Web Capstone/Diagram.png" alt="Terraform AWS web infrastructure architecture diagram">
                         </div>
                         <div class="card-content">
-                            <h3 class="card-title">Terraform Web Capstone</h3>
+                            <h3 class="card-title">Terraform Web Infrastructure Capstone</h3>
+                            <p class="card-date">Oct 5, 2026</p>
                             <p class="card-description">
-                                Built a production-style AWS web stack with Terraform, routing traffic through AWS WAF and an Application Load Balancer to private EC2 servers across multiple Availability Zones. The design adds Auto Scaling, SSM-only access, least-privilege IAM, KMS encryption, private S3 storage, CloudWatch and VPC Flow Logs, Docker, and CI/CD.
+                                Built a secure AWS web infrastructure with Terraform, routing traffic through WAF and a load balancer to private, multi-AZ EC2 servers. Includes Auto Scaling, SSM, least-privilege IAM, encryption, monitoring, Docker, and CI/CD.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">Terraform</span>
@@ -800,9 +780,9 @@
                                 <span class="tiny-tag">Infrastructure as Code</span>
                                 <span class="tiny-tag">DevSecOps</span>
                             </div>
-                            <a class="card-action" href="terraform-web-capstone.html">View Project</a>
+                            <div class="card-action">View Project</div>
                         </div>
-                    </article>
+                    </a>
 
                 </div>
             </div>

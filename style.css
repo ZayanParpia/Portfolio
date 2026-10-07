@@ -718,27 +718,6 @@ pre {
 }
 
 /* ===== SIEM ATTACK VECTOR & ADDON CARD STYLES ===== */
-.project-card-addon {
-  border-color: rgba(var(--color-accent-rgb, 0, 210, 190), 0.28) !important;
-  position: relative;
-}
-.project-card-addon:hover {
-  border-color: var(--color-accent) !important;
-  box-shadow: 0 10px 32px rgba(var(--color-accent-rgb, 0, 210, 190), 0.15) !important;
-}
-.project-card-addon::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--color-accent) 0%, rgba(var(--color-accent-rgb, 0, 210, 190), 0.2) 100%);
-  z-index: 2;
-  border-top-left-radius: var(--radius-md);
-  border-bottom-left-radius: var(--radius-md);
-}
-
 .addon-badge-overlay {
   position: absolute;
   top: 12px;
