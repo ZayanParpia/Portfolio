@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Cloud VM Subnetting Playground - Zayan Parpia</title>
+    <meta name="description"
+        content="A hands-on environment building a secure AWS network infrastructure to master subnets, routing, and access controls.">
+    <meta name="author" content="Zayan Parpia">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HEADER ===== -->
+    <section class="section" style="padding-top: 120px; padding-bottom: 40px;">
+        <div class="container">
+            <div class="project-detail-header">
+                <h1 class="section-title">Cloud VM Subnetting Playground</h1>
+                <a href="projects.html" class="back-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 20px; height: 20px;">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back to Projects
+                </a>
+                <div class="project-meta-top">
+                    <p class="project-date" style="margin:0; font-style: italic; color: var(--color-text-gray);">January
+                        6, 2026</p>
+                    <div class="project-tags">
+                        <span class="tag">AWS VPC</span>
+                        <span class="tag">Subnets</span>
+                        <span class="tag">EC2</span>
+                        <span class="tag">CloudWatch</span>
+                        <span class="tag">KMS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECT CONTENT ===== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="project-content-wrapper fade-in">
+                <!-- Visuals Column -->
+                <div class="project-visuals">
+                    <div class="screenshot-item">
+                        <div class="screenshot-meta">
+                            <h4>Network Topology</h4>
+                            <p>High-level design showing the custom VPC with public and private subnets hosting Ubuntu
+                                EC2 instances.</p>
+                        </div>
+                        <img src="Subnet-Project/Subnet Diagram.png" alt="VPC Network Diagram"
+                            class="main-image zoom-img">
+                    </div>
+
+                    <!-- Vertical Screenshot List -->
+                    <div class="screenshot-list">
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Subnet Configuration</h4>
+                                <p>Overview of the public and private subnets acting as the foundation for the VPC
+                                    network architecture.</p>
+                            </div>
+                            <img src="Subnet-Project/Screenshots/subnet.png" alt="Subnet Configuration"
+                                class="screenshot-img zoom-img">
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Instance A Config</h4>
+                                <p>Configuration of the first Ubuntu instance deployed in the public subnet with an
+                                    Elastic IP for access.</p>
+                            </div>
+                            <img src="Subnet-Project/Screenshots/VMA.png" alt="EC2 Instance A"
+                                class="screenshot-img zoom-img">
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Security Group A</h4>
+                                <p>Inbound rules for Instance A allowing SSH (Port 22) only from my specific IP address
+                                    to enforce least privilege.</p>
+                            </div>
+                            <img src="Subnet-Project/Screenshots/VMA ACL.png" alt="Security Group Rules A"
+                                class="screenshot-img zoom-img">
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Instance B Config</h4>
+                                <p>Setup of the second Ubuntu instance in the private subnet, accessible only via
+                                    internal routing.</p>
+                            </div>
+                            <img src="Subnet-Project/Screenshots/VmB.png" alt="EC2 Instance B"
+                                class="screenshot-img zoom-img">
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>Security Group B</h4>
+                                <p>Strict security group settings for Instance B, limiting internal traffic flow and
+                                    blocking public ingress.</p>
+                            </div>
+                            <img src="Subnet-Project/Screenshots/VMB ACL.png" alt="Security Group Rules B"
+                                class="screenshot-img zoom-img">
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="screenshot-meta">
+                                <h4>VPC Flow Logs</h4>
+                                <p>CloudWatch Log stream capturing encrypted metadata of network traffic for monitoring
+                                    and auditing.</p>
+                            </div>
+                            <img src="Subnet-Project/Screenshots/FLowLog.png" alt="VPC Flow Logs"
+                                class="screenshot-img zoom-img">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Column -->
+                <div class="project-info">
+                    <h3>Project Overview</h3>
+                    <p style="margin-bottom: var(--spacing-sm);">
+                        This project was a deep dive into AWS networking fundamentals. I built a custom VPC from
+                        scratch, creating a realistic environment to understand how traffic flows between public and
+                        private subnets.
+                        I launched two Ubuntu EC2 instances in the same subnet and configured their Security Groups to
+                        allow specific traffic from each other only, verifying connectivity through ping and traceroute
+                        commands.
+                        A key component was security and monitoring: I enabled VPC Flow Logs to capture traffic data,
+                        storing these logs in CloudWatch encrypted with a custom KMS key.
+                        This allowed me to visualize accepted and rejected traffic events, directly observing the impact
+                        of my security group rules.
+                    </p>
+
+                    <!-- Feature List -->
+                    <ul class="feature-list" style="margin-top: var(--spacing-md);">
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                    </path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>VPC Architecture</h4>
+                                <p>Custom VPC design with granular subnet allocation for isolated workloads.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item"
+                            style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                            <div class="feature-icon" style="color: var(--color-accent);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Security Groups</h4>
+                                <p>Stateful filtering with least-privilege rules (SSH from specific IP, limited ICMP).
+                                </p>
+                            </div>
+                        </li>
+                        <li class="feature-item"
+                            style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                            <div class="feature-icon" style="color: var(--color-accent);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>VPC Flow Logs</h4>
+                                <p>Enabled comprehensive traffic monitoring for auditing and troubleshooting.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item"
+                            style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                            <div class="feature-icon" style="color: var(--color-accent);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M12 12v10"></path>
+                                    <path d="M15 15h3"></path>
+                                    <path d="M15 19h3"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>KMS Encryption</h4>
+                                <p>Encrypted CloudWatch Log Groups using customer-managed keys (CMKs).</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- Documentation & Learnings Sections -->
+                    <!-- Simplified for detail page view without complex JS toggles if possible, or reusing same structure -->
+                    <div style="margin-top: var(--spacing-lg);">
+                        <h4
+                            style="color: var(--color-accent); border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; margin-bottom: 1rem;">
+                            Project Documentation</h4>
+
+                        <div class="artifact-box">
+                            <h5 style="margin-bottom: 0.5rem; color: var(--color-text-light);">Logs</h5>
+                            <pre
+                                style="white-space: pre-wrap; font-family: monospace; color: var(--color-text-gray); font-size: 0.9em;">2025-12-22
+2025-12-26
+2025-12-27
+2025-12-30
+2026-01-01
+2026-01-04
+2026-01-06</pre>
+                        </div>
+
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                            <h5 style="margin-bottom: 0.5rem; color: var(--color-text-light);">Process & Key Learnings
+                            </h5>
+                            <div style="color: var(--color-text-gray); font-size: 0.95em; line-height: 1.6;">
+                                <p><strong>Project Goal:</strong> Build a small, realistic AWS network to learn how
+                                    subnets, routing, ARP, security groups, and flow logs work.</p>
+                                <p style="margin-top: 0.5rem;"><strong>What I Built:</strong> Two Ubuntu EC2 instances
+                                    in different subnets within a custom VPC. Configured security groups, tested
+                                    connectivity (ping/traceroute), and encrypted VPC Flow Logs using KMS.</p>
+
+                                <h6 style="color: var(--color-text-light); margin-top: 1rem;">Key Steps Completed:</h6>
+                                <ul style="list-style-type: disc; padding-left: 1.5rem;">
+                                    <li>Designed VPC and subnets (172.31.0.0/20).</li>
+                                    <li>Launched EC2 instances and verified private IPs.</li>
+                                    <li>Configured granular Security Groups for SSH/ICMP.</li>
+                                    <li>Assigned Elastic IPs for necessary public access.</li>
+                                    <li>Enabled VPC Flow Logs sent to CloudWatch.</li>
+                                    <li>Secured logs with a custom KMS key policy.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                            <h5 style="margin-bottom: 0.5rem; color: var(--color-text-light);">Security Practices
+                                Implemented</h5>
+                            <p style="color: var(--color-text-gray); font-size: 0.95em;">
+                                Implemented least-privilege Security Groups allowing strictly SSH and ICMP. Enabled VPC
+                                Flow Logs for full traffic visibility. Used AWS KMS to encrypt sensitive log data at
+                                rest, ensuring compliance and data security.
+                            </p>
+                        </div>
+
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                            <h5 style="margin-bottom: 0.5rem; color: var(--color-text-light);">What I Learned</h5>
+                            <ul
+                                style="list-style: disc; margin-left: 1.5rem; color: var(--color-text-gray); font-size: 0.95em;">
+                                <li><strong>Networking Fundamentals:</strong> Deepened understanding of how private IPs,
+                                    public IPs, subnets, and CIDR blocks interact within a VPC.</li>
+                                <li><strong>Routing & Connectivity:</strong> Learned how route tables control traffic
+                                    and how ARP works for local reachability.</li>
+                                <li><strong>Visibility is Key:</strong> Discovered the value of VPC Flow Logs for
+                                    troubleshooting connectivity issues and verifying dropped traffic.</li>
+                                <li><strong>Secure Encryption:</strong> Practiced creating and managing KMS keys to
+                                    secure service logs.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Zayan Parpia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".fade-in");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("visible");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+
+        // Zoom functionality for images
+        document.querySelectorAll('.zoom-img').forEach(img => {
+            img.addEventListener('click', function () {
+                this.classList.toggle('zoomed');
+                if (this.classList.contains('zoomed')) {
+                    // Create overlay if not exists or use simple fullscreen logic
+                    // For simplicity in this static file, we might assume there's a lightbox script in main.js or just toggle a class
+                    // If style.css handles .zoomed { transform: scale(2); z-index: 1000; position: fixed; ... }
+                    // You might need to add that CSS or just rely on browser defaults opening image
+
+                    // Simple full screen overlay mock
+                    const overlay = document.createElement('div');
+                    overlay.style.position = 'fixed';
+                    overlay.style.top = 0;
+                    overlay.style.left = 0;
+                    overlay.style.width = '100vw';
+                    overlay.style.height = '100vh';
+                    overlay.style.background = 'rgba(0,0,0,0.9)';
+                    overlay.style.zIndex = '9999';
+                    overlay.style.display = 'flex';
+                    overlay.style.alignItems = 'center';
+                    overlay.style.justifyContent = 'center';
+                    overlay.onclick = () => document.body.removeChild(overlay);
+
+                    const imgClone = document.createElement('img');
+                    imgClone.src = this.src;
+                    imgClone.style.maxWidth = '90%';
+                    imgClone.style.maxHeight = '90%';
+                    imgClone.style.borderRadius = 'var(--radius-md)';
+
+                    overlay.appendChild(imgClone);
+                    document.body.appendChild(overlay);
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

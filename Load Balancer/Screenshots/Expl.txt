@@ -1,0 +1,29 @@
+ALB
+
+Application Load Balancer 
+The screenshot shows that it has two availability zones 
+
+
+AZ
+Availability zone 
+Shows that it's available in two regions 
+
+Inbound Rules
+This screenshot shows that HTTP traffic and SSH are allowed. HTTP traffic is allowed from anywhere and SSH is only allowed through my computer's IP 
+
+
+Route Table
+Route table shows how to access the internet. 
+
+Server A/B
+This screenshot shows the configuration for the EC2 instance(s).
+
+
+Subnet(s)
+This screenshots show both subnets  
+
+Target Group
+Target group shows which EC2 instances to use and it shows which port to listen for. 
+
+VPC
+Shows VPC configurations for project 

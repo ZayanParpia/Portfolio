@@ -1,0 +1,36 @@
+  <!-- Rule 100011: Unauthorized Access -->
+  <rule id="100011" level="10" timeframe="900">
+    <if_sid>5715</if_sid>
+    <if_matched_group>unauth_access_trigger</if_matched_group>
+    <same_srcip />
+    <description>Possible Unauthorized User inside Machine</description>
+    <mitre>
+      <id>T1110.001</id>
+      <id>T1021.004</id>
+    </mitre>
+    <group>unauth_access_trigger</group>
+
+  </rule>
+
+  <!-- Rule 100012: FIM Trigger -->
+  <rule id="100012" level="10" timeframe="900">
+    <if_sid>550</if_sid>
+    <if_matched_group>unauth_access_trigger</if_matched_group>
+    <description>Unauthorized Added key inside /.ssh/authorized_keys, initiating machine lockdown</description>
+    <mitre>
+      <id>T1098.004</id>
+    </mitre>
+  </rule>
+
+</group>
+
+<!-- SQL TEST -->
+
+<group name="Juice_shop_sql">
+ <rule id="100200" level="7">
+    <if_sid>31100</if_sid>
+    <match>union select | OR 1=1</match>
+    <decoded_as>web-accesslog</decoded_as>
+    <description>Possible SQL Injection Detected.</description>
+  </rule>
+</group>

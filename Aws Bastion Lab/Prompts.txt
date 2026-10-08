@@ -1,0 +1,17 @@
+You are a pro cloud security expert that works with AWS tools such as VPCs, subnets, routing, virtual machines, etc. I am a student making this project based on this description. Your job is to guide me through it step-by-step. Make it simple and easy to understand as I go forward in the project, explain why you make each step and what does that prevent/enable.
+
+Project Outline
+
+For this project, I designed a secure AWS network architecture using an Amazon VPC to isolate infrastructure and control how traffic enters and moves through the environment. I created both public and private subnets so that only the necessary resources were exposed to the internet, while sensitive servers remained fully internal.
+
+To allow controlled access from the internet, I attached an Internet Gateway (IGW) to the VPC. This allows external users to reach resources in the public subnet but prevents direct access to the private servers. This design reduces the attack surface and keeps critical infrastructure protected.
+
+Inside the public subnet, I deployed an Ubuntu bastion host. The bastion host acts as a controlled entry point for administrators who need to manage infrastructure. Instead of exposing private servers directly to the internet, administrators must first connect to this bastion host before interacting with internal systems.
+
+The private subnet contains the private servers and databases, which are not accessible from the internet. These servers communicate only within the internal VPC network, which ensures that sensitive resources remain isolated from external threats.
+
+For authentication and access control, I implemented AWS IAM and AWS Systems Manager (SSM). This allows administrators to access instances using identity-based authentication instead of SSH keys, improving security and centralizing access management. Even if the bastion host were compromised, access to private servers would still require proper IAM permissions.
+
+Finally, I added monitoring and security logging using VPC Flow Logs, AWS CloudTrail, AWS CloudWatch, and AWS GuardDuty. These services track network activity, record API calls, generate alerts, and detect suspicious behavior. This monitoring layer helps identify potential attacks and provides visibility into the security posture of the environment.
+
+Overall, this architecture demonstrates a defense-in-depth cloud security design that combines network segmentation, identity-based access control, and continuous monitoring to protect internal resources.

@@ -1,0 +1,251 @@
+2025/10/03
+
+Wrote app description for Obstrue; added LOGO; new ideas (launch count, long unlock sentences, time saved, to-do list); set slogan “Master Your Focus”.
+
+2025/10/04
+
+Noted drawback (no payment methods yet); installed app for testing; worked on home GUI and centered logo.
+
+2025/10/07
+
+Built messages & audios section (save works); planned and implemented Settings & Statistics files, uniform bottom icons, home button on every page, autocentering GUI, save icon state, prevent sound auto-play in voices, edited check button.
+
+2025/10/08
+
+Planned new logo; created statistics concept, removed animations, increased sound text size, downloaded GUI assets, created statistics code, uploaded app icon, implemented random-message toggle; wrote a list of motivational quotes and pinned message.
+
+2025/10/09
+
+Concept for Schedule button.
+
+2025/10/10
+
+Finalized schedule button concept; fixed statistics layout; began code to read time spent on apps.
+
+2025/10/11
+
+Edited statistics so X/12 matches tasks; standardized bottom icons; increased statistic text and home button sizes; planned transition-button logic.
+
+2025/10/12
+
+Removed settings section plan; reordered buttons so Home is first; made schedule button GUI.
+
+2025/10/13
+
+Edited house icon; saved random-button state; made schedule button behave like app button when pressed.
+
+2025/10/14
+
+Toggled random button font color; updated main activity to add Play Store apps and run background tracking; started popup GUI code.
+
+2025/10/15
+
+Added black background behind icons; made time limits show hrs/min (no 90-min display); saved sound status; made statistics scrollable and show total screen time; adjusted GUI sizing and copy; planned premium video feature; added random tips; fixed permissions and tracking accuracy.
+
+2025/10/16
+
+Added image jumpscare + sounds section; support for custom images and bass-boosted sounds; hamburger/menu and job app image; changed permission GUI; added click sound for lock; noted YouTube jump-scare sound link; specified popup behavior when daily limit reached.
+
+2025/10/17
+
+Cleaned jumpscare UI (remove names, border, add name under image); ensured job application image labeled; positioned sound switch; renamed jumpscares to “Jumpscares (Experimental)”; moved Save button to bottom of page; made jumpscare toggle visual; created jumpscare sounds GUI; set 250-char limit; extended black rectangle to bottom.
+
+2025/10/18
+
+Removed custom sound from jumpscare sounds; added “no sound” option; allowed editing jumpscare images only when enabled; added outreach section idea (TikTok); adjusted sound UI and timelines; edited scream 1 and playback behavior.
+
+2025/10/19
+
+Added black rectangle to bottom of pages; increased jump-scare sound loudness; resized statistics and house icons; added spacing in message sections; planned 7-day screen-time bar graph and notification types.
+
+2025/10/20
+
+Redesigned statistics GUI (apps below graph, blocked-app ovals); widened bar graph for 7 days and average; fixed total “time wasted today”; noted splash screen idea and job app copyedit.
+
+2025/10/21
+
+Fixed statistics accuracy; simplified house icon; added scroll wheel for total time wasted; created Obstrue Gmail; fixed blocked-apps scrolling.
+
+2025/10/22
+
+Fixed statistics; animated save button in messages; added TOS and Instagram reel; ensured random messages present; expanded productivity section features.
+
+2025/10/23
+
+Added TOS section; made splash animation; built productivity GUI and code (to-do, goals, lessons, notes, “how to do better”); renamed msg/voices.
+
+2025/10/24
+
+Renamed Msg & Voices to Pop Ups & Audios and To-Do to Productivity everywhere; fixed icons shifting; requested code edit to match screenshot for task list behavior and limits.
+
+2025/10/25
+
+To-do makeover: fixed colors, recentered top text, set rectangles, show 6.5 items at once, bigger arrows, space for ads, align productivity text, enlarge bottom rectangle.
+
+2025/10/26
+
+Ensured to-do saves correctly; unified “how can I do better” logic; added progress counters (goals completed); set character limits; set task/goal limits (25 tasks, 30 goals); adjusted text color states; created icons for goals completed and lessons learned.
+
+2025/10/27
+
+Uploaded splash screen image; prevented home button clickable on home page; adjusted bottom rectangle; removed white from logo; created schedule GUI.
+
+2025/10/28
+
+Fixed main code using TXT method.
+
+2025/10/29
+
+Removed schedule button, added “clear apps” button with logic (no apps → message; clears → “X Apps Cleared”); fixed main/home/splash; added new animation; ensured statistics include goals completed and lessons learned and are continuous for 7 days; planned pop-up close behavior and lesson save option.
+
+2025/10/30
+
+Edited statistics layout (to-do and alerts in squares); optimized msg/voices/statistics for speed; tested statistics; updated logo and splash; aligned productivity icon and text.
+
+2025/10/31
+
+Near completion: stats average and today time done; prevented home button click on home section; finalized average screen time.
+
+2025/11/01
+
+Added bar graph on top; made statistics save 7 days and a month with navigation; enabled Jumpscare → video pop-up uploads; set daily resets for goals/reminders/lessons.
+
+2025/11/02
+
+Routed custom jumpscare sound to same directory as videos; prioritized disable-sounds toggle; ensured sound/video playback works; fixed icon rectangle overlap with save button.
+
+2025/11/03
+
+Aligned icons in messages section; displayed app time in hrs and mins on Home; auto-open to current day in Productivity; verified goals completed accuracy; fixed square layout.
+
+2025/11/04
+
+Investigated code downgrade and message crashes; tightened spacing between total time wasted and squares; made squares smaller; set daily reset for goals and lessons.
+
+2025/11/05
+
+Standardized message rectangle size; fixed quote toggle behavior; planned ad banner placement; ensured message state only saves on explicit Save.
+
+2025/11/06
+
+Fixed quote editing when toggled off; improved screen-time accuracy using screen-on tracking; planned ad placements; validated app-blocking visuals.
+
+2025/11/07
+
+Ensured popups display properly.
+
+2025/11/08
+
+Finalized popup behavior (video-only, quote-only, or both); set quote char limit 100; styled popups with top/bottom ads; enforced mutual exclusion between quotes and jumpscares; adjusted sound enable flow.
+
+2025/11/09
+
+Made popup animation instant; added jumpscare scream section; improved permission request wording; fixed jump-scare issues.
+
+2025/11/10
+
+Fixed overlay display.
+
+2025/11/11
+
+Continued ChatGPT troubleshooting; enlarged overlay, added jumpscare sound + top/bottom ads; made close button also exit app; adjusted quote text size and random-quote behavior; ensured jumpscare sound off when jumpscare disabled.
+
+2025/11/12
+
+Home: zero limit handling and banner ad under section; made video popups transparent; smaller popup font; allow single-digit minutes; added 3 new notification types; synced icon sizes across sections; refined quotes popup layout and styling (purple outline, ad positions, remove rectangle); added splash screen and faint section lines.
+
+2025/11/13
+
+Layered quote and video; standardized box sizes; reduced transparency; placed ad on bottom; fixed quote text rendering; ensured blocked-apps visibility.
+
+2025/11/14
+
+Added alerts for each popup with daily reset; verified app blocking accuracy.
+
+2025/11/15
+
+Fixed main menu errors; fixed custom image popup; statistics now show lessons learned and alerts per date and save for 30 days; treated zero home limit as any time above it; ensured weekly stats accuracy; removed “None” from msg.kt jumpscare section.
+
+2025/11/16
+
+Popup font/video fit; close button exits app; jumpscare sound present; jumpscares display without animation.
+
+2025/11/17
+
+Jumpscares show with no animation and play sound; validated app blocking accuracy.
+
+2025/11/18
+
+Ensured jumpscares and close buttons work across devices; confirmed accurate app blocking.
+
+2025/11/19
+
+Background run and permission improvements; set max quote limit to 120; confirmed home permissions and jumpscare behavior for all devices; custom jumpscare sound works.
+
+2025/11/20
+
+Verified app blocking accuracy.
+
+2025/11/21
+
+Implemented stats approach using UsageStatsManager and suggested supplementing with AccessibilityService or foreground service; weekly screen-time view working.
+
+2025/11/23
+
+Fixed statistics issues.
+
+2025/11/24
+
+Ensured quotes and video are proportional in popups.
+
+2025/11/25
+
+Prevented popups from appearing on home screen or when lock icon is off; ensured popups only trigger for the app that exceeded its limit.
+
+2025/11/26
+
+Validated app tracking accuracy and time-limit logic against previous code.
+
+2025/11/27
+
+Confirmed jumpscare popup behavior; required unlock/relock to add or change apps/limits.
+
+2025/12/01
+
+Tweaked popup jumpscare animation; planned AdSense account; created real notifications for the app.
+
+2025/12/02
+
+Fixed statistics and app receiver unresolved reference to calculateScreenTimeForDay.
+
+2025/12/03
+
+Added TOS; updated bubble icons and colors; made splash black; planned ad integration and background notifications.
+
+2025/12/04
+
+Added banner ads to popups, stats, and productivity; planned popup ads and reward-ad save flow; prepared app for phone/VM testing.
+
+2025/12/05
+
+Finalized very accurate statistics; adjusted ad spawn rate; enforced “only save after watching ad” rule; set pop-up ad frequency.
+
+2025/12/06
+
+Increased goals icon size; handled zero-time behavior on main; created a no-ads file variant.
+
+2025/12/07
+
+Double-checked statistics accuracy and mapping from app time to screen time; enlarged goals icon; planned targeted banner ads per section; extracted test-ad build and prepared real ad integration.
+
+2025/12/08
+
+KHALAS! (milestone); started making videos; ensured proper ads present.
+
+2025/12/09
+
+Fixed “how can I do better tomorrow” behavior.
+
+2025/12/10
+
+Restated Obstrue description and four main screens (home, popup, statistics, productivity); prepared to give testers links.

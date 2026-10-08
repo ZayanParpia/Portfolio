@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure AWS Web Infrastructure with Terraform - Zayan Parpia</title>
+  <meta name="description" content="A Terraform-built AWS web environment using AWS WAF, an Application Load Balancer, private multi-AZ EC2, least-privilege IAM, SSM, encryption, monitoring, Docker, and CI/CD.">
+  <meta name="author" content="Zayan Parpia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    th {
+      color: #fff !important;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link active">Projects</a></li>
+        <li><a href="experience.html" class="nav-link">Experience</a></li>
+        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section" style="padding-top:120px;padding-bottom:40px;">
+    <div class="container">
+      <div class="project-detail-header">
+        <h1 class="section-title">Secure AWS Web Infrastructure with Terraform</h1>
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <a href="projects.html#card-terraform" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Projects
+          </a>
+          <a href="https://github.com/ZayanParpia/Terraform-Web-Deployment-Infrastructure" target="_blank" rel="noopener noreferrer" class="github-link" title="View Terraform Web Capstone on GitHub" aria-label="View Terraform Web Capstone on GitHub" style="color:var(--color-text-light);display:inline-flex;align-items:center;">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" aria-hidden="true">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+        </div>
+        <div class="project-meta-top" style="margin-top:1rem;">
+          <p class="project-date" style="margin:0;font-style:italic;color:var(--color-text-gray);">Oct 5, 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="project-content-wrapper">
+        <div class="project-visuals">
+          <div class="screenshot-item">
+            <div class="screenshot-meta">
+              <h4>Multi-AZ AWS Architecture</h4>
+              <p>Public traffic passes through AWS WAF and an Application Load Balancer before reaching web servers in private EC2 subnets. NAT supports controlled outbound access, while monitoring, encryption, and SSM provide operational and security controls.</p>
+            </div>
+            <button class="terraform-diagram-trigger" id="terraform-diagram-trigger" type="button" aria-label="Open architecture diagram full screen">
+              <img src="Terraform Web Capstone/Diagram.png" alt="AWS architecture: WAF and Application Load Balancer routing to private multi-AZ EC2 instances" class="main-image">
+            </button>
+            <dialog class="terraform-diagram-viewer" id="terraform-diagram-viewer" aria-label="Full-screen AWS architecture diagram">
+              <button class="terraform-diagram-close" id="terraform-diagram-close" type="button" aria-label="Close architecture diagram">&times;</button>
+              <img src="Terraform Web Capstone/Diagram.png" alt="AWS architecture: WAF and Application Load Balancer routing to private multi-AZ EC2 instances">
+            </dialog>
+          </div>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Traffic and Operations Flow</h4>
+            <pre><code>Internet -> AWS WAF -> Application Load Balancer -> Private EC2
+Admin -> SSM Session Manager -> Private EC2
+Private EC2 -> NAT Gateway -> Internet
+AWS Resources -> CloudWatch / VPC Flow Logs -> Private S3</code></pre>
+          </div>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Terraform Workflow</h4>
+            <pre><code>terraform init
+terraform fmt
+terraform validate
+terraform plan
+terraform apply</code></pre>
+            <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">The infrastructure is managed as code for repeatable planning and deployment. Use <code>terraform destroy</code> when the environment should be removed.</p>
+          </div>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Inbound vs. Outbound Traffic</h4>
+            <pre><code>Inbound:
+Internet -> WAF -> ALB -> Private EC2
+
+Outbound (from EC2):
+Private EC2 -> NAT Gateway -> Internet Gateway -> Internet</code></pre>
+            <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">Only the required web traffic reaches the application path; outbound access lets private instances reach external resources without becoming public-facing.</p>
+          </div>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Scaling Behavior</h4>
+            <pre><code>Normal workload:      EC2 --- EC2
+Higher workload: EC2 --- EC2 --- EC2 --- EC2</code></pre>
+            <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">Mock CPU-load testing demonstrated how increased utilization triggers Auto Scaling to add capacity across Availability Zones.</p>
+          </div>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">CI/CD Pipeline</h4>
+            <pre><code>GitHub -> CI/CD
+  - Format / Validate
+  - Terraform checks
+  - Terraform Plan
+  - Deployment workflow -> AWS</code></pre>
+            <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">Automating these checks connects the infrastructure to a real development workflow rather than a one-time script.</p>
+          </div>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Planned WAF Validation Flow</h4>
+            <pre><code>Controlled Attack Request -> WAF
+                              |-- Block -> Logs / Monitoring
+                              |-- Allow -> ALB -> Private EC2 -> Logs / Monitoring</code></pre>
+            <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">Goal: demonstrate the full lifecycle of Attack &rarr; Detection/Filtering &rarr; Logging &rarr; Investigation, with screenshots, logs, and a video walkthrough as evidence.</p>
+          </div>
+        </div>
+
+        <div class="project-info">
+          <h3>What I Built</h3>
+          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">I built a secure AWS web infrastructure using Terraform (IaC), bringing together Amazon VPC, public and private subnets, multiple Availability Zones, Internet and NAT Gateways, AWS WAF, an Application Load Balancer, EC2 with Auto Scaling, Systems Manager Session Manager, Security Groups, Network ACLs, IAM, KMS, private S3, CloudWatch, VPC Flow Logs, Linux, Docker, CI/CD, and GitHub.</p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">How It Works</h4>
+          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">Public traffic passes through AWS WAF and the Application Load Balancer to web servers in private subnets across multiple Availability Zones. Auto Scaling adjusts capacity as workload changes, while the NAT Gateway provides controlled outbound access. SSM Session Manager avoids public SSH access; least-privilege IAM, KMS encryption, private S3, CloudWatch, and VPC Flow Logs provide security and operational visibility. Docker packages the application, and Terraform with CI/CD supports repeatable infrastructure changes.</p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Resources Used</h4>
+          <div style="overflow-x:auto;margin-top:var(--spacing-sm);">
+            <table style="width:100%;border-collapse:collapse;font-size:0.92rem;">
+              <thead>
+                <tr style="border-bottom:1px solid var(--glass-border);">
+                  <th style="text-align:left;padding:0.5rem 0.75rem 0.5rem 0;color:var(--color-accent);">Component</th>
+                  <th style="text-align:left;padding:0.5rem 0.75rem;color:var(--color-accent);">What it does</th>
+                  <th style="text-align:left;padding:0.5rem 0 0.5rem 0.75rem;color:var(--color-accent);">Why it matters</th>
+                </tr>
+              </thead>
+              <tbody style="color:var(--color-text-gray);">
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Terraform</td><td style="padding:0.5rem 0.75rem;">Defines and provisions the infrastructure as code</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Repeatable deployments</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Amazon VPC</td><td style="padding:0.5rem 0.75rem;">Isolates the environment</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Network segmentation</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Public Subnets</td><td style="padding:0.5rem 0.75rem;">Host internet-facing infrastructure</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Controlled public entry</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Private Subnets</td><td style="padding:0.5rem 0.75rem;">Host EC2 web servers</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Prevents direct internet exposure</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Availability Zones</td><td style="padding:0.5rem 0.75rem;">Spread infrastructure across zones</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Redundancy</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Internet Gateway</td><td style="padding:0.5rem 0.75rem;">Connects public subnets to the internet</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Public ingress and egress</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Security Groups and Network ACLs</td><td style="padding:0.5rem 0.75rem;">Control instance and subnet traffic</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Layered network security</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">AWS WAF</td><td style="padding:0.5rem 0.75rem;">Filters malicious web requests</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Application-layer protection</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Application Load Balancer</td><td style="padding:0.5rem 0.75rem;">Receives web traffic and distributes it</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Availability + controlled access</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">EC2 + Auto Scaling</td><td style="padding:0.5rem 0.75rem;">Runs the web application and scales capacity</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Resilience + elasticity</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">NAT Gateway</td><td style="padding:0.5rem 0.75rem;">Gives private EC2 outbound internet access</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Internet access without public exposure</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">SSM Session Manager</td><td style="padding:0.5rem 0.75rem;">Provides administrative access to EC2</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">No SSH exposure</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">IAM</td><td style="padding:0.5rem 0.75rem;">Controls permissions</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Least privilege</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">KMS</td><td style="padding:0.5rem 0.75rem;">Encrypts data at rest</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Data protection</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">S3</td><td style="padding:0.5rem 0.75rem;">Stores logs/data</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Durable storage</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">CloudWatch</td><td style="padding:0.5rem 0.75rem;">Monitors resources and metrics</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Visibility + operations</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">VPC Flow Logs</td><td style="padding:0.5rem 0.75rem;">Records network flow information</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Network investigation</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Docker</td><td style="padding:0.5rem 0.75rem;">Packages the application</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Consistent deployment</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Linux</td><td style="padding:0.5rem 0.75rem;">Runs and supports server administration</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Application operations</td></tr>
+                <tr><td style="padding:0.5rem 0.75rem 0.5rem 0;">CI/CD</td><td style="padding:0.5rem 0.75rem;">Automates infrastructure workflow</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Repeatability + DevOps</td></tr>
+                <tr><td style="padding:0.5rem 0.75rem 0.5rem 0;">GitHub</td><td style="padding:0.5rem 0.75rem;">Hosts the project and workflow</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Version control and automation</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Security Design for Defense in Depth</h4>
+          <p style="margin-top:var(--spacing-sm);line-height:1.6;color:var(--color-text-gray);">This project was intentionally designed around defense in depth rather than relying on a single security control.</p>
+          <ol style="margin:var(--spacing-sm) 0 0 1.25rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.6rem;">
+            <li><strong style="color:var(--color-text-light);">Web application protection:</strong> AWS WAF sits in front of the ALB and inspects incoming traffic. Future testing will validate it against directory traversal, injection-style requests, suspicious URL patterns, and controlled high-volume request simulations. <em>Attack simulations are planned and have not been simulated yet.</em></li>
+            <li><strong style="color:var(--color-text-light);">Network segmentation:</strong> EC2 web servers live in private subnets across multiple Availability Zones, limiting exposure while adding redundancy.</li>
+            <li><strong style="color:var(--color-text-light);">No SSH exposure:</strong> Administration goes through AWS Systems Manager Session Manager instead of opening port 22.</li>
+            <li><strong style="color:var(--color-text-light);">Least-privilege IAM:</strong> IAM roles and policies grant users and services only the permissions required for their job (PoLP).</li>
+            <li><strong style="color:var(--color-text-light);">Storage protection:</strong> S3 is configured as private storage with Block Public Access enabled; data at rest is protected with AWS KMS.</li>
+            <li><strong style="color:var(--color-text-light);">Network visibility:</strong> VPC Flow Logs provide visibility into network communication and evidence for troubleshooting and security investigation.</li>
+          </ol>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);margin-top:var(--spacing-md);border:1px solid var(--glass-border);">
+            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Planned Security Validation</h4>
+            <p style="margin:0;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;">After the core infrastructure is complete, controlled security testing will validate the WAF and monitoring pipeline, demonstrating the full lifecycle of <strong style="color:var(--color-text-light);">Attack &rarr; Detection/Filtering &rarr; Logging &rarr; Investigation</strong>. Evidence will include screenshots, logs, WAF results, and a video demonstration. This phase is planned, not yet completed.</p>
+          </div>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Availability &amp; Scaling</h4>
+          <p style="margin-top:var(--spacing-sm);line-height:1.6;color:var(--color-text-gray);">The architecture spans multiple Availability Zones so the application doesn't depend on a single EC2 instance, subnet, or AZ. Auto Scaling adjusts EC2 capacity based on workload, and mock CPU-usage testing was used to demonstrate how increased resource utilization triggers scaling behavior &mdash; hands-on experience with the chain from Availability Zones to redundancy, load balancing, and Auto Scaling.</p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Monitoring &amp; Logging</h4>
+          <p style="margin-top:var(--spacing-sm);line-height:1.6;color:var(--color-text-gray);">The environment was designed so security and operational events can be observed rather than assuming infrastructure "just works":</p>
+          <ul style="list-style:disc;margin:var(--spacing-sm) 0 0 1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.4rem;">
+            <li><strong style="color:var(--color-text-light);">VPC Flow Logs</strong> &mdash; network visibility and traffic investigation.</li>
+            <li><strong style="color:var(--color-text-light);">CloudWatch</strong> &mdash; EC2 CPU utilization, resource behavior, alarms, and operational visibility.</li>
+            <li><strong style="color:var(--color-text-light);">S3</strong> &mdash; durable destination for stored logs and data.</li>
+          </ul>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Deployment &amp; Application Delivery</h4>
+          <p style="margin-top:var(--spacing-sm);line-height:1.6;color:var(--color-text-gray);">Terraform makes the environment reproducible through a plan-and-apply workflow (<code>init</code> &rarr; <code>fmt</code> &rarr; <code>validate</code> &rarr; <code>plan</code> &rarr; <code>apply</code>), instead of clicking through the AWS Console. A CI/CD pipeline automates formatting, validation, Terraform checks, and the deployment workflow on every change, connecting the infrastructure work to a real development workflow rather than a one-time script. Docker packages the application so its runtime stays consistent and reproducible on EC2.</p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">What I Learned</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);margin-top:var(--spacing-sm);">
+            <div>
+              <p style="margin:0 0 0.3rem;color:var(--color-text-light);font-weight:600;">&#9729;&#65039; AWS / Cloud Engineering</p>
+              <p style="margin:0;color:var(--color-text-gray);font-size:0.9rem;line-height:1.6;">VPC design, public vs. private subnets, Availability Zones, multi-AZ redundancy, Internet/NAT Gateways, ALBs, EC2, Auto Scaling, S3, SSM Session Manager.</p>
+            </div>
+            <div>
+              <p style="margin:0 0 0.3rem;color:var(--color-text-light);font-weight:600;">&#128274; Cloud Security</p>
+              <p style="margin:0;color:var(--color-text-gray);font-size:0.9rem;line-height:1.6;">AWS WAF, Security Groups, Network ACLs, IAM roles/policies, PoLP, private networking, eliminating SSH exposure, KMS encryption, S3 Block Public Access, security testing methodology.</p>
+            </div>
+            <div>
+              <p style="margin:0 0 0.3rem;color:var(--color-text-light);font-weight:600;">&#127959;&#65039; Infrastructure as Code</p>
+              <p style="margin:0;color:var(--color-text-gray);font-size:0.9rem;line-height:1.6;">Terraform templating, variables, outputs, locals, resource relationships and dependencies, plan/apply/validate/fmt, reproducible deployments.</p>
+            </div>
+            <div>
+              <p style="margin:0 0 0.3rem;color:var(--color-text-light);font-weight:600;">&#128202; Monitoring / Operations</p>
+              <p style="margin:0;color:var(--color-text-gray);font-size:0.9rem;line-height:1.6;">VPC Flow Logs, CloudWatch, log collection, metrics, CPU monitoring, Auto Scaling behavior, mock workload generation, investigating infrastructure behavior.</p>
+            </div>
+            <div>
+              <p style="margin:0 0 0.3rem;color:var(--color-text-light);font-weight:600;">&#128039; Linux</p>
+              <p style="margin:0;color:var(--color-text-gray);font-size:0.9rem;line-height:1.6;">Server administration, networking, services, permissions, application deployment, troubleshooting, remote management through SSM.</p>
+            </div>
+            <div>
+              <p style="margin:0 0 0.3rem;color:var(--color-text-light);font-weight:600;">&#128640; DevOps / Engineering</p>
+              <p style="margin:0;color:var(--color-text-gray);font-size:0.9rem;line-height:1.6;">Docker, CI/CD, GitHub workflows, documentation, architecture diagrams, reading AWS/Terraform docs, designing infrastructure before deployment.</p>
+            </div>
+          </div>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Project Outcomes</h4>
+          <p style="margin-top:var(--spacing-sm);line-height:1.6;color:var(--color-text-gray);">This work brought together AWS network design, Linux administration, IAM and encryption, Terraform resource dependencies, monitoring, containerization, and automation. The focus was not only deploying services, but understanding how their security and availability controls work together across the infrastructure lifecycle: <strong style="color:var(--color-text-light);">design &rarr; deploy &rarr; secure &rarr; monitor &rarr; automate &rarr; test &rarr; document.</strong></p>
+
+          <div class="artifact-box" style="background:var(--glass-bg);padding:1.25rem 1.5rem;border-radius:var(--radius-md);margin-top:var(--spacing-md);border:1px solid var(--glass-border);">
+            <p style="margin:0;color:var(--color-text-gray);font-size:0.85rem;line-height:1.6;"><strong style="color:var(--color-text-light);">Security testing disclaimer:</strong> all attack simulations are intended for controlled testing of infrastructure that I own or have explicit authorization to test.</p>
+          </div>
+
+          <div class="card-tags" style="margin-top:var(--spacing-md);">
+            <span class="tiny-tag">Terraform</span>
+            <span class="tiny-tag">AWS WAF</span>
+            <span class="tiny-tag">Docker</span>
+            <span class="tiny-tag">CI/CD</span>
+            <span class="tiny-tag">PoLP IAM</span>
+            <span class="tiny-tag">DevSecOps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Zayan Parpia. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const diagramTrigger = document.getElementById('terraform-diagram-trigger');
+    const diagramViewer = document.getElementById('terraform-diagram-viewer');
+    const diagramClose = document.getElementById('terraform-diagram-close');
+
+    diagramTrigger.addEventListener('click', () => diagramViewer.showModal());
+    diagramClose.addEventListener('click', () => diagramViewer.close());
+    diagramViewer.addEventListener('click', event => {
+      if (event.target === diagramViewer) diagramViewer.close();
+    });
+    diagramViewer.addEventListener('cancel', event => {
+      event.preventDefault();
+      diagramViewer.close();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && diagramViewer.open) {
+        event.preventDefault();
+        diagramViewer.close();
+      }
+    }, true);
+  </script>
+</body>
+
+</html>

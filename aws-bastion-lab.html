@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>AWS Bastion Lab - Zayan Parpia</title>
+    <meta name="description"
+        content="A secure AWS-native lab featuring a Bastion host (Jump Box) for accessing private subnets with IAM and SSM-only logins.">
+    <meta name="author" content="Zayan Parpia">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HEADER ===== -->
+    <section class="section" style="padding-top: 120px; padding-bottom: 40px;">
+        <div class="container">
+            <div class="project-detail-header">
+                <h1 class="section-title">AWS Bastion Lab</h1>
+                <a href="projects.html" class="back-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 20px; height: 20px;">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back to Projects
+                </a>
+                <div class="project-meta-top">
+                    <div style="display: flex; align-items: center; gap: 1.5rem;">
+                        <p class="project-date" style="margin:0; font-style: italic; color: var(--color-text-gray);">
+                            March 10, 2026</p>
+                        <a href="https://github.com/ZayanParpia/AWS-BASTION-HOST/tree/main" target="_blank"
+                            class="github-link" title="View on GitHub"
+                            style="color: var(--color-text-light); transition: all 0.3s ease; display: flex; align-items: center;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECT CONTENT ===== -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="project-content-wrapper fade-in">
+                <!-- Visuals Column -->
+                <div class="project-visuals">
+                    <div class="screenshot-item">
+                        <div class="screenshot-meta">
+                            <h4>Lab Architecture</h4>
+                            <p>Final security design featuring a public Bastion host and isolated private server subnets
+                                with IAM-enforced access controls.</p>
+                        </div>
+                        <img src="AWS-BASTION-LAB/Diagram.png" alt="AWS Bastion Lab Diagram"
+                            class="main-image zoom-img">
+                    </div>
+
+                    <!-- Video Demonstration -->
+                    <div class="artifact-box"
+                        style="background: var(--color-bg-card); padding: var(--spacing-sm); border-radius: var(--radius-md); border: 1px solid var(--glass-border); margin-bottom: var(--spacing-md);">
+                        <h4
+                            style="color: var(--color-accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                            </svg>
+                            SSM Video Demonstration
+                        </h4>
+                        <div class="video-container"
+                            style="position: relative; border-radius: 0.5rem; overflow: hidden; background: #000; aspect-ratio: 16/9;">
+                            <video controls style="width: 100%; height: 100%; display: block;">
+                                <source src="Aws Bastion Lab/video demo/SSM Into Bastion Host.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-item">
+                        <div class="screenshot-meta">
+                            <h4>Bastion Lab VPC</h4>
+                            <p>This screenshot shows the creation of the Bastion Lab VPC for this project.</p>
+                        </div>
+                        <img src="Aws Bastion Lab/screenshots/Bastion VPC.png" alt="Bastion Lab VPC"
+                            class="screenshot-img zoom-img">
+                    </div>
+
+                    <div class="screenshot-item">
+                        <div class="screenshot-meta">
+                            <h4>Internet Gateway</h4>
+                            <p>This screenshot shows the creation of the internet gateway for the Bastion host.</p>
+                        </div>
+                        <img src="Aws Bastion Lab/screenshots/IG.png" alt="Internet Gateway"
+                            class="screenshot-img zoom-img">
+                    </div>
+
+                    <div class="screenshot-item">
+                        <div class="screenshot-meta">
+                            <h4>Public Routing Table</h4>
+                            <p>This screenshot shows the public routing table for the Bastion host to access the
+                                internet.</p>
+                        </div>
+                        <img src="Aws Bastion Lab/screenshots/Public Routing Table.png" alt="Public Routing Table"
+                            class="screenshot-img zoom-img">
+                    </div>
+
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                        <div class="screenshot-item" style="margin-bottom: 0;">
+                            <div class="screenshot-meta">
+                                <h4>Public Subnet</h4>
+                                <p>Creation and configuration of the public subnet for the Bastion host.</p>
+                            </div>
+                            <img src="Aws Bastion Lab/screenshots/Public Subnet.png" alt="Public Subnet"
+                                class="screenshot-img zoom-img">
+                        </div>
+                        <div class="screenshot-item" style="margin-bottom: 0;">
+                            <div class="screenshot-meta">
+                                <h4>Private Subnet</h4>
+                                <p>Creation and configuration of the private subnet for the internal servers.</p>
+                            </div>
+                            <img src="Aws Bastion Lab/screenshots/Private Subnet.png" alt="Private Subnet"
+                                class="screenshot-img zoom-img">
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                        <div class="screenshot-item" style="margin-bottom: 0;">
+                            <div class="screenshot-meta">
+                                <h4>Bastion EC2</h4>
+                                <p>Creation of the Ubuntu-based bastion host in the public subnet.</p>
+                            </div>
+                            <img src="Aws Bastion Lab/screenshots/Bastion EC2.png" alt="Bastion EC2"
+                                class="screenshot-img zoom-img">
+                        </div>
+                        <div class="screenshot-item" style="margin-bottom: 0;">
+                            <div class="screenshot-meta">
+                                <h4>Private EC2</h4>
+                                <p>Configuration and creation of the private server instance.</p>
+                            </div>
+                            <img src="Aws Bastion Lab/screenshots/Private EC2.png" alt="Private EC2"
+                                class="screenshot-img zoom-img">
+                        </div>
+                    </div>
+
+                    <div class="screenshot-item">
+                        <div class="screenshot-meta">
+                            <h4>Bastion IAM User</h4>
+                            <p>IAM user role configured for SSM access with a dedicated policy for security.</p>
+                        </div>
+                        <img src="Aws Bastion Lab/screenshots/Bastion IAM User.png" alt="Bastion IAM User"
+                            class="screenshot-img zoom-img">
+                    </div>
+
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                        <div class="screenshot-item" style="margin-bottom: 0;">
+                            <div class="screenshot-meta">
+                                <h4>Bastion SSM Policy</h4>
+                                <p>Detailed policy attached to the IAM user to enable session management.</p>
+                            </div>
+                            <img src="Aws Bastion Lab/screenshots/Bastion SSM Policy.png" alt="Bastion SSM Policy"
+                                class="screenshot-img zoom-img">
+                        </div>
+                        <div class="screenshot-item" style="margin-bottom: 0;">
+                            <div class="screenshot-meta">
+                                <h4>EC2 SSM Role</h4>
+                                <p>Policies and role creation for EC2 SSM integration.</p>
+                            </div>
+                            <img src="Aws Bastion Lab/screenshots/EC2SSMROLE.png" alt="EC2 SSM Role"
+                                class="screenshot-img zoom-img">
+                        </div>
+                    </div>
+
+                    <div class="screenshot-item">
+                        <div class="screenshot-meta">
+                            <h4>Bastion Flow Log</h4>
+                            <p>Creation and configuration of VPC Flow Logs for infrastructure auditing.</p>
+                        </div>
+                        <img src="Aws Bastion Lab/screenshots/Bastion Flow Log.png" alt="Bastion Flow Log"
+                            class="screenshot-img zoom-img">
+                    </div>
+
+                    <div class="screenshot-item">
+                        <div class="screenshot-meta">
+                            <h4>CloudWatch Configuration</h4>
+                            <p>Provisioning CloudWatch logs and attaching them to the VPC flow logs for monitoring.</p>
+                        </div>
+                        <img src="Aws Bastion Lab/screenshots/CloudWatch.png" alt="CloudWatch Configuration"
+                            class="screenshot-img zoom-img">
+                    </div>
+
+                    <div class="screenshot-item">
+                        <div class="screenshot-meta">
+                            <h4>VPC Flow Log Events</h4>
+                            <p>Captured log events showing real-time traffic data within the VPC environment.</p>
+                        </div>
+                        <img src="Aws Bastion Lab/screenshots/Logs.png" alt="VPC Flow Log Events"
+                            class="screenshot-img zoom-img">
+                    </div>
+                </div>
+
+                <!-- Info Column -->
+                <div class="project-info">
+                    <h3>Project Overview</h3>
+                    <p style="margin-bottom: var(--spacing-sm);">
+                        This project demonstrates a secure AWS network architecture using a single VPC with strictly
+                        segmented public and private subnets. A hardened Ubuntu Bastion host in the public subnet
+                        serves as the sole administrative entry point, ensuring that private servers and databases
+                        remain completely isolated from the public internet.
+                    </p>
+                    <p style="margin-bottom: var(--spacing-sm);">
+                        By enforcing <strong>IAM-based authentication</strong> and leveraging <strong>AWS Systems
+                            Manager (SSM)</strong>, the lab eliminates the risks associated with static SSH keys and
+                        open management ports. This defense-in-depth approach is further strengthened by continuous
+                        monitoring via VPC Flow Logs, CloudTrail, and GuardDuty.
+                    </p>
+
+                    <!-- AWS Resources Used -->
+                    <h4 style="margin-top: var(--spacing-md); color: var(--color-accent);">AWS Resources Used</h4>
+                    <ul class="feature-list"
+                        style="margin-top: var(--spacing-sm); display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-sm);">
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">Virtual Private Cloud (VPC)</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">Public & Private Subnets</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">Internet & NAT Gateways</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">Ubuntu Bastion Host</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">IAM Roles & Policies</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">Systems Manager (SSM)</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">VPC Flow Logs & CloudWatch</p>
+                            </div>
+                        </li>
+                        <li class="feature-item" style="margin-bottom: 0;">
+                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
+                            <div class="feature-content">
+                                <p style="margin: 0; color: var(--color-text-light);">AWS GuardDuty & CloudTrail</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- Project Sections -->
+                    <div style="margin-top: var(--spacing-lg);">
+                        <!-- Project Outline -->
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
+                            <h4
+                                style="margin-bottom: 1rem; color: var(--color-accent); font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                                Project Outline
+                            </h4>
+                            <p style="color: var(--color-text-gray); font-style: italic; line-height: 1.6;">
+                                "For this project, I designed a secure AWS network architecture using an Amazon VPC to
+                                isolate infrastructure and control how traffic enters and moves through the environment.
+                                I created both public and private subnets so that only the necessary resources were
+                                exposed to the internet, while sensitive servers remained fully internal."
+                            </p>
+                        </div>
+
+                        <!-- AI Guidance Prompt -->
+                        <div class="artifact-box"
+                            style="background: rgba(0, 255, 255, 0.05); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid rgba(0, 255, 255, 0.2);">
+                            <h4
+                                style="margin-bottom: 1rem; color: #00ffff; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                Expert Guidance Prompt
+                            </h4>
+                            <div
+                                style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 0.25rem; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #e0e0e0; border-left: 3px solid #00ffff; line-height: 1.5;">
+                                "You are a pro cloud security expert that works with AWS tools such as VPCs, subnets,
+                                routing, virtual machines, etc. I am a student making this project based on this
+                                description. Your job is to guide me through it step-by-step. Make it simple and easy to
+                                understand as I go forward in the project, explain why you make each step and what does
+                                that prevent/enable."
+                            </div>
+                        </div>
+
+                        <!-- Lab Logs / Progress -->
+                        <div class="artifact-box" hidden
+                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
+                            <details style="cursor: pointer;">
+                                <summary
+                                    style="color: var(--color-text-light); font-size: 1.2rem; font-weight: 500; list-style: none; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                    </svg>
+                                    Project Milestones & Logs
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" width="16" height="16"
+                                        style="margin-left: auto;">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </summary>
+                                <div class="log-container"
+                                    style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-05</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            VPC and subnets creation. Provisioned Elastic IP for the Bastion host.</p>
+                                    </div>
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-06</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            Ubuntu Bastion setup completed. Deployed internal target servers.</p>
+                                    </div>
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-10</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            Configured Internet Gateway and Public Routing Tables for the Bastion host.
+                                        </p>
+                                    </div>
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-11</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            Static routes and security group rules refined for private subnet isolation.
+                                        </p>
+                                    </div>
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-16</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            Configured IAM user permissions and CLI credentials for SSM-only access.</p>
+                                    </div>
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-19</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            Successfully implemented IAM-enforced sign-in via Systems Manager.</p>
+                                    </div>
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-21</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            Deployment of CloudWatch logs and VPC flow log metrics for auditing.</p>
+                                    </div>
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-28</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            Finalized policy hardening for the SSM role and user access.</p>
+                                    </div>
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-05</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            Verified connectivity across all Availability Zones and private subnets.</p>
+                                    </div>
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-06</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            Performance testing and latency monitoring via CloudWatch dashboards.</p>
+                                    </div>
+                                    <div class="log-entry">
+                                        <span
+                                            style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-10</span>
+                                        <p
+                                            style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
+                                            Final project polishing, screenshot collection, and documentation
+                                            completion.</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+
+                        <!-- Technical Roadmap Accordion -->
+                        <div class="artifact-box"
+                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--glass-border);">
+                            <details style="cursor: pointer;">
+                                <summary
+                                    style="color: var(--color-text-light); font-size: 1.1rem; font-weight: 500; list-style: none; display: flex; align-items: center; gap: 0.5rem;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                    Technical Roadmap & Next Steps
+                                </summary>
+                                <div
+                                    style="margin-top: 1rem; color: var(--color-text-gray); font-size: 0.95rem; line-height: 1.6;">
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        <li
+                                            style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem; align-items: flex-start;">
+                                            <span style="color: var(--color-accent);">✓</span>
+                                            Secure VPC & Subnet Segmentation
+                                        </li>
+                                        <li
+                                            style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem; align-items: flex-start;">
+                                            <span style="color: var(--color-accent);">✓</span>
+                                            Ubuntu Bastion Host Deployment
+                                        </li>
+                                        <li
+                                            style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem; align-items: flex-start;">
+                                            <span style="color: var(--color-accent);">✓</span>
+                                            IAM-Enforced SSM Session Management
+                                        </li>
+                                        <li
+                                            style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem; align-items: flex-start;">
+                                            <span style="color: var(--color-accent);">✓</span>
+                                            VPC Flow Logs & CloudWatch Integration
+                                        </li>
+                                        <li
+                                            style="margin-bottom: 0.5rem; display: flex; gap: 0.5rem; align-items: flex-start;">
+                                            <span style="color: var(--color-accent);">✓</span>
+                                            GuardDuty & CloudTrail Auditing
+                                        </li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Zayan Parpia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".fade-in");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("visible");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+
+        // Zoom functionality for images
+        document.querySelectorAll('.zoom-img').forEach(img => {
+            img.addEventListener('click', function () {
+                this.classList.toggle('zoomed');
+                if (this.classList.contains('zoomed')) {
+                    const overlay = document.createElement('div');
+                    overlay.style.position = 'fixed';
+                    overlay.style.top = 0;
+                    overlay.style.left = 0;
+                    overlay.style.width = '100vw';
+                    overlay.style.height = '100vh';
+                    overlay.style.background = 'rgba(0,0,0,0.9)';
+                    overlay.style.zIndex = '9999';
+                    overlay.style.display = 'flex';
+                    overlay.style.alignItems = 'center';
+                    overlay.style.justifyContent = 'center';
+                    overlay.onclick = () => document.body.removeChild(overlay);
+
+                    const imgClone = document.createElement('img');
+                    imgClone.src = this.src;
+                    imgClone.style.maxWidth = '90%';
+                    imgClone.style.maxHeight = '90%';
+                    imgClone.style.borderRadius = 'var(--radius-md)';
+
+                    overlay.appendChild(imgClone);
+                    document.body.appendChild(overlay);
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

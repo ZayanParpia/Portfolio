@@ -1,0 +1,57 @@
+NEXT STEPS FOR 2026-02-05
+_________________________
+
+-Start Publishing to GitHub Repo ✅
+-Edit Diagram to remove bastion host (redundant) ✅
+-Enable Kali Linux EC2 to access internet ✅
+-Switch Kali Linux EC2 to Ubuntu Because Ubuntu will simulate a more realistic attack acting as a bastion host. ✅
+-Create Elastic Ip Address for bastion host ✅
+-Create private subnet for servers ✅
+
+NEXT STEPS FOR 2026-02-06
+_________________________
+-Change Diagram to have Ubuntu logo instead of Kali Linux ✅
+
+-Create Vuln Servers in private subnet✅
+
+NEXT STEPS FOR 2026-02-16
+_________________________
+
+Configure the CLI for the IAM user ✅
+
+-Set up Servers on private subnet ✅
+-Configure servers on private subnet to only allow bastion access using SSM and IAM  ✅
+
+NEXT STEPS FOR 2026-02-19
+_________________________
+
+-Make IAM enforced sign in and SSM ✅
+
+NEXT STEPS FOR 2026-02-22
+_________________________
+
+-Test to make sure IAM and SSM are properly working ✅ 
+-Attach the Monitoring Systems ✅
+VPC flow logs ✅
+CloudWatch ✅
+CloudTrail ✅
+Cloud Guard  ✅
+-Edit Diagram To Make some Polishes ✅
+-Collect Screenshots ✅
+
+NEXT STEPS FOR 2026-03-07
+_________________________
+
+-Blur Important Information on Screenshots ✅
+-Explain Screenshots ✅
+-Create video of demonstration ✅
+-Polish Documentation ✅
+-Upload to portfolio  ✅
+-Polish Outline ✅
+-Polish Prompt ✅
+-Fill in README.md ✅
+-Upload to GITHUB ✅
+
+
+
+
