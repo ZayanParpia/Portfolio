@@ -203,16 +203,10 @@
                 <div class="project-info">
                     <h3>Project Overview</h3>
                     <p style="margin-bottom: var(--spacing-sm);">
-                        This project demonstrates the implementation of a highly available <strong>Application Load
-                            Balancer (ALB)</strong> on AWS. It showcases how load balancing effectively distributes
-                        traffic across multiple EC2 instances to ensure application scalability and resilience.
+                        This project demonstrates the implementation of a highly available Application Load Balancer (ALB) on AWS. It showcases how load balancing distributes traffic across multiple EC2 instances to support scalability and resilience.
                     </p>
                     <p style="margin-bottom: var(--spacing-sm);">
-                        The architecture utilizes a dedicated <strong>VPC</strong>, multiple <strong>Availability
-                            Zones</strong>, and public <strong>Subnets</strong>. Networking is managed through custom
-                        <strong>Route Tables</strong> and <strong>Network Access Control Lists (NACLs)</strong>, while
-                        traffic is directed to specific <strong>Target Groups</strong> of EC2 instances based on health
-                        and availability.
+                        The architecture uses a dedicated VPC, multiple Availability Zones, and public subnets. Custom route tables and Network Access Control Lists (NACLs) manage networking, while target groups route traffic to healthy EC2 instances.
                     </p>
 
                     <!-- AWS Resources List -->
@@ -271,26 +265,6 @@
 
                     <!-- Project Sections -->
                     <div style="margin-top: var(--spacing-lg);">
-                        <!-- Project Outline -->
-                        <div class="artifact-box"
-                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
-                            <h4
-                                style="margin-bottom: 1rem; color: var(--color-accent); font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                                </svg>
-                                Project Outline
-                            </h4>
-                            <p style="color: var(--color-text-gray); font-style: italic; line-height: 1.6;">
-                                "In this project, I set up a robust Application Load Balancer to manage incoming web
-                                traffic. I created Target Groups, configured Health Checks, and deployed EC2 instances
-                                across different subnets. I also implemented an Auto Scaling group to handle variable
-                                loads automatically..."
-                            </p>
-                        </div>
-
                         <!-- Lab Logs / Progress -->
                         <div class="artifact-box" hidden
                             style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
@@ -305,26 +279,26 @@
                             <div class="log-container" style="display: flex; flex-direction: column; gap: 1rem;">
                                 <div class="log-entry">
                                     <span
-                                        style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-02-28</span>
+                                        style="color: var(--color-accent); font-size: 0.85rem;">2026-02-28</span>
                                     <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
                                         Initial setup: Created VPC architecture and infrastructure diagrams.</p>
                                 </div>
                                 <div class="log-entry">
                                     <span
-                                        style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-01</span>
+                                        style="color: var(--color-accent); font-size: 0.85rem;">2026-03-01</span>
                                     <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
                                         Infrastructure deployment: Configured Load Balancer, Gateway, and Subnets.</p>
                                 </div>
                                 <div class="log-entry">
                                     <span
-                                        style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-02</span>
+                                        style="color: var(--color-accent); font-size: 0.85rem;">2026-03-02</span>
                                     <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
                                         Configuration & Testing: Finalized security groups and verified
                                         high-availability routing.</p>
                                 </div>
                                 <div class="log-entry">
                                     <span
-                                        style="color: var(--color-accent); font-weight: bold; font-size: 0.85rem;">2026-03-03</span>
+                                        style="color: var(--color-accent); font-size: 0.85rem;">2026-03-03</span>
                                     <p style="color: var(--color-text-gray); font-size: 0.95rem; margin-top: 0.25rem;">
                                         Documentation: Captured project screenshots and recorded video demonstration.
                                     </p>
@@ -332,63 +306,13 @@
                             </div>
                         </div>
 
-                        <!-- Next Steps Accordion -->
-                        <div class="artifact-box"
-                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
-                            <details style="cursor: pointer;">
-                                <summary
-                                    style="list-style: none; display: flex; align-items: center; gap: 0.5rem; color: var(--color-accent); font-weight: 600; font-size: 1.1rem;">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-                                        <polyline points="9 18 15 12 9 6"></polyline>
-                                    </svg>
-                                    Technical Roadmap & Completed Tasks
-                                </summary>
-                                <div
-                                    style="margin-top: 1rem; padding-left: 1.5rem; border-left: 2px solid var(--color-accent);">
-                                    <ul
-                                        style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--color-text-gray); font-size: 0.95rem;">
-                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <span style="color: var(--color-accent);">✓</span> Architecture Diagram
-                                            Design
-                                        </li>
-                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <span style="color: var(--color-accent);">✓</span> VPC & Subnet
-                                            Implementation
-                                        </li>
-                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <span style="color: var(--color-accent);">✓</span> Application Load Balancer
-                                            Setup
-                                        </li>
-                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <span style="color: var(--color-accent);">✓</span> Target Groups & Health
-                                            Checks
-                                        </li>
-                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <span style="color: var(--color-accent);">✓</span> Security Group
-                                            Orchestration
-                                        </li>
-                                        <li style="display: flex; align-items: center; gap: 0.5rem;">
-                                            <span style="color: var(--color-accent);">✓</span> GitHub Repository
-                                            Publication
-                                        </li>
-                                    </ul>
-                                </div>
-                            </details>
-                        </div>
-
-                        <div class="artifact-box"
-                            style="background: var(--glass-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--glass-border);">
-                            <h5 style="margin-bottom: 0.5rem; color: var(--color-text-light); font-size: 1.1rem;">Key
-                                Learnings</h5>
+                        <div style="margin-top: var(--spacing-md);">
+                            <h4 style="margin-bottom: 0.5rem; color: #fff; font-size: 1.5rem; font-weight: 700;">Key Learnings</h4>
                             <ul
-                                style="list-style: disc; margin-left: 1.5rem; color: var(--color-text-gray); font-size: 0.95rem; line-height: 1.6;">
-                                <li><strong>Traffic Distribution:</strong> Understanding how ALB works at the
-                                    application layer (Layer 7) to provide flexible routing.</li>
-                                <li><strong>Resilience Patterns:</strong> Mastering health checks and how they automate
-                                    the removal of unstable nodes.</li>
-                                <li><strong>Dynamic Scaling:</strong> Configuration of scaling policies that save costs
-                                    during idle periods and maintain uptime during spikes.</li>
+                                style="list-style: disc; margin-left: 1.5rem; color: var(--color-text-gray); font-size: 1rem; line-height: 1.6;">
+                                <li>Traffic Distribution: Understanding how ALB works at the application layer (Layer 7) to provide flexible routing.</li>
+                                <li>Resilience Patterns: Mastering health checks and how they automate the removal of unstable nodes.</li>
+                                <li>Dynamic Scaling: Configuring scaling policies to save costs during idle periods and maintain uptime during spikes.</li>
                             </ul>
                         </div>
                     </div>

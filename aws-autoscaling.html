@@ -66,8 +66,7 @@
           <div class="screenshot-item">
             <div class="screenshot-meta">
               <h4>Architecture Overview</h4>
-              <p>End-to-end AWS architecture showing Route 53, ACM, ALB, Auto Scaling Group, private subnets across two
-                AZs, CloudWatch, IAM, SSM, S3, and CloudFront.</p>
+              <p>End-to-end AWS architecture showing an ALB, Auto Scaling Group, private subnets across two AZs, CloudWatch, IAM, SSM, S3, and CloudFront.</p>
             </div>
             <img src="AWS Autoscaling Project/Infastructure/AutoScaling Diagram.png"
               alt="AWS Auto Scaling Architecture Diagram" class="main-image zoom-img">
@@ -174,16 +173,8 @@
         <!-- INFO COLUMN -->
         <div class="project-info">
           <h3>Project Overview</h3>
-          <p style="margin-bottom:var(--spacing-sm);">This project demonstrates a <strong>production-ready AWS
-              architecture</strong> built around an EC2 Auto Scaling Group (ASG). The goal was to handle changing
-            traffic automatically, maintain high availability across multiple Availability Zones, and apply real-world
-            cloud security best practices at every layer.</p>
-          <p style="margin-bottom:var(--spacing-sm);">Users connect via <strong>Route 53</strong> DNS and <strong>HTTPS
-              (ACM)</strong>, traffic is distributed by an <strong>Application Load Balancer</strong>, and EC2 instances
-            run inside <strong>private subnets</strong>. Access is managed through <strong>IAM least-privilege
-              roles</strong> and <strong>SSM Session Manager</strong> — no SSH ports exposed. The ASG was configured
-            with a <strong>minimum of 1</strong> and a <strong>maximum of 2 EC2 instances</strong>, ensuring the app
-            stays online at all times while capping costs during scaling events.</p>
+          <p style="margin-bottom:var(--spacing-sm);">This project demonstrates a production-ready AWS architecture built around an EC2 Auto Scaling Group (ASG). It handles changing traffic, maintains availability across multiple Availability Zones, and applies cloud security best practices.</p>
+          <p style="margin-bottom:var(--spacing-sm);">An Application Load Balancer distributes HTTP traffic to EC2 instances in private subnets. IAM least-privilege roles and SSM Session Manager control instance access without exposing SSH ports.</p>
 
           <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">AWS Resources Used</h4>
           <ul class="feature-list"
@@ -233,57 +224,12 @@
             <li class="feature-item" style="margin-bottom:0;">
               <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
               <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">Route 53 + ACM + S3</p>
+                <p style="margin:0;color:var(--color-text-light);">Amazon S3</p>
               </div>
             </li>
           </ul>
 
-          <!-- ASG Config Callout -->
-          <div
-            style="display:flex;gap:1rem;margin-top:var(--spacing-md);padding:1rem 1.25rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-sm);">
-            <div style="text-align:center;flex:1;border-right:1px solid var(--glass-border);padding-right:1rem;">
-              <p
-                style="font-size:0.75rem;color:var(--color-text-gray);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem;">
-                Min Instances</p>
-              <p style="font-size:1.8rem;font-weight:700;color:var(--color-accent);margin:0;">1</p>
-            </div>
-            <div style="text-align:center;flex:1;border-right:1px solid var(--glass-border);padding:0 1rem;">
-              <p
-                style="font-size:0.75rem;color:var(--color-text-gray);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem;">
-                Max Instances</p>
-              <p style="font-size:1.8rem;font-weight:700;color:var(--color-accent);margin:0;">2</p>
-            </div>
-            <div style="text-align:center;flex:1;padding-left:1rem;">
-              <p
-                style="font-size:0.75rem;color:var(--color-text-gray);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem;">
-                Trigger</p>
-              <p style="font-size:1rem;font-weight:600;color:var(--color-text-light);margin:0;">CPU Alarm</p>
-            </div>
-          </div>
-
           <div style="margin-top:var(--spacing-lg);">
-
-            <!-- Project Outline -->
-            <div class="artifact-box"
-              style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
-              <h4
-                style="margin-bottom:1rem;color:var(--color-accent);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" width="20" height="20">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                </svg>
-                Project Outline
-              </h4>
-              <p style="color:var(--color-text-gray);font-style:italic;line-height:1.6;">"In this project, I built a
-                secure and scalable AWS web architecture centered around an EC2 Auto Scaling Group. My objective was to
-                handle changing traffic automatically, maintain high availability, and apply real-world cloud security
-                best practices. The ALB distributes incoming requests across EC2 instances in private subnets,
-                CloudWatch monitors CPU metrics and triggers alarms to scale, and all access is controlled via custom
-                IAM roles with strict least privilege. SSM Session Manager eliminates the need for open SSH ports
-                entirely."</p>
-            </div>
-
             <!-- Logs -->
             <div class="artifact-box" hidden
               style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
@@ -380,19 +326,14 @@
             </div>
 
             <!-- Key Learnings -->
-            <div class="artifact-box"
-              style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid var(--glass-border);">
-              <h5 style="margin-bottom:0.5rem;color:var(--color-text-light);font-size:1.1rem;">Key Learnings</h5>
+            <div style="margin-top:var(--spacing-md);">
+              <h4 style="margin-bottom:0.5rem;color:#fff;font-size:1.5rem;font-weight:700;">Key Learnings</h4>
               <ul
-                style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;">
-                <li><strong>Scalability &amp; Resilience:</strong> Auto Scaling is not just about performance — it is a
-                  resilience mechanism that keeps services alive during failures.</li>
-                <li><strong>Defense-in-Depth:</strong> Security must be designed at every layer: HTTPS enforcement,
-                  private subnets, security groups, IAM, and no exposed SSH ports.</li>
-                <li><strong>Least Privilege IAM:</strong> Writing a scoped IAM policy from scratch reinforced why broad
-                  permissions are dangerous in production environments.</li>
-                <li><strong>CLI Automation:</strong> Using the AWS CLI for setup made the workflow faster, consistent,
-                  and reproducible — closer to how cloud engineers work professionally.</li>
+                style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:1rem;line-height:1.6;">
+                <li>Scalability &amp; Resilience: Auto Scaling is not just about performance; it is a resilience mechanism that helps keep services available during failures.</li>
+                <li>Defense-in-Depth: Security must be designed at every layer, including private subnets, security groups, IAM, and limiting SSH exposure.</li>
+                <li>Least Privilege IAM: Writing a scoped IAM policy reinforced why broad permissions are dangerous in production environments.</li>
+                <li>CLI Automation: Using the AWS CLI made the workflow faster, consistent, and reproducible.</li>
               </ul>
             </div>
 

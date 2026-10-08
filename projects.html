@@ -32,17 +32,6 @@
             animation: flash-teal 0.6s ease forwards;
         }
 
-        /* ===== PROJECT CARD HIGHLIGHT ===== */
-        @keyframes highlight-card {
-            0%   { box-shadow: 0 0 0 0 transparent; border-color: rgba(var(--color-accent-rgb, 0, 210, 190), 0.2); }
-            10%  { box-shadow: 0 0 0 4px var(--color-accent); border-color: var(--color-accent); }
-            90%  { box-shadow: 0 0 0 4px var(--color-accent); border-color: var(--color-accent); }
-            100% { box-shadow: 0 0 0 0 transparent; border-color: var(--glass-border); }
-        }
-        .project-card-highlight {
-            animation: highlight-card 1.7s ease forwards !important;
-        }
-
         /* ===== SIDEBAR ITEMS ===== */
         .sidebar-item {
             padding: 0.55rem 1.2rem;
@@ -154,6 +143,25 @@
             font-weight: 700 !important;
         }
 
+        .projects-page,
+        .projects-page * {
+            color: #fff !important;
+        }
+
+        .projects-page .sidebar-item.active {
+            color: #fff !important;
+        }
+
+        .projects-page .project-card,
+        .projects-page .project-card:hover {
+            border-color: transparent !important;
+        }
+
+        .projects-page .card-github-link svg {
+            fill: #fff !important;
+            filter: none !important;
+        }
+
         /* ===== ATTACK VECTOR / ADD-ON CARD HIGHLIGHTS ===== */
         /* Linked parent badge banner */
         .card-parent-link {
@@ -250,7 +258,7 @@
     </style>
 </head>
 
-<body>
+<body class="projects-page">
 
     <!-- ===== NAVIGATION BAR ===== -->
     <nav class="navbar" id="navbar">
@@ -278,13 +286,6 @@
     <section class="section" style="padding-top: 120px; padding-bottom: 20px; text-align: center;">
         <div class="container">
             <h1 class="section-title fade-in" style="margin-bottom: 1rem;">My Projects</h1>
-            <!-- Scroll Indicator Arrow -->
-            <div class="fade-in" style="display: inline-block; cursor: pointer; animation: bounce-down 2s infinite; margin-top: 1rem;" onclick="window.scrollBy({top: 500, behavior: 'smooth'})">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <polyline points="19 12 12 19 5 12"></polyline>
-                </svg>
-            </div>
         </div>
     </section>
 
@@ -358,7 +359,7 @@
                             </h3>
                             <p class="card-date">May 18, 2026</p>
                             <p class="card-description">
-                                Engineered a full-scale cybersecurity home lab utilizing Wazuh SIEM to monitor multi-platform Windows and Linux endpoints. Ingested enriched endpoint telemetry using Sysmon, Auditd, and Wazuh agents to analyze security logs and detect threats in real time. Designed automated active-response workflows and SOC alert pipelines across multiple simulated attack scenarios.
+                                A Wazuh home lab that monitors Windows and Linux endpoints with Sysmon, Auditd, and Wazuh agents. Explore its security dashboards, custom detections, and automated responses to simulated attacks.
                             </p>
 
                             <!-- Connected Attack Vectors Mini Bar -->
@@ -396,7 +397,7 @@
                     </a>
 
                     <!-- ATTACK VECTOR 1: SSH ATTACK PIPELINE -->
-                    <a href="ssh-attack-simulation.html" class="project-card project-card-addon" id="card-ssh-attack">
+                    <article class="project-card project-card-addon" id="card-ssh-attack" role="link" tabindex="0" aria-label="Open SSH Attack Pipeline Simulation" onclick="if (!event.target.closest('a, details, button, .card-parent-link, .card-github-link')) window.location.href='ssh-attack-simulation.html';" onkeydown="if (event.key === 'Enter' && !event.target.closest('a, details, button, .card-parent-link, .card-github-link')) window.location.href='ssh-attack-simulation.html';">
                         <div class="card-image-wrapper">
                             <div class="addon-badge-overlay">
                                 <span class="addon-pulse-dot"></span>
@@ -425,7 +426,7 @@
                             </div>
                             <p class="card-date">July 27, 2026</p>
                             <p class="card-description">
-                                This simulation shows a ssh brute force attack where an attacker (Kali Linux vm with hydra) to brute force port 22 on the victim IP (Ubuntu endpoint). Correlates repeated credential failures, successful authentication, and authorized keys modification to trigger automated SOAR session termination, password reset, and key purging with near-instant MTTD.
+                                Simulates an SSH brute-force attack from Kali Linux with Hydra against an Ubuntu endpoint. Correlated detections trigger automated containment and SSH key cleanup.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
@@ -435,19 +436,19 @@
                                 <span class="tiny-tag">FIM</span>
                                 <span class="tiny-tag">T1110</span>
                             </div>
-                            <div class="card-action">
+                            <a class="card-action" href="ssh-attack-simulation.html">
                                 View Simulation
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                     <polyline points="12 5 19 12 12 19"></polyline>
                                 </svg>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    </article>
 
                     <!-- ATTACK VECTOR 2: RANSOMWARE ATTACK SIMULATION -->
-                    <a href="ransomware-attack-simulation.html" class="project-card project-card-addon" id="card-ransomware">
+                    <article class="project-card project-card-addon" id="card-ransomware" role="link" tabindex="0" aria-label="Open Ransomware Attack Simulation" onclick="if (!event.target.closest('a, details, button, .card-parent-link, .card-github-link')) window.location.href='ransomware-attack-simulation.html';" onkeydown="if (event.key === 'Enter' && !event.target.closest('a, details, button, .card-parent-link, .card-github-link')) window.location.href='ransomware-attack-simulation.html';">
                         <div class="card-image-wrapper">
                             <div class="addon-badge-overlay">
                                 <span class="addon-pulse-dot"></span>
@@ -476,7 +477,7 @@
                             </div>
                             <p class="card-date">September 18, 2026</p>
                             <p class="card-description">
-                                This simulation shows a ransomware attack where a ransomware file encrypts all files inside a monitored dir from Wazuh. Correlates mass FIM changes (Rule 500) and ransom note creation by the same PPID within a short timeframe to notify the user and trigger automated backup restoration.
+                                Runs a controlled ransomware simulation against files in a Wazuh-monitored directory. A custom rule correlates bulk file changes with a ransom note and prompts backup recovery.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
@@ -486,16 +487,16 @@
                                 <span class="tiny-tag">FIM</span>
                                 <span class="tiny-tag">T1486</span>
                             </div>
-                            <div class="card-action">
+                            <a class="card-action" href="ransomware-attack-simulation.html">
                                 View Simulation
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                     <polyline points="12 5 19 12 12 19"></polyline>
                                 </svg>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    </article>
 
                     <!-- ATTACK VECTOR 3: LINUX PRIVILEGE ESCALATION -->
                     <a href="linux-privilege-escalation.html" class="project-card project-card-addon" id="card-linux-privesc">
@@ -527,7 +528,7 @@
                             </div>
                             <p class="card-date">June 29, 2026</p>
                             <p class="card-description">
-                                Executed multiple Linux privilege escalation techniques including sudo brute-forcing, unauthorized sudoers tampering, and SUID exploitation. Captured low-level syscall telemetry using Auditd and Sysmon to monitor unauthorized privilege changes and suspicious binaries. Authored custom Wazuh correlation rules and FIM alerts to immediately flag unauthorized root transitions.
+                                Tests Linux privilege escalation through sudo, sudoers, and SUID attack scenarios. Auditd, Sysmon, Wazuh rules, and FIM help detect suspicious activity and unauthorized privilege changes.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
@@ -578,7 +579,7 @@
                             </div>
                             <p class="card-date">July 30, 2026</p>
                             <p class="card-description">
-                                Deployed OWASP Juice Shop behind an Apache reverse proxy on Ubuntu Server to simulate real-world web application vulnerabilities. Ingested HTTP web access and error logs into Wazuh SIEM to detect malicious SQL injection payloads including authentication bypasses and UNION queries. Implemented custom XML decoders and correlation rules to alert SOC analysts to database exploitation attempts in real time.
+                                Runs OWASP Juice Shop behind an Apache reverse proxy and sends web logs to Wazuh. Custom decoders and rules detect SQL injection attempts such as authentication bypasses and UNION queries.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag tiny-tag-addon">SIEM Lab Vector</span>
@@ -616,7 +617,7 @@
                             <h3 class="card-title">AWS Auto Scaling Group</h3>
                             <p class="card-date">May 6, 2026</p>
                             <p class="card-description">
-                                Architected a highly available AWS infrastructure using an EC2 Auto Scaling Group deployed across multiple Availability Zones behind an Application Load Balancer. Configured dynamic scaling policies driven by CloudWatch metric alarms to automatically adapt to fluctuating traffic loads. Enforced defense-in-depth security using private subnets, IAM least-privilege roles, and AWS Systems Manager for secure access.
+                                Builds a multi-AZ AWS application tier with EC2 Auto Scaling behind an Application Load Balancer. CloudWatch scaling policies, private subnets, least-privilege IAM, and Systems Manager support resilient, secure operations.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">Auto Scaling</span>
@@ -646,9 +647,7 @@
                             <h3 class="card-title">Application Load Balancer</h3>
                             <p class="card-date">March 1, 2026</p>
                             <p class="card-description">
-                                A high-availability setup using an AWS Application Load Balancer (ALB) to distribute
-                                traffic across multiple EC2 instances in different Availability Zones.
-                                Features Auto Scaling and comprehensive health monitoring.
+                                Distributes traffic across EC2 instances in multiple Availability Zones with an AWS Application Load Balancer. Auto Scaling and health checks help maintain availability as demand changes.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">AWS ALB</span>
@@ -676,10 +675,7 @@
                             <h3 class="card-title">AWS Bastion Lab</h3>
                             <p class="card-date">February 21, 2026</p>
                             <p class="card-description">
-                                A secure AWS-native lab featuring a Bastion host (Jump Box) for accessing private
-                                subnets.
-                                Enforces IAM and SSM-only logins for servers, creating a robust zero-trust access model
-                                for cloud infrastructure.
+                                Demonstrates controlled access to private AWS subnets through a bastion host. IAM and Systems Manager provide managed server access, supported by network controls and CloudTrail monitoring.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">AWS VPC</span>
@@ -712,9 +708,7 @@
                             <h3 class="card-title">Cloud VM Subnetting Playground</h3>
                             <p class="card-date">January 6, 2026</p>
                             <p class="card-description">
-                                A hands-on environment building a secure AWS network infrastructure to master subnets,
-                                routing, and access controls.
-                                Features custom VPC design, secure EC2 deployment, and encrypted traffic monitoring.
+                                Builds an AWS VPC with subnets, routing, and EC2 instances to practice cloud networking. Includes access controls and encrypted traffic monitoring.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">AWS VPC</span>
@@ -741,9 +735,7 @@
                             <h3 class="card-title">Automatic Backup System</h3>
                             <p class="card-date">December 26, 2025</p>
                             <p class="card-description">
-                                A robust, secure, and cost-effective automated backup solution leveraging AWS services
-                                like S3, KMS, and SNS.
-                                Automatically backs up drives, encrypts data, and sends status reports.
+                                Automates drive backups to Amazon S3, encrypts stored data with KMS, and sends status notifications through SNS. The project uses Python to coordinate the backup workflow.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">Python</span>
@@ -770,7 +762,7 @@
                             <h3 class="card-title">Terraform Web Infrastructure Capstone</h3>
                             <p class="card-date">Oct 5, 2026</p>
                             <p class="card-description">
-                                Built a secure AWS web infrastructure with Terraform, routing traffic through WAF and a load balancer to private, multi-AZ EC2 servers. Includes Auto Scaling, SSM, least-privilege IAM, encryption, monitoring, Docker, and CI/CD.
+                                Provisions a secure, multi-AZ AWS web stack with Terraform, WAF, load balancing, and private EC2 servers. The capstone also brings together Auto Scaling, SSM, least-privilege IAM, Docker, monitoring, and CI/CD.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">Terraform</span>
@@ -801,8 +793,7 @@
                             <h3 class="card-title">Obstrue</h3>
                             <p class="card-date">December 8, 2025</p>
                             <p class="card-description">
-                                A personalized productivity app designed to master your focus by blocking distracting
-                                apps with custom, targeted pop-ups.
+                                An Android productivity app that helps protect focus by blocking distracting apps and showing custom pop-ups. Explore its Kotlin implementation and UI/UX design.
                             </p>
                             <div class="card-tags">
                                 <span class="tiny-tag">Kotlin</span>
@@ -919,14 +910,6 @@
 
             const target = document.getElementById(id);
             if (target) {
-                // Flash the target project card
-                target.classList.remove('project-card-highlight');
-                void target.offsetWidth; // trigger reflow
-                target.classList.add('project-card-highlight');
-                setTimeout(() => {
-                    target.classList.remove('project-card-highlight');
-                }, 1700);
-
                 const offset = 120;
                 const bodyRect = document.body.getBoundingClientRect().top;
                 const elementRect = target.getBoundingClientRect().top;

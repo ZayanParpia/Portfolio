@@ -98,6 +98,44 @@
             object-fit: contain;
         }
 
+        .experience-details {
+            margin-top: var(--spacing-sm);
+        }
+
+        .experience-details summary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid var(--color-accent);
+            border-radius: var(--radius-sm);
+            color: var(--color-accent);
+            cursor: pointer;
+            font-weight: 600;
+            list-style: none;
+        }
+
+        .experience-details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .experience-details summary::before {
+            content: '+';
+        }
+
+        .experience-details[open] summary::before {
+            content: '-';
+        }
+
+        .experience-details .details-open,
+        .experience-details[open] .details-closed {
+            display: none;
+        }
+
+        .experience-details[open] .details-open {
+            display: inline;
+        }
+
         @media (max-width: 768px) {
             .timeline::before {
                 left: 30px;
@@ -167,12 +205,19 @@
                             <img src="https://cdn.simpleicons.org/apple/FFFFFF" alt="Apple logo">
                         </div>
                         <h3>Apple</h3>
-                        <p class="exp-role">Apple Guelph · Co-op</p>
+                        <p class="exp-role">Co-op</p>
                         <p class="exp-meta">Sep 2025 - Jan 2026 · 5 mos</p>
                         <p class="exp-meta">Ontario, Canada · Remote</p>
-                        <div style="margin-top: var(--spacing-sm);">
-                            <p>Worked with Swift to Develop Apps</p>
-                        </div>
+                        <details class="experience-details">
+                            <summary>
+                                <span class="details-closed">Expand co-op details</span>
+                                <span class="details-open">Hide co-op details</span>
+                            </summary>
+                            <div>
+                                <p>Developed applications in Swift on a MacBook, balancing independent work with collaborative group projects and regular mentorship. After completing my app, I presented it to professionals, gathered their feedback, and considered opportunities to improve the work.</p>
+                                <p><strong>Key learning:</strong> Software development life cycle (SDLC), Swift programming, macOS, teamwork, and presenting work to an audience.</p>
+                            </div>
+                        </details>
                     </div>
                 </div>
 
