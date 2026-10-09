@@ -176,58 +176,28 @@
           <p style="margin-bottom:var(--spacing-sm);">This project demonstrates a production-ready AWS architecture built around an EC2 Auto Scaling Group (ASG). It handles changing traffic, maintains availability across multiple Availability Zones, and applies cloud security best practices.</p>
           <p style="margin-bottom:var(--spacing-sm);">An Application Load Balancer distributes HTTP traffic to EC2 instances in private subnets. IAM least-privilege roles and SSM Session Manager control instance access without exposing SSH ports.</p>
 
-          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">AWS Resources Used</h4>
-          <ul class="feature-list"
-            style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">VPC &amp; Private Subnets</p>
-              </div>
-            </li>
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">Internet Gateway</p>
-              </div>
-            </li>
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">Application Load Balancer</p>
-              </div>
-            </li>
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">Auto Scaling Group + EC2</p>
-              </div>
-            </li>
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">CloudWatch &amp; Alarms</p>
-              </div>
-            </li>
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">IAM (Least Privilege)</p>
-              </div>
-            </li>
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">SSM Session Manager</p>
-              </div>
-            </li>
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">Amazon S3</p>
-              </div>
-            </li>
-          </ul>
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-text-light);">AWS Resources Used</h4>
+          <div style="overflow-x:auto;margin-top:var(--spacing-sm);">
+            <table style="width:100%;border-collapse:collapse;font-size:0.92rem;color:var(--color-text-light);">
+              <thead>
+                <tr style="border-bottom:1px solid var(--glass-border);">
+                  <th style="text-align:left;padding:0.5rem 0.75rem 0.5rem 0;color:var(--color-text-light);">Component</th>
+                  <th style="text-align:left;padding:0.5rem 0.75rem;color:var(--color-text-light);">What it does</th>
+                  <th style="text-align:left;padding:0.5rem 0 0.5rem 0.75rem;color:var(--color-text-light);">Why it matters</th>
+                </tr>
+              </thead>
+              <tbody style="color:var(--color-text-light);">
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">VPC and private subnets</td><td style="padding:0.5rem 0.75rem;">Host the EC2 instances in isolated network segments</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Limits direct internet exposure</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Internet Gateway</td><td style="padding:0.5rem 0.75rem;">Provides internet connectivity to public resources</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Allows users to reach the load balancer</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Application Load Balancer</td><td style="padding:0.5rem 0.75rem;">Distributes HTTP traffic across EC2 targets</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Improves availability and traffic handling</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Auto Scaling Group and EC2</td><td style="padding:0.5rem 0.75rem;">Maintains and adjusts the number of application instances</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Replaces unhealthy instances and responds to demand</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">CloudWatch and alarms</td><td style="padding:0.5rem 0.75rem;">Collect metrics and notify on configured conditions</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Provides operational visibility</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">IAM least-privilege roles</td><td style="padding:0.5rem 0.75rem;">Grant AWS services only their required permissions</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Reduces unnecessary access</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">SSM Session Manager</td><td style="padding:0.5rem 0.75rem;">Provides administrative access to EC2 instances</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Avoids exposing SSH to the internet</td></tr>
+                <tr><td style="padding:0.5rem 0.75rem 0.5rem 0;">Amazon S3</td><td style="padding:0.5rem 0.75rem;">Stores project data and artifacts</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Provides durable object storage</td></tr>
+              </tbody>
+            </table>
+          </div>
 
           <div style="margin-top:var(--spacing-lg);">
             <!-- Logs -->

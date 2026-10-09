@@ -513,34 +513,24 @@
           <p style="margin-bottom:var(--spacing-sm);">This project is a hands-on cybersecurity home lab focused on Security Information and Event Management (SIEM), endpoint monitoring, log analysis, attack simulations, and SOC analyst workflows.</p>
           <p style="margin-bottom:var(--spacing-sm);">It is designed to simulate real-world SOC operations while building practical blue team experience. The core of this environment involves setting up <strong>Wazuh SIEM</strong> and deploying agents to collect extensive endpoint telemetry using tools like <strong>Sysmon</strong> and <strong>Auditd</strong>.</p>
 
-          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Technologies & Tools</h4>
-          <ul class="feature-list"
-            style="margin-top:var(--spacing-sm);display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-sm);">
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">Linux (Ubuntu)</p>
-              </div>
-            </li>
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">Wazuh SIEM</p>
-              </div>
-            </li>
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">Sysmon for Linux</p>
-              </div>
-            </li>
-            <li class="feature-item" style="margin-bottom:0;">
-              <div class="feature-icon" style="color:var(--color-accent);font-size:1.2rem;">◈</div>
-              <div class="feature-content">
-                <p style="margin:0;color:var(--color-text-light);">Auditd</p>
-              </div>
-            </li>
-          </ul>
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-text-light);">Technologies &amp; Tools</h4>
+          <div style="overflow-x:auto;margin-top:var(--spacing-sm);">
+            <table style="width:100%;border-collapse:collapse;font-size:0.92rem;color:var(--color-text-light);">
+              <thead>
+                <tr style="border-bottom:1px solid var(--glass-border);">
+                  <th style="text-align:left;padding:0.5rem 0.75rem 0.5rem 0;color:var(--color-text-light);">Component</th>
+                  <th style="text-align:left;padding:0.5rem 0.75rem;color:var(--color-text-light);">What it does</th>
+                  <th style="text-align:left;padding:0.5rem 0 0.5rem 0.75rem;color:var(--color-text-light);">Why it matters</th>
+                </tr>
+              </thead>
+              <tbody style="color:var(--color-text-light);">
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Linux (Ubuntu)</td><td style="padding:0.5rem 0.75rem;">Runs SIEM services and monitored endpoints</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Provides the operating system for the lab</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Wazuh SIEM</td><td style="padding:0.5rem 0.75rem;">Collects, analyzes, and displays security events</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Centralizes monitoring and alert investigation</td></tr>
+                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Sysmon for Linux</td><td style="padding:0.5rem 0.75rem;">Captures detailed system and process telemetry</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Adds endpoint activity for detection and analysis</td></tr>
+                <tr><td style="padding:0.5rem 0.75rem 0.5rem 0;">Auditd</td><td style="padding:0.5rem 0.75rem;">Records Linux security and system audit events</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Supports investigation of host activity</td></tr>
+              </tbody>
+            </table>
+          </div>
 
           <div style="margin-top:var(--spacing-lg);">
 
@@ -575,7 +565,7 @@
             </div>
 
             <!-- Key Learnings -->
-            <div class="artifact-box"
+            <div class="artifact-box learning-section-simple"
               style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid var(--glass-border);">
               <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
@@ -992,13 +982,13 @@
           </div>
 
           <!-- CARD 3: SQL Injection Simulation -->
-          <div id="sim-card-3" onclick="window.location.href='sql-injection-simulation.html'" style="cursor:pointer;position:relative;overflow:hidden;border:1px solid var(--glass-border);border-radius:var(--radius-sm);background:var(--color-bg-card);transition:all 0.3s ease;padding:0;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,210,190,0.12)'" onmouseout="this.style.borderColor='var(--glass-border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div id="sim-card-4" onclick="window.location.href='sql-injection-simulation.html'" style="order:1;cursor:pointer;position:relative;overflow:hidden;border:1px solid var(--glass-border);border-radius:var(--radius-sm);background:var(--color-bg-card);transition:all 0.3s ease;padding:0;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,210,190,0.12)'" onmouseout="this.style.borderColor='var(--glass-border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
             <div style="width:100%;height:160px;overflow:hidden;background:#0a0c10;display:flex;align-items:center;justify-content:center;position:relative;">
               <img src="SIEM Project V1/attack-simulations/SQL Injection/Diagram.png" alt="SQL Injection Diagram" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
             <div style="padding:1.25rem;">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
-                <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:10px;">Simulation #3</span>
+                <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:10px;">Simulation #4</span>
                 <span style="font-size:0.78rem;color:var(--color-text-gray);">July 30, 2026</span>
               </div>
               <h4 style="color:var(--color-text-light);font-size:1.1rem;font-weight:700;margin:0.4rem 0 0.5rem;">SQL Injection Proof of Concept</h4>
@@ -1017,14 +1007,14 @@
             </div>
           </div>
 
-          <!-- CARD 4: Ransomware Attack Simulation -->
-          <div id="sim-card-4" onclick="window.location.href='ransomware-attack-simulation.html'" style="cursor:pointer;position:relative;overflow:hidden;border:1px solid var(--glass-border);border-radius:var(--radius-sm);background:var(--color-bg-card);transition:all 0.3s ease;padding:0;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,210,190,0.12)'" onmouseout="this.style.borderColor='var(--glass-border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <!-- CARD 3: Ransomware Attack Simulation -->
+          <div id="sim-card-3" onclick="window.location.href='ransomware-attack-simulation.html'" style="cursor:pointer;position:relative;overflow:hidden;border:1px solid var(--glass-border);border-radius:var(--radius-sm);background:var(--color-bg-card);transition:all 0.3s ease;padding:0;" onmouseover="this.style.borderColor='var(--color-accent)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,210,190,0.12)'" onmouseout="this.style.borderColor='var(--glass-border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
             <div style="width:100%;height:160px;overflow:hidden;background:#0a0c10;display:flex;align-items:center;justify-content:center;position:relative;">
               <img src="SIEM Project V1/attack-simulations/Ransomware Attack/Diagram.png" alt="Ransomware Attack Diagram" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
             <div style="padding:1.25rem;">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
-                <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:10px;">Simulation #4</span>
+                <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-accent);background:rgba(0,210,190,0.08);border:1px solid rgba(0,210,190,0.25);padding:2px 8px;border-radius:10px;">Simulation #3</span>
                 <span style="font-size:0.78rem;color:var(--color-text-gray);">September 18, 2026</span>
               </div>
               <h4 style="color:var(--color-text-light);font-size:1.1rem;font-weight:700;margin:0.4rem 0 0.5rem;display:flex;align-items:center;justify-content:space-between;">
@@ -1178,7 +1168,7 @@
                   </details>
                 </div>
 
-                <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid var(--glass-border);">
+                <div class="artifact-box learning-section-simple" style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:1rem;border:1px solid var(--glass-border);">
                   <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
                     What I Learned

@@ -79,7 +79,108 @@
             </dialog>
           </div>
 
-          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+          <div class="artifact-box" style="background:var(--color-bg-card);padding:var(--spacing-sm);border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+            <h4 style="color:var(--color-accent);margin-bottom:1rem;">Video Demonstration</h4>
+            <video controls style="width:100%;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+              <source src="Terraform Web Capstone/video/VIDEO DEMO.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <div class="screenshot-gallery" style="display:flex;flex-direction:column;gap:var(--spacing-md);">
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>VPC</h4><p>The project VPC provides the isolated network boundary for the AWS infrastructure.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/VPC.png" alt="Terraform capstone VPC configuration" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>VPC Connections</h4><p>Resource map showing the VPC subnets, route tables, and internet connections across two Availability Zones.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/VPC Connections.png" alt="VPC resource map and network connections" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>Private Subnet A</h4><p>Private application subnet in the first Availability Zone.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/Subnet A.png" alt="Private subnet A configuration" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>Private Subnet B Route Table</h4><p>Route table association for the second private subnet.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/Route Table Subnet B.png" alt="Route table associated with private subnet B" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>Public ALB Subnets</h4><p>The two public subnets host the internet-facing load balancer across Availability Zones.</p></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <img src="Terraform Web Capstone/Screenshots/ALB Subnet.png" alt="First public ALB subnet" class="main-image zoom-img">
+                <img src="Terraform Web Capstone/Screenshots/Subnet B.png" alt="Second public ALB subnet" class="main-image zoom-img">
+              </div>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>NAT Subnet</h4><p>Public subnet dedicated to the NAT gateway used for controlled outbound access.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/NAT Subnet.png" alt="NAT gateway subnet configuration" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>Internet and NAT Gateways</h4><p>The internet gateway connects the VPC, while the NAT gateway enables outbound access for private instances.</p></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <img src="Terraform Web Capstone/Screenshots/Main IGW.png" alt="Main VPC internet gateway" class="main-image zoom-img">
+                <img src="Terraform Web Capstone/Screenshots/IGW for NAT A.png" alt="NAT gateway configuration" class="main-image zoom-img">
+              </div>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>NAT Elastic IP</h4><p>Static public IP address associated with the NAT gateway.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/Elastic IP for NAT A.png" alt="Elastic IP assigned to NAT gateway A" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>Route Tables</h4><p>Public and private route tables direct internet-bound traffic through the appropriate gateways.</p></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <img src="Terraform Web Capstone/Screenshots/Route Table NAT.png" alt="NAT subnet route table" class="main-image zoom-img">
+                <img src="Terraform Web Capstone/Screenshots/Route Table Conf for NAT.png" alt="Private subnet route table using NAT" class="main-image zoom-img">
+                <img src="Terraform Web Capstone/Screenshots/ALB RT.png" alt="ALB subnet route table" class="main-image zoom-img">
+              </div>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>Application Load Balancer</h4><p>Internet-facing load balancer deployed across the public subnets.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/ALB.png" alt="Terraform capstone Application Load Balancer" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>Target Group</h4><p>Target group health status and the registered web server.</p></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <img src="Terraform Web Capstone/Screenshots/ALB Target Group.png" alt="Application Load Balancer target group" class="main-image zoom-img">
+                <img src="Terraform Web Capstone/Screenshots/EC2 On Target Group.png" alt="EC2 instance registered in the target group" class="main-image zoom-img">
+              </div>
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>EC2 Instance</h4><p>Running private web server instance launched by the Auto Scaling Group.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/Ec2 Running.png" alt="Running private EC2 web server" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>Auto Scaling Group</h4><p>Group capacity and scaling limits for the web server fleet.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/Autoscale Group.png" alt="Terraform capstone Auto Scaling Group" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>Security Group Rules</h4><p>Inbound web traffic rules for HTTP and HTTPS.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/Security Rules for Port 443 and 80 .png" alt="Security group rules for ports 443 and 80" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>IAM Roles</h4><p>Roles used for GitHub Actions deployment, flow logs, and EC2 permissions.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/IAM Roles.png" alt="IAM roles for deployment, flow logs, and EC2" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>S3 Buckets</h4><p>Project storage, logs, and Terraform state buckets.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/S3 Buckets.png" alt="S3 buckets used by the Terraform capstone" class="main-image zoom-img">
+            </div>
+            <div class="screenshot-item">
+              <div class="screenshot-meta"><h4>Docker Image</h4><p>Locally built Docker image for the project application.</p></div>
+              <img src="Terraform Web Capstone/Screenshots/Docker Image.png" alt="Terraform capstone Docker image" class="main-image zoom-img">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="project-info">
+          <h3>What I Built</h3>
+          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">I built a secure AWS web infrastructure using Terraform (IaC), bringing together Amazon VPC, public and private subnets, multiple Availability Zones, Internet and NAT Gateways, AWS WAF, an Application Load Balancer, EC2 with Auto Scaling, Systems Manager Session Manager, Security Groups, Network ACLs, IAM, KMS, private S3, CloudWatch, VPC Flow Logs, Linux, Docker, CI/CD, and GitHub.</p>
+
+          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">How It Works</h4>
+          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">Public traffic passes through AWS WAF and the Application Load Balancer to web servers in private subnets across multiple Availability Zones. Auto Scaling adjusts capacity as workload changes, while the NAT Gateway provides controlled outbound access. SSM Session Manager avoids public SSH access; least-privilege IAM, KMS encryption, private S3, CloudWatch, and VPC Flow Logs provide security and operational visibility. Docker packages the application, and Terraform with CI/CD supports repeatable infrastructure changes.</p>
+
+          <div class="artifact-box">
             <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Traffic and Operations Flow</h4>
             <pre><code>Internet -> AWS WAF -> Application Load Balancer -> Private EC2
 Admin -> SSM Session Manager -> Private EC2
@@ -87,17 +188,7 @@ Private EC2 -> NAT Gateway -> Internet
 AWS Resources -> CloudWatch / VPC Flow Logs -> Private S3</code></pre>
           </div>
 
-          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
-            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Terraform Workflow</h4>
-            <pre><code>terraform init
-terraform fmt
-terraform validate
-terraform plan
-terraform apply</code></pre>
-            <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">The infrastructure is managed as code for repeatable planning and deployment. Use <code>terraform destroy</code> when the environment should be removed.</p>
-          </div>
-
-          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+          <div class="artifact-box">
             <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Inbound vs. Outbound Traffic</h4>
             <pre><code>Inbound:
 Internet -> WAF -> ALB -> Private EC2
@@ -107,14 +198,7 @@ Private EC2 -> NAT Gateway -> Internet Gateway -> Internet</code></pre>
             <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">Only the required web traffic reaches the application path; outbound access lets private instances reach external resources without becoming public-facing.</p>
           </div>
 
-          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
-            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Scaling Behavior</h4>
-            <pre><code>Normal workload:      EC2 --- EC2
-Higher workload: EC2 --- EC2 --- EC2 --- EC2</code></pre>
-            <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">Mock CPU-load testing demonstrated how increased utilization triggers Auto Scaling to add capacity across Availability Zones.</p>
-          </div>
-
-          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+          <div class="artifact-box">
             <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">CI/CD Pipeline</h4>
             <pre><code>GitHub -> CI/CD
   - Format / Validate
@@ -123,22 +207,6 @@ Higher workload: EC2 --- EC2 --- EC2 --- EC2</code></pre>
   - Deployment workflow -> AWS</code></pre>
             <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">Automating these checks connects the infrastructure to a real development workflow rather than a one-time script.</p>
           </div>
-
-          <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
-            <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Planned WAF Validation Flow</h4>
-            <pre><code>Controlled Attack Request -> WAF
-                              |-- Block -> Logs / Monitoring
-                              |-- Allow -> ALB -> Private EC2 -> Logs / Monitoring</code></pre>
-            <p style="margin-top:0.75rem;color:var(--color-text-gray);font-size:0.9rem;">Goal: demonstrate the full lifecycle of Attack &rarr; Detection/Filtering &rarr; Logging &rarr; Investigation, with screenshots, logs, and a video walkthrough as evidence.</p>
-          </div>
-        </div>
-
-        <div class="project-info">
-          <h3>What I Built</h3>
-          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">I built a secure AWS web infrastructure using Terraform (IaC), bringing together Amazon VPC, public and private subnets, multiple Availability Zones, Internet and NAT Gateways, AWS WAF, an Application Load Balancer, EC2 with Auto Scaling, Systems Manager Session Manager, Security Groups, Network ACLs, IAM, KMS, private S3, CloudWatch, VPC Flow Logs, Linux, Docker, CI/CD, and GitHub.</p>
-
-          <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">How It Works</h4>
-          <p style="margin-bottom:var(--spacing-sm);line-height:1.6;">Public traffic passes through AWS WAF and the Application Load Balancer to web servers in private subnets across multiple Availability Zones. Auto Scaling adjusts capacity as workload changes, while the NAT Gateway provides controlled outbound access. SSM Session Manager avoids public SSH access; least-privilege IAM, KMS encryption, private S3, CloudWatch, and VPC Flow Logs provide security and operational visibility. Docker packages the application, and Terraform with CI/CD supports repeatable infrastructure changes.</p>
 
           <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Resources Used</h4>
           <div style="overflow-x:auto;margin-top:var(--spacing-sm);">
@@ -189,7 +257,7 @@ Higher workload: EC2 --- EC2 --- EC2 --- EC2</code></pre>
 
           <div class="artifact-box" style="background:var(--glass-bg);padding:1.5rem;border-radius:var(--radius-md);margin-top:var(--spacing-md);border:1px solid var(--glass-border);">
             <h4 style="margin-bottom:0.75rem;color:var(--color-accent);">Planned Security Validation</h4>
-            <p style="margin:0;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;">After the core infrastructure is complete, controlled security testing will validate the WAF and monitoring pipeline, demonstrating the full lifecycle of <strong style="color:var(--color-text-light);">Attack &rarr; Detection/Filtering &rarr; Logging &rarr; Investigation</strong>. Evidence will include screenshots, logs, WAF results, and a video demonstration. This phase is planned, not yet completed.</p>
+            <p style="margin:0;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;">The infrastructure screenshots and video demonstration document the deployed environment. Controlled security testing to validate the WAF and monitoring pipeline, including the full lifecycle of <strong style="color:var(--color-text-light);">Attack &rarr; Detection/Filtering &rarr; Logging &rarr; Investigation</strong>, is still planned and has not yet been completed.</p>
           </div>
 
           <h4 style="margin-top:var(--spacing-md);color:var(--color-accent);">Availability &amp; Scaling</h4>
@@ -262,6 +330,17 @@ Higher workload: EC2 --- EC2 --- EC2 --- EC2</code></pre>
 
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
 
+  <dialog class="terraform-diagram-viewer" id="terraform-screenshot-viewer" aria-label="Full-screen project screenshot">
+    <button class="terraform-diagram-close" id="terraform-screenshot-close" type="button" aria-label="Close screenshot">&times;</button>
+    <button class="terraform-screenshot-nav terraform-screenshot-prev" id="terraform-screenshot-previous" type="button" aria-label="Previous screenshot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <img id="terraform-screenshot-full-image" src="" alt="">
+    <button class="terraform-screenshot-nav terraform-screenshot-next" id="terraform-screenshot-next" type="button" aria-label="Next screenshot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </dialog>
+
   <script>
     const navbar = document.getElementById('navbar');
     const menuToggle = document.getElementById('menu-toggle');
@@ -290,6 +369,18 @@ Higher workload: EC2 --- EC2 --- EC2 --- EC2</code></pre>
     const diagramTrigger = document.getElementById('terraform-diagram-trigger');
     const diagramViewer = document.getElementById('terraform-diagram-viewer');
     const diagramClose = document.getElementById('terraform-diagram-close');
+    const screenshotViewer = document.getElementById('terraform-screenshot-viewer');
+    const screenshotViewerImage = document.getElementById('terraform-screenshot-full-image');
+    const screenshotClose = document.getElementById('terraform-screenshot-close');
+    const screenshotImages = [...document.querySelectorAll('.screenshot-gallery .zoom-img')];
+    let currentScreenshotIndex = 0;
+
+    function showScreenshot(index) {
+      currentScreenshotIndex = (index + screenshotImages.length) % screenshotImages.length;
+      const image = screenshotImages[currentScreenshotIndex];
+      screenshotViewerImage.src = image.src;
+      screenshotViewerImage.alt = image.alt;
+    }
 
     diagramTrigger.addEventListener('click', () => diagramViewer.showModal());
     diagramClose.addEventListener('click', () => diagramViewer.close());
@@ -301,11 +392,32 @@ Higher workload: EC2 --- EC2 --- EC2 --- EC2</code></pre>
       diagramViewer.close();
     });
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && diagramViewer.open) {
+      if (event.key === 'Escape' && (diagramViewer.open || screenshotViewer.open)) {
         event.preventDefault();
-        diagramViewer.close();
+        if (diagramViewer.open) diagramViewer.close();
+        if (screenshotViewer.open) screenshotViewer.close();
+      } else if (screenshotViewer.open && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
+        event.preventDefault();
+        showScreenshot(currentScreenshotIndex + (event.key === 'ArrowRight' ? 1 : -1));
       }
     }, true);
+
+    screenshotImages.forEach((image, index) => {
+      image.addEventListener('click', () => {
+        showScreenshot(index);
+        screenshotViewer.showModal();
+      });
+    });
+    document.getElementById('terraform-screenshot-previous').addEventListener('click', () => {
+      showScreenshot(currentScreenshotIndex - 1);
+    });
+    document.getElementById('terraform-screenshot-next').addEventListener('click', () => {
+      showScreenshot(currentScreenshotIndex + 1);
+    });
+    screenshotClose.addEventListener('click', () => screenshotViewer.close());
+    screenshotViewer.addEventListener('click', event => {
+      if (event.target === screenshotViewer) screenshotViewer.close();
+    });
   </script>
 </body>
 

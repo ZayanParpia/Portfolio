@@ -210,58 +210,27 @@
                     </p>
 
                     <!-- AWS Resources List -->
-                    <h4 style="margin-top: var(--spacing-md); color: var(--color-accent);">AWS Resources Used</h4>
-                    <ul class="feature-list"
-                        style="margin-top: var(--spacing-sm); display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-sm);">
-                        <li class="feature-item" style="margin-bottom: 0;">
-                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
-                            <div class="feature-content">
-                                <p style="margin: 0; color: var(--color-text-light);">VPC</p>
-                            </div>
-                        </li>
-                        <li class="feature-item" style="margin-bottom: 0;">
-                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
-                            <div class="feature-content">
-                                <p style="margin: 0; color: var(--color-text-light);">Availability Zones</p>
-                            </div>
-                        </li>
-                        <li class="feature-item" style="margin-bottom: 0;">
-                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
-                            <div class="feature-content">
-                                <p style="margin: 0; color: var(--color-text-light);">Subnets</p>
-                            </div>
-                        </li>
-                        <li class="feature-item" style="margin-bottom: 0;">
-                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
-                            <div class="feature-content">
-                                <p style="margin: 0; color: var(--color-text-light);">Routing Table</p>
-                            </div>
-                        </li>
-                        <li class="feature-item" style="margin-bottom: 0;">
-                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
-                            <div class="feature-content">
-                                <p style="margin: 0; color: var(--color-text-light);">EC2 Instances</p>
-                            </div>
-                        </li>
-                        <li class="feature-item" style="margin-bottom: 0;">
-                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
-                            <div class="feature-content">
-                                <p style="margin: 0; color: var(--color-text-light);">Application Load Balancer</p>
-                            </div>
-                        </li>
-                        <li class="feature-item" style="margin-bottom: 0;">
-                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
-                            <div class="feature-content">
-                                <p style="margin: 0; color: var(--color-text-light);">Target Groups</p>
-                            </div>
-                        </li>
-                        <li class="feature-item" style="margin-bottom: 0;">
-                            <div class="feature-icon" style="color: var(--color-accent); font-size: 1.2rem;">◈</div>
-                            <div class="feature-content">
-                                <p style="margin: 0; color: var(--color-text-light);">Network Control Lists (NACLs)</p>
-                            </div>
-                        </li>
-                    </ul>
+                    <h4 style="margin-top:var(--spacing-md);color:var(--color-text-light);">AWS Resources Used</h4>
+                    <div style="overflow-x:auto;margin-top:var(--spacing-sm);">
+                        <table style="width:100%;border-collapse:collapse;font-size:0.92rem;color:var(--color-text-light);">
+                            <thead>
+                                <tr style="border-bottom:1px solid var(--glass-border);">
+                                    <th style="text-align:left;padding:0.5rem 0.75rem 0.5rem 0;color:var(--color-text-light);">Component</th>
+                                    <th style="text-align:left;padding:0.5rem 0.75rem;color:var(--color-text-light);">What it does</th>
+                                    <th style="text-align:left;padding:0.5rem 0 0.5rem 0.75rem;color:var(--color-text-light);">Why it matters</th>
+                                </tr>
+                            </thead>
+                            <tbody style="color:var(--color-text-light);">
+                                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Amazon VPC</td><td style="padding:0.5rem 0.75rem;">Provides an isolated network for the load balancer and servers</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Keeps project networking under controlled boundaries</td></tr>
+                                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Availability Zones and subnets</td><td style="padding:0.5rem 0.75rem;">Place resources across separate network segments and zones</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Supports availability and network separation</td></tr>
+                                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Route tables</td><td style="padding:0.5rem 0.75rem;">Direct subnet traffic to the required network paths</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Controls how traffic reaches the internet and instances</td></tr>
+                                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">EC2 instances</td><td style="padding:0.5rem 0.75rem;">Run the backend web servers</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Provide the application capacity behind the load balancer</td></tr>
+                                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Application Load Balancer</td><td style="padding:0.5rem 0.75rem;">Receives and distributes incoming application traffic</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Improves availability and spreads requests across targets</td></tr>
+                                <tr style="border-bottom:1px solid var(--glass-border);"><td style="padding:0.5rem 0.75rem 0.5rem 0;">Target groups</td><td style="padding:0.5rem 0.75rem;">Register EC2 targets and monitor their health</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Routes traffic to healthy instances</td></tr>
+                                <tr><td style="padding:0.5rem 0.75rem 0.5rem 0;">Network ACLs</td><td style="padding:0.5rem 0.75rem;">Filter traffic at the subnet boundary</td><td style="padding:0.5rem 0 0.5rem 0.75rem;">Adds a stateless network security layer</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <!-- Project Sections -->
                     <div style="margin-top: var(--spacing-lg);">

@@ -822,6 +822,49 @@ pre {
   gap: var(--spacing-sm);
 }
 
+.project-detail-header > div[style*="display:flex;gap:1rem"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0.75rem !important;
+  margin-bottom: 1rem;
+}
+
+.project-detail-header .github-mark-link {
+  margin-left: 0 !important;
+  align-self: flex-start;
+}
+
+.project-header-link-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0.75rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.project-header-github-link {
+  display: inline-flex !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+}
+
+.project-header-github-link img {
+  display: block !important;
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: contain;
+}
+
+.project-header-link-stack .project-header-github-link > svg {
+  display: none !important;
+}
+
 .back-btn {
   display: inline-flex;
   align-items: center;
@@ -833,6 +876,95 @@ pre {
 
 .back-btn:hover {
   color: var(--color-accent);
+}
+
+.github-mark-link,
+.github-mark-link:hover {
+  color: var(--color-text-light) !important;
+  border-color: transparent !important;
+  background-color: transparent !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.github-mark-link[hidden] {
+  display: none !important;
+}
+
+.github-mark-link > svg {
+  display: block !important;
+  width: 40px !important;
+  height: 40px !important;
+  flex-shrink: 0;
+}
+
+.github-mark-link::before {
+  content: none;
+}
+
+#card-ssh-attack .card-github-link,
+#card-ransomware .card-github-link,
+#card-linux-privesc .card-github-link,
+#card-sqli .card-github-link,
+#phase-3-section .card-github-link {
+  --github-mark-size: 50px;
+  display: none !important;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-text-light) !important;
+  vertical-align: middle;
+}
+
+#chen-ssh-attack .card-github-link svg,
+#card-ransomware .card-github-link svg,
+#card-linux-privesc .card-github-link svg,
+#card-sqli .card-github-link svg,
+#phase-3-section .card-github-link svg {
+  display: none;
+}
+
+#card-ssh-attack .card-github-link::before,
+#card-ransomware .card-github-link::before,
+#card-linux-privesc .card-github-link::before,
+#card-sqli .card-github-link::before,
+#phase-3-section .card-github-link::before {
+  content: "";
+  display: block;
+  width: var(--github-mark-size);
+  height: var(--github-mark-size);
+  background-color: currentColor;
+  -webkit-mask: url("github.png") center / contain no-repeat;
+  -webkit-mask-source-type: luminance;
+  mask: url("github.png") center / contain no-repeat;
+  mask-mode: luminance;
+}
+
+#phase-3-section .card-github-link,
+#phase-3-section .card-github-link:hover {
+  color: var(--color-text-light) !important;
+}
+
+.learning-section-simple {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+.learning-section-simple h4,
+.learning-section-simple h5,
+.learning-section-simple p,
+.learning-section-simple li,
+.learning-section-simple strong {
+  color: var(--color-text-light) !important;
+}
+
+.learning-section-simple h5 {
+  border-bottom-color: var(--glass-border) !important;
 }
 
 .project-content-wrapper {
@@ -938,6 +1070,40 @@ pre {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.terraform-screenshot-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  transform: translateY(-50%);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-light);
+  cursor: pointer;
+}
+
+.terraform-screenshot-nav svg {
+  width: 22px;
+  height: 22px;
+}
+
+.terraform-screenshot-nav:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.terraform-screenshot-prev {
+  left: 1rem;
+}
+
+.terraform-screenshot-next {
+  right: 1rem;
+}
+
 @media (max-width: 600px) {
   .terraform-diagram-viewer {
     padding: 3.25rem 0.5rem 0.5rem;
@@ -945,6 +1111,14 @@ pre {
 
   .terraform-diagram-close {
     top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .terraform-screenshot-prev {
+    left: 0.5rem;
+  }
+
+  .terraform-screenshot-next {
     right: 0.5rem;
   }
 }
