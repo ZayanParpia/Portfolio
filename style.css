@@ -1489,6 +1489,11 @@ pre {
   text-align: center;
 }
 
+ul.skill-proof-content {
+  padding-left: 2rem;
+  text-align: left;
+}
+
 .skill-tag:hover {
   background: var(--color-primary);
   border-color: var(--color-primary);
