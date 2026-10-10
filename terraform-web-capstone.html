@@ -328,8 +328,6 @@ Private EC2 -> NAT Gateway -> Internet Gateway -> Internet</code></pre>
     </div>
   </footer>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
-
   <dialog class="terraform-diagram-viewer" id="terraform-screenshot-viewer" aria-label="Full-screen project screenshot">
     <button class="terraform-diagram-close" id="terraform-screenshot-close" type="button" aria-label="Close screenshot">&times;</button>
     <button class="terraform-screenshot-nav terraform-screenshot-prev" id="terraform-screenshot-previous" type="button" aria-label="Previous screenshot">
@@ -360,10 +358,6 @@ Private EC2 -> NAT Gateway -> Internet Gateway -> Internet</code></pre>
 
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    document.getElementById('back-to-top').addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     const diagramTrigger = document.getElementById('terraform-diagram-trigger');

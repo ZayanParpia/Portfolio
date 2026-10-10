@@ -8,7 +8,6 @@ const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 const menuToggle = document.getElementById('menu-toggle');
 const navLinksContainer = document.getElementById('nav-links');
-const backToTopBtn = document.getElementById('back-to-top');
 const typewriterElement = document.getElementById('typewriter');
 const projectFilters = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
@@ -269,22 +268,6 @@ const formInputs = document.querySelectorAll('.contact-form input, .contact-form
 formInputs.forEach(input => {
   input.addEventListener('input', () => {
     removeError(input);
-  });
-});
-
-// ===== BACK TO TOP BUTTON =====
-window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 500) {
-    backToTopBtn.classList.add('visible');
-  } else {
-    backToTopBtn.classList.remove('visible');
-  }
-});
-
-backToTopBtn.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
   });
 });
 

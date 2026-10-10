@@ -109,6 +109,7 @@
           <h3>Proof of Concept Report</h3>
           <p style="margin-bottom:var(--spacing-sm);">This simulation acts as a Proof of Concept (PoC) for detecting SQL injection (SQLi) attacks inside a home lab. The primary objective is to configure an Apache reverse proxy to channel traffic to a vulnerable web server, consolidate the proxy logs into the Wazuh agent, and build custom rule detection logic that fires alert triggers upon detecting suspicious query patterns.</p>
           <p style="margin-bottom:var(--spacing-sm);">Attack payloads (such as SQL keywords, UNION SELECT attempts, and boolean logic expressions like <code>OR 1=1</code>) are sent via curl and browser forms, logging the requests in the Apache access logs, which are then analyzed dynamically by Wazuh.</p>
+          <p style="margin-bottom:var(--spacing-sm);"><strong>This attack vector was eventually scrapped because Wazuh already had built-in SQL injection detection rules in place.</strong> This taught me that there are premade rules on Wazuh for things like SQL injection, so not every attack path needs a custom rule to be effective. It was a useful reminder that default SIEM coverage can already detect common attack patterns before you build custom detections.</p>
 
           <h4 style="margin-top:var(--spacing-md);color:var(--color-text-light);">Infrastructure Scope</h4>
           <div style="overflow-x:auto;margin-top:var(--spacing-sm);">
