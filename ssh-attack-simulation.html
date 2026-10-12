@@ -206,6 +206,74 @@
           </div>
 
           <div style="margin-top:var(--spacing-lg);">
+            <h4 style="margin-bottom:1rem;color:var(--color-accent);font-size:1.2rem;">Wazuh Detection Rules</h4>
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+              <div>
+                <h5 style="color:var(--color-text-light);margin-bottom:0.5rem;">Rule 100010 — SSH Brute Force</h5>
+                <div class="artifact-box" style="background:var(--glass-bg);padding:1.25rem;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+                <p style="font-size:0.95rem;line-height:1.6;margin-bottom:0.85rem;">Triggers when the same source IP produces 3 or more failed SSH authentication events within 60 seconds, indicating a possible password-guessing attack.</p>
+                <pre style="background:#0a0c10;padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;border:1px solid var(--glass-border);font-size:0.85rem;color:#e6edf3;margin:0;"><code>&lt;rule id="100010" level="10" frequency="3" timeframe="60"&gt;
+  &lt;if_matched_sid&gt;5710&lt;/if_matched_sid&gt;
+  &lt;same_srcip /&gt;
+  &lt;description&gt;SSH brute force attack detected from a single source IP&lt;/description&gt;
+  &lt;mitre&gt;
+    &lt;id&gt;T1098.004&lt;/id&gt;
+  &lt;/mitre&gt;
+  &lt;group&gt;unauth_access_trigger&lt;/group&gt;
+&lt;/rule&gt;</code></pre>
+                </div>
+              </div>
+
+              <div>
+                <h5 style="color:var(--color-text-light);margin-bottom:0.5rem;">Rule 86601 — Suricata Alert</h5>
+                <div class="artifact-box" style="background:var(--glass-bg);padding:1.25rem;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+                <p style="font-size:0.95rem;line-height:1.6;margin-bottom:0.85rem;">Overrides the base Suricata alert rule for alert events, adds the alert signature to the description, and omits the full log from the alert.</p>
+                <pre style="background:#0a0c10;padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;border:1px solid var(--glass-border);font-size:0.85rem;color:#e6edf3;margin:0;"><code>&lt;rule id="86601" level="3" overwrite="yes"&gt;
+  &lt;if_sid&gt;86600&lt;/if_sid&gt;
+  &lt;field name="event_type"&gt;^alert$&lt;/field&gt;
+  &lt;description&gt;Suricata: Alert - $(alert.signature)&lt;/description&gt;
+  &lt;options&gt;no_full_log&lt;/options&gt;
+  &lt;group&gt;unauth_access_trigger&lt;/group&gt;
+&lt;/rule&gt;</code></pre>
+                </div>
+              </div>
+
+              <div>
+                <h5 style="color:var(--color-text-light);margin-bottom:0.5rem;">Rule 100011 — Possible Unauthorized Access</h5>
+                <div class="artifact-box" style="background:var(--glass-bg);padding:1.25rem;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+                <p style="font-size:0.95rem;line-height:1.6;margin-bottom:0.85rem;">Flags a successful SSH authentication event (rule 5715) from the same source IP when a related event in the <code>unauth_access_trigger</code> group was seen within the previous 900 seconds.</p>
+                <pre style="background:#0a0c10;padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;border:1px solid var(--glass-border);font-size:0.85rem;color:#e6edf3;margin:0;"><code>&lt;rule id="100011" level="10" timeframe="900"&gt;
+  &lt;if_sid&gt;5715&lt;/if_sid&gt;
+  &lt;if_matched_group&gt;unauth_access_trigger&lt;/if_matched_group&gt;
+  &lt;same_srcip /&gt;
+  &lt;description&gt;Possible Unauthorized User inside Machine&lt;/description&gt;
+  &lt;mitre&gt;
+    &lt;id&gt;T1110.001&lt;/id&gt;
+    &lt;id&gt;T1021.004&lt;/id&gt;
+  &lt;/mitre&gt;
+  &lt;group&gt;unauth_access_trigger&lt;/group&gt;
+&lt;/rule&gt;</code></pre>
+                </div>
+              </div>
+
+              <div>
+                <h5 style="color:var(--color-text-light);margin-bottom:0.5rem;">Rule 100012 — SSH Key Modification</h5>
+                <div class="artifact-box" style="background:var(--glass-bg);padding:1.25rem;border-radius:var(--radius-sm);border:1px solid var(--glass-border);">
+                <p style="font-size:0.95rem;line-height:1.6;margin-bottom:0.85rem;">Correlates a file-integrity event (rule 550) with related <code>unauth_access_trigger</code> activity within 900 seconds and raises an alert describing an unauthorized <code>authorized_keys</code> change.</p>
+                <pre style="background:#0a0c10;padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;border:1px solid var(--glass-border);font-size:0.85rem;color:#e6edf3;margin:0;"><code>&lt;rule id="100012" level="10" timeframe="900"&gt;
+  &lt;if_sid&gt;550&lt;/if_sid&gt;
+  &lt;if_matched_group&gt;unauth_access_trigger&lt;/if_matched_group&gt;
+  &lt;description&gt;Unauthorized Added key inside /.ssh/authorized_keys, initiating machine lockdown&lt;/description&gt;
+  &lt;mitre&gt;
+    &lt;id&gt;T1098.004&lt;/id&gt;
+  &lt;/mitre&gt;
+&lt;/rule&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--spacing-lg);">
 
             <div class="artifact-box" hidden style="background:var(--glass-bg);padding:1.5rem;border-radius:0.5rem;margin-bottom:2rem;border:1px solid var(--glass-border);">
               <h4 style="margin-bottom:1rem;color:var(--color-text-light);font-size:1.2rem;display:flex;align-items:center;gap:0.5rem;">
@@ -250,7 +318,7 @@
               <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;line-height:1.6;">This attack simulation taught me about <strong>MITRE detection frameworks, Kill chains, Detection Engineering, Trial and error, SOAR responses, Detection logic, Hydra, MTTD and FIM</strong>:</p>
               <div style="display:flex;flex-direction:column;gap:1.5rem;">
                 <div>
-                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Technical Skills</h5>
+                  <h5 class="section-label">Technical Skills</h5>
                   <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
                     <li><strong>Hydra Brute-Force Tooling:</strong> Understanding SSH password attack patterns from an attacker's perspective to build better defensive detection logic.</li>
                     <li><strong>Custom Wazuh Frequency Rules:</strong> Using <code>frequency</code>, <code>timeframe</code>, and <code>if_matched_sid</code> to build SSH brute-force correlation rules that reduce noise.</li>
@@ -258,7 +326,7 @@
                   </ul>
                 </div>
                 <div>
-                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Security Concepts</h5>
+                  <h5 class="section-label">Security Concepts</h5>
                   <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
                     <li><strong>MITRE ATT&amp;CK T1110:</strong> Brute Force credential access and tuning alert thresholds to signal vs. noise ratios.</li>
                     <li><strong>MITRE ATT&amp;CK T1098.004:</strong> SSH authorized key injection as a stealthy persistence mechanism.</li>

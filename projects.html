@@ -22,17 +22,17 @@
     <!-- Stylesheet Custom Sidebar Overrides -->
     <style>
         /* ===== CLICK FLASH ANIMATION ===== */
-        @keyframes flash-teal {
+        @keyframes flash-white {
             0%   { color: var(--color-text-gray); background: transparent; }
-            20%  { color: #fff; background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.25); box-shadow: 0 0 12px rgba(var(--color-accent-rgb, 0, 210, 190), 0.4); }
-            60%  { color: var(--color-accent); background: rgba(var(--color-accent-rgb, 0, 210, 190), 0.12); }
-            100% { color: var(--color-accent); background: rgba(255,255,255,0.03); }
+            20%  { color: #fff; background: rgba(255, 255, 255, 0.16); box-shadow: 0 0 12px rgba(255, 255, 255, 0.35); }
+            60%  { color: #fff; background: rgba(255, 255, 255, 0.08); }
+            100% { color: #fff; background: rgba(255, 255, 255, 0.03); }
         }
         .sidebar-item-flash {
-            animation: flash-teal 0.6s ease forwards;
+            animation: flash-white 0.6s ease forwards;
         }
         @keyframes highlight-project-card {
-            0%, 85% { outline: 2px solid var(--color-accent); outline-offset: 2px; box-shadow: 0 0 0 1px rgba(var(--color-accent-rgb, 0, 210, 190), 0.9), 0 0 30px rgba(var(--color-accent-rgb, 0, 210, 190), 0.55); }
+            0%, 85% { outline: 2px solid rgba(255, 255, 255, 0.9); outline-offset: 2px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4); }
             100% { outline-color: transparent; box-shadow: 0 0 0 transparent; }
         }
         .project-card-highlight {
@@ -108,9 +108,9 @@
             background: rgba(255, 255, 255, 0.03);
         }
         .sidebar-item.active {
-            color: var(--color-accent) !important;
-            border-left-color: var(--color-accent) !important;
-            background: rgba(255, 255, 255, 0.03);
+            color: #fff !important;
+            border-left-color: #fff !important;
+            background: rgba(255, 255, 255, 0.08);
             font-weight: 600 !important;
             opacity: 1 !important;
         }
@@ -165,9 +165,13 @@
             color: #fff !important;
         }
 
-        .projects-page .project-card,
-        .projects-page .project-card:hover {
+        .projects-page .project-card {
             border-color: transparent !important;
+        }
+
+        .projects-page .project-card:hover {
+            border-color: rgba(255, 255, 255, 0.9) !important;
+            box-shadow: 0 0 18px rgba(255, 255, 255, 0.3), 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .projects-page .card-github-link svg {
@@ -311,7 +315,7 @@
                 <h3 style="font-size: 1.15rem; color: var(--color-accent); font-weight: 700; margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.06em; text-align: left;">Outline</h3>
                 <nav class="sidebar-nav" style="display: flex; flex-direction: column; gap: 0.3rem; position: relative;">
                     <!-- Sliding active indicator line on the left -->
-                    <div class="sidebar-slider-indicator" style="position: absolute; left: 0; width: 3px; height: 38px; background: var(--color-accent); border-radius: 4px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: translateY(0);"></div>
+                    <div class="sidebar-slider-indicator" style="position: absolute; left: 0; width: 3px; height: 38px; background: #fff; border-radius: 4px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: translateY(0);"></div>
                     
                     <!-- Home Lab Category -->
                     <a href="#home-lab" class="sidebar-item sidebar-category active" onclick="scrollToCategory(event, 'home-lab', this)">Home Lab Projects</a>

@@ -338,6 +338,7 @@
               <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1rem;">The detection logic follows a two-stage process to reduce false positives by correlating two different behavioral indicators:</p>
 
               <p style="color:var(--color-text-light);font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;">Rule 100234 — Possible Mass Encryption</p>
+              <p style="color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;margin-bottom:0.75rem;">This rule triggers when the same PPID generates 10 file-change events (Wazuh rule 550) within 2 seconds, indicating possible mass encryption.</p>
               <pre style="background:#0a0c10;padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;border:1px solid var(--glass-border);font-size:0.85rem;color:#e6edf3;margin-bottom:1.5rem;"><code>&lt;!-- Ransomwhere Attack --&gt;
 &lt;group name="Ransomwhere Attack"&gt;
 
@@ -355,9 +356,11 @@
   &lt;/rule&gt;</code></pre>
 
               <p style="color:var(--color-text-light);font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;">Rule 100235 — Ransomware Detected</p>
+              <p style="color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;margin-bottom:0.75rem;">If Rule 100234 has triggered, this rule looks for a matching file-creation event within 5 seconds from the same PPID. It checks for common note or image extensions such as <code>.md</code>, <code>.txt</code>, <code>.html</code>, <code>.png</code>, and <code>.jpg</code>; when matched, it raises the ransomware alert and signals the backup response.</p>
               <pre style="background:#0a0c10;padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;border:1px solid var(--glass-border);font-size:0.85rem;color:#e6edf3;"><code>  &lt;rule id="100235" level="16" timeframe="5"&gt;
     &lt;if_matched_sid&gt;100234&lt;/if_matched_sid&gt;
     &lt;if_sid&gt;554&lt;/if_sid&gt;
+    &lt;same_field&gt;ppid&lt;/same_field&gt;
 
     &lt;field name="file" type="pcre2"&gt;
       (?i)\.(md|txt|html|htm|png|jpg)$
@@ -381,7 +384,7 @@
               <p style="color:var(--color-text-gray);font-size:0.95rem;margin-bottom:1.5rem;line-height:1.6;">This rule taught me about <strong>bulk encryption, python scripting, creating a ransomware malware script, ransomware detection engineering, FIM</strong>:</p>
               <div style="display:flex;flex-direction:column;gap:1.5rem;">
                 <div>
-                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Technical Skills</h5>
+                  <h5 class="section-label">Technical Skills</h5>
                   <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
                     <li>Designing behavioral SIEM detections</li>
                     <li>Creating custom Wazuh rules</li>
@@ -394,7 +397,7 @@
                   </ul>
                 </div>
                 <div>
-                  <h5 style="color:var(--color-accent);font-size:1.05rem;margin-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:0.25rem;">Security Concepts</h5>
+                  <h5 class="section-label">Security Concepts</h5>
                   <ul style="list-style:disc;margin-left:1.5rem;color:var(--color-text-gray);font-size:0.95rem;line-height:1.6;display:flex;flex-direction:column;gap:0.5rem;">
                     <li>Mapping detections to MITRE ATT&amp;CK (T1486 — Data Encrypted for Impact)</li>
                     <li>Understanding the difference between symmetric and asymmetric encryption</li>

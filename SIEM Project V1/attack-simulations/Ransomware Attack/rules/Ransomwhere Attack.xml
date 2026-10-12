@@ -14,6 +14,7 @@
  <rule id="100235" level="16" timeframe="5">
    <if_matched_sid>100234</if_matched_sid>
    <if_sid>554</if_sid>
+   <same_field>ppid</same_field>
    <field name="file" type="pcre2">(?i)\.(md|txt|html|htm|png|jpg)$</field>
    <description>Ransomwhere Detected. Run Backup Scripts!...</description>
  </rule>
