@@ -2089,13 +2089,13 @@ ul.skill-proof-content {
 .back-btn {
   font-size: var(--font-size-sm);
   padding: 0.5rem 1.2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   border: 1px solid var(--glass-border);
   border-radius: 50px;
   /* Pill shape */
   color: var(--color-secondary);
   font-weight: 600;
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -2103,11 +2103,11 @@ ul.skill-proof-content {
 }
 
 .back-btn:hover {
-  background: var(--color-primary);
-  color: white;
-  transform: translateX(-3px);
-  box-shadow: 0 4px 15px var(--glow-primary);
-  border-color: transparent;
+  background: transparent;
+  color: var(--color-secondary);
+  transform: scale(1.03);
+  box-shadow: none;
+  border-color: white;
 }
 
 /* Title Styling - STRICTLY ON TOP AND WHITE */
