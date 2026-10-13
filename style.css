@@ -153,17 +153,19 @@ a:hover {
 }
 
 .learning-section-simple .section-label {
+  display: block;
   color: var(--color-text-light) !important;
   font-size: 1.05rem !important;
   margin-bottom: 0.5rem !important;
   font-weight: 800 !important;
+  letter-spacing: 0.02em;
+  text-transform: none;
   border: none !important;
   border-bottom: none !important;
   background: transparent !important;
-  padding-bottom: 0 !important;
+  padding: 0 !important;
   box-shadow: none !important;
   text-decoration: none !important;
-  display: block;
 }
 
 /* ===== GLASSMORPHISM UTILITIES ===== */
@@ -549,12 +551,14 @@ body:has(.hero) .navbar:not(.scrolled) {
 }
 
 .best-project-card {
-  border: 3px solid #d4af37;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.28), 0 0 22px rgba(255, 255, 255, 0.12);
   cursor: pointer;
 }
 
 .best-project-card:hover {
-  border-color: #f0cf62;
+  border-color: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.4), 0 0 28px rgba(255, 255, 255, 0.16);
 }
 
 .best-project-heading {
@@ -613,12 +617,14 @@ body:has(.hero) .navbar:not(.scrolled) {
 }
 
 .terraform-project-card {
-  border: 3px solid #d4af37;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.28), 0 0 22px rgba(255, 255, 255, 0.12);
   cursor: pointer;
 }
 
 .terraform-project-card:hover {
-  border-color: #f0cf62;
+  border-color: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.4), 0 0 28px rgba(255, 255, 255, 0.16);
 }
 
 .github-profile-link,
@@ -984,6 +990,18 @@ pre {
 
 .learning-section-simple h5 {
   border-bottom-color: var(--glass-border) !important;
+}
+
+/* SIEM project descriptions should read as normal body text without random bold emphasis */
+.project-detail-header strong,
+.project-meta-top strong,
+.project-date strong,
+.project-content-wrapper strong,
+.screenshot-meta strong,
+.artifact-box strong,
+.learning-section-simple strong {
+  font-weight: 400 !important;
+  color: inherit !important;
 }
 
 .project-content-wrapper {
