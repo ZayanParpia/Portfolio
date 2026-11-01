@@ -1897,6 +1897,13 @@ ul.skill-proof-content {
   /* Less space between icon and text */
 }
 
+.certs-grid .cert-card:nth-child(1) .cert-img-box,
+.certs-grid .cert-card:nth-child(2) .cert-img-box,
+.certs-grid .cert-card:nth-child(3) .cert-img-box {
+  width: 82px;
+  height: 82px;
+}
+
 .cert-img-box.network-tools-icons {
   display: grid;
   grid-template-columns: 55px 55px;
@@ -1912,8 +1919,14 @@ ul.skill-proof-content {
   /* Ensure full icon is visible */
 }
 
+.certs-grid .cert-card:nth-child(1) .cert-card-img,
+.certs-grid .cert-card:nth-child(2) .cert-card-img,
+.certs-grid .cert-card:nth-child(3) .cert-card-img {
+  transform: scale(1.25);
+}
+
 .cert-card-img.comptia-logo {
-  transform: scale(1.5);
+  transform: scale(1.8);
 }
 
 .cert-card-icon {
